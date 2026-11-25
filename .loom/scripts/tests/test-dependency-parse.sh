@@ -1,0 +1,410 @@
+#!/usr/bin/env bash
+# test-dependency-parse.sh - Fixture tests for the dependency-phrase parser
+# vocabulary widened in #4508.
+#
+# Before #4508, the documented dependency-phrase matcher
+# `(Blocked by|Depends on|Requires) #[0-9]+` (established in guide.md's
+# `parse_dependencies` and reused by sweep.md's --auto-stack detection,
+# warn-out-of-set-deps.sh, and champion-pr-merge.md's unblock loop) failed to
+# match the common markdown-bold/colon form `**Blocked by:** #1 (x), #3 (y)`
+# — an empty parse that, under the aggressive `/loom:sweep all` taxonomy,
+# would silently strip `loom:blocked` and build out of dependency order (see
+# #4508 for the incident). This file asserts the fix's two properties:
+#
+#   1. The widened separator `[*_:[:space:]]*` between the phrase and the
+#      first `#N` tolerates markdown emphasis (`*`/`_`) and an optional
+#      colon, on every reuser site.
+#   2. The two-stage parse (select matching lines, then extract every `#N`
+#      on those lines) captures ALL refs in a comma-separated list, not just
+#      the first.
+#
+# It also guards the load-bearing phrase-set split (#4508's curator
+# enhancement): guide.md keeps all four alternatives (incl. the `- [ ]`
+# checkbox form); the --auto-stack / warn-out-of-set-deps sites stay
+# restricted to `Depends on`/`Requires`(/`Part of`) and must NEVER match
+# `Blocked by` — that phrase drives the distinct loom:blocked machinery.
+#
+# Strategy: warn-out-of-set-deps.sh's `parse_out_of_set_deps` is REAL,
+# sourceable code (guarded on `BASH_SOURCE == $0`), so it is tested directly
+# — no duplication. guide.md's `parse_dependencies` and the markdown-embedded
+# snippets in sweep.md / champion-pr-merge.md are prose (Claude reads and
+# executes them, they are not standalone scripts), so this file mirrors each
+# one verbatim in a local function and pins the shipped doc text with a
+# literal `assert_doc_contains` check — if a future edit changes the doc
+# without updating this file (or vice versa), the corresponding check fails.
+#
+# Usage:
+#   ./.loom/scripts/tests/test-dependency-parse.sh
+
+set -uo pipefail
+
+TEST_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPTS_DIR="$(cd "$TEST_DIR/.." && pwd)"
+
+# Two `..` reaches repo-root/.claude/commands/loom for an INSTALLED copy
+# (SCRIPTS_DIR is .loom/scripts there); one `..` reaches defaults/.claude/
+# commands/loom when running inside this source repo (SCRIPTS_DIR is
+# defaults/scripts) -- the two layouts differ in depth, so probe both rather
+# than hard-coding one (#6725).
+if [[ -d "$SCRIPTS_DIR/../../.claude/commands/loom" ]]; then
+    PROMPT_DIR="$(cd "$SCRIPTS_DIR/../../.claude/commands/loom" && pwd)"
+else
+    PROMPT_DIR="$(cd "$SCRIPTS_DIR/../.claude/commands/loom" && pwd)"
+fi
+GUIDE_MD="$PROMPT_DIR/guide.md"
+CHAMPION_MD="$PROMPT_DIR/champion-pr-merge.md"
+CHAMPION_COMMON_MD="$PROMPT_DIR/champion-common.md"
+
+# The /loom:sweep skill in document order (#7726 split the monolithic
+# sweep.md into a dispatcher + 11 sibling reference files). Concatenate them
+# into one file so the --auto-stack detection pattern is found wherever it
+# now lives — mirrors SWEEP_SKILL_FILES in
+# loom-daemon/tests/sweep_md_doc_lint.rs.
+SWEEP_SKILL_FILES=(
+    sweep.md
+    sweep-arguments.md
+    sweep-examples.md
+    sweep-execution-model.md
+    sweep-backend-detection.md
+    sweep-scheduling-signals.md
+    sweep-dry-run.md
+    sweep-mode-c-lifecycle.md
+    sweep-wave-lifecycle.md
+    sweep-summary-output.md
+    sweep-run-hygiene.md
+    sweep-reference.md
+)
+SWEEP_MD="$(mktemp)"
+trap 'rm -f "$SWEEP_MD"' EXIT
+for f in "${SWEEP_SKILL_FILES[@]}"; do
+    cat "$PROMPT_DIR/$f" >> "$SWEEP_MD"
+done
+
+# Source warn-out-of-set-deps.sh's real parse_out_of_set_deps BEFORE defining
+# our own RED/GREEN/NC below — the script's own `[[ -t 2 ]]` color block
+# redefines RED/NC (not GREEN), so sourcing first (then setting ours last)
+# keeps this file's output colors consistent regardless of source order.
+# shellcheck source=/dev/null
+source "$SCRIPTS_DIR/warn-out-of-set-deps.sh"
+
+# shellcheck source=lib/assert.sh
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/assert.sh"
+
+# Pin a literal snippet as present verbatim in a doc file — catches drift
+# between this test's mirrored functions and the shipped markdown.
+
+# =====================================================================
+# guide.md's parse_dependencies — mirrors defaults/.claude/commands/loom/guide.md
+# verbatim (four alternatives incl. checkbox form, UNCHECKED only per #7973;
+# widened separator). The sed stage between the two greps is the #14732/
+# #14750 parent-reference rule (see champion_all_deps below); only the
+# generic branch carries it — the park-record branch above it keeps its own
+# precedence (#13414).
+# =====================================================================
+guide_parse_dependencies() {
+    local body="$1"
+    echo "$body" \
+        | grep -E '(Blocked by|Depends on|Requires|\- \[ \])[*_:[:space:]]*([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)?#[0-9]+' \
+        | sed -E 's/[Pp][Aa][Rr][Tt] [Oo][Ff][*_:.[:space:]]*([Ee][Pp][Ii][Cc][*_:.[:space:]]*)?([A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+)?#[0-9]+/ /g' \
+        | grep -oE '([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)?#[0-9]+' | sed 's/^#//' | sort -u
+}
+
+# =====================================================================
+# sweep.md's --auto-stack detection snippet — mirrors
+# defaults/.claude/commands/loom/sweep-wave-lifecycle.md verbatim (restricted
+# to Depends on / Requires; deliberately EXCLUDES Blocked by). The sed stage
+# applies the same #14732/#14750 parent-reference mask so a `Part of (Epic )
+# #N` parent on a mixed line is not read as a stacking edge.
+# =====================================================================
+sweep_auto_stack_detect() {
+    local body="$1"
+    echo "$body" | grep -E '(Depends on|Requires)[*_:[:space:]]*#[0-9]+' \
+        | sed -E 's/[Pp][Aa][Rr][Tt] [Oo][Ff][*_:.[:space:]]*([Ee][Pp][Ii][Cc][*_:.[:space:]]*)?([A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+)?#[0-9]+/ /g' \
+        | grep -oE '#[0-9]+' | tr -d '#' | sort -u
+}
+
+# =====================================================================
+# champion-pr-merge.md's ALL_DEPS extraction — champion-pr-merge.md now
+# calls THROUGH to the shared `extract_blocker_refs` helper in
+# defaults/.claude/commands/loom/champion-common.md (#5211) instead of an
+# inline pipeline, so this mirror reproduces that helper verbatim. The
+# helper is cross-repo aware: it captures an optional `owner/repo` prefix
+# ahead of the `#N` and (unlike the old bare-`#N` pipeline) returns each
+# reference WITH its `#`/`owner/repo#` form rather than a stripped number.
+# Two-stage shape (matches guide.md/sweep.md/warn-out-of-set-deps.sh):
+# stage 1 selects the whole matching line (grep -E, no -o), stage 2
+# extracts every ref found on that line — a single-stage `grep -Eo`
+# anchored to the phrase + its immediately-following #N can only ever
+# match one ref per phrase occurrence, silently dropping every other
+# comma-separated ref on the same line.
+# The sed stage between them is the #14732 parent-reference rule: a ref
+# introduced by `Part of` on a mixed line names the issue's PARENT, not a
+# blocker, and is masked before extraction. It keys off the introducing
+# phrase, never the number, so a parent genuinely declared again as a
+# dependency still counts. #14750 extends it: the phrase matches
+# case-insensitively (agreeing with the Rust `(?i)` side) and admits the
+# one bounded word `Epic` (`Part of Epic #N`, Loom's generated vocabulary)
+# — never a wider word run.
+# =====================================================================
+champion_all_deps() {
+    local blocked_body="$1"
+    printf '%s\n' "$blocked_body" \
+        | grep -E '(Blocked by|Depends on|Requires)[*_:[:space:]]*([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+#[0-9]+|#[0-9]+)' \
+        | sed -E 's/[Pp][Aa][Rr][Tt] [Oo][Ff][*_:.[:space:]]*([Ee][Pp][Ii][Cc][*_:.[:space:]]*)?([A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+)?#[0-9]+/ /g' \
+        | grep -Eo '([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+#[0-9]+|#[0-9]+)' \
+        | sort -u
+}
+
+echo "--- guide.md parse_dependencies: markdown-bold/colon forms ---"
+
+out="$(guide_parse_dependencies '**Blocked by:** #1 (short reason), #3 (short reason)')"
+assert_eq $'1\n3' "$out" "captures ALL refs from a bold+colon comma-list, not just #1"
+
+out="$(guide_parse_dependencies 'Blocked by: #2')"
+assert_eq "2" "$out" "plain phrase + colon (no bold)"
+
+out="$(guide_parse_dependencies '_Depends on_ #5')"
+assert_eq "5" "$out" "italic-wrapped phrase"
+
+echo
+echo "--- guide.md parse_dependencies: regression (plain unformatted forms) ---"
+
+out="$(guide_parse_dependencies 'Blocked by #7')"
+assert_eq "7" "$out" "plain Blocked by #N (no regression)"
+
+out="$(guide_parse_dependencies 'Depends on #8')"
+assert_eq "8" "$out" "plain Depends on #N (no regression)"
+
+out="$(guide_parse_dependencies 'Requires #9')"
+assert_eq "9" "$out" "plain Requires #N (no regression)"
+
+out="$(guide_parse_dependencies '- [ ] #12: some description')"
+assert_eq "12" "$out" "checkbox form still works (- [ ] #N)"
+
+echo
+echo "--- guide.md parse_dependencies: checked vs. unchecked checklist (#7973) ---"
+
+out="$(guide_parse_dependencies '- [x] #7431 (soak criteria + rollback path documented)')"
+assert_eq "" "$out" "a CHECKED checklist box (- [x] #N) is NOT a dependency (#7973 regression guard)"
+
+out="$(guide_parse_dependencies '- [ ] #12: some description')"
+assert_eq "12" "$out" "an UNCHECKED checklist box (- [ ] #N) still IS a dependency (no regression to #4508)"
+
+echo
+echo "--- guide.md parse_dependencies: edge case (unrelated same-line ref) ---"
+
+out="$(guide_parse_dependencies 'Depends on #5 (see #99)')"
+assert_eq $'5\n99' "$out" "captures the unrelated same-line #99 too (documented conservative trade-off)"
+
+echo
+echo "--- guide.md parse_dependencies: cross-repo OWNER/REPO#N (#10443) ---"
+
+out="$(guide_parse_dependencies 'Blocked by: example-org/tool-repo#202')"
+assert_eq "example-org/tool-repo#202" "$out" "qualified ref is kept whole (routed via --repo by check_and_unblock)"
+
+out="$(guide_parse_dependencies '**Blocked by:** example-org/tool-repo#202, #5')"
+assert_eq "5"$'\n'"example-org/tool-repo#202" "$out" "mixed qualified + bare refs: bare stays a plain number"
+
+echo
+echo "--- guide.md parse_dependencies: Part-of parent mask (#14732/#14750) ---"
+
+out="$(guide_parse_dependencies 'Part of Epic #2. Depends on #4, #5')"
+assert_eq $'4\n5' "$out" "guide: a Part-of-Epic parent on a mixed line is not a dependency, list intact (#14750)"
+
+out="$(guide_parse_dependencies 'Depends on #4, #5. Part of Epic #2')"
+assert_eq $'4\n5' "$out" "guide: clause order does not matter (#14750)"
+
+out="$(guide_parse_dependencies 'PART OF #2. Depends on #4')"
+assert_eq "4" "$out" "guide: uppercase phrase is masked — case agreement with the Rust (?i) side (#14750)"
+
+out="$(guide_parse_dependencies 'Part of epic #2. Depends on #4')"
+assert_eq "4" "$out" "guide: lowercase epic word is masked (#14750)"
+
+out="$(guide_parse_dependencies '**Part of Epic #2** - Depends on #4')"
+assert_eq "4" "$out" "guide: emphasised Epic form is masked (#14750)"
+
+out="$(guide_parse_dependencies 'Part of Epic example-org/tool-repo#2. Depends on #4')"
+assert_eq "4" "$out" "guide: repo-qualified Epic parent is masked (#14750)"
+
+out="$(guide_parse_dependencies 'Depends on #2 (parent). Part of Epic #2')"
+assert_eq "2" "$out" "guide: a parent declared again as a dependency IS a dependency (Epic form, #14750)"
+
+out="$(guide_parse_dependencies 'Part of issue #2. Depends on #4')"
+assert_eq $'2\n4' "$out" "guide: the optional word is bounded to Epic — issue form keeps current capture (#14750)"
+
+out="$(guide_parse_dependencies 'Part of the work tracked in #2. Depends on #4')"
+assert_eq $'2\n4' "$out" "guide: prose between phrase and ref keeps current capture (bounded grammar, #14750)"
+
+echo
+echo "--- sweep.md --auto-stack detection: widened separator, phrase-set unchanged ---"
+
+out="$(sweep_auto_stack_detect '**Depends on:** #101 (x), #102 (y)')"
+assert_eq $'101\n102' "$out" "captures all refs from a bold+colon comma-list"
+
+out="$(sweep_auto_stack_detect 'Requires #9')"
+assert_eq "9" "$out" "plain Requires #N (no regression)"
+
+out="$(sweep_auto_stack_detect '**Blocked by:** #1')"
+assert_eq "" "$out" "Blocked by NEVER matches --auto-stack detection (phrase-set split preserved)"
+
+echo
+echo "--- sweep.md --auto-stack detection: Part-of parent mask (#14732/#14750) ---"
+
+out="$(sweep_auto_stack_detect 'Part of Epic #2. Depends on #4, #5')"
+assert_eq $'4\n5' "$out" "auto-stack: a Part-of-Epic parent on a mixed line is not a stacking edge, list intact (#14750)"
+
+out="$(sweep_auto_stack_detect 'Depends on #4. Part of Epic #2')"
+assert_eq "4" "$out" "auto-stack: clause order does not matter (#14750)"
+
+out="$(sweep_auto_stack_detect 'PART OF #2. Depends on #4')"
+assert_eq "4" "$out" "auto-stack: uppercase phrase is masked — case agreement with the Rust (?i) side (#14750)"
+
+out="$(sweep_auto_stack_detect 'Part of Epic #2')"
+assert_eq "" "$out" "auto-stack: a standalone parent line selects nothing (no declaration phrase)"
+
+out="$(sweep_auto_stack_detect 'Part of issue #2. Depends on #4')"
+assert_eq $'2\n4' "$out" "auto-stack: the optional word is bounded to Epic — issue form keeps current capture (#14750)"
+
+echo
+echo "--- champion-pr-merge.md ALL_DEPS (extract_blocker_refs): phrase-anchored + cross-repo ---"
+
+out="$(champion_all_deps '**Blocked by:** #1 (reason)')"
+assert_eq '#1' "$out" "bold+colon phrase yields the anchored ref (previously empty -> silent unblock)"
+
+out="$(champion_all_deps 'Blocked by #7
+Depends on #8
+Requires #9')"
+assert_eq $'#7\n#8\n#9' "$out" "plain unformatted forms (no regression)"
+
+out="$(champion_all_deps 'Depends on owner/repo#42')"
+assert_eq 'owner/repo#42' "$out" "cross-repo owner/repo#N reference is preserved (#5211)"
+
+out="$(champion_all_deps '**Blocked by:** #1 (x), #3 (y)')"
+assert_eq $'#1\n#3' "$out" "bold+colon comma-list captures ALL refs, not just the first (regression guard)"
+
+out="$(champion_all_deps 'Blocked by: #1, owner/repo#3')"
+assert_eq $'#1\nowner/repo#3' "$out" "mixed same-repo/cross-repo comma-list captures both refs"
+
+out="$(champion_all_deps 'Part of #2. Depends on #4')"
+assert_eq '#4' "$out" "a Part-of parent reference on a mixed line is not a blocker (#14732)"
+
+out="$(champion_all_deps 'Part of example-org/epic#2. Depends on #4')"
+assert_eq '#4' "$out" "a cross-repo Part-of parent reference is excluded too (#14732)"
+
+out="$(champion_all_deps 'Depends on #2 (parent). Part of #2')"
+assert_eq '#2' "$out" "a parent declared again as a dependency IS a blocker (#14732)"
+
+echo
+echo "--- champion-pr-merge.md ALL_DEPS: Part-of Epic forms + case agreement (#14750) ---"
+
+out="$(champion_all_deps 'Part of: #2. Depends on #4')"
+assert_eq '#4' "$out" "colon form of the phrase is masked (existing separator class, #4508/#14732)"
+
+out="$(champion_all_deps 'Part of Epic #2. Depends on #4, #5')"
+assert_eq $'#4\n#5' "$out" "a Part-of-Epic parent on a mixed line is not a blocker, list intact (#14750)"
+
+out="$(champion_all_deps 'Depends on #4, #5. Part of Epic #2')"
+assert_eq $'#4\n#5' "$out" "clause order does not matter (#14750)"
+
+out="$(champion_all_deps 'PART OF #2. Depends on #4')"
+assert_eq '#4' "$out" "uppercase phrase is masked — case agreement with the Rust (?i) side (#14750)"
+
+out="$(champion_all_deps 'Part of epic #2. Depends on #4')"
+assert_eq '#4' "$out" "lowercase epic word is masked (#14750)"
+
+out="$(champion_all_deps '**Part of Epic #2** - Depends on #4')"
+assert_eq '#4' "$out" "emphasised Epic form is masked (#14750)"
+
+out="$(champion_all_deps 'Part of Epic example-org/epic#2. Depends on #4')"
+assert_eq '#4' "$out" "a cross-repo Part-of-Epic parent reference is excluded too (#14750)"
+
+out="$(champion_all_deps 'Depends on #2 (parent). Part of Epic #2')"
+assert_eq '#2' "$out" "a parent declared again as a dependency IS a blocker (Epic form, #14750)"
+
+out="$(champion_all_deps 'Part of Epic #4. Depends on #4')"
+assert_eq '#4' "$out" "only the Part-of-introduced occurrence is masked — the same ID as a real dependency still counts (#14750)"
+
+out="$(champion_all_deps 'Part of issue #2. Depends on #4')"
+assert_eq $'#2\n#4' "$out" "the optional word is bounded to Epic — issue form keeps current capture (#14750)"
+
+out="$(champion_all_deps 'Part of the work tracked in #2. Depends on #4')"
+assert_eq $'#2\n#4' "$out" "prose between phrase and ref keeps current capture (bounded grammar, #14750)"
+
+echo
+echo "--- champion-pr-merge.md BLOCKED_ISSUES jq filter: widened separator ---"
+
+if command -v jq >/dev/null 2>&1; then
+    matched="$(echo '{"body":"**Blocked by:** #1 (reason), #3 (reason)"}' \
+        | jq -r '.body | test("(Blocked by|Depends on|Requires)[*_:[:space:]]*#1"; "i")')"
+    assert_eq "true" "$matched" "jq test() matches bold+colon form for the closed-issue number"
+
+    matched="$(echo '{"body":"Depends on #5"}' \
+        | jq -r '.body | test("(Blocked by|Depends on|Requires)[*_:[:space:]]*#7"; "i")')"
+    assert_eq "false" "$matched" "jq test() does not match an unrelated issue number"
+else
+    echo "  SKIP: jq not available"
+fi
+
+echo
+echo "--- warn-out-of-set-deps.sh parse_out_of_set_deps: real sourced code ---"
+
+out="$(parse_out_of_set_deps '**Depends on:** #201 (x), #202 (y)')"
+assert_eq $'201\n202' "$out" "bold+colon comma-list captures all refs"
+
+out="$(parse_out_of_set_deps 'Part of: #303')"
+assert_eq "303" "$out" "colon-only form (Part of)"
+
+# warn-out-of-set-deps.sh is the one two-stage consumer that deliberately
+# does NOT apply the #14732/#14750 parent mask: its whole job is to SURFACE
+# out-of-set `Part of` declarations as context, so masking them would erase
+# the signal (#14750 out-of-scope ruling).
+
+out="$(parse_out_of_set_deps '**Blocked by:** #400')"
+assert_eq "" "$out" "Blocked by NEVER matches warn-out-of-set-deps (phrase-set split preserved)"
+
+echo
+echo "--- Doc pins: shipped markdown matches the mirrored functions above ---"
+
+assert_doc_contains "$GUIDE_MD" \
+    "grep -E '(Blocked by|Depends on|Requires|\- \[ \])[*_:[:space:]]*([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)?#[0-9]+'" \
+    "guide.md parse_dependencies ships the widened four-alternative pattern (unchecked checkbox only, #7973; OWNER/REPO#N, #10443)"
+
+assert_doc_contains "$GUIDE_MD" \
+    "sed -E 's/[Pp][Aa][Rr][Tt] [Oo][Ff][*_:.[:space:]]*([Ee][Pp][Ii][Cc][*_:.[:space:]]*)?([A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+)?#[0-9]+/ /g'" \
+    "guide.md parse_dependencies applies the Part-of parent mask in its generic branch, Epic form, case-insensitive (#14732/#14750)"
+
+assert_doc_contains "$SWEEP_MD" \
+    "grep -E '(Depends on|Requires)[*_:[:space:]]*#[0-9]+'" \
+    "sweep.md --auto-stack detection ships the widened two-phrase pattern"
+
+assert_doc_contains "$SWEEP_MD" \
+    "sed -E 's/[Pp][Aa][Rr][Tt] [Oo][Ff][*_:.[:space:]]*([Ee][Pp][Ii][Cc][*_:.[:space:]]*)?([A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+)?#[0-9]+/ /g'" \
+    "sweep-wave-lifecycle.md auto-stack detection applies the same Part-of parent mask between its two stages (#14732/#14750)"
+
+assert_doc_contains "$CHAMPION_MD" \
+    'ALL_DEPS=$(extract_blocker_refs "$BLOCKED_BODY")' \
+    "champion-pr-merge.md ALL_DEPS extraction calls through to extract_blocker_refs (#5211)"
+
+assert_doc_contains "$CHAMPION_COMMON_MD" \
+    "grep -E '(Blocked by|Depends on|Requires)[*_:[:space:]]*([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+#[0-9]+|#[0-9]+)'" \
+    "champion-common.md extract_blocker_refs ships the widened cross-repo pattern (two-stage: whole-line select)"
+
+assert_doc_contains "$CHAMPION_COMMON_MD" \
+    "sed -E 's/[Pp][Aa][Rr][Tt] [Oo][Ff][*_:.[:space:]]*([Ee][Pp][Ii][Cc][*_:.[:space:]]*)?([A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+)?#[0-9]+/ /g'" \
+    "champion-common.md extract_blocker_refs masks the Part-of parent reference (bare and Epic forms, case-insensitive) between the two stages (#14732, #14750)"
+
+assert_doc_contains "$CHAMPION_MD" \
+    'test(\"(Blocked by|Depends on|Requires)[*_:[:space:]]*#$CLOSED_ISSUE\"; \"i\")' \
+    "champion-pr-merge.md BLOCKED_ISSUES jq filter ships the widened pattern"
+
+# warn-operator-gated.sh is REAL sourceable code (not markdown), so its
+# behaviour is asserted in test-warn-operator-gated.sh; this pin guards the
+# byte-identity of its mask against the shared expression above — the fifth
+# two-stage consumer must never grow a sixth sed variant (#15021).
+assert_doc_contains "$SCRIPTS_DIR/warn-operator-gated.sh" \
+    "sed -E 's/[Pp][Aa][Rr][Tt] [Oo][Ff][*_:.[:space:]]*([Ee][Pp][Ii][Cc][*_:.[:space:]]*)?([A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+)?#[0-9]+/ /g'" \
+    "warn-operator-gated.sh parse_operator_gate_deps masks the Part-of parent reference between its two stages, byte-identical to the shared expression (#14732/#14750, #15021)"
+
+echo
+echo "Results: $TESTS_PASSED/$TESTS_RUN passed, $TESTS_FAILED failed"
+[[ $TESTS_FAILED -eq 0 ]] || exit 1

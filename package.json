@@ -1,0 +1,11 @@
+{
+  "name": "loom-workspace",
+  "description": "Loom-managed workspace with AI development orchestration",
+  "private": true,
+  "scripts": {
+    "check:ci": "echo \"check:ci not configured: wire this script to your repo's real command (edit package.json)\" && exit 1",
+    "check:all": "echo \"check:all not configured: wire this script to your repo's real command (edit package.json)\" && exit 1",
+    "test": "echo \"test not configured: wire this script to your repo's real command (edit package.json)\" && exit 1",
+    "lint": "echo \"lint not configured: wire this script to your repo's real command (edit package.json)\" && exit 1"
+  }
+}
