@@ -31,7 +31,7 @@
         "role": "testbench",
         "path": "rtl/regenerate.py",
         "passed": true,
-        "content_hash": "sha256:53507ac2a44f888df792f4c87416c17d6b9582677fb86f5c02bfd4df6b2dab28"
+        "content_hash": "sha256:22e172ad52308b73afe664d4922818a3a64e9fb4fc35709c1d1c12c7bedd285d"
       },
       {
         "check": "present",

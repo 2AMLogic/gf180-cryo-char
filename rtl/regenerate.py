@@ -57,7 +57,10 @@ def generate(working, check):
     (working / "yosys").symlink_to(yosys)
     pdk = working / "models/gf180mcuD"
     install_library(pdk)
-    env = dict(os.environ, PATH=str(working) + os.pathsep + os.environ["PATH"])
+    # YoWASP supplies its own /tmp. KLT passes absolute filenames to Yosys,
+    # so mount this particular run below it as well as on macOS.
+    env = dict(os.environ, PATH=str(working) + os.pathsep + os.environ["PATH"],
+               YOWASP_MOUNT=f"{working}={working}")
     rtl = working / "rtl"
     rtl.mkdir()
     request = ROOT / "rtl/synth-request.json"
@@ -98,4 +101,4 @@ if __name__ == "__main__":
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
     with tempfile.TemporaryDirectory() as scratch:
-        generate(Path(scratch), args.check)
+        generate(Path(scratch).resolve(), args.check)

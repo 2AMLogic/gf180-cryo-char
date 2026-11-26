@@ -20,7 +20,7 @@
     },
     "1.digital": {
       "file": "signoff/attest/item1-digital.envelope.json",
-      "content_hash": "sha256:24493e51065c7154e43d0c0ed2b7752c1bbca6d8d65dde4aea261f3951290152"
+      "content_hash": "sha256:ebf59d8e4aa4cb7ddf83ef1febd07ecf40153c6bfaa9a58dc96fdccb3226c2b4"
     }
   }
 }
