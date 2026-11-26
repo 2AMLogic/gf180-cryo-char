@@ -4,7 +4,7 @@
 
 A DUT switch receives the intersection of `bank_enable[addr >> 4]` and `member_enable[addr & 15]`. These one-hot outputs and the decoded ring identity are registered. The primary and replica branches occupy separate banks. RO_EN gates only the selected ring. Bits 0–3 of `ring_enable` correspond to codes 482, 483, 484 and 487. Bits 4–7 are their replica placements. Set a bit in the synthesis parameter `CUT_PATHS` to disconnect its ten-bit address at freeze. Codes 510 and 511 select the primary open and short references.
 
-The bit-level testbench reads [the structure map](../spec/structure-map.md) and checks the switch pins for all 1,024 addresses. It repeats the run with three individual paths cut. It also pulses reset and deselect with the clock stopped and changes requests during the blank cycle. On a clean checkout install Python 3.12, Icarus Verilog (including `vvp`) and the pinned Python packages, then run from the repository root:
+The bit-level testbench reads [the structure map](../spec/structure-map.md) and checks the switch pins for all 1,024 addresses. It repeats the run with every path cut and with each of the ten address bits used as the cut mask. Those ten masks distinguish every address from every other one, including the two calibration references. It also pulses reset and deselect with the clock stopped and changes requests during the blank cycle. On a clean checkout install Python 3.12, Icarus Verilog (including `vvp`) and the pinned Python packages, then run from the repository root:
 
 ```sh
 python3 -m venv .venv

@@ -3,14 +3,14 @@
   "kind": "generic",
   "status": "pass",
   "t1_item": 10,
-  "summary": "T1 item 10 (Repo hygiene): 11/11 attestation checks passed (klt signoff --attest)",
+  "summary": "T1 item 10 (Repo hygiene): 12/12 attestation checks passed (klt signoff --attest)",
   "source": "signoff/attest/item10.json",
   "attestation": {
     "producer": "klt signoff --attest",
     "inventory_schema_version": 1,
     "hash_algorithm": "sha256-raw-bytes",
-    "check_count": 11,
-    "passed_count": 11,
+    "check_count": 12,
+    "passed_count": 12,
     "checks": [
       {
         "check": "present",
@@ -66,14 +66,14 @@
         "role": "hygiene",
         "path": "spec/selection-readout.md",
         "passed": true,
-        "content_hash": "sha256:e886415c3a35a213a6bea72d26a93300b047513aeed062f25f6880c0633006db"
+        "content_hash": "sha256:e0633a2b81befc2c4803072ebd0ad3e9297e6250ca262805341aacb852b3f1d2"
       },
       {
         "check": "present",
         "role": "hygiene",
         "path": "spec/structure-map.md",
         "passed": true,
-        "content_hash": "sha256:66ec8bcc423ecef4cc04b1c718618f525820c44111b99ae4f37644b3cc1cee0e"
+        "content_hash": "sha256:7413ba5e80634b4bbb6e1d971a8f7f725963a05844cd489612c4e785d6227ddb"
       },
       {
         "check": "present",
@@ -81,6 +81,13 @@
         "path": "verification/test_harness.py",
         "passed": true,
         "content_hash": "sha256:7562df3c2042efb88d306bca5c16509ae94594f18992bb01adc821f6b3782a18"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "verification/test_structure_geometry.py",
+        "passed": true,
+        "content_hash": "sha256:3883b82f91eaadf5572eacf8df8f4f63c1532d3d964734d099f7b0634050a521"
       },
       {
         "check": "command",
@@ -112,7 +119,7 @@
         "path": "signoff/attest/item10.json",
         "scope": "repo"
       },
-      "content_hash": "sha256:0d9938d1a695723077fbb09a18f3d4b0d5a660db7c849e376367830549c9bac6"
+      "content_hash": "sha256:4651f2b3248f75403d1c54035ce191f91561645a0f2c283567be8a7057f844c3"
     }
   }
 }

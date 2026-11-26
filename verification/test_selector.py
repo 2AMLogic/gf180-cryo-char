@@ -26,5 +26,12 @@ class SelectorTest(unittest.TestCase):
     def test_full_map(self):
         self.run_selector([])
 
-    def test_independent_freeze_cuts(self):
-        self.run_selector([2, 456, 994])  # A primary, one resistor placement, one RO replica.
+    def test_all_paths_cut(self):
+        self.run_selector(range(1024))
+
+    def test_each_cut_address_bit(self):
+        # Each address has a unique ten-bit signature. Applying its bitplanes
+        # as cut masks exposes a swapped cut (including open vs short).
+        for bit in range(10):
+            with self.subTest(bit=bit):
+                self.run_selector([addr for addr in range(1024) if addr & (1 << bit)])

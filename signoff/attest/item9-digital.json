@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "t1-attestation-inventory",
   "t1_item": 9,
-  "description": "Cold-start digital switch-control simulation for all address codes and three individual freeze cuts. The RTL bench uses no process models.",
+  "description": "Cold-start digital switch-control simulation for all address codes, all paths cut, and ten address-bit freeze masks. The RTL bench uses no process models.",
   "testbenches": [
     "rtl/README.md",
     "rtl/selector.v",
