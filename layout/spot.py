@@ -141,7 +141,7 @@ def stage_tarball(commit: str, vendors: dict, extra: dict, dest: Path) -> str:
     dest.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         bare = Path(tmp) / "source.tar"
-        git("archive", "--format=tar", "-o", str(bare), commit)
+        git("archive", "--format=tar", "-o", str(bare), commit, "layout")
         with tarfile.open(bare, "a") as tar:
             for prefix, (clone, sha) in vendors.items():
                 data = subprocess.run(
