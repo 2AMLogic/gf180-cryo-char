@@ -44,6 +44,12 @@ and `record ... --is-die`.
 `submit` always passes `--wait-for-capacity 600`, as the worker host rules
 require: a full Spot budget is waited out, not failed.
 
+A shard Spot reclaims is `interrupted`, and the fleet captain's reconcile
+pass relaunches it from scratch within two hours; `collect` keeps polling
+through that. To not wait, run the same `submit` again with the same
+`--group`: the job id keeps its launch ledger, so the record's
+`retry_count` still counts the lost attempt.
+
 ## What the job does
 
 Both jobs run as `repo-script` shards on the batch fleet's heavy image. Each
