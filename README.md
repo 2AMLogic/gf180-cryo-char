@@ -41,7 +41,7 @@ Design stage: spec
      — describing what this repo has produced and recorded evidence for, never
      what it is aiming at. One token; not a range, not a hedge, not prose. -->
 
-The [digital selector](rtl/README.md) has a bit-level testbench. The
+The [digital controller](rtl/README.md) selects the device and divides each of the eight ring outputs by 1,024. The same readout bench runs on RTL and the GF180D gate-level netlist. The
 [analog benches](sim/readout/README.md) reproduce switch and pad measurements
 on the shuttle models. Physical integration, tape-out and silicon measurements
 are pending.
@@ -63,7 +63,7 @@ Run the same harness and evidence checks as CI from the repo root:
 ```sh
 python3 -m venv .venv
 . .venv/bin/activate
-python -m pip install -r signoff/klt-pin.txt -r verification/requirements.txt
+python -m pip install -r signoff/klt-pin.txt -r verification/requirements.txt -r rtl/synth-pin.txt
 npm run check:ci
 ```
 
@@ -72,7 +72,7 @@ The [analog cold-start instructions](sim/readout/README.md) give the supported
 ngspice version and the offline PDK option. The harness tests generate pass, fail, and incomplete
 records in a temporary directory, then load any committed testbench manifests.
 The selector tests exercise all addresses and asynchronous disconnect. The
-remaining checks reproduce the analog bench, digital bench and repo-hygiene attestations
+remaining checks regenerate the controller netlist and reproduce the analog bench, digital bench and repo-hygiene attestations
 and the signoff report. The analog bench fetches the checksum-pinned model files when an offline PDK path is absent.
 
 **Not being built:**

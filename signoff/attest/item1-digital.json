@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "kind": "t1-attestation-inventory",
+  "t1_item": 1,
+  "description": "Digital sources and the generated GF180D control netlist. Regenerate with pinned 7-track 3.30 V cells and exercise all eight ring readouts on the RTL and the mapping.",
+  "sources": [
+    "rtl/selector.v",
+    "rtl/cryo_char_ctrl.v",
+    "rtl/synth-request.json",
+    "rtl/regenerate.py",
+    "rtl/synth-pin.txt",
+    "signoff/klt-pin.txt",
+    "verification/tb_ring_readout.v"
+  ],
+  "derived": [
+    {
+      "path": "rtl/cryo_char_ctrl.gl.v",
+      "generator": "klt synthesize via rtl/regenerate.py",
+      "check": {
+        "argv": [
+          "python3",
+          "rtl/regenerate.py",
+          "--check"
+        ]
+      }
+    }
+  ]
+}

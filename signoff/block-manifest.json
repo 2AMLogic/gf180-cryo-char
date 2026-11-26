@@ -3,7 +3,7 @@
   "kind": "mixed-signal",
   "partition_boundary": {
     "analog": "Planned devices under test and analog measurement paths from the selected device to the force and sense pads. The selection switches receive control from the digital partition. Issue #1 defines the device map and pad connections.",
-    "digital": "The RTL selector drives bank, member and oscillator enables across the analog partition boundary. The remaining ring-divider readout and the physical switch and pad connections await integration."
+    "digital": "The digital controller decodes the address and drives bank, member and oscillator enables. It divides eight buffered logic-domain ring inputs to drive RO_OUT. The analog partition supplies those buffered crossings and the switch and pad connections."
   },
   "evidence": {
     "10": {
@@ -12,11 +12,15 @@
     },
     "9.digital": {
       "file": "signoff/attest/item9-digital.envelope.json",
-      "content_hash": "sha256:459e08f18889bdae13c1497b9fd74390bd86bd08abbd93c385eb59af31887245"
+      "content_hash": "sha256:a22768108a3b06651506e59b57ffbd4ed5f2fdd5caee0290fe82060672e762f8"
     },
     "9.analog": {
       "file": "signoff/attest/item9-analog.envelope.json",
       "content_hash": "sha256:b82f462cf8fd065e44087584daed2cccf4c14745b97ac99f5b9ff1eae04b2146"
+    },
+    "1.digital": {
+      "file": "signoff/attest/item1-digital.envelope.json",
+      "content_hash": "sha256:48192424bf6d328c92e45ad2ca58797d2c1e58efc8c3ec5e3324565809049a86"
     }
   }
 }

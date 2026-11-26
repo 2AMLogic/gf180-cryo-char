@@ -1,0 +1,5 @@
+{
+  "sources": ["selector.v", "cryo_char_ctrl.v"],
+  "hdl_toplevel": "cryo_char_ctrl",
+  "pdk": {"cell_library": "gf180mcu_fd_sc_mcu7t5v0", "corner": "tt_025C_3v30"}
+}

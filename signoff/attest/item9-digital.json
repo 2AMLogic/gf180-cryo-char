@@ -2,14 +2,17 @@
   "schema_version": 1,
   "kind": "t1-attestation-inventory",
   "t1_item": 9,
-  "description": "Cold-start digital switch-control simulation for all address codes, all paths cut, and ten address-bit freeze masks. The RTL bench uses no process models.",
+  "description": "Cold-start digital control simulation covers all addresses and freeze masks, and divide-by-1,024, reset and inactive edges for all eight physical oscillator channels. The RTL bench uses no process models.",
   "testbenches": [
     "rtl/README.md",
+    "rtl/cryo_char_ctrl.v",
+    "rtl/regenerate.py",
     "rtl/selector.v",
-    "spec/structure-map.md",
     "spec/selection-readout.md",
+    "spec/structure-map.md",
     "verification/requirements.txt",
     "verification/selector_cocotb.py",
+    "verification/tb_ring_readout.v",
     "verification/test_selector.py"
   ],
   "cold_start": {

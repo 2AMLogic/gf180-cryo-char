@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "kind": "generic",
+  "status": "pass",
+  "t1_item": 1,
+  "summary": "T1 item 1 (Design sources): 9/9 attestation checks passed (klt signoff --attest)",
+  "source": "signoff/attest/item1-digital.json",
+  "attestation": {
+    "producer": "klt signoff --attest",
+    "inventory_schema_version": 1,
+    "hash_algorithm": "sha256-raw-bytes",
+    "check_count": 9,
+    "passed_count": 9,
+    "checks": [
+      {
+        "check": "present",
+        "role": "source",
+        "path": "rtl/cryo_char_ctrl.v",
+        "passed": true,
+        "content_hash": "sha256:fc22c42e1179f98bda2c40bb52408bc7c9e4910aa243dda1de3abbb5140dba87"
+      },
+      {
+        "check": "present",
+        "role": "source",
+        "path": "rtl/regenerate.py",
+        "passed": true,
+        "content_hash": "sha256:ff6bfa9b57259a30878d528d7148356bc4744638a1c988bfdf2c50fe540e852b"
+      },
+      {
+        "check": "present",
+        "role": "source",
+        "path": "rtl/selector.v",
+        "passed": true,
+        "content_hash": "sha256:b98199e2981aaa8cb5d082b6f56d2fec167243c10fd5a8ef14514a245d86b775"
+      },
+      {
+        "check": "present",
+        "role": "source",
+        "path": "rtl/synth-pin.txt",
+        "passed": true,
+        "content_hash": "sha256:0b390ef2ec9d213d9704a22800d1b461d6eba1702a928e9e22d6be788dc534c8"
+      },
+      {
+        "check": "present",
+        "role": "source",
+        "path": "rtl/synth-request.json",
+        "passed": true,
+        "content_hash": "sha256:cfa5eea2af2cb4bdfb25c9c34f634ed9f2164accf1acc02ee5a67286b2223f1d"
+      },
+      {
+        "check": "present",
+        "role": "source",
+        "path": "signoff/klt-pin.txt",
+        "passed": true,
+        "content_hash": "sha256:8a7edeed028822126a351cd439ac65fe44a95adde7bdd5fff759425b262ace2e"
+      },
+      {
+        "check": "present",
+        "role": "source",
+        "path": "verification/tb_ring_readout.v",
+        "passed": true,
+        "content_hash": "sha256:2bc913d64e093c1f68340e075bbddbfaf9e81433136937d95bbd5fc447d9874b"
+      },
+      {
+        "check": "present",
+        "role": "derived",
+        "path": "rtl/cryo_char_ctrl.gl.v",
+        "passed": true,
+        "content_hash": "sha256:4c515f6fbdecf9cfdcea46d4da7518cb708d566d87aec863a71dfe5792f03e88"
+      },
+      {
+        "check": "command",
+        "role": "freshness",
+        "target": "rtl/cryo_char_ctrl.gl.v",
+        "generator": "klt synthesize via rtl/regenerate.py",
+        "argv": [
+          "python3",
+          "rtl/regenerate.py",
+          "--check"
+        ],
+        "cwd": ".",
+        "exit_status": 0,
+        "passed": true
+      }
+    ]
+  },
+  "provenance": {
+    "klt_version": "0.9.2",
+    "klayout_version": null,
+    "pdk": null,
+    "deck": null,
+    "input": {
+      "paths": [
+        {
+          "path": {
+            "path": "rtl/cryo_char_ctrl.gl.v",
+            "scope": "repo"
+          },
+          "content_hash": "sha256:4c515f6fbdecf9cfdcea46d4da7518cb708d566d87aec863a71dfe5792f03e88"
+        },
+        {
+          "path": {
+            "path": "rtl/cryo_char_ctrl.v",
+            "scope": "repo"
+          },
+          "content_hash": "sha256:fc22c42e1179f98bda2c40bb52408bc7c9e4910aa243dda1de3abbb5140dba87"
+        },
+        {
+          "path": {
+            "path": "rtl/regenerate.py",
+            "scope": "repo"
+          },
+          "content_hash": "sha256:ff6bfa9b57259a30878d528d7148356bc4744638a1c988bfdf2c50fe540e852b"
+        },
+        {
+          "path": {
+            "path": "rtl/selector.v",
+            "scope": "repo"
+          },
+          "content_hash": "sha256:b98199e2981aaa8cb5d082b6f56d2fec167243c10fd5a8ef14514a245d86b775"
+        },
+        {
+          "path": {
+            "path": "rtl/synth-pin.txt",
+            "scope": "repo"
+          },
+          "content_hash": "sha256:0b390ef2ec9d213d9704a22800d1b461d6eba1702a928e9e22d6be788dc534c8"
+        },
+        {
+          "path": {
+            "path": "rtl/synth-request.json",
+            "scope": "repo"
+          },
+          "content_hash": "sha256:cfa5eea2af2cb4bdfb25c9c34f634ed9f2164accf1acc02ee5a67286b2223f1d"
+        },
+        {
+          "path": {
+            "path": "signoff/attest/item1-digital.json",
+            "scope": "repo"
+          },
+          "content_hash": "sha256:c576125eb9a54856acca1e2eecfbffbda6ed74b5f93060f30166aba296f5734c"
+        },
+        {
+          "path": {
+            "path": "signoff/klt-pin.txt",
+            "scope": "repo"
+          },
+          "content_hash": "sha256:8a7edeed028822126a351cd439ac65fe44a95adde7bdd5fff759425b262ace2e"
+        },
+        {
+          "path": {
+            "path": "verification/tb_ring_readout.v",
+            "scope": "repo"
+          },
+          "content_hash": "sha256:2bc913d64e093c1f68340e075bbddbfaf9e81433136937d95bbd5fc447d9874b"
+        }
+      ],
+      "content_hash": "sha256:48192424bf6d328c92e45ad2ca58797d2c1e58efc8c3ec5e3324565809049a86"
+    }
+  }
+}
