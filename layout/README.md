@@ -53,8 +53,8 @@ Spot, or that cannot be sharded to fit between reclaims, takes
 `submit --on-demand`: the fleet's ruling for on-demand capacity, same cap,
 billed at the on-demand rate. It needs a submit identity allowed to launch
 on-demand; the loom-worker role is refused by IAM (`UnauthorizedOperation`
-on `ec2:RunInstances`, 2026-11-26), so from a worker that submit stages the
-job and launches nothing.
+on `ec2:RunInstances`, 2026-11-26; 2AMLogic/2am#7963 tracks the unapplied
+policy), so from a worker that submit stages the job and launches nothing.
 
 ## What the job does
 
