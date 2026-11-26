@@ -3,7 +3,7 @@
   "description": "Loom-managed workspace with AI development orchestration",
   "private": true,
   "scripts": {
-    "check:ci": "npm test && klt signoff --attest 10 --inventory signoff/attest/item10.json --check signoff/attest/item10.envelope.json && klt signoff --manifest signoff/block-manifest.json --check signoff/block-manifest.signoff.json",
+    "check:ci": "npm test && klt signoff --attest 9 --inventory signoff/attest/item9-digital.json --check signoff/attest/item9-digital.envelope.json && klt signoff --attest 10 --inventory signoff/attest/item10.json --check signoff/attest/item10.envelope.json && klt signoff --manifest signoff/block-manifest.json --check signoff/block-manifest.signoff.json",
     "check:all": "npm run check:ci",
     "test": "python3 -m unittest discover -s verification -p 'test_*.py'",
     "lint": "echo \"lint not configured: wire this script to your repo's real command (edit package.json)\" && exit 1"

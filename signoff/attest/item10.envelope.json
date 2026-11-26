@@ -17,7 +17,7 @@
         "role": "hygiene",
         "path": ".github/workflows/evidence.yml",
         "passed": true,
-        "content_hash": "sha256:80d756ff0adb838d66de9057316919a46bf37b5c189aad8d0665dec0872c1b59"
+        "content_hash": "sha256:137a2d15333bb29f25b896e069df94c00c36fde9d18d455087f28fabf74ccb0f"
       },
       {
         "check": "present",
@@ -31,14 +31,14 @@
         "role": "hygiene",
         "path": "README.md",
         "passed": true,
-        "content_hash": "sha256:87c919fb969288640092011d9b8a71cd482d903f6a1dd134802c3019870ee03b"
+        "content_hash": "sha256:64b65a555522eff94a8b976b148413690f49997e097c08484313395120fb0838"
       },
       {
         "check": "present",
         "role": "hygiene",
         "path": "package.json",
         "passed": true,
-        "content_hash": "sha256:c70fbdfc862edfdfb37c06d19f13eb057671866f550c630a73883152cab63d9f"
+        "content_hash": "sha256:84c138cc843fca4bfbbfd267a55af95aef6555a14261940e11f758b214022594"
       },
       {
         "check": "present",

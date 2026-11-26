@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "kind": "generic",
+  "status": "pass",
+  "t1_item": 9,
+  "summary": "T1 item 9 (Testbenches shipped): 10/10 attestation checks passed (klt signoff --attest)",
+  "source": "signoff/attest/item9-digital.json",
+  "attestation": {
+    "producer": "klt signoff --attest",
+    "inventory_schema_version": 1,
+    "hash_algorithm": "sha256-raw-bytes",
+    "check_count": 10,
+    "passed_count": 10,
+    "checks": [
+      {
+        "check": "present",
+        "role": "testbench",
+        "path": "rtl/README.md",
+        "passed": true,
+        "content_hash": "sha256:a94773139d8ca1bd42ca33bab2ae94f6d04e1524563bcd995b82c0905ccd149b"
+      },
+      {
+        "check": "present",
+        "role": "testbench",
+        "path": "rtl/selector.v",
+        "passed": true,
+        "content_hash": "sha256:b98199e2981aaa8cb5d082b6f56d2fec167243c10fd5a8ef14514a245d86b775"
+      },
+      {
+        "check": "present",
+        "role": "testbench",
+        "path": "spec/selection-readout.md",
+        "passed": true,
+        "content_hash": "sha256:e886415c3a35a213a6bea72d26a93300b047513aeed062f25f6880c0633006db"
+      },
+      {
+        "check": "present",
+        "role": "testbench",
+        "path": "spec/structure-map.md",
+        "passed": true,
+        "content_hash": "sha256:66ec8bcc423ecef4cc04b1c718618f525820c44111b99ae4f37644b3cc1cee0e"
+      },
+      {
+        "check": "present",
+        "role": "testbench",
+        "path": "verification/requirements.txt",
+        "passed": true,
+        "content_hash": "sha256:9bc997c473bd44c93f41772d3a19c723a1a538dbf93f870ffb09c63c66267491"
+      },
+      {
+        "check": "present",
+        "role": "testbench",
+        "path": "verification/selector_cocotb.py",
+        "passed": true,
+        "content_hash": "sha256:2aa24a15f78a1148b97a912c803a64a76bc6af39f92cac35f95a88d58914751f"
+      },
+      {
+        "check": "present",
+        "role": "testbench",
+        "path": "verification/test_selector.py",
+        "passed": true,
+        "content_hash": "sha256:2dd67f543a852fafbd1a0feefbf00774992844a17d1c11617612d786c998fbbd"
+      },
+      {
+        "check": "command",
+        "role": "cold_start",
+        "argv": [
+          "python3",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "verification",
+          "-p",
+          "test_selector.py"
+        ],
+        "cwd": ".",
+        "exit_status": 0,
+        "passed": true
+      },
+      {
+        "check": "pin",
+        "role": "pdk",
+        "passed": true,
+        "value": {
+          "name": "gf180mcuD",
+          "revision": "f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7"
+        }
+      },
+      {
+        "check": "pin",
+        "role": "tools",
+        "passed": true,
+        "value": {
+          "cocotb": "2.0.1",
+          "iverilog": "13.0 (local RTL replay)",
+          "klayout-tools": "0.9.2"
+        }
+      }
+    ]
+  },
+  "provenance": {
+    "klt_version": "0.9.2",
+    "klayout_version": null,
+    "pdk": null,
+    "deck": null,
+    "input": {
+      "path": {
+        "path": "signoff/attest/item9-digital.json",
+        "scope": "repo"
+      },
+      "content_hash": "sha256:99e0f72707d95cc1ddafb8c609ff3db82dc7623145142b71cf00df44e7c62957"
+    }
+  }
+}

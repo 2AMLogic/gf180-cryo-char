@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "kind": "t1-attestation-inventory",
+  "t1_item": 9,
+  "description": "Cold-start digital switch-control simulation for all address codes and three individual freeze cuts. The RTL bench uses no process models.",
+  "testbenches": [
+    "rtl/README.md",
+    "rtl/selector.v",
+    "spec/structure-map.md",
+    "spec/selection-readout.md",
+    "verification/requirements.txt",
+    "verification/selector_cocotb.py",
+    "verification/test_selector.py"
+  ],
+  "cold_start": {
+    "argv": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "verification",
+      "-p",
+      "test_selector.py"
+    ]
+  },
+  "pins": {
+    "pdk": {
+      "name": "gf180mcuD",
+      "revision": "f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7"
+    },
+    "tools": {
+      "cocotb": "2.0.1",
+      "iverilog": "13.0 (local RTL replay)",
+      "klayout-tools": "0.9.2"
+    }
+  }
+}

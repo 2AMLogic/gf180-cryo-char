@@ -3,12 +3,16 @@
   "kind": "mixed-signal",
   "partition_boundary": {
     "analog": "Planned devices under test and analog measurement paths from the selected device to the force and sense pads. The selection switches receive control from the digital partition. Issue #1 defines the device map and pad connections.",
-    "digital": "Planned control that selects which structure is connected to the measurement pads. The signals cross into the analog partition at the selection switches. The interface and pin assignments are pending the specification in issue #1."
+    "digital": "The RTL selector drives bank, member and oscillator enables across the analog partition boundary. The remaining ring-divider readout and the physical switch and pad connections await integration."
   },
   "evidence": {
     "10": {
       "file": "signoff/attest/item10.envelope.json",
       "content_hash": "sha256:0d9938d1a695723077fbb09a18f3d4b0d5a660db7c849e376367830549c9bac6"
+    },
+    "9.digital": {
+      "file": "signoff/attest/item9-digital.envelope.json",
+      "content_hash": "sha256:99e0f72707d95cc1ddafb8c609ff3db82dc7623145142b71cf00df44e7c62957"
     }
   }
 }
