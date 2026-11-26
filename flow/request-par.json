@@ -29,12 +29,78 @@
     }
   },
   "constraints": {
-    "clock_port": "clk",
-    "clock_period_ns": 100
+    "clocks": [
+      {
+        "port": "clk",
+        "period_ns": 100
+      },
+      {
+        "port": "ro_clk[0]",
+        "period_ns": 12.0
+      },
+      {
+        "port": "ro_clk[1]",
+        "period_ns": 12.0
+      },
+      {
+        "port": "ro_clk[2]",
+        "period_ns": 12.0
+      },
+      {
+        "port": "ro_clk[3]",
+        "period_ns": 9.5
+      },
+      {
+        "port": "ro_clk[4]",
+        "period_ns": 12.0
+      },
+      {
+        "port": "ro_clk[5]",
+        "period_ns": 12.0
+      },
+      {
+        "port": "ro_clk[6]",
+        "period_ns": 12.0
+      },
+      {
+        "port": "ro_clk[7]",
+        "period_ns": 9.5
+      }
+    ],
+    "clock_groups": [
+      [
+        "clk"
+      ],
+      [
+        "ro_clk[0]"
+      ],
+      [
+        "ro_clk[1]"
+      ],
+      [
+        "ro_clk[2]"
+      ],
+      [
+        "ro_clk[3]"
+      ],
+      [
+        "ro_clk[4]"
+      ],
+      [
+        "ro_clk[5]"
+      ],
+      [
+        "ro_clk[6]"
+      ],
+      [
+        "ro_clk[7]"
+      ]
+    ]
   },
   "seed": 1,
   "target_stage": "route",
   "outputs": {
     "dir": "out"
-  }
+  },
+  "portable_paths": true
 }

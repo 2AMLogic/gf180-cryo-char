@@ -57,6 +57,55 @@ class RoutedReadout(unittest.TestCase):
             "sha256:" + reproduce.sha(MACRO / "cryo_char_ctrl.gds"),
         )
 
+    def test_nine_clock_trees_and_supply_coverage(self):
+        record = reproduce.check_files()
+        pnr = read_json(MACRO / "pnr.report.json")
+        roots = {"clk": 64, **{f"ro_clk[{i}]": 12 for i in range(8)}}
+        self.assertEqual(record["cts_sinks"], roots)
+        self.assertEqual(
+            {c["port"]: c["clocked_registers"] for c in pnr["clock_roots"]}, roots
+        )
+        self.assertEqual(
+            pnr["provenance"]["input"]["content_hash"],
+            "sha256:" + reproduce.sha(reproduce.NETLIST),
+        )
+        self.assertEqual(pnr["route_drc_violation_count"], 0)
+        self.assertEqual(
+            pnr["power"]["placed"]["components"], record["placed_components"]
+        )
+        self.assertTrue(pnr["power"]["pdn"])
+        erc = read_json(MACRO / "erc.report.json")
+        self.assertEqual(
+            erc["provenance"]["input"]["content_hash"],
+            "sha256:" + reproduce.sha(MACRO / "cryo_char_ctrl.gds"),
+        )
+        self.assertEqual(
+            erc["provenance"]["spec"]["content_hash"],
+            "sha256:" + reproduce.sha(MACRO / "erc.json"),
+        )
+        self.assertEqual(
+            {n["name"]: n["matched_islands"] for n in erc["nets"]}, {"VDD": 1, "VSS": 1}
+        )
+        self.assertEqual((erc["erc_status"], erc["erc_finding_count"]), ("clean", 0))
+        self.assertTrue(erc["erc_coverage"]["missing_tie_checked"])
+        self.assertEqual(
+            erc["erc_coverage"]["checked_by_well_assertion"],
+            ['erc.missing_tie:["psub_vss"]'],
+        )
+        spec = read_json(MACRO / "erc.json")
+        self.assertEqual(
+            erc["provenance"]["spec"]["content_hash"],
+            "sha256:" + reproduce.sha(MACRO / "erc.json"),
+        )
+        self.assertEqual(
+            {tie["name"]: set(tie["tap_requires"]) for tie in spec["ties"]},
+            {"nwell_vdd": {"32/0", "33/0"}, "psub_vss": {"31/0", "33/0"}},
+        )
+        self.assertLessEqual(
+            {strap["layer"] for strap in pnr["power"]["straps"]},
+            {layer["name"] for layer in spec["stackup"]},
+        )
+
     def test_grid_conversion_rejects_lost_metal(self):
         with tempfile.TemporaryDirectory() as tmp:
             source = Path(tmp) / "original.gds"
@@ -124,7 +173,7 @@ class RoutedReadout(unittest.TestCase):
                 annotation = corner["spef_annotation"]
                 self.assertTrue(annotation["annotation_complete"])
                 self.assertEqual(
-                    (annotation["nets_annotated"], annotation["nets_total"]), (596, 596)
+                    (annotation["nets_annotated"], annotation["nets_total"]), (620, 620)
                 )
                 self.assertEqual(annotation["reader_warning_count"], 0)
                 self.assertEqual(

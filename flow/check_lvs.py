@@ -58,7 +58,8 @@ def verify(report):
     if (
         set(power["power_pins"]) != {"VDD", "VSS"}
         or set(power["unchecked_expected_pins"]) != {"VNW", "VPW"}
-        or power["instance_count"] != 2766
+        or power["instance_count"]
+        != json.loads((MACRO / "route.json").read_text())["placed_components"]
     ):
         raise ValueError("Supply coverage differs from the recorded VDD/VSS check")
 
@@ -110,12 +111,14 @@ def fault_controls(directory):
     start = source.index(" _247_ (")
     end = source.index(");", start)
     cell = source[start:end]
-    if cell.count(".CLK(ro_clk[7])") != 1:
+    if cell.count(".CLK(clknet_1_0__leaf_ro_clk[7])") != 1:
         raise ValueError("Expected the bit-zero divider 7 clock connection")
     changed = directory / "wrong-bank.v"
     changed.write_text(
         source[:start]
-        + cell.replace(".CLK(ro_clk[7])", ".CLK(ro_clk[6])")
+        + cell.replace(
+            ".CLK(clknet_1_0__leaf_ro_clk[7])", ".CLK(clknet_1_0__leaf_ro_clk[6])"
+        )
         + source[end:]
     )
     request["reference"]["netlist"] = str(changed)
