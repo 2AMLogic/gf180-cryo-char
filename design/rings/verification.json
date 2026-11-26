@@ -1,0 +1,296 @@
+{
+  "7t": {
+    "gds_sha256": "5b13d4b467f8386911bca36de851997157bd0fa2d9a7f62bc257583bed6a8c78",
+    "reference_sha256": "40a3cb86765942d969171e5560ba703ba530ee5c3963978ceda52d26ae67c919",
+    "pex_sha256": "531ff2fff70d63d86c10629f34ec1e3c6528a16753655e43e08cf72a822861e6",
+    "bounding_box_nm": "(-19250,-15780;50610,62820)",
+    "port_centres": {
+      "vss": {
+        "layer": 36,
+        "x_nm": -18900,
+        "y_nm": -15430
+      },
+      "vro": {
+        "layer": 36,
+        "x_nm": 50260,
+        "y_nm": 62470
+      },
+      "en": {
+        "layer": 42,
+        "x_nm": 1860,
+        "y_nm": 2100
+      },
+      "out": {
+        "layer": 42,
+        "x_nm": 720,
+        "y_nm": 45640
+      }
+    },
+    "lvs": {
+      "nets": {
+        "layout": 149,
+        "reference": 149,
+        "matched": 149
+      },
+      "devices": {
+        "layout": 292,
+        "reference": 292,
+        "matched": 292
+      },
+      "pins": {
+        "layout": 4,
+        "reference": 4,
+        "matched": 4
+      }
+    },
+    "feedback_open_lvs": {
+      "nets": {
+        "layout": 150,
+        "reference": 149,
+        "matched": 146
+      },
+      "devices": {
+        "layout": 292,
+        "reference": 292,
+        "matched": 288
+      },
+      "pins": {
+        "layout": 4,
+        "reference": 4,
+        "matched": 4
+      }
+    },
+    "body_connections": {
+      "nfet_body_vss": 146,
+      "pfet_body_vro": 146
+    },
+    "parasitics": {
+      "r_count": 1166,
+      "c_count": 148,
+      "cc_count": 0,
+      "total_capacitance_ff": 267.840802,
+      "total_coupling_capacitance_ff": 0.0
+    },
+    "native": {
+      "status": "clean",
+      "violations": 0,
+      "checked_categories": 763,
+      "deck": {
+        "name": "gf180mcu.drc",
+        "content_hash": "sha256:e7c7d2597890cfcb4cf0e5312f5652051a119fb3e1cc1772a6e5c04594bc65d8",
+        "released": false,
+        "options": {
+          "variant": "D",
+          "decks": "all",
+          "threads": "1"
+        },
+        "tree": {
+          "file_count": 6,
+          "content_hash": "sha256:8af3b4875893f3ffbff639bd7e2966c5e3b9b27f70d03e86d6da46ca9510fbc4",
+          "release": null
+        }
+      }
+    },
+    "curated": {
+      "status": "clean",
+      "rules": {}
+    }
+  },
+  "9t": {
+    "gds_sha256": "60e7d8c3933712ee6481bfe6c78b011745314fc608fe3ff30baf0b651e668bed",
+    "reference_sha256": "b28c28bc0ba682bbddfefeff48a51d741a9411eda9a653c5b74b1d28d026af9b",
+    "pex_sha256": "8b905be7726f2a806c9e4cc378f5394bffb639978aaa41c5445dee7c0672c98b",
+    "bounding_box_nm": "(-19250,-15800;50610,76280)",
+    "port_centres": {
+      "vss": {
+        "layer": 36,
+        "x_nm": -18900,
+        "y_nm": -15450
+      },
+      "vro": {
+        "layer": 36,
+        "x_nm": 50260,
+        "y_nm": 75930
+      },
+      "en": {
+        "layer": 42,
+        "x_nm": 1860,
+        "y_nm": 2100
+      },
+      "out": {
+        "layer": 42,
+        "x_nm": 720,
+        "y_nm": 57400
+      }
+    },
+    "lvs": {
+      "nets": {
+        "layout": 149,
+        "reference": 149,
+        "matched": 149
+      },
+      "devices": {
+        "layout": 292,
+        "reference": 292,
+        "matched": 292
+      },
+      "pins": {
+        "layout": 4,
+        "reference": 4,
+        "matched": 4
+      }
+    },
+    "feedback_open_lvs": {
+      "nets": {
+        "layout": 150,
+        "reference": 149,
+        "matched": 146
+      },
+      "devices": {
+        "layout": 292,
+        "reference": 292,
+        "matched": 288
+      },
+      "pins": {
+        "layout": 4,
+        "reference": 4,
+        "matched": 4
+      }
+    },
+    "body_connections": {
+      "nfet_body_vss": 146,
+      "pfet_body_vro": 146
+    },
+    "parasitics": {
+      "r_count": 1166,
+      "c_count": 148,
+      "cc_count": 1,
+      "total_capacitance_ff": 293.619769,
+      "total_coupling_capacitance_ff": 0.003778
+    },
+    "native": {
+      "status": "clean",
+      "violations": 0,
+      "checked_categories": 763,
+      "deck": {
+        "name": "gf180mcu.drc",
+        "content_hash": "sha256:e7c7d2597890cfcb4cf0e5312f5652051a119fb3e1cc1772a6e5c04594bc65d8",
+        "released": false,
+        "options": {
+          "variant": "D",
+          "decks": "all",
+          "threads": "1"
+        },
+        "tree": {
+          "file_count": 6,
+          "content_hash": "sha256:8af3b4875893f3ffbff639bd7e2966c5e3b9b27f70d03e86d6da46ca9510fbc4",
+          "release": null
+        }
+      }
+    },
+    "curated": {
+      "status": "clean",
+      "rules": {}
+    }
+  },
+  "12t": {
+    "gds_sha256": "cc2235e83ec14744a9bd4ab3df00aeb998bd2be06c26d908608fd9fa89a0a51c",
+    "reference_sha256": "154086af0126182c6f5e39d22ced3b1fc4f57b0c025b8d4bfa032100bddca991",
+    "pex_sha256": "21913a0d1989e8541a9e7b16b635c44ec62decf432c127e9794a04880a630d10",
+    "bounding_box_nm": "(-19250,-15650;49350,116450)",
+    "port_centres": {
+      "vss": {
+        "layer": 36,
+        "x_nm": -18900,
+        "y_nm": -15300
+      },
+      "vro": {
+        "layer": 36,
+        "x_nm": 49000,
+        "y_nm": 116100
+      },
+      "en": {
+        "layer": 42,
+        "x_nm": 2450,
+        "y_nm": 3150
+      },
+      "out": {
+        "layer": 42,
+        "x_nm": 700,
+        "y_nm": 95550
+      }
+    },
+    "lvs": {
+      "nets": {
+        "layout": 149,
+        "reference": 149,
+        "matched": 149
+      },
+      "devices": {
+        "layout": 292,
+        "reference": 292,
+        "matched": 292
+      },
+      "pins": {
+        "layout": 4,
+        "reference": 4,
+        "matched": 4
+      }
+    },
+    "feedback_open_lvs": {
+      "nets": {
+        "layout": 150,
+        "reference": 149,
+        "matched": 146
+      },
+      "devices": {
+        "layout": 292,
+        "reference": 292,
+        "matched": 288
+      },
+      "pins": {
+        "layout": 4,
+        "reference": 4,
+        "matched": 4
+      }
+    },
+    "body_connections": {
+      "nfet_body_vss": 146,
+      "pfet_body_vro": 146
+    },
+    "parasitics": {
+      "r_count": 1166,
+      "c_count": 148,
+      "cc_count": 1,
+      "total_capacitance_ff": 391.418778,
+      "total_coupling_capacitance_ff": 0.009444
+    },
+    "native": {
+      "status": "clean",
+      "violations": 0,
+      "checked_categories": 763,
+      "deck": {
+        "name": "gf180mcu.drc",
+        "content_hash": "sha256:e7c7d2597890cfcb4cf0e5312f5652051a119fb3e1cc1772a6e5c04594bc65d8",
+        "released": false,
+        "options": {
+          "variant": "D",
+          "decks": "all",
+          "threads": "1"
+        },
+        "tree": {
+          "file_count": 6,
+          "content_hash": "sha256:8af3b4875893f3ffbff639bd7e2966c5e3b9b27f70d03e86d6da46ca9510fbc4",
+          "release": null
+        }
+      }
+    },
+    "curated": {
+      "status": "violations",
+      "rules": {
+        "nplus.enclosing.comp.1": 294,
+        "pplus.space.ncomp.1": 146
+      }
+    }
+  }
+}

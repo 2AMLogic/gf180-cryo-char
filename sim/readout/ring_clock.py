@@ -16,6 +16,7 @@ FAMILIES = {
     "12t": ("gf180mcu_osu_sc_gp12t3v3", [487]),
 }
 PIN_FILE = Path(__file__).with_name("ring_inputs.json")
+RING_LAYOUT = Path(__file__).resolve().parents[2] / "design/rings"
 
 
 def cell_path(lib):
@@ -63,12 +64,23 @@ def deck(args, pdk, receiver_lines=None, crossing=None):
         f".temp {args.temperature}",
         f"VRO vv 0 {args.voltage}",
         f"VEN en 0 PWL(0 0 10n 0 10.2n {enable})",
-        f"XG n142 en n0 {supply} {lib}__nand2_1",
     ]
-    for i in range(1, 143):
-        lines.append(f"X{i} n{i - 1} n{i} {supply} {lib}__inv_1")
-    if args.wire_ff:
-        lines.extend(f"CW{i} n{i} 0 {args.wire_ff}f" for i in range(143))
+    extracted = getattr(args, "extracted_ring", False)
+    if extracted:
+        if args.wire_ff:
+            raise ValueError(
+                "The extracted ring already contains its internal wire capacitance"
+            )
+        lines += [
+            f'.include "{RING_LAYOUT / ("ro_" + args.family + ".pex.spice")}"',
+            f"XRING en out vv 0 ro_{args.family}",
+        ]
+    else:
+        lines.append(f"XG n142 en n0 {supply} {lib}__nand2_1")
+        for i in range(1, 143):
+            lines.append(f"X{i} n{i - 1} n{i} {supply} {lib}__inv_1")
+        if args.wire_ff:
+            lines.extend(f"CW{i} n{i} 0 {args.wire_ff}f" for i in range(143))
     if args.logic_supply:
         # Observe one receiver DFF as a toggle. The direct-load bench omits CTS.
         logic = args.logic_supply
@@ -85,12 +97,13 @@ def deck(args, pdk, receiver_lines=None, crossing=None):
             )
         else:
             lines.extend(receiver_lines)
-    probe = "q" if args.logic_supply else "n142"
+    probe = "q" if args.logic_supply else ("en" if extracted else "n142")
     clock_input = "out" if crossing is None else "translated"
     vectors = f"v(out) v({probe}) i(VRO)"
     if crossing is not None:
         vectors += " v(translated) i(VSHIFTLO) i(VSHIFTHI)"
-    lines.append(f"XB n142 out {supply} {lib}__buf_1")
+    if not extracted:
+        lines.append(f"XB n142 out {supply} {lib}__buf_1")
     if args.load_ff:
         lines.append(f"CL {clock_input} 0 {args.load_ff}f")
     lines += [
@@ -244,9 +257,14 @@ def main():
     parser.add_argument("--step-ns", type=positive, default=0.12)
     parser.add_argument("--duration-ns", type=positive, default=350)
     parser.add_argument("--disabled", action="store_true")
+    parser.add_argument(
+        "--extracted-ring", action="store_true", help="simulate the routed 12 × 12 core"
+    )
     args = parser.parse_args()
     pdk = args.pdk.resolve()
     results = simulate(args, pdk)
+    if args.extracted_ring:
+        results["ring_view"] = "extracted"
     results.update(
         pdk_source=args.pdk_source,
         nist_codes=FAMILIES[args.family][1],

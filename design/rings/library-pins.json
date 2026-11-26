@@ -1,0 +1,11 @@
+{
+  "gf180mcu_fd_sc_mcu7t5v0/gds/gf180mcu_fd_sc_mcu7t5v0.gds": "024fdb3942ff4ebf7bce891443c5ff2a5052539a9583d6e864ba0d777d2ad64f",
+  "gf180mcu_fd_sc_mcu7t5v0/lef/gf180mcu_fd_sc_mcu7t5v0.lef": "47dadf84c21b20f558d043c36271632f07b1c2c2a595b118e2e1050ebb74349b",
+  "gf180mcu_fd_sc_mcu7t5v0/spice/gf180mcu_fd_sc_mcu7t5v0.spice": "0e126c5e10e45e705a83acfa47f6fd2c4ef0357e99c339dec43cdc16bfb13664",
+  "gf180mcu_fd_sc_mcu9t5v0/gds/gf180mcu_fd_sc_mcu9t5v0.gds": "8dd31742b34a123f85e084f05ff38b50a6c980858437b601ab7802b142c565fe",
+  "gf180mcu_fd_sc_mcu9t5v0/lef/gf180mcu_fd_sc_mcu9t5v0.lef": "38afbef95529165e1d8999d5b5613c4aec9869df8c1ce6b5555e74586ba4c826",
+  "gf180mcu_fd_sc_mcu9t5v0/spice/gf180mcu_fd_sc_mcu9t5v0.spice": "415d693a8eb35efd744495484c162b8926e7f72c1d4995d7ce16952c8a58d658",
+  "gf180mcu_osu_sc_gp12t3v3/gds/gf180mcu_osu_sc_gp12t3v3.gds": "b9e82fb3457c2bce1f48988ae486cbfd3fc79a6a21dab140e0eb88a6d32cb8c8",
+  "gf180mcu_osu_sc_gp12t3v3/lef/gf180mcu_osu_sc_gp12t3v3.lef": "f340d2ae067bba68fda583743360a19d92b4a11403cf688ca5a8066e9fb8ca1e",
+  "gf180mcu_osu_sc_gp12t3v3/spice/gf180mcu_osu_sc_gp12t3v3.spice": "12a0be9d71286eadc30a31a4156290e0fbdcf2ab85ce5f58cbc4b6454b573705"
+}

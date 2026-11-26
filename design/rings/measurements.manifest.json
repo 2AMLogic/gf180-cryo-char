@@ -1,0 +1,17 @@
+{
+  "simulator": "ngspice 46",
+  "pdk": "gf180mcuD",
+  "open_pdks": "f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7",
+  "sha256": {
+    "design/rings/measurements.csv": "3e21f5b1bc5f511a478b2d163f0a9b7bf5fd730f5fab72647fb0804c8ad680c8",
+    "design/rings/measure.py": "f0555e7dc9dece19d91f35ee3d40e2d2a2746d7f747f788c8e092af53cdbfae3",
+    "design/rings/verification.json": "a0b93cd5cc6ddfa4a9d7dfaa59d434f9807a31140c46b468d2b83c2b11c7a2cc",
+    "design/rings/library-pins.json": "a162e69835a334dba5678a150b98a821a1d4487e01617f9188378c2e8f14429a",
+    "sim/readout/ring_clock.py": "22f115253a95d40a74238b6be30b295413edaeaff6ac9386428854319acaf379",
+    "sim/readout/routed_ring.py": "be5cd65509e7d6b08c8acba835d3f59a3fd585c0f44dfe11645428606bf35759",
+    "sim/readout/ring_inputs.json": "d88f2a51fb97bd3f7ff68fecf20d8e6a8e90c0ddaa043e0b8a9c278a9b099dc6",
+    "design/ro-crossing/efuse_ls.pex.spice": "1c38888b2f0ba5479c0042ed244dc8f97886dc59c9b72d36713dd37f32a89230",
+    "flow/readout/cryo_char_ctrl.def": "06bf00d536604d33a068aedb250b7124fb112ae35dbda5cb3c81818adade105a",
+    "flow/readout/cryo_char_ctrl.spef": "58227c5fa6af4823f4f6d44ac9f28857da8b911774a29990c830ab51ea8b9ba1"
+  }
+}
