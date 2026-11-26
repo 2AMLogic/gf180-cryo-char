@@ -4,6 +4,8 @@ from pathlib import Path
 
 from cocotb_tools.runner import get_results, get_runner
 
+from rtl.regenerate import simulate
+
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -22,6 +24,10 @@ class SelectorTest(unittest.TestCase):
                 extra_env={"SELECTOR_CUTS": ",".join(map(str, cuts))}, seed=1,
             )
             self.assertEqual(get_results(result), (1, 0))
+
+    def test_ring_readout(self):
+        with tempfile.TemporaryDirectory() as build_dir:
+            simulate(Path(build_dir), [ROOT / "rtl/selector.v", ROOT / "rtl/cryo_char_ctrl.v"])
 
     def test_full_map(self):
         self.run_selector([])

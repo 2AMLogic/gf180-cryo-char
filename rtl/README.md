@@ -13,4 +13,19 @@ python -m pip install -r verification/requirements.txt
 python -m unittest discover -s verification -p test_selector.py
 ```
 
-The Icarus RTL bench requires no PDK files. The integration target is GF180MCU-D, open_pdks `f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7`. The oscillator divider, switch devices, pad wiring, extracted timing and leakage require their own integration evidence.
+The Icarus RTL bench requires no PDK files. The integration target is GF180MCU-D, open_pdks `f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7`. The switch devices, pad wiring, extracted timing and leakage require their own integration evidence.
+
+## Ring readout and synthesis
+
+The digital top is `cryo_char_ctrl`. The eight `ro_clk` inputs correspond to the eight `ring_enable` outputs in the same order. The analog interface must supply a buffered logic-domain edge from each oscillator. A level crossing from VRO that works over the measurement range still requires circuit and timing verification.
+
+Each specimen has its own 10-bit counter. The first two rising edges after enabling synchronize the release of its local reset. The first rising edge of RO_OUT follows the 514th input rising edge, and successive rising edges are 1,024 input periods apart. Allow startup to settle before opening a frequency measurement window. Deasserting RO_EN, MEAS_EN or RST_N silences the output with both the oscillator and selection clocks stopped. A new selection starts with a fresh count.
+
+Install Icarus with `vvp` and the Python pins, then run from the repo root.
+
+```sh
+python -m pip install -r signoff/klt-pin.txt -r rtl/synth-pin.txt
+python rtl/regenerate.py --check
+```
+
+Omit `--check` to write `rtl/cryo_char_ctrl.gl.v`. KLT invokes the pinned WebAssembly Yosys with the GF180D 7-track, typical 25 °C, 3.30 V Liberty file. The runner verifies the Liberty and both Verilog model checksums against wafer.space PDK revision `ac7d8696de96a4d708e768b607ae37f02207a354`. Set `CRYO_SHUTTLE_PDK` to the local `gf180mcuD` directory for an offline replay. The standard cell models exercise both polarities of the divided clock, all eight channels, and restart while stopped. Timing closure, supply crossing and placed area require separate physical measurements.

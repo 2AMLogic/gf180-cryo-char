@@ -17,5 +17,5 @@ jobs:
         with:
           python-version: "3.12"
       - run: sudo apt-get update && sudo apt-get install -y iverilog ngspice
-      - run: python -m pip install -r signoff/klt-pin.txt -r verification/requirements.txt
+      - run: python -m pip install -r signoff/klt-pin.txt -r verification/requirements.txt -r rtl/synth-pin.txt
       - run: npm run check:ci
