@@ -138,3 +138,10 @@ GDS, so its sha256, unchanged. Commit the bump first (`submit` runs the
 committed tree), fetch the die's GDS, and run the precheck's `submit` and
 `record --is-die` on it. The template and `klt` pins are not held to this;
 neither can change a verdict already recorded.
+
+A bump of the template or precheck commit also needs the two sha literals in
+`PinFileTests.test_committed_pins_validate`
+(`verification/test_layout_toolchain.py`) updated in the same PR, or that test
+fails even when the record is current. This holds for a template-only bump too,
+whatever the precheck record says. The literals are deliberate: a pin moving
+has to show up as a reviewed change in the test, not only in `toolchain.json`.
