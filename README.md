@@ -44,6 +44,18 @@ Design stage: spec
 **Just opened, specification phase.** Nothing is designed yet, nothing has been
 taped out, and nothing has been measured.
 
+The [T1 signoff report](signoff/block-manifest.signoff.json) grades the analog
+measurement circuits and digital selection logic separately. Run this check
+from the repo root to reproduce the committed report.
+
+```sh
+uvx --from "$(cat signoff/klt-pin.txt)" klt signoff \
+  --manifest signoff/block-manifest.json --check signoff/block-manifest.signoff.json
+```
+
+The check exits zero when the report matches. Its `tier`, `t1_met_count`
+and per-item verdicts show how much design evidence has passed.
+
 **Not being built:**
 - **Copied layout.** The upstream repo ships only finished GDS, with no
   generator scripts. Every structure here is regenerated from NIST's spec
