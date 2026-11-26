@@ -27,7 +27,9 @@ class SelectorTest(unittest.TestCase):
 
     def test_ring_readout(self):
         with tempfile.TemporaryDirectory() as build_dir:
-            simulate(Path(build_dir), [ROOT / "rtl/selector.v", ROOT / "rtl/cryo_char_ctrl.v"])
+            sources = [ROOT / "rtl/selector.v", ROOT / "rtl/cryo_char_ctrl.v"]
+            simulate(Path(build_dir), sources)
+            simulate(Path(build_dir), sources, flags=["-DCHECK_RING_CUTS"])
 
     def test_full_map(self):
         self.run_selector([])

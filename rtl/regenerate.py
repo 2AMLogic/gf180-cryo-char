@@ -39,9 +39,9 @@ def install_library(pdk):
     (pdk / "libs.tech").mkdir()
 
 
-def simulate(working, sources):
+def simulate(working, sources, flags=()):
     image = working / "readout.vvp"
-    subprocess.run(["iverilog", "-g2012", "-DFUNCTIONAL", "-s", "tb_ring_readout",
+    subprocess.run(["iverilog", "-g2012", "-DFUNCTIONAL", *flags, "-s", "tb_ring_readout",
                     "-o", image, ROOT / "verification/tb_ring_readout.v", *sources], check=True)
     subprocess.run(["vvp", image], check=True)
 
