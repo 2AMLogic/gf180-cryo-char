@@ -20,7 +20,8 @@ Xp2 mid rail sense guard pfet_03v3 w=wg l=lg nf=1 ad=a as=a pd=p ps=p
 .control
 set wr_singlescale
 dc Vsense .001 3.299 .01649
-wrdata guard.dat i(vsense)
+let tracking = v(guard) - v(sense)
+wrdata guard.dat i(vsense) v(far) tracking v(sense)
 quit
 .endc
 .end

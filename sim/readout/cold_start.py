@@ -77,13 +77,25 @@ def open_switch(directory):
     print(f"Single open switch: {readings[0]:.3f} / {readings[1]:.3f} fA at far=3.3 / 0 V")
 
 
+def check_guard_bias(rows, far, error):
+    for requested, _, far_voltage, tracking_error, sense_voltage in rows:
+        for name, actual, expected in (
+            ("far terminal", far_voltage, far),
+            ("guard tracking error", tracking_error, error),
+            ("sense terminal", sense_voltage, requested),
+        ):
+            if not math.isclose(actual, expected, rel_tol=0, abs_tol=1e-8):
+                raise ValueError(f"{name}: measured {actual} V, requested {expected} V")
+
+
 def guarded_switch(directory):
     for gmin, low, high in [("1e-12", 1.9, 2.4), ("1e-15", 0.10, 0.18), ("1e-19", 0.10, 0.18)]:
         peak = 0.0
         for far in (0, 3.3):
             for error in (-0.001, 0, 0.001):
                 simulate(directory, HERE / "guard.spice", GMIN=gmin, FAR=far, ERROR=error)
-                rows = current_sweep(directory, "guard.dat", 2, 201, 0.001, 0.01649)
+                rows = current_sweep(directory, "guard.dat", 5, 201, 0.001, 0.01649)
+                check_guard_bias(rows, far, error)
                 peak = max(peak, max(abs(row[1]) for row in rows) * 1e15)
         in_range("single guarded branch max (fA)", peak, low, high)
         print(f"Guarded branch: {peak:.4f} fA max over 1,206 points at gmin={gmin}")

@@ -23,7 +23,7 @@
       "revision": "ac7d8696de96a4d708e768b607ae37f02207a354"
     },
     "tools": {
-      "ngspice": "46 (reference run)",
+      "ngspice": "46 (reference) and 45.2 (hosted CI)",
       "klayout-tools": "0.9.2"
     }
   }

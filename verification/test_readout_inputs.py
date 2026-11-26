@@ -18,6 +18,14 @@ class ReadoutInputsTest(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "PDK checksum mismatch"):
                     cold_start.copy_models(root / "simulation")
 
+    def test_stuck_physical_bias_is_rejected(self):
+        for far_read, error_read, expected_message in (
+            (3.3, 0, "far terminal"), (0, 0.001, "guard tracking error"),
+        ):
+            with self.subTest(expected_message):
+                with self.assertRaisesRegex(ValueError, expected_message):
+                    cold_start.check_guard_bias([(1.65, 1e-16, far_read, error_read, 1.65)], 0, 0)
+
     def test_truncated_sweep_is_rejected(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)

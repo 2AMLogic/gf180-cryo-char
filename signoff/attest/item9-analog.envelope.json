@@ -17,21 +17,21 @@
         "role": "testbench",
         "path": "sim/readout/README.md",
         "passed": true,
-        "content_hash": "sha256:92b56ccbc973fd3b0955692749c86306e983e7060eda405190c0d9b066c854cb"
+        "content_hash": "sha256:e703578b20ab485db12e4d1ad765ce22fc77dfec26d037bf1b8137b3d3cb102e"
       },
       {
         "check": "present",
         "role": "testbench",
         "path": "sim/readout/cold_start.py",
         "passed": true,
-        "content_hash": "sha256:bb048baad1683ace92311f767f328766d0dbc467f51ec08b3315efe74b6ef40c"
+        "content_hash": "sha256:13f5a02eafbba94344df607be1b434e0ce51a2de828ed6f392ca99759d97c4b0"
       },
       {
         "check": "present",
         "role": "testbench",
         "path": "sim/readout/guard.spice",
         "passed": true,
-        "content_hash": "sha256:aea6f843b738483cfaac6c179f86901e461c974f4d4bbed42827c2449d3ae4f4"
+        "content_hash": "sha256:915573bab8c320734e042219ce394abd90cf4e8bd317299b17e47a8d32862336"
       },
       {
         "check": "present",
@@ -52,7 +52,7 @@
         "role": "testbench",
         "path": "verification/test_readout_inputs.py",
         "passed": true,
-        "content_hash": "sha256:3a983a9d53820e7a78bd364d33c58331fdfdd5a13fb038670a44b5537b8682f1"
+        "content_hash": "sha256:61e2656b815df35ace1af120b93de4e4950334610e72aac38efef1fb5a694f35"
       },
       {
         "check": "command",
@@ -80,7 +80,7 @@
         "passed": true,
         "value": {
           "klayout-tools": "0.9.2",
-          "ngspice": "46 (reference run)"
+          "ngspice": "46 (reference) and 45.2 (hosted CI)"
         }
       }
     ]
@@ -95,7 +95,7 @@
         "path": "signoff/attest/item9-analog.json",
         "scope": "repo"
       },
-      "content_hash": "sha256:b52a06bcc0b0683654532dce2a81f629630da70e2b551e069a4b28920abbc826"
+      "content_hash": "sha256:b82f462cf8fd065e44087584daed2cccf4c14745b97ac99f5b9ff1eae04b2146"
     }
   }
 }

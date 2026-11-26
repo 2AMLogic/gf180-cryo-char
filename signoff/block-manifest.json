@@ -16,7 +16,7 @@
     },
     "9.analog": {
       "file": "signoff/attest/item9-analog.envelope.json",
-      "content_hash": "sha256:b52a06bcc0b0683654532dce2a81f629630da70e2b551e069a4b28920abbc826"
+      "content_hash": "sha256:b82f462cf8fd065e44087584daed2cccf4c14745b97ac99f5b9ff1eae04b2146"
     }
   }
 }
