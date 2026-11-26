@@ -5,3 +5,7 @@
 # fully re-derived by the next resync regardless of which side "wins".
 .loom/install-metadata.json merge=ours
 # END LOOM-MANAGED (merge drivers, #4528)
+
+# Preserve the replay hashes of tool-emitted streams, including native whitespace.
+flow/readout/cryo_char_ctrl.def -text whitespace=-blank-at-eol
+flow/readout/cryo_char_ctrl.spef -text whitespace=-blank-at-eof

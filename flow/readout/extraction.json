@@ -1,0 +1,48 @@
+{
+  "top": "cryo_char_ctrl",
+  "status": "extracted",
+  "provenance": {
+    "klt_version": "0.9.3.dev4036+gab8e93cca745",
+    "klt_git_commit": "ab8e93cca745e3bda20a826fd41864eecd5bd9dd",
+    "klt_reinstall_spec": "klayout-tools @ git+https://github.com/2AMLogic/klayout-tools@ab8e93cca745e3bda20a826fd41864eecd5bd9dd",
+    "klayout_version": "0.30.14",
+    "pdk": {
+      "name": "gf180mcuD",
+      "source": "PDK_ROOT environment variable",
+      "version": "open_pdks f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7",
+      "ambiguous_sources": [
+        "search root: ~/.volare"
+      ]
+    },
+    "deck": {
+      "name": "gf180mcu",
+      "content_hash": "sha256:778e9a4eba34b67a0427367917b4c9c2602d44ff085d663affd302a8d0f197cd",
+      "released": false,
+      "options": {
+        "metal_top": "9K",
+        "mim_cap": "cap_mim_2f0_m4m5_noshield",
+        "poly_res": "1k"
+      },
+      "options_explicit": {
+        "metal_top": false,
+        "mim_cap": false,
+        "poly_res": false
+      },
+      "options_hash": "sha256:6a7dc7660a470994263c5ca8ace6d8ac8c605d77e6876a9c5490949de6e7cb05"
+    },
+    "input": {
+      "content_hash": "sha256:3fe526f02dfb4558ce5041c412747d77ac55e303e229609f6d0de658c4ff9376",
+      "role": "layout"
+    }
+  },
+  "device_count": 7506,
+  "net_count": 3538,
+  "pin_count": 114,
+  "spef": {
+    "path": "flow/readout/cryo_char_ctrl.spef",
+    "sha256": "3ede30e0899174bbf176c37d406d19be42af79db6560aa7c359ae2cc5ae46323"
+  },
+  "distributed_rc": false,
+  "rc_model_revision": 2,
+  "def_sha256": "080c74c1daf3270d5df9ff46601c9d2669ba5ee7df89a66868a4d5dcb1afaf3d"
+}

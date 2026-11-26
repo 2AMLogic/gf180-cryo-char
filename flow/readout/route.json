@@ -1,0 +1,22 @@
+{
+  "sha256": {
+    "rtl/cryo_char_ctrl.gl.v": "4c515f6fbdecf9cfdcea46d4da7518cb708d566d87aec863a71dfe5792f03e88",
+    "flow/request-par.json": "7daf99a984ee63edf267c18c869e7b5f262ac71262aa83a3d559dd05658a88eb",
+    "flow/readout/cryo_char_ctrl.def": "080c74c1daf3270d5df9ff46601c9d2669ba5ee7df89a66868a4d5dcb1afaf3d",
+    "flow/readout/cryo_char_ctrl.gds": "3fe526f02dfb4558ce5041c412747d77ac55e303e229609f6d0de658c4ff9376"
+  },
+  "engine_version": "26Q3-1510-g6cb3f2b704",
+  "pdk": "open_pdks f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7",
+  "source_dbu_um": 0.0005,
+  "shipped_dbu_um": 0.001,
+  "route_drc_violation_count": 0,
+  "core_area_um2": 49172.5,
+  "die_area_um2": 59741.1,
+  "global_connect": true,
+  "pdn": true,
+  "cts_sinks": {
+    "clk": 64
+  },
+  "placed_components": 2766,
+  "placed_taps": 435
+}

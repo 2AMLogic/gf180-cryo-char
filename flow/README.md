@@ -33,13 +33,8 @@ The three gates, and where each is read:
    `"kind": "supply"` over every strap layer, reporting one electrical
    island per supply and zero `missing_tie`.
 
-`request-par.json` in this directory is a starter request carrying this
-PDK's default PDN strap geometry in its `power` block (`power_net`/
-`ground_net` plus `straps[]`, layers listed bottom-to-top) — gate 1
-above. Its netlist path, top-level module (`cryo_char_ctrl`, the
-structure-select controller), floorplan utilization, IO layers and clock
-constraint are starting values; confirm them once synthesis is wired up. The
-`power` block itself needs no per-block edits. Gates 2
-and 3 still need their own requests — a `klt lvs` request with
-`reference.form: "gate-level-verilog"` and `options.power_connectivity`,
-and a `klt erc` supply spec — once there is a routed layout to check.
+The routed `cryo_char_ctrl` uses the GF180D seven-track, six-metal preset
+(`gf180mcu_7t_6M`) and 15 µm tap spacing. The saved DEF contains VDD and VSS
+special nets, 435 taps and 112 endcaps. Signal and power LVS and supply ERC
+remain open. The [macro replay and timing measurements](readout/README.md)
+describe the mapped source, physical clock coverage and results for integration.

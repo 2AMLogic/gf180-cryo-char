@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "kind": "generic",
+  "t1_item": 2,
+  "status": "pass",
+  "source": "flow/readout/route.json",
+  "summary": "Reproducibly routed GF180D controller layout with a 1 nm stream, verified against the mapped netlist, DEF, and route recipe. Physical CTS covers clk. The eight oscillator inputs are routed signal nets with independent post-route STA.",
+  "provenance": {
+    "klt_version": "0.9.2",
+    "input": {
+      "path": {
+        "path": "flow/readout/cryo_char_ctrl.gds",
+        "scope": "repo"
+      },
+      "content_hash": "sha256:3fe526f02dfb4558ce5041c412747d77ac55e303e229609f6d0de658c4ff9376",
+      "role": "layout"
+    }
+  }
+}
