@@ -13,7 +13,11 @@
     "spec/structure-map.md",
     "spec/selection-readout.md",
     "spec/die-plan.md",
-    "verification/test_structure_geometry.py"
+    "verification/test_structure_geometry.py",
+    "spec/check_isolated_bodies.py",
+    "sim/switch-loading/measure.py",
+    "sim/switch-loading/measurements.csv",
+    "sim/switch-loading/README.md"
   ],
   "checks": [
     {

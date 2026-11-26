@@ -22,6 +22,10 @@ VECTORS = {
     "pmos_igisl_a": "@m.xp.m0[igisl]",
     "pmos_igidl_a": "@m.xp.m0[igidl]",
     "pmos_ibs_a": "@m.xp.m0[ibs]",
+    "pmos_id_a": "@m.xp.m0[id]",
+    "nmos_id_a": "@m.xn.m0[id]",
+    "nmos_ibs_a": "@m.xn.m0[ibs]",
+    "nmos_igidl_a": "@m.xn.m0[igidl]",
     "nmos_igisl_a": "@m.xn.m0[igisl]",
 }
 BIASES = tuple(itertools.product((0, 3.3), (3.3, 2.75, 2.2, 1.65)))
