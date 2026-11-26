@@ -11,6 +11,26 @@ LAYERS = {"F1": "Metal5", "S1": "Metal5", "F2": "Metal3", "S2": "Metal3"}
 
 
 class KelvinEvidenceTest(unittest.TestCase):
+    def test_macro_aware_power_grid_matches_sources_and_detects_faults(self):
+        report = json.loads((MIM / "power-grid.json").read_text())
+        for key, name in (("macro_lef", "mim_kelvin.lef"), ("grid_tcl", "power_grid.tcl"),
+                          ("verilog", "power_grid.v")):
+            self.assertEqual(report["inputs_sha256"][key], hashlib.sha256((MIM / name).read_bytes()).hexdigest())
+        verified = json.loads((MIM / "verification.json").read_text())
+        units = report["dbu_per_um"]
+        for code in CODES:
+            left, bottom, right, top = report["macro_bboxes_dbu"][f"mim_{code}_kelvin"]
+            self.assertEqual(right - left, round(verified[code]["width_um"] * units))
+            self.assertEqual(top - bottom, round(verified[code]["height_um"] * units))
+        self.assertEqual(set(report["upper_supply_shapes"]), {"VDD", "VSS"})
+        for counts in report["upper_supply_shapes"].values():
+            self.assertEqual(set(counts), {"Metal4", "Via4", "Metal5"})
+            self.assertTrue(all(value > 0 for value in counts.values()))
+        self.assertEqual(report["macro_outline_contacts"], 0)
+        self.assertEqual(report["extracted_supply_nets"], 2)
+        self.assertEqual(report["inserted_cross_rail_via_nets"], 1)
+        self.assertGreater(report["removed_vss_vias_nets"], 2)
+
     def test_template_grid_minimum_includes_edge_touching_placements(self):
         measure = runpy.run_path(str(MIM / "template_grid.py"))["minimum_crossings"]
         # Independent integer-grid enumeration covers exact contact at either edge.

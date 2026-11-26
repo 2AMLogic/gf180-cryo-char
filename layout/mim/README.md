@@ -48,6 +48,26 @@ uv run --script layout/mim/template_grid.py --die /tmp/cryo-template.gds \
 cmp layout/mim/template-grid.json /tmp/cryo-template-grid.json
 ```
 
+## Power grid with all four specimens placed
+
+A candidate floorplan keeps the template’s 3,932 × 5,122 µm die and snapped core. It places all four LEF macros before OpenROAD generates the Metal4/Metal5 ring and stripes. The 5 µm stripes use a 75 µm pitch. The 25 µm ring leaves a continuous route around the perimeter. The positions below are the lower-left coordinates, in µm, with orientation R0.
+
+| Code | X | Y |
+|---|---:|---:|
+| 452 | 860 | 4,310 |
+| 453 | 2,475 | 4,300 |
+| 454 | 625 | 3,100 |
+| 455 | 2,090 | 3,100 |
+
+OpenROAD reports connected VDD and VSS meshes. KLayout independently reads the generated wire, via-cut and enclosure rectangles and extracts two isolated nets. All supply geometry clears the full outlines of all four macros. A deliberate via between unlike rails joins them into one extracted net. Removing all VSS vias increases the count to 176. [Mesh extraction and source digests](power-grid.json)
+
+The model contains the four specimens and the two upper supplies. Freeze integration still needs pad connections, lower-layer cell rails, the 16 Kelvin leads and their switches, current and voltage-drop analysis, and precheck on a populated die. To replay with the pinned OpenROAD and GF180D, run the following commands.
+
+```sh
+uv run --script layout/mim/power_grid.py --pdk "$PDK_ROOT/gf180mcuD" > /tmp/cryo-mesh.json
+cmp layout/mim/power-grid.json /tmp/cryo-mesh.json
+```
+
 ## Replay
 
 Install the GF180D open_pdks revision and put native KLayout 0.30.14, OpenROAD and ngspice 47 on PATH. The routing abstract was checked with OpenROAD 26Q3-1510-g6cb3f2b704. Set PDK_ROOT to the directory containing gf180mcuD. The scripts pin the Python KLayout package, KLT and gLayout versions. The density fill generator is pinned by both commit and SHA-256. An offline copy can be supplied with the --fill-script option.
