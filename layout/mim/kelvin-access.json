@@ -1,0 +1,50 @@
+{
+  "452": {
+    "gds_sha256": "cb485256862b3221f3d3f60e6e4ad7389127c0ab6f313ba526811e2a00070e62",
+    "source_sha256": "ba3171a7eaef165fc2cf8d5a4a7fbf980409c20a59761be57f3c44cfce4293f1",
+    "capacitors_probed": 5,
+    "isolated_by_cut": [
+      "F1",
+      "F2",
+      "S1",
+      "S2"
+    ],
+    "interplate_short_detected": true
+  },
+  "453": {
+    "gds_sha256": "7a534c298e8033504405023a195330f214aeb74e42a45eb480a910a43d81441e",
+    "source_sha256": "1e433fd27553b5e8fb86dceb86ccc8494b8a047b475dc5ec43cffbf42cfc3ac2",
+    "capacitors_probed": 5,
+    "isolated_by_cut": [
+      "F1",
+      "F2",
+      "S1",
+      "S2"
+    ],
+    "interplate_short_detected": true
+  },
+  "454": {
+    "gds_sha256": "a998a776964e36b86706031f9e66466e9b22f01380a57ba458e973a71f4d4748",
+    "source_sha256": "7471af0139ad8011b35d831268dcac5f14fdc8c657505599250a5226b2539cf5",
+    "capacitors_probed": 3920,
+    "isolated_by_cut": [
+      "F1",
+      "F2",
+      "S1",
+      "S2"
+    ],
+    "interplate_short_detected": true
+  },
+  "455": {
+    "gds_sha256": "76b0b5c1a3dfdff396aff8ca9fbbf912726c336ad956397e465bc3e2fd0cdd64",
+    "source_sha256": "3abba5e9bb3cb0accc567f9c1d101e3268f8240c23a89fe9deb06bdf1048b3ac",
+    "capacitors_probed": 1620,
+    "isolated_by_cut": [
+      "F1",
+      "F2",
+      "S1",
+      "S2"
+    ],
+    "interplate_short_detected": true
+  }
+}
