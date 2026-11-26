@@ -6,8 +6,8 @@
   "source_repo": "2AMLogic/gf180-efuse-otp",
   "source_commit": "5ff12fe481ca9c52c653896f298aea3241184c51",
   "sha256": {
-    "sim/readout/routed_ring.py": "89b0734a8510474a3d127d0744ed2abbdb4cbdb6a756a8bd7de90b1c1b78878a",
-    "sim/readout/ring_clock.py": "a3b300ee7fc883267ff659d80feecbc4641c60e999133868e1b4f5531a300b96",
+    "sim/readout/routed_ring.py": "be5cd65509e7d6b08c8acba835d3f59a3fd585c0f44dfe11645428606bf35759",
+    "sim/readout/ring_clock.py": "22f115253a95d40a74238b6be30b295413edaeaff6ac9386428854319acaf379",
     "sim/readout/ring_inputs.json": "d88f2a51fb97bd3f7ff68fecf20d8e6a8e90c0ddaa043e0b8a9c278a9b099dc6",
     "flow/readout/cryo_char_ctrl.def": "06bf00d536604d33a068aedb250b7124fb112ae35dbda5cb3c81818adade105a",
     "flow/readout/cryo_char_ctrl.spef": "58227c5fa6af4823f4f6d44ac9f28857da8b911774a29990c830ab51ea8b9ba1",

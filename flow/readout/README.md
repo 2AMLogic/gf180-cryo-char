@@ -50,6 +50,8 @@ At typical 25 °C with the ring at 1.4 V and the controller at 3.3 V, the 7- and
 
 The [dual-rail receiver](../../design/ro-crossing/README.md) restores capture at that fast corner with the extracted six-transistor cell. Its two supply-current measurements show the burden on the ring rail for die integration.
 
+The [routed oscillator cores](../../design/rings/README.md) repeat this comparison with extracted ring wiring and device junctions. The accompanying current controls use the unloaded output of the same physical core.
+
 | Process and temperature | Ring / controller supply | Captured / complete cycles across eight ports |
 |---|---|---:|
 | Typical, 25 °C | 1.4 V / 3.3 V | 82/82 |

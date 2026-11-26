@@ -87,6 +87,11 @@ def main():
     )
     parser.add_argument("--pdk", type=Path, required=True)
     parser.add_argument(
+        "--extracted-ring",
+        action="store_true",
+        help="use the routed oscillator GDS extraction",
+    )
+    parser.add_argument(
         "--pdk-source", choices=("open_pdks", "wafer-space"), default="open_pdks"
     )
     parser.add_argument("--duration-ns", type=ring_clock.positive, default=950)
@@ -103,6 +108,8 @@ def main():
     args.load_ff, cells = tree(args.port, "translated" if crossing else "out")
     result = ring_clock.simulate(args, args.pdk.resolve(), cells, crossing)
     result.update(port=args.port, family=args.family, wire_ff=args.load_ff)
+    if args.extracted_ring:
+        result["ring_view"] = "extracted"
     if crossing:
         result["crossing"] = args.crossing
     print(json.dumps(result, indent=2, allow_nan=False))
