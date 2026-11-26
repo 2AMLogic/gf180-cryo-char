@@ -92,6 +92,7 @@ import json
 import os
 import socket
 import sys
+import time
 
 out, gds, run_dir, target, probe, *make_vars = sys.argv[1:]
 PROBE = probe == "1"
@@ -112,6 +113,8 @@ for line in open(os.path.join(out, "phases.txt")):
     phases[name.strip()] = int(stamp)
 ordered = sorted(phases.items(), key=lambda item: item[1])
 wall = {ordered[i][0]: ordered[i + 1][1] - ordered[i][1] for i in range(len(ordered) - 1)}
+if ordered:
+    wall[ordered[-1][0]] = int(time.time()) - ordered[-1][1]
 
 metrics = None
 if os.path.isfile(os.path.join(out, "metrics.json")):

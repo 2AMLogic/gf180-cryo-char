@@ -119,6 +119,7 @@ import json
 import os
 import socket
 import sys
+import time
 
 out, gds, rc, die_id, threads, workers, cob, run_dir = sys.argv[1:]
 rc = int(rc)
@@ -139,6 +140,8 @@ for line in open(os.path.join(out, "phases.txt")):
     phases[name.strip()] = int(stamp)
 ordered = sorted(phases.items(), key=lambda item: item[1])
 wall = {ordered[i][0]: ordered[i + 1][1] - ordered[i][1] for i in range(len(ordered) - 1)}
+if ordered:
+    wall[ordered[-1][0]] = int(time.time()) - ordered[-1][1]
 
 metrics_path = ""
 if run_dir:

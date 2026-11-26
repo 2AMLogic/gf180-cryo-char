@@ -303,6 +303,21 @@ class JobScriptTests(unittest.TestCase):
         self.assertEqual((build["pass"], build["probe"]), (False, True))
         self.assertNotIn("librelane-condensed", self.log.read_text())
 
+    def phase_names(self, *parts):
+        """Every phase phases.txt names but the closing `done` line, which the
+        job writes after the record."""
+        text = self.root.joinpath(*parts, "phases.txt").read_text()
+        names = [line.split(" ", 2)[2].strip() for line in text.splitlines()]
+        return [name for name in names if not name.startswith("done")]
+
+    def test_build_wall_seconds_cover_the_flow_itself(self):
+        """The last phase has no successor when build.json is written, and it
+        is the flow: the phase that takes the hour on the fleet."""
+        self.run_job("build.sh")
+        wall = self.out("build", "out", "build.json")["wall_seconds"]
+        self.assertEqual(set(wall), set(self.phase_names("build", "out")))
+        self.assertTrue(all(seconds >= 0 for seconds in wall.values()), wall)
+
     def test_a_failed_flow_is_a_failed_shard_without_a_gds(self):
         result = self.run_job("build.sh", STUB_FAIL_FLOW="1")
         self.assertNotEqual(result.returncode, 0)
@@ -370,6 +385,12 @@ class JobScriptTests(unittest.TestCase):
             (options["cob"], options["id"], options["threads"]), (False, "FFFFFFFF", 2)
         )
         self.assertTrue(1 <= int(options["workers"]) <= 8, options["workers"])
+
+    def test_precheck_wall_seconds_cover_the_flow_itself(self):
+        self.run_job("precheck.sh", "stub.gds", "precheck/out")
+        wall = self.out("precheck", "out", "precheck.json")["wall_seconds"]
+        self.assertEqual(set(wall), set(self.phase_names("precheck", "out")))
+        self.assertTrue(all(seconds >= 0 for seconds in wall.values()), wall)
 
     def test_a_failing_precheck_is_a_failing_verdict_with_its_evidence(self):
         result = self.run_job(
