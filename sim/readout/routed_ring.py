@@ -8,11 +8,12 @@ import re
 import ring_clock
 
 MACRO = Path(__file__).resolve().parents[2] / "flow/readout"
+CROSSING = Path(__file__).resolve().parents[2] / "design/ro-crossing"
 LIBRARY = "gf180mcu_fd_sc_mcu7t5v0"
 FAMILIES = ("7t", "9t", "9t", "12t") * 2
 
 
-def tree(port):
+def tree(port, clock_input="out"):
     layout = (MACRO / "cryo_char_ctrl.def").read_text()
     spef = (MACRO / "cryo_char_ctrl.spef").read_text()
     caps = {
@@ -42,7 +43,10 @@ def tree(port):
     if set(nets[trunk]) != {(root_buffer, "Z"), *((name, "I") for name in leaves)}:
         raise ValueError(f"Unexpected trunk connectivity on {trunk}")
 
-    lines = [f"XROOT out trunk vc vc 0 0 {buffer}", f"CTRUNK trunk 0 {caps[trunk]}f"]
+    lines = [
+        f"XROOT {clock_input} trunk vc vc 0 0 {buffer}",
+        f"CTRUNK trunk 0 {caps[trunk]}f",
+    ]
     sinks = 0
     for i, name in enumerate(leaves):
         wire = f"clknet_1_{i}__leaf_ro_clk[{port}]"
@@ -75,6 +79,12 @@ def main():
     parser.add_argument("temperature", type=int)
     parser.add_argument("voltage", type=ring_clock.positive)
     parser.add_argument("--logic-supply", type=ring_clock.positive, required=True)
+    parser.add_argument(
+        "--crossing",
+        choices=("direct", "schematic", "extracted"),
+        default="direct",
+        help="connect the ring directly or through the six-transistor efuse_ls macro",
+    )
     parser.add_argument("--pdk", type=Path, required=True)
     parser.add_argument(
         "--pdk-source", choices=("open_pdks", "wafer-space"), default="open_pdks"
@@ -85,9 +95,16 @@ def main():
     args.family = FAMILIES[args.port]
     args.disabled = False
     args.wire_ff = 0
-    args.load_ff, cells = tree(args.port)
-    result = ring_clock.simulate(args, args.pdk.resolve(), cells)
+    crossing = {
+        "direct": None,
+        "schematic": CROSSING / "efuse_ls.spice",
+        "extracted": CROSSING / "efuse_ls.pex.spice",
+    }[args.crossing]
+    args.load_ff, cells = tree(args.port, "translated" if crossing else "out")
+    result = ring_clock.simulate(args, args.pdk.resolve(), cells, crossing)
     result.update(port=args.port, family=args.family, wire_ff=args.load_ff)
+    if crossing:
+        result["crossing"] = args.crossing
     print(json.dumps(result, indent=2, allow_nan=False))
 
 
