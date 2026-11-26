@@ -63,7 +63,7 @@ ws_pdk_check "$template/gf180mcu" "$(ws_pin wafer_space.pdk.name)" \
 	"$(ws_pin wafer_space.pdk.open_pdks_commit)" >>"$out/console.log" 2>&1
 
 ws_phase "record the toolchain"
-ws_nix_develop "$template" bash "$here/nix-env.sh" tools >"$out/tools.json"
+ws_nix_develop "$PWD/$template" bash "$here/nix-env.sh" tools >"$out/tools.json"
 
 if [ -n "$probe" ]; then
 	ws_phase "probe: stopping before the flow"

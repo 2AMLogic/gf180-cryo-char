@@ -82,7 +82,7 @@ ws_pdk_check "$pdk_root" "$(ws_pin wafer_space.pdk.name)" \
 	"$(ws_pin wafer_space.pdk.open_pdks_commit)" >>"$out/console.log" 2>&1
 
 ws_phase "record the toolchain"
-ws_nix_develop "$precheck" bash "$here/nix-env.sh" tools >"$out/tools.json"
+ws_nix_develop "$PWD/$precheck" bash "$here/nix-env.sh" tools >"$out/tools.json"
 
 if [ -z "$workers" ]; then
 	cores="$(nproc)"

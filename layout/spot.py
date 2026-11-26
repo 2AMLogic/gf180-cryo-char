@@ -283,7 +283,7 @@ def submitter_args(
 
 def cmd_collect(args: argparse.Namespace) -> int:
     command = submitter_command(
-        "--collect", args.group, "--out", str(RUNS_DIR / group), "--wait", str(args.wait)
+        "--collect", args.group, "--out", str(RUNS_DIR / args.group), "--wait", str(args.wait)
     )
     return subprocess.run(command, cwd=REPO_ROOT).returncode
 
