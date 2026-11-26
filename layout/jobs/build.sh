@@ -12,7 +12,18 @@
 # tools.json, phases.txt and, when the flow wrote one, metrics.json. A GDS
 # that is not produced is a failed shard (the runner exits 3 on a missing
 # declared output), never a pass.
+#
+#   layout/jobs/build.sh [--probe]
+#
+# --probe stops after the bootstrap (Nix, PDK, tool record) and writes no GDS:
+# it proves the environment in minutes, before the flow's hour is spent.
 set -euo pipefail
+
+probe=
+if [ "${1:-}" = "--probe" ]; then
+	probe=1
+	shift
+fi
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=nix-env.sh
@@ -54,21 +65,27 @@ ws_pdk_check "$template/gf180mcu" "$(ws_pin wafer_space.pdk.name)" \
 ws_phase "record the toolchain"
 ws_nix_develop "$template" bash "$here/nix-env.sh" tools >"$out/tools.json"
 
-ws_phase "make $target ${make_vars[*]}"
-(cd "$template" && ws_nix_develop . make "$target" "${make_vars[@]}") >>"$out/console.log" 2>&1
-
-gds="$template/final/gds/chip_top.gds"
-if [ ! -s "$gds" ]; then
-	ws_log "FATAL: make $target succeeded without producing $gds"
-	exit 1
+if [ -n "$probe" ]; then
+	ws_phase "probe: stopping before the flow"
+	printf 'probe: no flow was run\n' >"$out/chip_top.gds"
+	gds="$out/chip_top.gds"
+	run_dir="$out"
+else
+	ws_phase "make $target ${make_vars[*]}"
+	(cd "$template" && ws_nix_develop . make "$target" "${make_vars[@]}") >>"$out/console.log" 2>&1
+	gds="$template/final/gds/chip_top.gds"
+	if [ ! -s "$gds" ]; then
+		ws_log "FATAL: make $target succeeded without producing $gds"
+		exit 1
+	fi
+	cp "$gds" "$out/chip_top.gds"
+	run_dir="$(find "$template/librelane/runs" -mindepth 1 -maxdepth 1 -type d | sort | tail -n 1)"
+	if [ -f "$run_dir/final/metrics.json" ]; then
+		cp "$run_dir/final/metrics.json" "$out/metrics.json"
+	fi
 fi
-cp "$gds" "$out/chip_top.gds"
-run_dir="$(find "$template/librelane/runs" -mindepth 1 -maxdepth 1 -type d | sort | tail -n 1)"
-if [ -f "$run_dir/final/metrics.json" ]; then
-	cp "$run_dir/final/metrics.json" "$out/metrics.json"
-fi
 
-python3 - "$out" "$gds" "$run_dir" "$target" "${make_vars[@]}" <<'PY'
+python3 - "$out" "$gds" "$run_dir" "$target" "${probe:-0}" "${make_vars[@]}" <<'PY'
 import datetime
 import hashlib
 import json
@@ -76,7 +93,8 @@ import os
 import socket
 import sys
 
-out, gds, run_dir, target, *make_vars = sys.argv[1:]
+out, gds, run_dir, target, probe, *make_vars = sys.argv[1:]
+PROBE = probe == "1"
 pinned = json.load(open(os.path.join("layout", "toolchain.json")))
 
 
@@ -106,7 +124,8 @@ except (OSError, ValueError):
 
 sources = open("layout/vendor/template/gf180mcu/gf180mcuD/SOURCES").read().splitlines()
 record = {
-    "pass": True,
+    "pass": not PROBE,
+    "probe": PROBE,
     "template_commit": pinned["wafer_space"]["template"]["commit"],
     "target": target,
     "make": dict(argument.split("=", 1) for argument in make_vars),

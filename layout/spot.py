@@ -241,8 +241,12 @@ def cmd_submit(stage: str, args: argparse.Namespace) -> int:
         "--requirements",
         "",
     )
+    if stage == "build" and args.probe:
+        command += ["--shard", "--probe"]
     if job_args:
         command += ["--shard", shlex.join(job_args)]
+    if args.timeout:
+        command += ["--timeout", str(args.timeout)]
     command += ["--dry-run"] if args.dry_run else []
     command += ["--wait", str(args.wait)] if args.wait else ["--no-wait"]
     return subprocess.run(command, cwd=REPO_ROOT).returncode

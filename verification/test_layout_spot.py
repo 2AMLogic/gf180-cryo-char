@@ -167,6 +167,13 @@ class JobScriptTests(unittest.TestCase):
             ],
         )
 
+    def test_probe_stops_before_the_flow(self):
+        result = self.run_job("build.sh", "--probe")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        build = self.out("build", "out", "build.json")
+        self.assertEqual((build["pass"], build["probe"]), (False, True))
+        self.assertNotIn("librelane-condensed", self.log.read_text())
+
     def test_a_failed_flow_is_a_failed_shard_without_a_gds(self):
         result = self.run_job("build.sh", STUB_FAIL_FLOW="1")
         self.assertNotEqual(result.returncode, 0)

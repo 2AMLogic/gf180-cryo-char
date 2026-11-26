@@ -56,7 +56,11 @@ ws_nix_install() {
 		ws_log "FATAL: the Nix tarball from $url does not hash to the pinned $sha"
 		return 1
 	fi
-	tar -xJf "$work/nix.tar.xz" -C "$work"
+	if command -v xz >/dev/null 2>&1; then
+		tar -xJf "$work/nix.tar.xz" -C "$work"
+	else
+		python3 -m tarfile -e "$work/nix.tar.xz" "$work"
+	fi
 	"$work/nix-$version-x86_64-linux/install" --no-daemon --yes
 	rm -rf "$work"
 	export PATH="/nix/var/nix/profiles/default/bin:$PATH"
