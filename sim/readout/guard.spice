@@ -1,0 +1,27 @@
+DC diagnostic, one unselected guarded branch of a four-terminal measurement mux
+.include pdk/libs.tech/ngspice/design.ngspice
+.lib pdk/libs.tech/ngspice/sm141064.ngspice typical
+.param sw_stat_global=0
+.param wg=1u lg=1u a=0.5p p=3u
+.temp 25
+.options abstol=1e-18 gmin=@GMIN@ reltol=1e-7
+Vrail rail 0 3.3
+Vfar far 0 @FAR@
+Vsense sense 0 0
+Verror offset 0 @ERROR@
+Bguard guard 0 V=V(sense)+V(offset)
+Rguard guard mid 1000
+* Unselected array-side transmission gate, ordinary bulk ties.
+Xn1 far 0 mid 0 nfet_03v3 w=wg l=lg nf=1 ad=a as=a pd=p ps=p
+Xp1 far rail mid rail pfet_03v3 w=wg l=lg nf=1 ad=a as=a pd=p ps=p
+* Instrument-side open gate. Its two isolated body contacts follow the guard.
+Xn2 mid 0 sense guard nfet_03v3 w=wg l=lg nf=1 ad=a as=a pd=p ps=p
+Xp2 mid rail sense guard pfet_03v3 w=wg l=lg nf=1 ad=a as=a pd=p ps=p
+.control
+set wr_singlescale
+dc Vsense .001 3.299 .01649
+let tracking = v(guard) - v(sense)
+wrdata guard.dat i(vsense) v(far) tracking v(sense)
+quit
+.endc
+.end

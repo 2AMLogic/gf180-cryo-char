@@ -1,3 +1,5 @@
 # sim
 
-Testbenches and PVT corner results (ngspice). harness/ carries the generic sim-harness-core scaffold (see harness/README.md); testbenches and results are empty until there is something to simulate.
+The [simulation harness](harness/README.md) supports the planned DUT sweeps.
+
+The [measurement-path benches](readout/README.md) reproduce the switch and analog-pad reference measurements against the pinned shuttle PDK.

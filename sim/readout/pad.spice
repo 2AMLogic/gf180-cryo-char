@@ -1,0 +1,24 @@
+GF180D analog pad alone, no DUT, mux, fixture or external leakage
+.include pdk/libs.tech/ngspice/design.ngspice
+.lib pdk/libs.tech/ngspice/sm141064.ngspice typical
+.lib pdk/libs.tech/ngspice/sm141064.ngspice diode_typical
+.lib pdk/libs.tech/ngspice/sm141064.ngspice moscap_typical
+.include pdk/libs.ref/gf180mcu_fd_io/spice/gf180mcu_fd_io.spice
+.param sw_stat_global=0
+.temp 25
+.options abstol=1e-19 reltol=1e-7 gmin=@GMIN@
+Vrail rail 0 3.3
+Vpad sense 0 dc 1.65 ac 1
+Vopen blank 0 dc 1.65 ac 1
+Xpad sense rail 0 rail 0 gf180mcu_fd_io__asig_5p0
+.control
+set wr_singlescale
+dc Vpad 0 3.3 0.05
+wrdata raw-pad.dat i(vpad) i(vopen)
+ac lin 1 10k 10k
+let cpad = -imag(i(vpad))/(2*pi*real(frequency))
+let copen = -imag(i(vopen))/(2*pi*real(frequency))
+print cpad copen
+quit
+.endc
+.end
