@@ -36,5 +36,5 @@ The three gates, and where each is read:
 The routed `cryo_char_ctrl` uses the GF180D seven-track, six-metal preset
 (`gf180mcu_7t_6M`) and 15 µm tap spacing. The saved DEF contains VDD and VSS
 special nets, 435 taps and 112 endcaps. The as-built gate-level compare matches the signal pins and VDD/VSS rails.
-Supply and body-tie ERC remain open. The [macro replay and timing measurements](readout/README.md)
+Supply ERC checks both rail islands and the n-well and substrate taps. The [macro replay and timing measurements](readout/README.md)
 describe the mapped source, physical clock coverage and results for integration.

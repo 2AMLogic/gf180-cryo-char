@@ -90,7 +90,7 @@
     },
     {
       "cell": "gf180mcu_fd_sc_mcu7t5v0__buf_4",
-      "instance_count": 12,
+      "instance_count": 36,
       "pin_count": 4,
       "resolution_source": "in_cell_labels",
       "lef_path": null
@@ -98,6 +98,13 @@
     {
       "cell": "gf180mcu_fd_sc_mcu7t5v0__clkinv_1",
       "instance_count": 23,
+      "pin_count": 4,
+      "resolution_source": "in_cell_labels",
+      "lef_path": null
+    },
+    {
+      "cell": "gf180mcu_fd_sc_mcu7t5v0__clkinv_2",
+      "instance_count": 6,
       "pin_count": 4,
       "resolution_source": "in_cell_labels",
       "lef_path": null
@@ -118,42 +125,42 @@
     },
     {
       "cell": "gf180mcu_fd_sc_mcu7t5v0__fill_1",
-      "instance_count": 312,
+      "instance_count": 332,
       "pin_count": 2,
       "resolution_source": "in_cell_labels",
       "lef_path": null
     },
     {
       "cell": "gf180mcu_fd_sc_mcu7t5v0__fill_16",
-      "instance_count": 271,
+      "instance_count": 245,
       "pin_count": 2,
       "resolution_source": "in_cell_labels",
       "lef_path": null
     },
     {
       "cell": "gf180mcu_fd_sc_mcu7t5v0__fill_2",
-      "instance_count": 412,
+      "instance_count": 422,
       "pin_count": 2,
       "resolution_source": "in_cell_labels",
       "lef_path": null
     },
     {
       "cell": "gf180mcu_fd_sc_mcu7t5v0__fill_32",
-      "instance_count": 107,
+      "instance_count": 99,
       "pin_count": 2,
       "resolution_source": "in_cell_labels",
       "lef_path": null
     },
     {
       "cell": "gf180mcu_fd_sc_mcu7t5v0__fill_4",
-      "instance_count": 289,
+      "instance_count": 321,
       "pin_count": 2,
       "resolution_source": "in_cell_labels",
       "lef_path": null
     },
     {
       "cell": "gf180mcu_fd_sc_mcu7t5v0__fill_8",
-      "instance_count": 250,
+      "instance_count": 265,
       "pin_count": 2,
       "resolution_source": "in_cell_labels",
       "lef_path": null
@@ -173,15 +180,8 @@
       "lef_path": null
     },
     {
-      "cell": "gf180mcu_fd_sc_mcu7t5v0__inv_3",
-      "instance_count": 1,
-      "pin_count": 4,
-      "resolution_source": "in_cell_labels",
-      "lef_path": null
-    },
-    {
       "cell": "gf180mcu_fd_sc_mcu7t5v0__inv_4",
-      "instance_count": 2,
+      "instance_count": 4,
       "pin_count": 4,
       "resolution_source": "in_cell_labels",
       "lef_path": null
@@ -482,9 +482,9 @@
         "GF180MCU_FD_SC_MCU7T5V0__AOI22_1",
         "GF180MCU_FD_SC_MCU7T5V0__BUF_4",
         "GF180MCU_FD_SC_MCU7T5V0__CLKINV_1",
+        "GF180MCU_FD_SC_MCU7T5V0__CLKINV_2",
         "GF180MCU_FD_SC_MCU7T5V0__DFFRNQ_1",
         "GF180MCU_FD_SC_MCU7T5V0__INV_1",
-        "GF180MCU_FD_SC_MCU7T5V0__INV_3",
         "GF180MCU_FD_SC_MCU7T5V0__INV_4",
         "GF180MCU_FD_SC_MCU7T5V0__NAND2_1",
         "GF180MCU_FD_SC_MCU7T5V0__NAND2_2",
@@ -523,7 +523,7 @@
       "corroborated": true,
       "reason": null
     },
-    "instance_count": 2766,
+    "instance_count": 2840,
     "expected_nets": {
       "VDD": "VDD",
       "VNW": "VDD",
@@ -557,9 +557,9 @@
   "category_error_counts": {},
   "counts": {
     "nets": {
-      "layout": 602,
-      "reference": 597,
-      "matched": 892
+      "layout": 633,
+      "reference": 621,
+      "matched": 916
     },
     "devices": {
       "layout": 0,
@@ -597,8 +597,8 @@
     "engine": "klayout",
     "engine_version": "0.30.14",
     "netgen_binary": null,
-    "layout_sha256": "3fe526f02dfb4558ce5041c412747d77ac55e303e229609f6d0de658c4ff9376",
-    "reference_sha256": "320452876b00350d4532902e2ca7c89fae433401e64e1d2462aa3db0c6cd6349",
+    "layout_sha256": "a1b773aa99b7b77fd896b7b373331160021719cb38739bd8dfdce6787daf7e33",
+    "reference_sha256": "0cea676870bbd9d46e403501369b858742b36f96a971576426504735f18224ed",
     "extracted_netlist": null
   },
   "provenance": {
@@ -631,7 +631,7 @@
       "options_hash": "sha256:89cb6001bb2512394da175a3e1f170dfa7b97d8a9470378e9fc2180f6358e7d2"
     },
     "input": {
-      "content_hash": "sha256:3fe526f02dfb4558ce5041c412747d77ac55e303e229609f6d0de658c4ff9376",
+      "content_hash": "sha256:a1b773aa99b7b77fd896b7b373331160021719cb38739bd8dfdce6787daf7e33",
       "role": "layout"
     },
     "klayout_version_mismatch": true,
@@ -2653,6 +2653,150 @@
     {
       "layout": "clknet_0_clk",
       "reference": "CLKNET_0_CLK",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_0_ro_clk[0]",
+      "reference": "CLKNET_0_RO_CLK[0]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_0_ro_clk[1]",
+      "reference": "CLKNET_0_RO_CLK[1]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_0_ro_clk[2]",
+      "reference": "CLKNET_0_RO_CLK[2]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_0_ro_clk[3]",
+      "reference": "CLKNET_0_RO_CLK[3]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_0_ro_clk[4]",
+      "reference": "CLKNET_0_RO_CLK[4]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_0_ro_clk[5]",
+      "reference": "CLKNET_0_RO_CLK[5]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_0_ro_clk[6]",
+      "reference": "CLKNET_0_RO_CLK[6]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_0_ro_clk[7]",
+      "reference": "CLKNET_0_RO_CLK[7]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_1_0__leaf_ro_clk[0]",
+      "reference": "CLKNET_1_0__LEAF_RO_CLK[0]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_1_0__leaf_ro_clk[1]",
+      "reference": "CLKNET_1_0__LEAF_RO_CLK[1]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_1_0__leaf_ro_clk[2]",
+      "reference": "CLKNET_1_0__LEAF_RO_CLK[2]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_1_0__leaf_ro_clk[3]",
+      "reference": "CLKNET_1_0__LEAF_RO_CLK[3]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_1_0__leaf_ro_clk[4]",
+      "reference": "CLKNET_1_0__LEAF_RO_CLK[4]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_1_0__leaf_ro_clk[5]",
+      "reference": "CLKNET_1_0__LEAF_RO_CLK[5]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_1_0__leaf_ro_clk[6]",
+      "reference": "CLKNET_1_0__LEAF_RO_CLK[6]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_1_0__leaf_ro_clk[7]",
+      "reference": "CLKNET_1_0__LEAF_RO_CLK[7]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_1_1__leaf_ro_clk[0]",
+      "reference": "CLKNET_1_1__LEAF_RO_CLK[0]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_1_1__leaf_ro_clk[1]",
+      "reference": "CLKNET_1_1__LEAF_RO_CLK[1]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_1_1__leaf_ro_clk[2]",
+      "reference": "CLKNET_1_1__LEAF_RO_CLK[2]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_1_1__leaf_ro_clk[3]",
+      "reference": "CLKNET_1_1__LEAF_RO_CLK[3]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_1_1__leaf_ro_clk[4]",
+      "reference": "CLKNET_1_1__LEAF_RO_CLK[4]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_1_1__leaf_ro_clk[5]",
+      "reference": "CLKNET_1_1__LEAF_RO_CLK[5]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_1_1__leaf_ro_clk[6]",
+      "reference": "CLKNET_1_1__LEAF_RO_CLK[6]",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "clknet_1_1__leaf_ro_clk[7]",
+      "reference": "CLKNET_1_1__LEAF_RO_CLK[7]",
       "pin": false,
       "heuristic": false
     },
@@ -6089,28 +6233,28 @@
       "heuristic": false
     },
     {
-      "layout": "\\$1623",
-      "reference": "__NC_CLKLOAD0_Z__",
+      "layout": "\\$1982",
+      "reference": "__NC_CLKLOAD2_Z__",
       "pin": false,
       "heuristic": false
     },
     {
-      "layout": "\\$1445",
-      "reference": "__NC_CLKLOAD3_Z__",
-      "pin": false,
-      "heuristic": false
-    },
-    {
-      "layout": "\\$2017",
+      "layout": "\\$1468",
       "reference": "__NC_CLKLOAD5_Z__",
+      "pin": false,
+      "heuristic": false
+    },
+    {
+      "layout": "\\$2061",
+      "reference": "__NC_CLKLOAD6_Z__",
       "pin": false,
       "heuristic": false
     }
   ],
   "lvs_input_sha256": {
-    "cryo_char_ctrl.gds": "3fe526f02dfb4558ce5041c412747d77ac55e303e229609f6d0de658c4ff9376",
-    "cryo_char_ctrl.def": "080c74c1daf3270d5df9ff46601c9d2669ba5ee7df89a66868a4d5dcb1afaf3d",
-    "cryo_char_ctrl.asbuilt.v": "320452876b00350d4532902e2ca7c89fae433401e64e1d2462aa3db0c6cd6349",
+    "cryo_char_ctrl.gds": "a1b773aa99b7b77fd896b7b373331160021719cb38739bd8dfdce6787daf7e33",
+    "cryo_char_ctrl.def": "06bf00d536604d33a068aedb250b7124fb112ae35dbda5cb3c81818adade105a",
+    "cryo_char_ctrl.asbuilt.v": "0cea676870bbd9d46e403501369b858742b36f96a971576426504735f18224ed",
     "lvs.json": "12c3f3f72cf6989646ffddf39cbb53ca9450be06023bfa599efb89f868756f80"
   }
 }

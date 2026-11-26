@@ -6,6 +6,9 @@
   },
   "deck": "$PDK_ROOT/gf180mcuD/libs.tech/klayout/tech/drc/gf180mcu.drc",
   "engine": "klayout",
+  "environment": {
+    "klayout_binary": "/Applications/KLayout/klayout.app/Contents/MacOS/klayout"
+  },
   "dbu_um": 0.001,
   "status": "violations",
   "violation_count": 8,
@@ -1128,7 +1131,7 @@
       }
     },
     "input": {
-      "content_hash": "sha256:3fe526f02dfb4558ce5041c412747d77ac55e303e229609f6d0de658c4ff9376",
+      "content_hash": "sha256:a1b773aa99b7b77fd896b7b373331160021719cb38739bd8dfdce6787daf7e33",
       "role": "layout"
     },
     "klayout_version_mismatch": true

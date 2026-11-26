@@ -134,8 +134,6 @@ def route(destination, record):
     if (req.parent / cfg["netlist"]).resolve() != destination / "rtl" / NETLIST.name:
         raise ValueError("P&R recipe does not use the checked controller netlist")
     klt = os.environ.get("KLT", "klt")
-    if subprocess.check_output([klt, "--version"], text=True).strip() != "klt 0.9.2":
-        raise ValueError("Install KLT 0.9.2 for this routed macro")
     with (destination / "route.json").open("w") as log:
         subprocess.run(
             [
@@ -158,7 +156,15 @@ def route(destination, record):
         report["route_drc_violation_count"],
     ) != ("ok", "route", 0):
         raise ValueError("OpenROAD did not complete a clean detailed route")
-    out = Path(report["def_path"]).parent
+    if (
+        report["provenance"]["klt_git_commit"]
+        != "4f24005b034d55051ddeded1510ef4b9d185554d"
+    ):
+        raise ValueError("Use the recorded nine-clock KLT implementation revision")
+
+    # The portable report can elide paths outside a checkout. The request
+    # selects this directory, and the flow names each output after the top.
+    out = req.parent / cfg["outputs"]["dir"]
     cts_log = next(
         log
         for log in report["engine_logs"]
@@ -190,11 +196,11 @@ def route(destination, record):
     if report["provenance"]["input"]["content_hash"] != "sha256:" + sha(NETLIST):
         raise ValueError("P&R used a different netlist")
     shipped = destination / f"{TOP}.gds"
-    shuttle_stream(Path(report["gds_path"]), shipped)
+    shuttle_stream(out / f"{TOP}.gds", shipped)
     for actual, expected in (
         (shipped, MACRO / f"{TOP}.gds"),
-        (Path(report["def_path"]), MACRO / f"{TOP}.def"),
-        (Path(report["verilog_path"]), AS_BUILT),
+        (out / f"{TOP}.def", MACRO / f"{TOP}.def"),
+        (out / f"{TOP}.v", AS_BUILT),
     ):
         if sha(actual) != sha(expected):
             raise ValueError(f"Fresh {actual.name} differs from {expected.name}")

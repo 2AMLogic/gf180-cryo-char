@@ -1,10 +1,10 @@
 {
   "sha256": {
     "rtl/cryo_char_ctrl.gl.v": "4c515f6fbdecf9cfdcea46d4da7518cb708d566d87aec863a71dfe5792f03e88",
-    "flow/request-par.json": "7daf99a984ee63edf267c18c869e7b5f262ac71262aa83a3d559dd05658a88eb",
-    "flow/readout/cryo_char_ctrl.def": "080c74c1daf3270d5df9ff46601c9d2669ba5ee7df89a66868a4d5dcb1afaf3d",
-    "flow/readout/cryo_char_ctrl.gds": "3fe526f02dfb4558ce5041c412747d77ac55e303e229609f6d0de658c4ff9376",
-    "flow/readout/cryo_char_ctrl.asbuilt.v": "320452876b00350d4532902e2ca7c89fae433401e64e1d2462aa3db0c6cd6349"
+    "flow/request-par.json": "3a5077e1cdc8e10ffbeee3b057e5488d32acb33c695f8b64f4110f0e34c79f0f",
+    "flow/readout/cryo_char_ctrl.def": "06bf00d536604d33a068aedb250b7124fb112ae35dbda5cb3c81818adade105a",
+    "flow/readout/cryo_char_ctrl.gds": "a1b773aa99b7b77fd896b7b373331160021719cb38739bd8dfdce6787daf7e33",
+    "flow/readout/cryo_char_ctrl.asbuilt.v": "0cea676870bbd9d46e403501369b858742b36f96a971576426504735f18224ed"
   },
   "engine_version": "26Q3-1510-g6cb3f2b704",
   "pdk": "open_pdks f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7",
@@ -16,8 +16,16 @@
   "global_connect": true,
   "pdn": true,
   "cts_sinks": {
-    "clk": 64
+    "clk": 64,
+    "ro_clk[0]": 12,
+    "ro_clk[1]": 12,
+    "ro_clk[2]": 12,
+    "ro_clk[3]": 12,
+    "ro_clk[4]": 12,
+    "ro_clk[5]": 12,
+    "ro_clk[6]": 12,
+    "ro_clk[7]": 12
   },
-  "placed_components": 2766,
+  "placed_components": 2840,
   "placed_taps": 435
 }

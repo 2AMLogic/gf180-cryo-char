@@ -29,7 +29,7 @@ def positive(value):
     return number
 
 
-def deck(args, pdk):
+def deck(args, pdk, receiver_lines=None):
     lib, _ = FAMILIES[args.family]
     ctrl = FAMILIES["7t"][0]
     supply = "vv 0" if args.family == "12t" else "vv vv 0 0"
@@ -56,17 +56,21 @@ def deck(args, pdk):
     if args.wire_ff:
         lines.extend(f"CW{i} n{i} 0 {args.wire_ff}f" for i in range(143))
     if args.logic_supply:
-        # Clock input has twelve DFFs in the routed DEF. Observe one as a toggle.
+        # Observe one receiver DFF as a toggle. The direct-load bench omits CTS.
         logic = args.logic_supply
         lines += [
             f"VCTRL vc 0 {logic}",
             f"VRST rst 0 PWL(0 0 4n 0 4.1n {logic})",
             f"XINV q d vc vc 0 0 {ctrl}__inv_1",
-            f"XFF d rst out q vc vc 0 0 {ctrl}__dffrnq_1",
         ]
-        lines.extend(
-            f"XLOAD{i} 0 rst out q{i} vc vc 0 0 {ctrl}__dffrnq_1" for i in range(1, 12)
-        )
+        if receiver_lines is None:
+            lines.append(f"XFF d rst out q vc vc 0 0 {ctrl}__dffrnq_1")
+            lines.extend(
+                f"XLOAD{i} 0 rst out q{i} vc vc 0 0 {ctrl}__dffrnq_1"
+                for i in range(1, 12)
+            )
+        else:
+            lines.extend(receiver_lines)
     probe = "q" if args.logic_supply else "n142"
     lines += [
         f"XB n142 out {supply} {lib}__buf_1",
@@ -75,6 +79,7 @@ def deck(args, pdk):
         ".control",
         "set wr_singlescale",
         "set numdgt=10",
+        f"save v(out) v({probe}) i(VRO)",
         f"tran {args.step_ns}n {args.duration_ns}n",
         f"wrdata wave.dat v(out) v({probe}) i(VRO)",
         "quit",
@@ -143,6 +148,30 @@ def measure(rows, args):
     return result
 
 
+def simulate(args, pdk, receiver_lines=None):
+    sim = os.environ.get("NGSPICE", "ngspice")
+    pins = json.loads(PIN_FILE.read_text())[args.pdk_source]
+    if cell_path(FAMILIES[args.family][0]).as_posix() not in pins:
+        raise ValueError(f"{args.pdk_source} does not supply the {args.family} library")
+    for name, expected in pins.items():
+        if hashlib.sha256((pdk / name).read_bytes()).hexdigest() != expected:
+            raise ValueError(f"Unexpected GF180 source {name}")
+    with tempfile.TemporaryDirectory() as tmp:
+        path = Path(tmp)
+        (path / "ring.cir").write_text(deck(args, pdk, receiver_lines))
+        run = subprocess.run(
+            [sim, "-b", "ring.cir"], cwd=path, capture_output=True, text=True
+        )
+        waveform = path / "wave.dat"
+        if run.returncode or not waveform.is_file():
+            raise RuntimeError((run.stdout + run.stderr)[-2400:])
+        data = [
+            tuple(map(float, line.split()))
+            for line in waveform.read_text().splitlines()
+        ]
+    return measure(data, args)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("family", choices=FAMILIES)
@@ -182,27 +211,7 @@ def main():
     parser.add_argument("--disabled", action="store_true")
     args = parser.parse_args()
     pdk = args.pdk.resolve()
-    sim = os.environ.get("NGSPICE", "ngspice")
-    pins = json.loads(PIN_FILE.read_text())[args.pdk_source]
-    if cell_path(FAMILIES[args.family][0]).as_posix() not in pins:
-        parser.error(f"{args.pdk_source} does not supply the {args.family} library")
-    for name, expected in pins.items():
-        if hashlib.sha256((pdk / name).read_bytes()).hexdigest() != expected:
-            raise ValueError(f"Unexpected GF180 source {name}")
-    with tempfile.TemporaryDirectory() as tmp:
-        path = Path(tmp)
-        (path / "ring.cir").write_text(deck(args, pdk))
-        run = subprocess.run(
-            [sim, "-b", "ring.cir"], cwd=path, capture_output=True, text=True
-        )
-        waveform = path / "wave.dat"
-        if run.returncode or not waveform.is_file():
-            raise RuntimeError((run.stdout + run.stderr)[-2400:])
-        data = [
-            tuple(map(float, line.split()))
-            for line in waveform.read_text().splitlines()
-        ]
-    results = measure(data, args)
+    results = simulate(args, pdk)
     results.update(
         pdk_source=args.pdk_source,
         nist_codes=FAMILIES[args.family][1],

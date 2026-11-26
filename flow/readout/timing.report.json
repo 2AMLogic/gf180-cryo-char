@@ -105,7 +105,7 @@
     },
     "deck": null,
     "input": {
-      "content_hash": "sha256:080c74c1daf3270d5df9ff46601c9d2669ba5ee7df89a66868a4d5dcb1afaf3d",
+      "content_hash": "sha256:06bf00d536604d33a068aedb250b7124fb112ae35dbda5cb3c81818adade105a",
       "role": "layout"
     }
   },
@@ -113,13 +113,13 @@
     {
       "corner": "ff_125C_3v60",
       "engine_log": {
-        "invocation_id": "0d1dd1d9ce2a454c82d908ab59327ba2",
+        "invocation_id": "c3237141bf1c433bad63263b16ba9b61",
         "script_name": "sta_cryo_char_ctrl__ff_125C_3v60.tcl",
         "script_path": {
           "path": "flow/readout/.klt/sta/sta_cryo_char_ctrl__ff_125C_3v60.tcl",
           "scope": "repo"
         },
-        "script_sha256": "bd1ce6a5970e9a1d2e983766311d5b87be30a865cd38e1cfff28b9453d894ea0",
+        "script_sha256": "283d5dc7d2e8f735ebd5df605c312e8602fa8434502eab16b6c741e7e46403d2",
         "metrics_path": {
           "path": "flow/readout/.klt/sta/cryo_char_ctrl__ff_125C_3v60_metrics.json",
           "scope": "repo"
@@ -127,28 +127,28 @@
         "outcome": "exited",
         "returncode": 0,
         "directory": {
-          "path": "flow/readout/.klt/sta/openroad-logs/0d1dd1d9ce2a454c82d908ab59327ba2",
+          "path": "flow/readout/.klt/sta/openroad-logs/c3237141bf1c433bad63263b16ba9b61",
           "scope": "repo"
         },
         "stdout_path": {
-          "path": "flow/readout/.klt/sta/openroad-logs/0d1dd1d9ce2a454c82d908ab59327ba2/stdout.log",
+          "path": "flow/readout/.klt/sta/openroad-logs/c3237141bf1c433bad63263b16ba9b61/stdout.log",
           "scope": "repo"
         },
         "stderr_path": {
-          "path": "flow/readout/.klt/sta/openroad-logs/0d1dd1d9ce2a454c82d908ab59327ba2/stderr.log",
+          "path": "flow/readout/.klt/sta/openroad-logs/c3237141bf1c433bad63263b16ba9b61/stderr.log",
           "scope": "repo"
         },
         "metadata_path": {
-          "path": "flow/readout/.klt/sta/openroad-logs/0d1dd1d9ce2a454c82d908ab59327ba2/invocation.json",
+          "path": "flow/readout/.klt/sta/openroad-logs/c3237141bf1c433bad63263b16ba9b61/invocation.json",
           "scope": "repo"
         },
         "retention_errors": []
       },
-      "worst_slack_ns": 5.72092,
+      "worst_slack_ns": 5.71507,
       "total_negative_slack_ns": 0,
-      "worst_hold_slack_ns": 0.66884,
+      "worst_hold_slack_ns": 0.67153,
       "total_negative_hold_slack_ns": 0,
-      "fmax_mhz": 266.322,
+      "fmax_mhz": 267.452,
       "timing_status": "constrained",
       "constraint_completeness": {
         "status": "incomplete",
@@ -195,9 +195,9 @@
         "status": "ok",
         "check_type": "setup",
         "engine_check_role": "setup",
-        "startpoint": "_247_/Q",
-        "endpoint": "_256_/D",
-        "slack_ns": 5.72092,
+        "startpoint": "_295_/Q",
+        "endpoint": "_304_/D",
+        "slack_ns": 5.71507,
         "consistent_with_aggregate": true,
         "reason": null
       },
@@ -205,9 +205,9 @@
         "status": "ok",
         "check_type": "hold",
         "engine_check_role": "hold",
-        "startpoint": "_329_/Q",
-        "endpoint": "_330_/D",
-        "slack_ns": 0.66884,
+        "startpoint": "_257_/Q",
+        "endpoint": "_258_/D",
+        "slack_ns": 0.67153,
         "consistent_with_aggregate": true,
         "reason": null
       },
@@ -218,149 +218,149 @@
           {
             "check_type": "setup",
             "engine_check_role": "setup",
-            "startpoint": "_247_/Q",
-            "endpoint": "_256_/D",
-            "slack_ns": 5.72092
+            "startpoint": "_295_/Q",
+            "endpoint": "_304_/D",
+            "slack_ns": 5.71507
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
-            "startpoint": "_295_/Q",
-            "endpoint": "_303_/D",
-            "slack_ns": 5.74515
+            "startpoint": "_247_/Q",
+            "endpoint": "_255_/D",
+            "slack_ns": 5.76102
           },
           {
             "check_type": "recovery",
             "engine_check_role": "recovery",
             "startpoint": "_258_/Q",
-            "endpoint": "_247_/RN",
-            "slack_ns": 6.96552
+            "endpoint": "_252_/RN",
+            "slack_ns": 6.91823
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_319_/Q",
             "endpoint": "_327_/D",
-            "slack_ns": 8.17212
-          },
-          {
-            "check_type": "setup",
-            "engine_check_role": "setup",
-            "startpoint": "_271_/Q",
-            "endpoint": "_279_/D",
-            "slack_ns": 8.19694
-          },
-          {
-            "check_type": "setup",
-            "engine_check_role": "setup",
-            "startpoint": "_283_/Q",
-            "endpoint": "_291_/D",
-            "slack_ns": 8.21026
+            "slack_ns": 8.17684
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_331_/Q",
             "endpoint": "_338_/D",
-            "slack_ns": 8.21157
+            "slack_ns": 8.18242
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_283_/Q",
+            "endpoint": "_291_/D",
+            "slack_ns": 8.18323
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_271_/Q",
+            "endpoint": "_280_/D",
+            "slack_ns": 8.20383
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_307_/Q",
             "endpoint": "_315_/D",
-            "slack_ns": 8.22263
+            "slack_ns": 8.24297
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_259_/Q",
-            "endpoint": "_267_/D",
-            "slack_ns": 8.23044
+            "endpoint": "_268_/D",
+            "slack_ns": 8.24928
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "select_path/_433_/Q",
-            "endpoint": "select_path/_386_/D",
-            "slack_ns": 90.13312
+            "endpoint": "select_path/_387_/D",
+            "slack_ns": 89.65559
           }
         ],
         "hold": [
           {
             "check_type": "hold",
             "engine_check_role": "hold",
-            "startpoint": "_329_/Q",
-            "endpoint": "_330_/D",
-            "slack_ns": 0.66884
-          },
-          {
-            "check_type": "hold",
-            "engine_check_role": "hold",
-            "startpoint": "_293_/Q",
-            "endpoint": "_294_/D",
-            "slack_ns": 0.66888
-          },
-          {
-            "check_type": "hold",
-            "engine_check_role": "hold",
-            "startpoint": "_281_/Q",
-            "endpoint": "_282_/D",
-            "slack_ns": 0.6704
-          },
-          {
-            "check_type": "hold",
-            "engine_check_role": "hold",
-            "startpoint": "_341_/Q",
-            "endpoint": "_342_/D",
-            "slack_ns": 0.67144
+            "startpoint": "_257_/Q",
+            "endpoint": "_258_/D",
+            "slack_ns": 0.67153
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "_305_/Q",
             "endpoint": "_306_/D",
-            "slack_ns": 0.67554
+            "slack_ns": 0.67608
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_341_/Q",
+            "endpoint": "_342_/D",
+            "slack_ns": 0.6789
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_293_/Q",
+            "endpoint": "_294_/D",
+            "slack_ns": 0.68149
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_329_/Q",
+            "endpoint": "_330_/D",
+            "slack_ns": 0.68465
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "_317_/Q",
             "endpoint": "_318_/D",
-            "slack_ns": 0.67575
+            "slack_ns": 0.68508
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
-            "startpoint": "_257_/Q",
-            "endpoint": "_258_/D",
-            "slack_ns": 0.68737
+            "startpoint": "_281_/Q",
+            "endpoint": "_282_/D",
+            "slack_ns": 0.68546
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "_269_/Q",
             "endpoint": "_270_/D",
-            "slack_ns": 0.69065
+            "slack_ns": 0.68737
           },
           {
             "check_type": "removal",
             "engine_check_role": "removal",
-            "startpoint": "_306_/Q",
-            "endpoint": "_295_/RN",
-            "slack_ns": 1.60875
+            "startpoint": "_330_/Q",
+            "endpoint": "_320_/RN",
+            "slack_ns": 1.60457
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "select_path/_432_/Q",
             "endpoint": "select_path/_397_/D",
-            "slack_ns": 1.77931
+            "slack_ns": 1.80446
           }
         ]
       },
-      "clock_skew_ns": 0.01742,
-      "estimated_power_mw": 3.5534,
+      "clock_skew_ns": 0.02506,
+      "estimated_power_mw": 5.4957,
       "power_basis": {
         "activity_source": "engine_default",
         "activity": null,
@@ -368,23 +368,30 @@
         "parasitics": "spef_annotated"
       },
       "spef_annotation": {
-        "nets_annotated": 596,
-        "nets_total": 596,
-        "design_nets_annotated": 596,
-        "design_nets_total": 596,
+        "nets_annotated": 620,
+        "nets_total": 620,
+        "design_nets_annotated": 620,
+        "design_nets_total": 620,
         "design_nets_missing_sample": [],
         "reader_warning_count": 0,
         "reader_warning_sample": [],
-        "unannotated_driver_count": 6,
+        "unannotated_driver_count": 13,
         "partially_unannotated_driver_count": 0,
-        "floating_driver_count": 6,
+        "floating_driver_count": 13,
         "floating_driver_sample": [
-          "clkload0/Z",
+          "clkload0/ZN",
           "clkload1/ZN",
-          "clkload2/ZN",
-          "clkload3/Z",
+          "clkload10/ZN",
+          "clkload11/ZN",
+          "clkload12/ZN",
+          "clkload2/Z",
+          "clkload3/ZN",
           "clkload4/ZN",
-          "clkload5/Z"
+          "clkload5/Z",
+          "clkload6/Z",
+          "clkload7/ZN",
+          "clkload8/ZN",
+          "clkload9/ZN"
         ],
         "unannotated_driver_sample": [],
         "unannotated_driver_detail": [],
@@ -432,10 +439,10 @@
       },
       "clock_propagation": {
         "clock_sinks": 2,
-        "max_network_latency_ns": 0.794259,
+        "max_network_latency_ns": 0.800424,
         "clock_sinks_sample": [
-          "select_path/_426_/CLK",
-          "select_path/_403_/CLK"
+          "select_path/_415_/CLK",
+          "select_path/_387_/CLK"
         ]
       },
       "sdf": null,
@@ -452,13 +459,13 @@
     {
       "corner": "ff_n40C_3v60",
       "engine_log": {
-        "invocation_id": "1355a1714cb9462b9bff505825d28f66",
+        "invocation_id": "a2fa054f78e74b3d8be76599bfecc0aa",
         "script_name": "sta_cryo_char_ctrl__ff_n40C_3v60.tcl",
         "script_path": {
           "path": "flow/readout/.klt/sta/sta_cryo_char_ctrl__ff_n40C_3v60.tcl",
           "scope": "repo"
         },
-        "script_sha256": "a0e51941c3df304689e3cc947700caadf30c32e08ce2a25f2a1f810e88f511e3",
+        "script_sha256": "3b8ac60f70a29ec8d38bc5499bf39895b0cd4a4cf22741851b4c3880be56a8e3",
         "metrics_path": {
           "path": "flow/readout/.klt/sta/cryo_char_ctrl__ff_n40C_3v60_metrics.json",
           "scope": "repo"
@@ -466,28 +473,28 @@
         "outcome": "exited",
         "returncode": 0,
         "directory": {
-          "path": "flow/readout/.klt/sta/openroad-logs/1355a1714cb9462b9bff505825d28f66",
+          "path": "flow/readout/.klt/sta/openroad-logs/a2fa054f78e74b3d8be76599bfecc0aa",
           "scope": "repo"
         },
         "stdout_path": {
-          "path": "flow/readout/.klt/sta/openroad-logs/1355a1714cb9462b9bff505825d28f66/stdout.log",
+          "path": "flow/readout/.klt/sta/openroad-logs/a2fa054f78e74b3d8be76599bfecc0aa/stdout.log",
           "scope": "repo"
         },
         "stderr_path": {
-          "path": "flow/readout/.klt/sta/openroad-logs/1355a1714cb9462b9bff505825d28f66/stderr.log",
+          "path": "flow/readout/.klt/sta/openroad-logs/a2fa054f78e74b3d8be76599bfecc0aa/stderr.log",
           "scope": "repo"
         },
         "metadata_path": {
-          "path": "flow/readout/.klt/sta/openroad-logs/1355a1714cb9462b9bff505825d28f66/invocation.json",
+          "path": "flow/readout/.klt/sta/openroad-logs/a2fa054f78e74b3d8be76599bfecc0aa/invocation.json",
           "scope": "repo"
         },
         "retention_errors": []
       },
-      "worst_slack_ns": 6.96642,
+      "worst_slack_ns": 6.95762,
       "total_negative_slack_ns": 0,
-      "worst_hold_slack_ns": 0.47046,
+      "worst_hold_slack_ns": 0.47422,
       "total_negative_hold_slack_ns": 0,
-      "fmax_mhz": 396.229,
+      "fmax_mhz": 397.227,
       "timing_status": "constrained",
       "constraint_completeness": {
         "status": "incomplete",
@@ -534,9 +541,9 @@
         "status": "ok",
         "check_type": "setup",
         "engine_check_role": "setup",
-        "startpoint": "_247_/Q",
-        "endpoint": "_256_/D",
-        "slack_ns": 6.96642,
+        "startpoint": "_295_/Q",
+        "endpoint": "_304_/D",
+        "slack_ns": 6.95762,
         "consistent_with_aggregate": true,
         "reason": null
       },
@@ -544,9 +551,9 @@
         "status": "ok",
         "check_type": "hold",
         "engine_check_role": "hold",
-        "startpoint": "_329_/Q",
-        "endpoint": "_330_/D",
-        "slack_ns": 0.47046,
+        "startpoint": "_257_/Q",
+        "endpoint": "_258_/D",
+        "slack_ns": 0.47422,
         "consistent_with_aggregate": true,
         "reason": null
       },
@@ -557,149 +564,149 @@
           {
             "check_type": "setup",
             "engine_check_role": "setup",
-            "startpoint": "_247_/Q",
-            "endpoint": "_256_/D",
-            "slack_ns": 6.96642
+            "startpoint": "_295_/Q",
+            "endpoint": "_304_/D",
+            "slack_ns": 6.95762
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
-            "startpoint": "_295_/Q",
-            "endpoint": "_303_/D",
-            "slack_ns": 6.9762
+            "startpoint": "_247_/Q",
+            "endpoint": "_255_/D",
+            "slack_ns": 6.98254
           },
           {
             "check_type": "recovery",
             "engine_check_role": "recovery",
             "startpoint": "_258_/Q",
-            "endpoint": "_247_/RN",
-            "slack_ns": 7.78499
-          },
-          {
-            "check_type": "setup",
-            "engine_check_role": "setup",
-            "startpoint": "_319_/Q",
-            "endpoint": "_327_/D",
-            "slack_ns": 9.42641
-          },
-          {
-            "check_type": "setup",
-            "engine_check_role": "setup",
-            "startpoint": "_271_/Q",
-            "endpoint": "_279_/D",
-            "slack_ns": 9.44324
+            "endpoint": "_252_/RN",
+            "slack_ns": 7.74964
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_283_/Q",
             "endpoint": "_291_/D",
-            "slack_ns": 9.44459
+            "slack_ns": 9.41534
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_319_/Q",
+            "endpoint": "_327_/D",
+            "slack_ns": 9.42301
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_331_/Q",
             "endpoint": "_338_/D",
-            "slack_ns": 9.44971
+            "slack_ns": 9.43196
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_271_/Q",
+            "endpoint": "_280_/D",
+            "slack_ns": 9.44852
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_307_/Q",
             "endpoint": "_315_/D",
-            "slack_ns": 9.46108
+            "slack_ns": 9.46959
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_259_/Q",
             "endpoint": "_267_/D",
-            "slack_ns": 9.46383
+            "slack_ns": 9.47639
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "select_path/_433_/Q",
-            "endpoint": "select_path/_386_/D",
-            "slack_ns": 93.48598
+            "endpoint": "select_path/_387_/D",
+            "slack_ns": 93.16167
           }
         ],
         "hold": [
           {
             "check_type": "hold",
             "engine_check_role": "hold",
-            "startpoint": "_329_/Q",
-            "endpoint": "_330_/D",
-            "slack_ns": 0.47046
-          },
-          {
-            "check_type": "hold",
-            "engine_check_role": "hold",
-            "startpoint": "_293_/Q",
-            "endpoint": "_294_/D",
-            "slack_ns": 0.47049
-          },
-          {
-            "check_type": "hold",
-            "engine_check_role": "hold",
-            "startpoint": "_281_/Q",
-            "endpoint": "_282_/D",
-            "slack_ns": 0.47162
-          },
-          {
-            "check_type": "hold",
-            "engine_check_role": "hold",
-            "startpoint": "_341_/Q",
-            "endpoint": "_342_/D",
-            "slack_ns": 0.47239
+            "startpoint": "_257_/Q",
+            "endpoint": "_258_/D",
+            "slack_ns": 0.47422
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "_305_/Q",
             "endpoint": "_306_/D",
-            "slack_ns": 0.47542
+            "slack_ns": 0.47707
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_341_/Q",
+            "endpoint": "_342_/D",
+            "slack_ns": 0.47899
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_293_/Q",
+            "endpoint": "_294_/D",
+            "slack_ns": 0.48073
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "_317_/Q",
             "endpoint": "_318_/D",
-            "slack_ns": 0.47557
+            "slack_ns": 0.48341
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
-            "startpoint": "_257_/Q",
-            "endpoint": "_258_/D",
-            "slack_ns": 0.48417
+            "startpoint": "_281_/Q",
+            "endpoint": "_282_/D",
+            "slack_ns": 0.4839
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_329_/Q",
+            "endpoint": "_330_/D",
+            "slack_ns": 0.48408
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "_269_/Q",
             "endpoint": "_270_/D",
-            "slack_ns": 0.48659
+            "slack_ns": 0.48524
           },
           {
             "check_type": "removal",
             "engine_check_role": "removal",
-            "startpoint": "_306_/Q",
-            "endpoint": "_295_/RN",
-            "slack_ns": 1.09758
+            "startpoint": "_330_/Q",
+            "endpoint": "_320_/RN",
+            "slack_ns": 1.09317
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "select_path/_432_/Q",
             "endpoint": "select_path/_397_/D",
-            "slack_ns": 1.27992
+            "slack_ns": 1.29569
           }
         ]
       },
-      "clock_skew_ns": 0.01329,
-      "estimated_power_mw": 3.3952,
+      "clock_skew_ns": 0.01904,
+      "estimated_power_mw": 5.2328,
       "power_basis": {
         "activity_source": "engine_default",
         "activity": null,
@@ -707,23 +714,30 @@
         "parasitics": "spef_annotated"
       },
       "spef_annotation": {
-        "nets_annotated": 596,
-        "nets_total": 596,
-        "design_nets_annotated": 596,
-        "design_nets_total": 596,
+        "nets_annotated": 620,
+        "nets_total": 620,
+        "design_nets_annotated": 620,
+        "design_nets_total": 620,
         "design_nets_missing_sample": [],
         "reader_warning_count": 0,
         "reader_warning_sample": [],
-        "unannotated_driver_count": 6,
+        "unannotated_driver_count": 13,
         "partially_unannotated_driver_count": 0,
-        "floating_driver_count": 6,
+        "floating_driver_count": 13,
         "floating_driver_sample": [
-          "clkload0/Z",
+          "clkload0/ZN",
           "clkload1/ZN",
-          "clkload2/ZN",
-          "clkload3/Z",
+          "clkload10/ZN",
+          "clkload11/ZN",
+          "clkload12/ZN",
+          "clkload2/Z",
+          "clkload3/ZN",
           "clkload4/ZN",
-          "clkload5/Z"
+          "clkload5/Z",
+          "clkload6/Z",
+          "clkload7/ZN",
+          "clkload8/ZN",
+          "clkload9/ZN"
         ],
         "unannotated_driver_sample": [],
         "unannotated_driver_detail": [],
@@ -771,10 +785,10 @@
       },
       "clock_propagation": {
         "clock_sinks": 2,
-        "max_network_latency_ns": 0.58286,
+        "max_network_latency_ns": 0.587431,
         "clock_sinks_sample": [
-          "select_path/_426_/CLK",
-          "select_path/_403_/CLK"
+          "select_path/_415_/CLK",
+          "select_path/_387_/CLK"
         ]
       },
       "sdf": null,
@@ -791,13 +805,13 @@
     {
       "corner": "ss_125C_3v00",
       "engine_log": {
-        "invocation_id": "aaa7083221cf4d9b8ada3ad6177f8e77",
+        "invocation_id": "1f19e6d748c24d5c9527b3cf764a0fc8",
         "script_name": "sta_cryo_char_ctrl__ss_125C_3v00.tcl",
         "script_path": {
           "path": "flow/readout/.klt/sta/sta_cryo_char_ctrl__ss_125C_3v00.tcl",
           "scope": "repo"
         },
-        "script_sha256": "c080838df931c6c8c5962a4afff0c1fa24fce9f5ea44e3346033a522fd2d9831",
+        "script_sha256": "a4d2909e2de84b4183834ef9776867e3824dfb823e3e5b0860e24c0e9204268a",
         "metrics_path": {
           "path": "flow/readout/.klt/sta/cryo_char_ctrl__ss_125C_3v00_metrics.json",
           "scope": "repo"
@@ -805,28 +819,28 @@
         "outcome": "exited",
         "returncode": 0,
         "directory": {
-          "path": "flow/readout/.klt/sta/openroad-logs/aaa7083221cf4d9b8ada3ad6177f8e77",
+          "path": "flow/readout/.klt/sta/openroad-logs/1f19e6d748c24d5c9527b3cf764a0fc8",
           "scope": "repo"
         },
         "stdout_path": {
-          "path": "flow/readout/.klt/sta/openroad-logs/aaa7083221cf4d9b8ada3ad6177f8e77/stdout.log",
+          "path": "flow/readout/.klt/sta/openroad-logs/1f19e6d748c24d5c9527b3cf764a0fc8/stdout.log",
           "scope": "repo"
         },
         "stderr_path": {
-          "path": "flow/readout/.klt/sta/openroad-logs/aaa7083221cf4d9b8ada3ad6177f8e77/stderr.log",
+          "path": "flow/readout/.klt/sta/openroad-logs/1f19e6d748c24d5c9527b3cf764a0fc8/stderr.log",
           "scope": "repo"
         },
         "metadata_path": {
-          "path": "flow/readout/.klt/sta/openroad-logs/aaa7083221cf4d9b8ada3ad6177f8e77/invocation.json",
+          "path": "flow/readout/.klt/sta/openroad-logs/1f19e6d748c24d5c9527b3cf764a0fc8/invocation.json",
           "scope": "repo"
         },
         "retention_errors": []
       },
-      "worst_slack_ns": 0.31881,
+      "worst_slack_ns": 0.30899,
       "total_negative_slack_ns": 0,
-      "worst_hold_slack_ns": 1.74374,
+      "worst_hold_slack_ns": 1.74144,
       "total_negative_hold_slack_ns": 0,
-      "fmax_mhz": 109.697,
+      "fmax_mhz": 110.132,
       "timing_status": "constrained",
       "constraint_completeness": {
         "status": "incomplete",
@@ -873,9 +887,9 @@
         "status": "ok",
         "check_type": "setup",
         "engine_check_role": "setup",
-        "startpoint": "_247_/Q",
-        "endpoint": "_256_/D",
-        "slack_ns": 0.31881,
+        "startpoint": "_295_/Q",
+        "endpoint": "_304_/D",
+        "slack_ns": 0.30898,
         "consistent_with_aggregate": true,
         "reason": null
       },
@@ -883,9 +897,9 @@
         "status": "ok",
         "check_type": "hold",
         "engine_check_role": "hold",
-        "startpoint": "_329_/Q",
-        "endpoint": "_330_/D",
-        "slack_ns": 1.74374,
+        "startpoint": "_257_/Q",
+        "endpoint": "_258_/D",
+        "slack_ns": 1.74144,
         "consistent_with_aggregate": true,
         "reason": null
       },
@@ -896,149 +910,149 @@
           {
             "check_type": "setup",
             "engine_check_role": "setup",
-            "startpoint": "_247_/Q",
-            "endpoint": "_256_/D",
-            "slack_ns": 0.31881
+            "startpoint": "_295_/Q",
+            "endpoint": "_304_/D",
+            "slack_ns": 0.30898
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
-            "startpoint": "_295_/Q",
-            "endpoint": "_303_/D",
-            "slack_ns": 0.38399
+            "startpoint": "_247_/Q",
+            "endpoint": "_255_/D",
+            "slack_ns": 0.42002
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_319_/Q",
             "endpoint": "_327_/D",
-            "slack_ns": 2.71332
-          },
-          {
-            "check_type": "setup",
-            "engine_check_role": "setup",
-            "startpoint": "_271_/Q",
-            "endpoint": "_279_/D",
-            "slack_ns": 2.76745
-          },
-          {
-            "check_type": "setup",
-            "engine_check_role": "setup",
-            "startpoint": "_331_/Q",
-            "endpoint": "_338_/D",
-            "slack_ns": 2.81204
+            "slack_ns": 2.72022
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_283_/Q",
             "endpoint": "_291_/D",
-            "slack_ns": 2.818
+            "slack_ns": 2.75721
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_331_/Q",
+            "endpoint": "_338_/D",
+            "slack_ns": 2.75943
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_271_/Q",
+            "endpoint": "_280_/D",
+            "slack_ns": 2.77732
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_259_/Q",
+            "endpoint": "_268_/D",
+            "slack_ns": 2.88625
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_307_/Q",
             "endpoint": "_315_/D",
-            "slack_ns": 2.82913
-          },
-          {
-            "check_type": "setup",
-            "engine_check_role": "setup",
-            "startpoint": "_259_/Q",
-            "endpoint": "_267_/D",
-            "slack_ns": 2.84628
+            "slack_ns": 2.88799
           },
           {
             "check_type": "recovery",
             "engine_check_role": "recovery",
             "startpoint": "_258_/Q",
-            "endpoint": "_247_/RN",
-            "slack_ns": 3.99209
+            "endpoint": "_252_/RN",
+            "slack_ns": 3.90436
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "select_path/_433_/Q",
-            "endpoint": "select_path/_386_/D",
-            "slack_ns": 77.28611
+            "endpoint": "select_path/_387_/D",
+            "slack_ns": 76.21645
           }
         ],
         "hold": [
           {
             "check_type": "hold",
             "engine_check_role": "hold",
-            "startpoint": "_329_/Q",
-            "endpoint": "_330_/D",
-            "slack_ns": 1.74374
-          },
-          {
-            "check_type": "hold",
-            "engine_check_role": "hold",
-            "startpoint": "_293_/Q",
-            "endpoint": "_294_/D",
-            "slack_ns": 1.74383
-          },
-          {
-            "check_type": "hold",
-            "engine_check_role": "hold",
-            "startpoint": "_281_/Q",
-            "endpoint": "_282_/D",
-            "slack_ns": 1.74724
-          },
-          {
-            "check_type": "hold",
-            "engine_check_role": "hold",
-            "startpoint": "_341_/Q",
-            "endpoint": "_342_/D",
-            "slack_ns": 1.74956
+            "startpoint": "_257_/Q",
+            "endpoint": "_258_/D",
+            "slack_ns": 1.74144
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "_305_/Q",
             "endpoint": "_306_/D",
-            "slack_ns": 1.7587
+            "slack_ns": 1.7507
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_341_/Q",
+            "endpoint": "_342_/D",
+            "slack_ns": 1.75669
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_293_/Q",
+            "endpoint": "_294_/D",
+            "slack_ns": 1.76212
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "_317_/Q",
             "endpoint": "_318_/D",
-            "slack_ns": 1.75916
+            "slack_ns": 1.77017
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
-            "startpoint": "_257_/Q",
-            "endpoint": "_258_/D",
-            "slack_ns": 1.7851
+            "startpoint": "_329_/Q",
+            "endpoint": "_330_/D",
+            "slack_ns": 1.77115
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_281_/Q",
+            "endpoint": "_282_/D",
+            "slack_ns": 1.77273
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "_269_/Q",
             "endpoint": "_270_/D",
-            "slack_ns": 1.79241
+            "slack_ns": 1.77553
           },
           {
             "check_type": "removal",
             "engine_check_role": "removal",
-            "startpoint": "_306_/Q",
-            "endpoint": "_295_/RN",
-            "slack_ns": 3.47057
+            "startpoint": "_330_/Q",
+            "endpoint": "_320_/RN",
+            "slack_ns": 3.46796
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "select_path/_432_/Q",
             "endpoint": "select_path/_397_/D",
-            "slack_ns": 4.24255
+            "slack_ns": 4.27761
           }
         ]
       },
-      "clock_skew_ns": 0.03886,
-      "estimated_power_mw": 2.4056,
+      "clock_skew_ns": 0.05607,
+      "estimated_power_mw": 3.6597,
       "power_basis": {
         "activity_source": "engine_default",
         "activity": null,
@@ -1046,23 +1060,30 @@
         "parasitics": "spef_annotated"
       },
       "spef_annotation": {
-        "nets_annotated": 596,
-        "nets_total": 596,
-        "design_nets_annotated": 596,
-        "design_nets_total": 596,
+        "nets_annotated": 620,
+        "nets_total": 620,
+        "design_nets_annotated": 620,
+        "design_nets_total": 620,
         "design_nets_missing_sample": [],
         "reader_warning_count": 0,
         "reader_warning_sample": [],
-        "unannotated_driver_count": 6,
+        "unannotated_driver_count": 13,
         "partially_unannotated_driver_count": 0,
-        "floating_driver_count": 6,
+        "floating_driver_count": 13,
         "floating_driver_sample": [
-          "clkload0/Z",
+          "clkload0/ZN",
           "clkload1/ZN",
-          "clkload2/ZN",
-          "clkload3/Z",
+          "clkload10/ZN",
+          "clkload11/ZN",
+          "clkload12/ZN",
+          "clkload2/Z",
+          "clkload3/ZN",
           "clkload4/ZN",
-          "clkload5/Z"
+          "clkload5/Z",
+          "clkload6/Z",
+          "clkload7/ZN",
+          "clkload8/ZN",
+          "clkload9/ZN"
         ],
         "unannotated_driver_sample": [],
         "unannotated_driver_detail": [],
@@ -1110,10 +1131,10 @@
       },
       "clock_propagation": {
         "clock_sinks": 2,
-        "max_network_latency_ns": 1.82382,
+        "max_network_latency_ns": 1.838556,
         "clock_sinks_sample": [
-          "select_path/_426_/CLK",
-          "select_path/_403_/CLK"
+          "select_path/_415_/CLK",
+          "select_path/_387_/CLK"
         ]
       },
       "sdf": null,
@@ -1130,13 +1151,13 @@
     {
       "corner": "ss_n40C_3v00",
       "engine_log": {
-        "invocation_id": "e5e94495deac43d28a0e3225715bd6cc",
+        "invocation_id": "d1f62b16be394be3b17c4c6e243ab87b",
         "script_name": "sta_cryo_char_ctrl__ss_n40C_3v00.tcl",
         "script_path": {
           "path": "flow/readout/.klt/sta/sta_cryo_char_ctrl__ss_n40C_3v00.tcl",
           "scope": "repo"
         },
-        "script_sha256": "cfacb805abef782660a3a42d974facacbd39068876ef10b2301c6daf2678ea4e",
+        "script_sha256": "b610c8582042b3dd33eefc8651fe68b67e2ad208bc2e42243c772ff28bd81162",
         "metrics_path": {
           "path": "flow/readout/.klt/sta/cryo_char_ctrl__ss_n40C_3v00_metrics.json",
           "scope": "repo"
@@ -1144,28 +1165,28 @@
         "outcome": "exited",
         "returncode": 0,
         "directory": {
-          "path": "flow/readout/.klt/sta/openroad-logs/e5e94495deac43d28a0e3225715bd6cc",
+          "path": "flow/readout/.klt/sta/openroad-logs/d1f62b16be394be3b17c4c6e243ab87b",
           "scope": "repo"
         },
         "stdout_path": {
-          "path": "flow/readout/.klt/sta/openroad-logs/e5e94495deac43d28a0e3225715bd6cc/stdout.log",
+          "path": "flow/readout/.klt/sta/openroad-logs/d1f62b16be394be3b17c4c6e243ab87b/stdout.log",
           "scope": "repo"
         },
         "stderr_path": {
-          "path": "flow/readout/.klt/sta/openroad-logs/e5e94495deac43d28a0e3225715bd6cc/stderr.log",
+          "path": "flow/readout/.klt/sta/openroad-logs/d1f62b16be394be3b17c4c6e243ab87b/stderr.log",
           "scope": "repo"
         },
         "metadata_path": {
-          "path": "flow/readout/.klt/sta/openroad-logs/e5e94495deac43d28a0e3225715bd6cc/invocation.json",
+          "path": "flow/readout/.klt/sta/openroad-logs/d1f62b16be394be3b17c4c6e243ab87b/invocation.json",
           "scope": "repo"
         },
         "retention_errors": []
       },
-      "worst_slack_ns": 3.23628,
+      "worst_slack_ns": 3.23867,
       "total_negative_slack_ns": 0,
-      "worst_hold_slack_ns": 1.23019,
+      "worst_hold_slack_ns": 1.2332,
       "total_negative_hold_slack_ns": 0,
-      "fmax_mhz": 160.46,
+      "fmax_mhz": 161.316,
       "timing_status": "constrained",
       "constraint_completeness": {
         "status": "incomplete",
@@ -1212,9 +1233,9 @@
         "status": "ok",
         "check_type": "setup",
         "engine_check_role": "setup",
-        "startpoint": "_247_/Q",
-        "endpoint": "_256_/D",
-        "slack_ns": 3.23628,
+        "startpoint": "_295_/Q",
+        "endpoint": "_304_/D",
+        "slack_ns": 3.23867,
         "consistent_with_aggregate": true,
         "reason": null
       },
@@ -1222,9 +1243,9 @@
         "status": "ok",
         "check_type": "hold",
         "engine_check_role": "hold",
-        "startpoint": "_329_/Q",
-        "endpoint": "_330_/D",
-        "slack_ns": 1.23019,
+        "startpoint": "_257_/Q",
+        "endpoint": "_258_/D",
+        "slack_ns": 1.2332,
         "consistent_with_aggregate": true,
         "reason": null
       },
@@ -1235,149 +1256,149 @@
           {
             "check_type": "setup",
             "engine_check_role": "setup",
-            "startpoint": "_247_/Q",
-            "endpoint": "_256_/D",
-            "slack_ns": 3.23628
+            "startpoint": "_295_/Q",
+            "endpoint": "_304_/D",
+            "slack_ns": 3.23867
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
-            "startpoint": "_295_/Q",
-            "endpoint": "_303_/D",
-            "slack_ns": 3.26791
+            "startpoint": "_247_/Q",
+            "endpoint": "_255_/D",
+            "slack_ns": 3.301
+          },
+          {
+            "check_type": "recovery",
+            "engine_check_role": "recovery",
+            "startpoint": "_258_/Q",
+            "endpoint": "_252_/RN",
+            "slack_ns": 5.65428
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_319_/Q",
             "endpoint": "_327_/D",
-            "slack_ns": 5.64645
-          },
-          {
-            "check_type": "setup",
-            "engine_check_role": "setup",
-            "startpoint": "_271_/Q",
-            "endpoint": "_279_/D",
-            "slack_ns": 5.68667
+            "slack_ns": 5.65929
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_283_/Q",
             "endpoint": "_291_/D",
-            "slack_ns": 5.71716
-          },
-          {
-            "check_type": "recovery",
-            "engine_check_role": "recovery",
-            "startpoint": "_258_/Q",
-            "endpoint": "_247_/RN",
-            "slack_ns": 5.72219
+            "slack_ns": 5.67262
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_331_/Q",
             "endpoint": "_338_/D",
-            "slack_ns": 5.72465
+            "slack_ns": 5.6914
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_271_/Q",
+            "endpoint": "_280_/D",
+            "slack_ns": 5.71526
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_307_/Q",
             "endpoint": "_315_/D",
-            "slack_ns": 5.73015
+            "slack_ns": 5.7745
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_259_/Q",
             "endpoint": "_267_/D",
-            "slack_ns": 5.73928
+            "slack_ns": 5.788
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "select_path/_433_/Q",
-            "endpoint": "select_path/_386_/D",
-            "slack_ns": 84.75412
+            "endpoint": "select_path/_387_/D",
+            "slack_ns": 83.99865
           }
         ],
         "hold": [
           {
             "check_type": "hold",
             "engine_check_role": "hold",
-            "startpoint": "_329_/Q",
-            "endpoint": "_330_/D",
-            "slack_ns": 1.23019
-          },
-          {
-            "check_type": "hold",
-            "engine_check_role": "hold",
-            "startpoint": "_293_/Q",
-            "endpoint": "_294_/D",
-            "slack_ns": 1.23025
-          },
-          {
-            "check_type": "hold",
-            "engine_check_role": "hold",
-            "startpoint": "_281_/Q",
-            "endpoint": "_282_/D",
-            "slack_ns": 1.23274
-          },
-          {
-            "check_type": "hold",
-            "engine_check_role": "hold",
-            "startpoint": "_341_/Q",
-            "endpoint": "_342_/D",
-            "slack_ns": 1.23443
+            "startpoint": "_257_/Q",
+            "endpoint": "_258_/D",
+            "slack_ns": 1.2332
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "_305_/Q",
             "endpoint": "_306_/D",
-            "slack_ns": 1.24109
+            "slack_ns": 1.24018
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_341_/Q",
+            "endpoint": "_342_/D",
+            "slack_ns": 1.24461
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_293_/Q",
+            "endpoint": "_294_/D",
+            "slack_ns": 1.24866
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "_317_/Q",
             "endpoint": "_318_/D",
-            "slack_ns": 1.24143
+            "slack_ns": 1.25451
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
-            "startpoint": "_257_/Q",
-            "endpoint": "_258_/D",
-            "slack_ns": 1.26033
+            "startpoint": "_329_/Q",
+            "endpoint": "_330_/D",
+            "slack_ns": 1.25467
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_281_/Q",
+            "endpoint": "_282_/D",
+            "slack_ns": 1.25573
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "_269_/Q",
             "endpoint": "_270_/D",
-            "slack_ns": 1.26566
+            "slack_ns": 1.25834
           },
           {
             "check_type": "removal",
             "engine_check_role": "removal",
-            "startpoint": "_306_/Q",
-            "endpoint": "_295_/RN",
-            "slack_ns": 2.40891
+            "startpoint": "_330_/Q",
+            "endpoint": "_320_/RN",
+            "slack_ns": 2.3999
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "select_path/_432_/Q",
             "endpoint": "select_path/_397_/D",
-            "slack_ns": 3.05383
+            "slack_ns": 3.08331
           }
         ]
       },
-      "clock_skew_ns": 0.02828,
-      "estimated_power_mw": 2.3131,
+      "clock_skew_ns": 0.04028,
+      "estimated_power_mw": 3.507,
       "power_basis": {
         "activity_source": "engine_default",
         "activity": null,
@@ -1385,23 +1406,30 @@
         "parasitics": "spef_annotated"
       },
       "spef_annotation": {
-        "nets_annotated": 596,
-        "nets_total": 596,
-        "design_nets_annotated": 596,
-        "design_nets_total": 596,
+        "nets_annotated": 620,
+        "nets_total": 620,
+        "design_nets_annotated": 620,
+        "design_nets_total": 620,
         "design_nets_missing_sample": [],
         "reader_warning_count": 0,
         "reader_warning_sample": [],
-        "unannotated_driver_count": 6,
+        "unannotated_driver_count": 13,
         "partially_unannotated_driver_count": 0,
-        "floating_driver_count": 6,
+        "floating_driver_count": 13,
         "floating_driver_sample": [
-          "clkload0/Z",
+          "clkload0/ZN",
           "clkload1/ZN",
-          "clkload2/ZN",
-          "clkload3/Z",
+          "clkload10/ZN",
+          "clkload11/ZN",
+          "clkload12/ZN",
+          "clkload2/Z",
+          "clkload3/ZN",
           "clkload4/ZN",
-          "clkload5/Z"
+          "clkload5/Z",
+          "clkload6/Z",
+          "clkload7/ZN",
+          "clkload8/ZN",
+          "clkload9/ZN"
         ],
         "unannotated_driver_sample": [],
         "unannotated_driver_detail": [],
@@ -1449,10 +1477,10 @@
       },
       "clock_propagation": {
         "clock_sinks": 2,
-        "max_network_latency_ns": 1.313505,
+        "max_network_latency_ns": 1.321677,
         "clock_sinks_sample": [
-          "select_path/_426_/CLK",
-          "select_path/_403_/CLK"
+          "select_path/_415_/CLK",
+          "select_path/_387_/CLK"
         ]
       },
       "sdf": null,
@@ -1469,13 +1497,13 @@
     {
       "corner": "tt_025C_3v30",
       "engine_log": {
-        "invocation_id": "4c48fe3346514caf8d3de64778227773",
+        "invocation_id": "2d967a2b5f814dd6a72c302aa0b52daf",
         "script_name": "sta_cryo_char_ctrl__tt_025C_3v30.tcl",
         "script_path": {
           "path": "flow/readout/.klt/sta/sta_cryo_char_ctrl__tt_025C_3v30.tcl",
           "scope": "repo"
         },
-        "script_sha256": "e5421e70ae619225a4bf766d9a41fe32ad978982d00e4614bb531c8352826595",
+        "script_sha256": "e8555b6723c7d6f763ba7b38ff1b0c4146b903e9c13724d09c02675875fd0d09",
         "metrics_path": {
           "path": "flow/readout/.klt/sta/cryo_char_ctrl__tt_025C_3v30_metrics.json",
           "scope": "repo"
@@ -1483,28 +1511,28 @@
         "outcome": "exited",
         "returncode": 0,
         "directory": {
-          "path": "flow/readout/.klt/sta/openroad-logs/4c48fe3346514caf8d3de64778227773",
+          "path": "flow/readout/.klt/sta/openroad-logs/2d967a2b5f814dd6a72c302aa0b52daf",
           "scope": "repo"
         },
         "stdout_path": {
-          "path": "flow/readout/.klt/sta/openroad-logs/4c48fe3346514caf8d3de64778227773/stdout.log",
+          "path": "flow/readout/.klt/sta/openroad-logs/2d967a2b5f814dd6a72c302aa0b52daf/stdout.log",
           "scope": "repo"
         },
         "stderr_path": {
-          "path": "flow/readout/.klt/sta/openroad-logs/4c48fe3346514caf8d3de64778227773/stderr.log",
+          "path": "flow/readout/.klt/sta/openroad-logs/2d967a2b5f814dd6a72c302aa0b52daf/stderr.log",
           "scope": "repo"
         },
         "metadata_path": {
-          "path": "flow/readout/.klt/sta/openroad-logs/4c48fe3346514caf8d3de64778227773/invocation.json",
+          "path": "flow/readout/.klt/sta/openroad-logs/2d967a2b5f814dd6a72c302aa0b52daf/invocation.json",
           "scope": "repo"
         },
         "retention_errors": []
       },
-      "worst_slack_ns": 5.01667,
+      "worst_slack_ns": 5.01105,
       "total_negative_slack_ns": 0,
-      "worst_hold_slack_ns": 0.84582,
+      "worst_hold_slack_ns": 0.84555,
       "total_negative_hold_slack_ns": 0,
-      "fmax_mhz": 224.248,
+      "fmax_mhz": 225.147,
       "timing_status": "constrained",
       "constraint_completeness": {
         "status": "incomplete",
@@ -1551,9 +1579,9 @@
         "status": "ok",
         "check_type": "setup",
         "engine_check_role": "setup",
-        "startpoint": "_247_/Q",
-        "endpoint": "_256_/D",
-        "slack_ns": 5.01667,
+        "startpoint": "_295_/Q",
+        "endpoint": "_304_/D",
+        "slack_ns": 5.01105,
         "consistent_with_aggregate": true,
         "reason": null
       },
@@ -1561,9 +1589,9 @@
         "status": "ok",
         "check_type": "hold",
         "engine_check_role": "hold",
-        "startpoint": "_329_/Q",
-        "endpoint": "_330_/D",
-        "slack_ns": 0.84582,
+        "startpoint": "_257_/Q",
+        "endpoint": "_258_/D",
+        "slack_ns": 0.84555,
         "consistent_with_aggregate": true,
         "reason": null
       },
@@ -1574,149 +1602,149 @@
           {
             "check_type": "setup",
             "engine_check_role": "setup",
-            "startpoint": "_247_/Q",
-            "endpoint": "_256_/D",
-            "slack_ns": 5.01667
+            "startpoint": "_295_/Q",
+            "endpoint": "_304_/D",
+            "slack_ns": 5.01105
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
-            "startpoint": "_295_/Q",
-            "endpoint": "_303_/D",
-            "slack_ns": 5.04066
+            "startpoint": "_247_/Q",
+            "endpoint": "_255_/D",
+            "slack_ns": 5.05845
           },
           {
             "check_type": "recovery",
             "engine_check_role": "recovery",
             "startpoint": "_258_/Q",
-            "endpoint": "_247_/RN",
-            "slack_ns": 6.65762
+            "endpoint": "_252_/RN",
+            "slack_ns": 6.6076
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_319_/Q",
             "endpoint": "_327_/D",
-            "slack_ns": 7.45503
-          },
-          {
-            "check_type": "setup",
-            "engine_check_role": "setup",
-            "startpoint": "_271_/Q",
-            "endpoint": "_279_/D",
-            "slack_ns": 7.48344
+            "slack_ns": 7.45575
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_283_/Q",
             "endpoint": "_291_/D",
-            "slack_ns": 7.49716
+            "slack_ns": 7.46732
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_331_/Q",
             "endpoint": "_338_/D",
-            "slack_ns": 7.51248
+            "slack_ns": 7.4863
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_271_/Q",
+            "endpoint": "_280_/D",
+            "slack_ns": 7.49537
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_307_/Q",
             "endpoint": "_315_/D",
-            "slack_ns": 7.51397
+            "slack_ns": 7.54106
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "_259_/Q",
-            "endpoint": "_267_/D",
-            "slack_ns": 7.52077
+            "endpoint": "_268_/D",
+            "slack_ns": 7.55109
           },
           {
             "check_type": "setup",
             "engine_check_role": "setup",
             "startpoint": "select_path/_433_/Q",
-            "endpoint": "select_path/_386_/D",
-            "slack_ns": 88.71835
+            "endpoint": "select_path/_387_/D",
+            "slack_ns": 88.16591
           }
         ],
         "hold": [
           {
             "check_type": "hold",
             "engine_check_role": "hold",
-            "startpoint": "_329_/Q",
-            "endpoint": "_330_/D",
-            "slack_ns": 0.84582
-          },
-          {
-            "check_type": "hold",
-            "engine_check_role": "hold",
-            "startpoint": "_293_/Q",
-            "endpoint": "_294_/D",
-            "slack_ns": 0.84586
-          },
-          {
-            "check_type": "hold",
-            "engine_check_role": "hold",
-            "startpoint": "_281_/Q",
-            "endpoint": "_282_/D",
-            "slack_ns": 0.84767
-          },
-          {
-            "check_type": "hold",
-            "engine_check_role": "hold",
-            "startpoint": "_341_/Q",
-            "endpoint": "_342_/D",
-            "slack_ns": 0.8489
+            "startpoint": "_257_/Q",
+            "endpoint": "_258_/D",
+            "slack_ns": 0.84555
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "_305_/Q",
             "endpoint": "_306_/D",
-            "slack_ns": 0.85374
+            "slack_ns": 0.85072
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_341_/Q",
+            "endpoint": "_342_/D",
+            "slack_ns": 0.85402
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_293_/Q",
+            "endpoint": "_294_/D",
+            "slack_ns": 0.85704
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "_317_/Q",
             "endpoint": "_318_/D",
-            "slack_ns": 0.85398
+            "slack_ns": 0.86141
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
-            "startpoint": "_257_/Q",
-            "endpoint": "_258_/D",
-            "slack_ns": 0.86772
+            "startpoint": "_329_/Q",
+            "endpoint": "_330_/D",
+            "slack_ns": 0.86152
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_281_/Q",
+            "endpoint": "_282_/D",
+            "slack_ns": 0.86223
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "_269_/Q",
             "endpoint": "_270_/D",
-            "slack_ns": 0.87159
+            "slack_ns": 0.86427
           },
           {
             "check_type": "removal",
             "engine_check_role": "removal",
-            "startpoint": "_306_/Q",
-            "endpoint": "_295_/RN",
-            "slack_ns": 1.79261
+            "startpoint": "_330_/Q",
+            "endpoint": "_320_/RN",
+            "slack_ns": 1.78773
           },
           {
             "check_type": "hold",
             "engine_check_role": "hold",
             "startpoint": "select_path/_432_/Q",
             "endpoint": "select_path/_397_/D",
-            "slack_ns": 2.17194
+            "slack_ns": 2.19442
           }
         ]
       },
-      "clock_skew_ns": 0.02154,
-      "estimated_power_mw": 2.8359,
+      "clock_skew_ns": 0.0308,
+      "estimated_power_mw": 4.348,
       "power_basis": {
         "activity_source": "engine_default",
         "activity": null,
@@ -1724,23 +1752,30 @@
         "parasitics": "spef_annotated"
       },
       "spef_annotation": {
-        "nets_annotated": 596,
-        "nets_total": 596,
-        "design_nets_annotated": 596,
-        "design_nets_total": 596,
+        "nets_annotated": 620,
+        "nets_total": 620,
+        "design_nets_annotated": 620,
+        "design_nets_total": 620,
         "design_nets_missing_sample": [],
         "reader_warning_count": 0,
         "reader_warning_sample": [],
-        "unannotated_driver_count": 6,
+        "unannotated_driver_count": 13,
         "partially_unannotated_driver_count": 0,
-        "floating_driver_count": 6,
+        "floating_driver_count": 13,
         "floating_driver_sample": [
-          "clkload0/Z",
+          "clkload0/ZN",
           "clkload1/ZN",
-          "clkload2/ZN",
-          "clkload3/Z",
+          "clkload10/ZN",
+          "clkload11/ZN",
+          "clkload12/ZN",
+          "clkload2/Z",
+          "clkload3/ZN",
           "clkload4/ZN",
-          "clkload5/Z"
+          "clkload5/Z",
+          "clkload6/Z",
+          "clkload7/ZN",
+          "clkload8/ZN",
+          "clkload9/ZN"
         ],
         "unannotated_driver_sample": [],
         "unannotated_driver_detail": [],
@@ -1788,10 +1823,10 @@
       },
       "clock_propagation": {
         "clock_sinks": 2,
-        "max_network_latency_ns": 0.959512,
+        "max_network_latency_ns": 0.966683,
         "clock_sinks_sample": [
-          "select_path/_426_/CLK",
-          "select_path/_403_/CLK"
+          "select_path/_415_/CLK",
+          "select_path/_387_/CLK"
         ]
       },
       "sdf": null,
@@ -1808,7 +1843,7 @@
   ],
   "timing_input_sha256": {
     "timing.json": "880c87076d7e4d89fb278f091e17421a97bc1994c62ed5445191aedda357a16e",
-    "cryo_char_ctrl.def": "080c74c1daf3270d5df9ff46601c9d2669ba5ee7df89a66868a4d5dcb1afaf3d",
-    "cryo_char_ctrl.spef": "3ede30e0899174bbf176c37d406d19be42af79db6560aa7c359ae2cc5ae46323"
+    "cryo_char_ctrl.def": "06bf00d536604d33a068aedb250b7124fb112ae35dbda5cb3c81818adade105a",
+    "cryo_char_ctrl.spef": "58227c5fa6af4823f4f6d44ac9f28857da8b911774a29990c830ab51ea8b9ba1"
   }
 }

@@ -1,0 +1,345 @@
+{
+  "schema_version": 2,
+  "file": {
+    "path": "flow/readout/cryo_char_ctrl.gds",
+    "scope": "repo"
+  },
+  "spec": "flow/readout/erc.json",
+  "pdk": null,
+  "findings_only": true,
+  "gate_role": "Poly",
+  "gate_count": 1724,
+  "antenna_tables_omitted": false,
+  "gates": [],
+  "nets": [
+    {
+      "name": "VDD",
+      "matched_islands": 1,
+      "expected_islands": 1,
+      "roles": [],
+      "unlabelled_islands": null,
+      "unlabelled_area_um2": null,
+      "unlabelled_bbox": null,
+      "unlabelled_allowed_islands": null
+    },
+    {
+      "name": "VSS",
+      "matched_islands": 1,
+      "expected_islands": 1,
+      "roles": [],
+      "unlabelled_islands": null,
+      "unlabelled_area_um2": null,
+      "unlabelled_bbox": null,
+      "unlabelled_allowed_islands": null
+    }
+  ],
+  "erc_findings": [],
+  "erc_finding_count": 0,
+  "erc_status": "clean",
+  "status": "not_checked",
+  "coverage": {
+    "scope": "antenna",
+    "schema_version": 1,
+    "known": true,
+    "checked": [],
+    "skipped": [
+      {
+        "id": "antenna:[\"levels\"]",
+        "reason": "findings_only"
+      }
+    ],
+    "inapplicable": [
+      {
+        "id": "antenna:[\"gate_reference_levels\"]",
+        "reason": "gate_reference_level"
+      }
+    ],
+    "unknown": [],
+    "nothing_checked": true,
+    "nothing_checked_reasons": [
+      "findings_only",
+      "gate_reference_level"
+    ]
+  },
+  "erc_coverage": {
+    "scope": "connectivity",
+    "schema_version": 1,
+    "known": true,
+    "checked": [
+      "erc.floating_gate:[]",
+      "erc.missing_tie:[\"nwell_vdd\"]",
+      "erc.missing_tie:[\"psub_vss\"]",
+      "erc.net_connectivity:[\"VDD\"]",
+      "erc.net_connectivity:[\"VSS\"]",
+      "erc.supply_short",
+      "erc.supply_short.substrate"
+    ],
+    "skipped": [],
+    "inapplicable": [],
+    "unknown": [],
+    "nothing_checked": false,
+    "nothing_checked_reasons": [],
+    "missing_tie_checked": true,
+    "checked_by_assertion": [],
+    "checked_by_well_assertion": [
+      "erc.missing_tie:[\"psub_vss\"]"
+    ],
+    "layers_in_stream_without_declaration": [
+      "21/10",
+      "63/63",
+      "204/10"
+    ],
+    "well_assertion_coverage": []
+  },
+  "ties_disclosure": null,
+  "provenance": {
+    "klt_version": "0.9.2",
+    "klt_git_commit": "046ba74652fc096bd97071fc3237f7159dd40183",
+    "klt_reinstall_spec": "klayout-tools==0.9.2",
+    "klayout_version": "0.30.14",
+    "pdk": null,
+    "deck": {
+      "name": "gf180mcu",
+      "content_hash": "sha256:c3f2cce49000857a3a71cb65203aabf0eb27cd0ee6b1c60e29792355c455c4b1",
+      "released": true
+    },
+    "input": {
+      "content_hash": "sha256:a1b773aa99b7b77fd896b7b373331160021719cb38739bd8dfdce6787daf7e33",
+      "role": "layout"
+    },
+    "spec": {
+      "content_hash": "sha256:1ee2cd44ffe5a5489185fff8cafd481fb94496ed1bb72371921f09a319842118"
+    },
+    "devices": [],
+    "net_exclusions": [],
+    "label_layers": [
+      {
+        "name": "Metal1",
+        "label_layer": "34/10",
+        "label_text_count": 7674
+      },
+      {
+        "name": "Metal2",
+        "label_layer": "36/10",
+        "label_text_count": 112
+      },
+      {
+        "name": "Metal5",
+        "label_layer": "81/10",
+        "label_text_count": 2
+      }
+    ],
+    "substrate_bodies": [
+      {
+        "kind": "substrate",
+        "id": "vsubs",
+        "ties": [
+          "psub_vss"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,107600,234510,111920",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,115440,234510,119760",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,123280,234510,127600",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,131120,234510,135440",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,13520,234510,17840",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,138960,234510,143280",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,146800,234510,151120",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,154640,234510,158960",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,162480,234510,166800",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,170320,234510,174640",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,178160,234510,182480",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,186000,234510,190320",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,193840,234510,198160",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,201680,234510,206000",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,209520,234510,213840",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,21360,234510,25680",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,217360,234510,221680",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,225200,234510,229520",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,29200,234510,33520",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,37040,234510,41360",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,44880,234510,49200",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,52720,234510,57040",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,60560,234510,64880",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,68400,234510,72720",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,76240,234510,80560",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,84080,234510,88400",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,91920,234510,96240",
+        "ties": [
+          "nwell_vdd"
+        ]
+      },
+      {
+        "kind": "well",
+        "id": "9650,99760,234510,104080",
+        "ties": [
+          "nwell_vdd"
+        ]
+      }
+    ]
+  },
+  "compact": {
+    "gate_count": 1724,
+    "antenna_levels_skipped": 8620,
+    "antenna_reference_levels": 1724,
+    "floating_gate_checked": 1724,
+    "skipped_reason": "findings_only"
+  }
+}
