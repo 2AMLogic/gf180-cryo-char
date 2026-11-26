@@ -17,7 +17,11 @@
     "spec/check_isolated_bodies.py",
     "sim/switch-loading/measure.py",
     "sim/switch-loading/measurements.csv",
-    "sim/switch-loading/README.md"
+    "sim/switch-loading/README.md",
+    "sim/pad-loading/measure.py",
+    "sim/pad-loading/measurements.csv",
+    "sim/pad-loading/README.md",
+    "verification/test_pad_loading.py"
   ],
   "checks": [
     {

@@ -8,7 +8,7 @@
   "evidence": {
     "10": {
       "file": "signoff/attest/item10.envelope.json",
-      "content_hash": "sha256:7c0f1088e4a0a3594237ca81609d63e175b87481e1504bdeef6a87b1d9e9539e"
+      "content_hash": "sha256:2f06685ad524b1dc7cfb467065ab8fbf94650c11e275aa20479f8720fe4d6d4f"
     }
   }
 }
