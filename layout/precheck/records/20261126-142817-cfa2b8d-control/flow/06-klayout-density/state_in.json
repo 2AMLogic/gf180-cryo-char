@@ -1,0 +1,5 @@
+{
+    "gds": "/var/tmp/eda-job-cryo4-control-cfa2b8d-s00/src/precheck/flow/runs/RUN_2026-11-26_13-03-59/04-klayout-generateid/chip_top.gds",
+    "render": "/var/tmp/eda-job-cryo4-control-cfa2b8d-s00/src/precheck/flow/runs/RUN_2026-11-26_13-03-59/05-klayout-render/chip_top.png",
+    "metrics": {}
+}
