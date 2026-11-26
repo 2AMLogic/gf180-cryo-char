@@ -14,9 +14,11 @@ import os
 import subprocess
 import tempfile
 import unittest
+from contextlib import ExitStack
 from pathlib import Path
+from unittest import mock
 
-from layout import spot
+from layout import spot, toolchain_pin
 
 REPO = Path(__file__).resolve().parents[1]
 LAYOUT = REPO / "layout"
@@ -66,6 +68,7 @@ parser.add_argument("--cob", action="store_true")
 args = parser.parse_args()
 assert os.environ["PDK_ROOT"] and os.environ["PDK"] == "gf180mcuD"
 assert os.environ["PDK_ROOT"].endswith("/layout/vendor/precheck/gf180mcu"), os.environ["PDK_ROOT"]
+assert os.path.isdir(args.dir), f"DESIGN_DIR does not exist: {args.dir}"
 final = os.path.join(args.dir, "runs", "STUBTAG", "final")
 os.makedirs(final, exist_ok=True)
 with open(os.path.join(final, "metrics.json"), "w") as handle:
@@ -103,6 +106,101 @@ class SubmitterArgsTests(unittest.TestCase):
             job_args=["layout/precheck/in/die.gds", "--id", "DEADBEEF", "--cob"]
         )
         self.assertIn("--shard=layout/precheck/in/die.gds --id DEADBEEF --cob", argv)
+
+
+class SubmitTests(unittest.TestCase):
+    """What ``submit`` hands the fleet submitter, with staging stubbed out."""
+
+    def submit(self, *options):
+        with tempfile.TemporaryDirectory() as tmp:
+            work = Path(tmp)
+            gds = work / "die.gds"
+            gds.write_bytes(b"stub gds bytes\n")
+            argv_out = work / "submitter-argv.json"
+            submitter = work / "repo-script-submit.py"
+            submitter.write_text(
+                "import json, os, sys\n"
+                'json.dump(sys.argv[1:], open(os.environ["STUB_ARGV_OUT"], "w"))\n'
+            )
+            shipped = {}
+
+            def fake_tarball(commit, vendors, extra, dest):
+                shipped.update(extra)
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                dest.write_bytes(b"tarball\n")
+                return "a" * 64
+
+            replacements = {
+                "REPO_ROOT": work,
+                "WORK_DIR": work,
+                "RUNS_DIR": work / "runs",
+                "SUBMITTER": submitter,
+                "check_pins": lambda: toolchain_pin.load(),
+                "head_and_clean": lambda: "c" * 40,
+                "upstream": lambda key, pins: (work / "upstream", "d" * 40),
+                "stage_tarball": fake_tarball,
+            }
+            with (
+                mock.patch.dict(os.environ, {"STUB_ARGV_OUT": str(argv_out)}),
+                ExitStack() as stack,
+            ):
+                for name, value in replacements.items():
+                    stack.enter_context(mock.patch.object(spot, name, value))
+                args = spot.build_parser().parse_args(
+                    [
+                        "precheck",
+                        "submit",
+                        "--gds",
+                        str(gds),
+                        "--label",
+                        "die",
+                        "--group",
+                        "g",
+                        "--cob",
+                        "--id",
+                        "DEADBEEF",
+                        "--threads",
+                        "3",
+                        *options,
+                    ]
+                )
+                self.assertEqual(spot.cmd_submit("precheck", args), 0)
+            staged = json.loads((work / "runs" / "g.submit.json").read_text())
+            return json.loads(argv_out.read_text()), staged, shipped
+
+    def test_the_job_gets_the_gds_then_its_declared_output_directory(self):
+        """The shard arguments are layout/jobs/precheck.sh's ``GDS OUTDIR ...``:
+        without OUTDIR the job exited 2 on the fleet (unknown argument)."""
+        argv, staged, shipped = self.submit()
+        self.assertEqual(list(shipped), ["layout/precheck/in/die.gds"])
+        self.assertEqual(argv[argv.index("--script") + 1], "layout/jobs/precheck.sh")
+        self.assertEqual(argv[argv.index("--output") + 1], "precheck/out")
+        self.assertEqual(
+            [a for a in argv if a.startswith("--shard=")],
+            [
+                "--shard=layout/precheck/in/die.gds precheck/out --id DEADBEEF "
+                "--cob --threads 3"
+            ],
+        )
+        self.assertEqual(argv[argv.index("--wait-for-capacity") + 1], "600")
+        self.assertIn("--no-wait", argv)
+        self.assertEqual(staged["input"]["label"], "die")
+        self.assertEqual(
+            staged["input"]["sha256"], hashlib.sha256(b"stub gds bytes\n").hexdigest()
+        )
+
+    def test_forwarded_options_reach_the_job_and_the_submitter(self):
+        argv, _, _ = self.submit("--workers", "2", "--timeout", "1500", "--wait", "540")
+        self.assertEqual(
+            [a for a in argv if a.startswith("--shard=")],
+            [
+                "--shard=layout/precheck/in/die.gds precheck/out --id DEADBEEF "
+                "--cob --threads 3 --workers 2"
+            ],
+        )
+        self.assertEqual(argv[argv.index("--timeout") + 1], "1500")
+        self.assertEqual(argv[argv.index("--wait") + 1], "540")
+        self.assertNotIn("--no-wait", argv)
 
 
 class JobScriptTests(unittest.TestCase):

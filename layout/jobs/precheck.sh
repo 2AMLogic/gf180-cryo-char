@@ -55,7 +55,7 @@ precheck=layout/vendor/precheck
 pdk_root="$PWD/$precheck/gf180mcu"
 flow="$PWD/precheck/flow"
 harvest="$PWD/$out/flow"
-mkdir -p "$out"
+mkdir -p "$out" "$flow"
 WS_PHASES="$PWD/$out/phases.txt"
 export WS_PHASES
 

@@ -173,6 +173,17 @@ def submitter_command(*args: str) -> list[str]:
     return [sys.executable, str(SUBMITTER), *args]
 
 
+def precheck_job_args(gds, outdir, chip_id, cob, threads, workers) -> list[str]:
+    """The argument list of layout/jobs/precheck.sh: GDS and OUTDIR come first."""
+    args = [gds, outdir, "--id", chip_id]
+    if cob:
+        args.append("--cob")
+    for flag, value in (("threads", threads), ("workers", workers)):
+        if value:
+            args += [f"--{flag}", value]
+    return args
+
+
 def cmd_submit(stage: str, args: argparse.Namespace) -> int:
     pins = check_pins()
     commit = head_and_clean()
@@ -197,12 +208,9 @@ def cmd_submit(stage: str, args: argparse.Namespace) -> int:
             )
         name = f"layout/precheck/in/{args.label}{gds.suffix}"
         extra[name] = gds
-        job_args = [name, "--id", args.id]
-        if args.cob:
-            job_args.append("--cob")
-        for flag in ("threads", "workers"):
-            if getattr(args, flag):
-                job_args += [f"--{flag}", getattr(args, flag)]
+        job_args = precheck_job_args(
+            name, spec["output"], args.id, args.cob, args.threads, args.workers
+        )
         staged["input"] = {
             "label": args.label,
             "sha256": records.sha256_file(gds),
