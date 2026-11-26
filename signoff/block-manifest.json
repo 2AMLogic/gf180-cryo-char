@@ -21,6 +21,10 @@
     "1.digital": {
       "file": "signoff/attest/item1-digital.envelope.json",
       "content_hash": "sha256:48192424bf6d328c92e45ad2ca58797d2c1e58efc8c3ec5e3324565809049a86"
+    },
+    "2.digital": {
+      "file": "signoff/attest/item2-digital.envelope.json",
+      "content_hash": "sha256:3fe526f02dfb4558ce5041c412747d77ac55e303e229609f6d0de658c4ff9376"
     }
   }
 }

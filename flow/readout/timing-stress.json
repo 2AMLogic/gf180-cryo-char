@@ -1,0 +1,85 @@
+{
+  "def": "cryo_char_ctrl.def",
+  "hdl_toplevel": "cryo_char_ctrl",
+  "spef": "cryo_char_ctrl.spef",
+  "pdk": {
+    "cell_library": "gf180mcu_fd_sc_mcu7t5v0",
+    "corners": [
+      "ff_125C_3v60",
+      "ff_n40C_3v60",
+      "ss_125C_3v00",
+      "ss_n40C_3v00",
+      "tt_025C_3v30"
+    ]
+  },
+  "constraints": {
+    "clocks": [
+      {
+        "port": "clk",
+        "period_ns": 100
+      },
+      {
+        "port": "ro_clk[0]",
+        "period_ns": 12.0
+      },
+      {
+        "port": "ro_clk[1]",
+        "period_ns": 12.0
+      },
+      {
+        "port": "ro_clk[2]",
+        "period_ns": 12.0
+      },
+      {
+        "port": "ro_clk[3]",
+        "period_ns": 9.0
+      },
+      {
+        "port": "ro_clk[4]",
+        "period_ns": 12.0
+      },
+      {
+        "port": "ro_clk[5]",
+        "period_ns": 12.0
+      },
+      {
+        "port": "ro_clk[6]",
+        "period_ns": 12.0
+      },
+      {
+        "port": "ro_clk[7]",
+        "period_ns": 9.0
+      }
+    ],
+    "clock_groups": [
+      [
+        "clk"
+      ],
+      [
+        "ro_clk[0]"
+      ],
+      [
+        "ro_clk[1]"
+      ],
+      [
+        "ro_clk[2]"
+      ],
+      [
+        "ro_clk[3]"
+      ],
+      [
+        "ro_clk[4]"
+      ],
+      [
+        "ro_clk[5]"
+      ],
+      [
+        "ro_clk[6]"
+      ],
+      [
+        "ro_clk[7]"
+      ]
+    ],
+    "propagated_clock": true
+  }
+}

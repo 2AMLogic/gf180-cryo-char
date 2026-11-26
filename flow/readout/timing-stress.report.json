@@ -1,0 +1,1814 @@
+{
+  "schema_version": 2,
+  "engine": "openroad",
+  "engine_version": "26Q3-1510-g6cb3f2b704",
+  "hdl_toplevel": "cryo_char_ctrl",
+  "status": "ok",
+  "def_path": {
+    "path": "flow/readout/cryo_char_ctrl.def",
+    "scope": "repo"
+  },
+  "verilog_path": null,
+  "geometry_source": "routed",
+  "wire_load_model": null,
+  "wire_load_mode": null,
+  "macros": [],
+  "clock_mode": "propagated",
+  "clock_targets": {
+    "clocks": [
+      {
+        "port": "clk",
+        "period_ns": 100.0
+      },
+      {
+        "port": "ro_clk[0]",
+        "period_ns": 12.0
+      },
+      {
+        "port": "ro_clk[1]",
+        "period_ns": 12.0
+      },
+      {
+        "port": "ro_clk[2]",
+        "period_ns": 12.0
+      },
+      {
+        "port": "ro_clk[3]",
+        "period_ns": 9.0
+      },
+      {
+        "port": "ro_clk[4]",
+        "period_ns": 12.0
+      },
+      {
+        "port": "ro_clk[5]",
+        "period_ns": 12.0
+      },
+      {
+        "port": "ro_clk[6]",
+        "period_ns": 12.0
+      },
+      {
+        "port": "ro_clk[7]",
+        "period_ns": 9.0
+      }
+    ],
+    "clock_groups": [
+      [
+        "clk"
+      ],
+      [
+        "ro_clk[0]"
+      ],
+      [
+        "ro_clk[1]"
+      ],
+      [
+        "ro_clk[2]"
+      ],
+      [
+        "ro_clk[3]"
+      ],
+      [
+        "ro_clk[4]"
+      ],
+      [
+        "ro_clk[5]"
+      ],
+      [
+        "ro_clk[6]"
+      ],
+      [
+        "ro_clk[7]"
+      ]
+    ]
+  },
+  "clock_uncertainty": {
+    "applied": false
+  },
+  "spef_path": {
+    "path": "flow/readout/cryo_char_ctrl.spef",
+    "scope": "repo"
+  },
+  "provenance": {
+    "klt_version": "0.9.2",
+    "klt_git_commit": "046ba74652fc096bd97071fc3237f7159dd40183",
+    "klt_reinstall_spec": "klayout-tools==0.9.2",
+    "klayout_version": "0.30.14",
+    "pdk": {
+      "name": "gf180mcuD",
+      "source": "PDK_ROOT environment variable",
+      "version": "open_pdks f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7",
+      "ambiguous_sources": [
+        "search root: ~/.volare"
+      ]
+    },
+    "deck": null,
+    "input": {
+      "content_hash": "sha256:080c74c1daf3270d5df9ff46601c9d2669ba5ee7df89a66868a4d5dcb1afaf3d",
+      "role": "layout"
+    }
+  },
+  "corners": [
+    {
+      "corner": "ff_125C_3v60",
+      "engine_log": {
+        "invocation_id": "46a5c211aed1486e8f3d7a34413f10f4",
+        "script_name": "sta_cryo_char_ctrl__ff_125C_3v60.tcl",
+        "script_path": {
+          "path": "flow/readout/.klt/sta/sta_cryo_char_ctrl__ff_125C_3v60.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "cc9d6237d0f5eb376ae4e3c1143cf5ee0716b368c346456d52f0d2c037c6e980",
+        "metrics_path": {
+          "path": "flow/readout/.klt/sta/cryo_char_ctrl__ff_125C_3v60_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "flow/readout/.klt/sta/openroad-logs/46a5c211aed1486e8f3d7a34413f10f4",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "flow/readout/.klt/sta/openroad-logs/46a5c211aed1486e8f3d7a34413f10f4/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "flow/readout/.klt/sta/openroad-logs/46a5c211aed1486e8f3d7a34413f10f4/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "flow/readout/.klt/sta/openroad-logs/46a5c211aed1486e8f3d7a34413f10f4/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": 5.22092,
+      "total_negative_slack_ns": 0,
+      "worst_hold_slack_ns": 0.66884,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 266.322,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "incomplete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 65,
+          "sample": [
+            "bank_enable[0]",
+            "bank_enable[15]",
+            "bank_enable[16]",
+            "bank_enable[17]",
+            "bank_enable[18]",
+            "bank_enable[19]",
+            "bank_enable[1]",
+            "bank_enable[20]",
+            "bank_enable[21]",
+            "bank_enable[22]",
+            "bank_enable[23]",
+            "bank_enable[24]",
+            "bank_enable[25]",
+            "bank_enable[26]",
+            "bank_enable[27]",
+            "bank_enable[28]",
+            "bank_enable[29]",
+            "bank_enable[2]",
+            "bank_enable[30]",
+            "bank_enable[31]"
+          ],
+          "truncated": true,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "setup",
+        "engine_check_role": "setup",
+        "startpoint": "_247_/Q",
+        "endpoint": "_256_/D",
+        "slack_ns": 5.22092,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "hold",
+        "engine_check_role": "hold",
+        "startpoint": "_329_/Q",
+        "endpoint": "_330_/D",
+        "slack_ns": 0.66884,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_paths_by_group": {
+        "status": "ok",
+        "reason": null,
+        "setup": [
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_247_/Q",
+            "endpoint": "_256_/D",
+            "slack_ns": 5.22092
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_295_/Q",
+            "endpoint": "_303_/D",
+            "slack_ns": 5.24515
+          },
+          {
+            "check_type": "recovery",
+            "engine_check_role": "recovery",
+            "startpoint": "_258_/Q",
+            "endpoint": "_247_/RN",
+            "slack_ns": 6.46552
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_319_/Q",
+            "endpoint": "_327_/D",
+            "slack_ns": 8.17212
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_271_/Q",
+            "endpoint": "_279_/D",
+            "slack_ns": 8.19694
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_283_/Q",
+            "endpoint": "_291_/D",
+            "slack_ns": 8.21026
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_331_/Q",
+            "endpoint": "_338_/D",
+            "slack_ns": 8.21157
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_307_/Q",
+            "endpoint": "_315_/D",
+            "slack_ns": 8.22263
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_259_/Q",
+            "endpoint": "_267_/D",
+            "slack_ns": 8.23044
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "select_path/_433_/Q",
+            "endpoint": "select_path/_386_/D",
+            "slack_ns": 90.13312
+          }
+        ],
+        "hold": [
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_329_/Q",
+            "endpoint": "_330_/D",
+            "slack_ns": 0.66884
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_293_/Q",
+            "endpoint": "_294_/D",
+            "slack_ns": 0.66888
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_281_/Q",
+            "endpoint": "_282_/D",
+            "slack_ns": 0.6704
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_341_/Q",
+            "endpoint": "_342_/D",
+            "slack_ns": 0.67144
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_305_/Q",
+            "endpoint": "_306_/D",
+            "slack_ns": 0.67554
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_317_/Q",
+            "endpoint": "_318_/D",
+            "slack_ns": 0.67575
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_257_/Q",
+            "endpoint": "_258_/D",
+            "slack_ns": 0.68737
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_269_/Q",
+            "endpoint": "_270_/D",
+            "slack_ns": 0.69065
+          },
+          {
+            "check_type": "removal",
+            "engine_check_role": "removal",
+            "startpoint": "_306_/Q",
+            "endpoint": "_295_/RN",
+            "slack_ns": 1.60875
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "select_path/_432_/Q",
+            "endpoint": "select_path/_397_/D",
+            "slack_ns": 1.77931
+          }
+        ]
+      },
+      "clock_skew_ns": 0.01742,
+      "estimated_power_mw": 3.6093,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 596,
+        "nets_total": 596,
+        "design_nets_annotated": 596,
+        "design_nets_total": 596,
+        "design_nets_missing_sample": [],
+        "reader_warning_count": 0,
+        "reader_warning_sample": [],
+        "unannotated_driver_count": 6,
+        "partially_unannotated_driver_count": 0,
+        "floating_driver_count": 6,
+        "floating_driver_sample": [
+          "clkload0/Z",
+          "clkload1/ZN",
+          "clkload2/ZN",
+          "clkload3/Z",
+          "clkload4/ZN",
+          "clkload5/Z"
+        ],
+        "unannotated_driver_sample": [],
+        "unannotated_driver_detail": [],
+        "partially_unannotated_driver_sample": [],
+        "delay_changed": true,
+        "annotation_complete": true,
+        "annotation_warning": null
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "min_pulse_width": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "worst_slack_ns": null,
+          "worst_pin": null
+        },
+        "min_period": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "worst_slack_ns": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": {
+        "clock_sinks": 2,
+        "max_network_latency_ns": 0.794259,
+        "clock_sinks_sample": [
+          "select_path/_426_/CLK",
+          "select_path/_403_/CLK"
+        ]
+      },
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__ff_125C_3v60",
+        "content_hash": "sha256:f7d93ac4452c3388e27e8f88149c4f6a4ed1aaed344e93cec095914d374ed945",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    },
+    {
+      "corner": "ff_n40C_3v60",
+      "engine_log": {
+        "invocation_id": "451d616652e7494481df37969cf9cb65",
+        "script_name": "sta_cryo_char_ctrl__ff_n40C_3v60.tcl",
+        "script_path": {
+          "path": "flow/readout/.klt/sta/sta_cryo_char_ctrl__ff_n40C_3v60.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "d447df7d8df192c313fb76cd80a3001991fb5f00df32e31dd533080999e23703",
+        "metrics_path": {
+          "path": "flow/readout/.klt/sta/cryo_char_ctrl__ff_n40C_3v60_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "flow/readout/.klt/sta/openroad-logs/451d616652e7494481df37969cf9cb65",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "flow/readout/.klt/sta/openroad-logs/451d616652e7494481df37969cf9cb65/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "flow/readout/.klt/sta/openroad-logs/451d616652e7494481df37969cf9cb65/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "flow/readout/.klt/sta/openroad-logs/451d616652e7494481df37969cf9cb65/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": 6.46642,
+      "total_negative_slack_ns": 0,
+      "worst_hold_slack_ns": 0.47046,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 396.229,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "incomplete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 65,
+          "sample": [
+            "bank_enable[0]",
+            "bank_enable[15]",
+            "bank_enable[16]",
+            "bank_enable[17]",
+            "bank_enable[18]",
+            "bank_enable[19]",
+            "bank_enable[1]",
+            "bank_enable[20]",
+            "bank_enable[21]",
+            "bank_enable[22]",
+            "bank_enable[23]",
+            "bank_enable[24]",
+            "bank_enable[25]",
+            "bank_enable[26]",
+            "bank_enable[27]",
+            "bank_enable[28]",
+            "bank_enable[29]",
+            "bank_enable[2]",
+            "bank_enable[30]",
+            "bank_enable[31]"
+          ],
+          "truncated": true,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "setup",
+        "engine_check_role": "setup",
+        "startpoint": "_247_/Q",
+        "endpoint": "_256_/D",
+        "slack_ns": 6.46642,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "hold",
+        "engine_check_role": "hold",
+        "startpoint": "_329_/Q",
+        "endpoint": "_330_/D",
+        "slack_ns": 0.47046,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_paths_by_group": {
+        "status": "ok",
+        "reason": null,
+        "setup": [
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_247_/Q",
+            "endpoint": "_256_/D",
+            "slack_ns": 6.46642
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_295_/Q",
+            "endpoint": "_303_/D",
+            "slack_ns": 6.4762
+          },
+          {
+            "check_type": "recovery",
+            "engine_check_role": "recovery",
+            "startpoint": "_258_/Q",
+            "endpoint": "_247_/RN",
+            "slack_ns": 7.28499
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_319_/Q",
+            "endpoint": "_327_/D",
+            "slack_ns": 9.42641
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_271_/Q",
+            "endpoint": "_279_/D",
+            "slack_ns": 9.44324
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_283_/Q",
+            "endpoint": "_291_/D",
+            "slack_ns": 9.44459
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_331_/Q",
+            "endpoint": "_338_/D",
+            "slack_ns": 9.44971
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_307_/Q",
+            "endpoint": "_315_/D",
+            "slack_ns": 9.46108
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_259_/Q",
+            "endpoint": "_267_/D",
+            "slack_ns": 9.46383
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "select_path/_433_/Q",
+            "endpoint": "select_path/_386_/D",
+            "slack_ns": 93.48598
+          }
+        ],
+        "hold": [
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_329_/Q",
+            "endpoint": "_330_/D",
+            "slack_ns": 0.47046
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_293_/Q",
+            "endpoint": "_294_/D",
+            "slack_ns": 0.47049
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_281_/Q",
+            "endpoint": "_282_/D",
+            "slack_ns": 0.47162
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_341_/Q",
+            "endpoint": "_342_/D",
+            "slack_ns": 0.47239
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_305_/Q",
+            "endpoint": "_306_/D",
+            "slack_ns": 0.47542
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_317_/Q",
+            "endpoint": "_318_/D",
+            "slack_ns": 0.47557
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_257_/Q",
+            "endpoint": "_258_/D",
+            "slack_ns": 0.48417
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_269_/Q",
+            "endpoint": "_270_/D",
+            "slack_ns": 0.48659
+          },
+          {
+            "check_type": "removal",
+            "engine_check_role": "removal",
+            "startpoint": "_306_/Q",
+            "endpoint": "_295_/RN",
+            "slack_ns": 1.09758
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "select_path/_432_/Q",
+            "endpoint": "select_path/_397_/D",
+            "slack_ns": 1.27992
+          }
+        ]
+      },
+      "clock_skew_ns": 0.01329,
+      "estimated_power_mw": 3.4489,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 596,
+        "nets_total": 596,
+        "design_nets_annotated": 596,
+        "design_nets_total": 596,
+        "design_nets_missing_sample": [],
+        "reader_warning_count": 0,
+        "reader_warning_sample": [],
+        "unannotated_driver_count": 6,
+        "partially_unannotated_driver_count": 0,
+        "floating_driver_count": 6,
+        "floating_driver_sample": [
+          "clkload0/Z",
+          "clkload1/ZN",
+          "clkload2/ZN",
+          "clkload3/Z",
+          "clkload4/ZN",
+          "clkload5/Z"
+        ],
+        "unannotated_driver_sample": [],
+        "unannotated_driver_detail": [],
+        "partially_unannotated_driver_sample": [],
+        "delay_changed": true,
+        "annotation_complete": true,
+        "annotation_warning": null
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "min_pulse_width": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "worst_slack_ns": null,
+          "worst_pin": null
+        },
+        "min_period": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "worst_slack_ns": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": {
+        "clock_sinks": 2,
+        "max_network_latency_ns": 0.58286,
+        "clock_sinks_sample": [
+          "select_path/_426_/CLK",
+          "select_path/_403_/CLK"
+        ]
+      },
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__ff_n40C_3v60",
+        "content_hash": "sha256:a222740b574d0699c8a416400bd9746ecb8556bc87a515ab7fb80f911e2cd74b",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    },
+    {
+      "corner": "ss_125C_3v00",
+      "engine_log": {
+        "invocation_id": "8b2199b5ad6f4697a540725bdd6ebc3e",
+        "script_name": "sta_cryo_char_ctrl__ss_125C_3v00.tcl",
+        "script_path": {
+          "path": "flow/readout/.klt/sta/sta_cryo_char_ctrl__ss_125C_3v00.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "f6d81c8c29c22b629cd4b4f475a6e56305563771bac1f426a0c9ccc70eabfbd9",
+        "metrics_path": {
+          "path": "flow/readout/.klt/sta/cryo_char_ctrl__ss_125C_3v00_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "flow/readout/.klt/sta/openroad-logs/8b2199b5ad6f4697a540725bdd6ebc3e",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "flow/readout/.klt/sta/openroad-logs/8b2199b5ad6f4697a540725bdd6ebc3e/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "flow/readout/.klt/sta/openroad-logs/8b2199b5ad6f4697a540725bdd6ebc3e/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "flow/readout/.klt/sta/openroad-logs/8b2199b5ad6f4697a540725bdd6ebc3e/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": -0.18119,
+      "total_negative_slack_ns": -0.38343,
+      "worst_hold_slack_ns": 1.74374,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 109.697,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "incomplete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 65,
+          "sample": [
+            "bank_enable[0]",
+            "bank_enable[15]",
+            "bank_enable[16]",
+            "bank_enable[17]",
+            "bank_enable[18]",
+            "bank_enable[19]",
+            "bank_enable[1]",
+            "bank_enable[20]",
+            "bank_enable[21]",
+            "bank_enable[22]",
+            "bank_enable[23]",
+            "bank_enable[24]",
+            "bank_enable[25]",
+            "bank_enable[26]",
+            "bank_enable[27]",
+            "bank_enable[28]",
+            "bank_enable[29]",
+            "bank_enable[2]",
+            "bank_enable[30]",
+            "bank_enable[31]"
+          ],
+          "truncated": true,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 4,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "setup",
+        "engine_check_role": "setup",
+        "startpoint": "_247_/Q",
+        "endpoint": "_256_/D",
+        "slack_ns": -0.18119,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "hold",
+        "engine_check_role": "hold",
+        "startpoint": "_329_/Q",
+        "endpoint": "_330_/D",
+        "slack_ns": 1.74374,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_paths_by_group": {
+        "status": "ok",
+        "reason": null,
+        "setup": [
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_247_/Q",
+            "endpoint": "_256_/D",
+            "slack_ns": -0.18119
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_295_/Q",
+            "endpoint": "_303_/D",
+            "slack_ns": -0.11601
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_319_/Q",
+            "endpoint": "_327_/D",
+            "slack_ns": 2.71332
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_271_/Q",
+            "endpoint": "_279_/D",
+            "slack_ns": 2.76745
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_331_/Q",
+            "endpoint": "_338_/D",
+            "slack_ns": 2.81204
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_283_/Q",
+            "endpoint": "_291_/D",
+            "slack_ns": 2.818
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_307_/Q",
+            "endpoint": "_315_/D",
+            "slack_ns": 2.82913
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_259_/Q",
+            "endpoint": "_267_/D",
+            "slack_ns": 2.84628
+          },
+          {
+            "check_type": "recovery",
+            "engine_check_role": "recovery",
+            "startpoint": "_258_/Q",
+            "endpoint": "_247_/RN",
+            "slack_ns": 3.49209
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "select_path/_433_/Q",
+            "endpoint": "select_path/_386_/D",
+            "slack_ns": 77.28611
+          }
+        ],
+        "hold": [
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_329_/Q",
+            "endpoint": "_330_/D",
+            "slack_ns": 1.74374
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_293_/Q",
+            "endpoint": "_294_/D",
+            "slack_ns": 1.74383
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_281_/Q",
+            "endpoint": "_282_/D",
+            "slack_ns": 1.74724
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_341_/Q",
+            "endpoint": "_342_/D",
+            "slack_ns": 1.74956
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_305_/Q",
+            "endpoint": "_306_/D",
+            "slack_ns": 1.7587
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_317_/Q",
+            "endpoint": "_318_/D",
+            "slack_ns": 1.75916
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_257_/Q",
+            "endpoint": "_258_/D",
+            "slack_ns": 1.7851
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_269_/Q",
+            "endpoint": "_270_/D",
+            "slack_ns": 1.79241
+          },
+          {
+            "check_type": "removal",
+            "engine_check_role": "removal",
+            "startpoint": "_306_/Q",
+            "endpoint": "_295_/RN",
+            "slack_ns": 3.47057
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "select_path/_432_/Q",
+            "endpoint": "select_path/_397_/D",
+            "slack_ns": 4.24255
+          }
+        ]
+      },
+      "clock_skew_ns": 0.03886,
+      "estimated_power_mw": 2.4437,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 596,
+        "nets_total": 596,
+        "design_nets_annotated": 596,
+        "design_nets_total": 596,
+        "design_nets_missing_sample": [],
+        "reader_warning_count": 0,
+        "reader_warning_sample": [],
+        "unannotated_driver_count": 6,
+        "partially_unannotated_driver_count": 0,
+        "floating_driver_count": 6,
+        "floating_driver_sample": [
+          "clkload0/Z",
+          "clkload1/ZN",
+          "clkload2/ZN",
+          "clkload3/Z",
+          "clkload4/ZN",
+          "clkload5/Z"
+        ],
+        "unannotated_driver_sample": [],
+        "unannotated_driver_detail": [],
+        "partially_unannotated_driver_sample": [],
+        "delay_changed": true,
+        "annotation_complete": true,
+        "annotation_warning": null
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "min_pulse_width": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "worst_slack_ns": null,
+          "worst_pin": null
+        },
+        "min_period": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "worst_slack_ns": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": {
+        "clock_sinks": 2,
+        "max_network_latency_ns": 1.82382,
+        "clock_sinks_sample": [
+          "select_path/_426_/CLK",
+          "select_path/_403_/CLK"
+        ]
+      },
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__ss_125C_3v00",
+        "content_hash": "sha256:5d2f37ba6f43e33aeba26dc1da55c96394a862eeec4148043f1d48bdf65ccea6",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    },
+    {
+      "corner": "ss_n40C_3v00",
+      "engine_log": {
+        "invocation_id": "88ad3b6c209e45ea992f981c603aa062",
+        "script_name": "sta_cryo_char_ctrl__ss_n40C_3v00.tcl",
+        "script_path": {
+          "path": "flow/readout/.klt/sta/sta_cryo_char_ctrl__ss_n40C_3v00.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "bdbd9427c0f2651c0d4aa2fd61d88a96bea5250d58a02ccd522ac50f28588b34",
+        "metrics_path": {
+          "path": "flow/readout/.klt/sta/cryo_char_ctrl__ss_n40C_3v00_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "flow/readout/.klt/sta/openroad-logs/88ad3b6c209e45ea992f981c603aa062",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "flow/readout/.klt/sta/openroad-logs/88ad3b6c209e45ea992f981c603aa062/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "flow/readout/.klt/sta/openroad-logs/88ad3b6c209e45ea992f981c603aa062/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "flow/readout/.klt/sta/openroad-logs/88ad3b6c209e45ea992f981c603aa062/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": 2.73628,
+      "total_negative_slack_ns": 0,
+      "worst_hold_slack_ns": 1.23019,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 160.46,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "incomplete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 65,
+          "sample": [
+            "bank_enable[0]",
+            "bank_enable[15]",
+            "bank_enable[16]",
+            "bank_enable[17]",
+            "bank_enable[18]",
+            "bank_enable[19]",
+            "bank_enable[1]",
+            "bank_enable[20]",
+            "bank_enable[21]",
+            "bank_enable[22]",
+            "bank_enable[23]",
+            "bank_enable[24]",
+            "bank_enable[25]",
+            "bank_enable[26]",
+            "bank_enable[27]",
+            "bank_enable[28]",
+            "bank_enable[29]",
+            "bank_enable[2]",
+            "bank_enable[30]",
+            "bank_enable[31]"
+          ],
+          "truncated": true,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "setup",
+        "engine_check_role": "setup",
+        "startpoint": "_247_/Q",
+        "endpoint": "_256_/D",
+        "slack_ns": 2.73628,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "hold",
+        "engine_check_role": "hold",
+        "startpoint": "_329_/Q",
+        "endpoint": "_330_/D",
+        "slack_ns": 1.23019,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_paths_by_group": {
+        "status": "ok",
+        "reason": null,
+        "setup": [
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_247_/Q",
+            "endpoint": "_256_/D",
+            "slack_ns": 2.73628
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_295_/Q",
+            "endpoint": "_303_/D",
+            "slack_ns": 2.76791
+          },
+          {
+            "check_type": "recovery",
+            "engine_check_role": "recovery",
+            "startpoint": "_258_/Q",
+            "endpoint": "_247_/RN",
+            "slack_ns": 5.22219
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_319_/Q",
+            "endpoint": "_327_/D",
+            "slack_ns": 5.64645
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_271_/Q",
+            "endpoint": "_279_/D",
+            "slack_ns": 5.68667
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_283_/Q",
+            "endpoint": "_291_/D",
+            "slack_ns": 5.71716
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_331_/Q",
+            "endpoint": "_338_/D",
+            "slack_ns": 5.72465
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_307_/Q",
+            "endpoint": "_315_/D",
+            "slack_ns": 5.73015
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_259_/Q",
+            "endpoint": "_267_/D",
+            "slack_ns": 5.73928
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "select_path/_433_/Q",
+            "endpoint": "select_path/_386_/D",
+            "slack_ns": 84.75412
+          }
+        ],
+        "hold": [
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_329_/Q",
+            "endpoint": "_330_/D",
+            "slack_ns": 1.23019
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_293_/Q",
+            "endpoint": "_294_/D",
+            "slack_ns": 1.23025
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_281_/Q",
+            "endpoint": "_282_/D",
+            "slack_ns": 1.23274
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_341_/Q",
+            "endpoint": "_342_/D",
+            "slack_ns": 1.23443
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_305_/Q",
+            "endpoint": "_306_/D",
+            "slack_ns": 1.24109
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_317_/Q",
+            "endpoint": "_318_/D",
+            "slack_ns": 1.24143
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_257_/Q",
+            "endpoint": "_258_/D",
+            "slack_ns": 1.26033
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_269_/Q",
+            "endpoint": "_270_/D",
+            "slack_ns": 1.26566
+          },
+          {
+            "check_type": "removal",
+            "engine_check_role": "removal",
+            "startpoint": "_306_/Q",
+            "endpoint": "_295_/RN",
+            "slack_ns": 2.40891
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "select_path/_432_/Q",
+            "endpoint": "select_path/_397_/D",
+            "slack_ns": 3.05383
+          }
+        ]
+      },
+      "clock_skew_ns": 0.02828,
+      "estimated_power_mw": 2.3498,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 596,
+        "nets_total": 596,
+        "design_nets_annotated": 596,
+        "design_nets_total": 596,
+        "design_nets_missing_sample": [],
+        "reader_warning_count": 0,
+        "reader_warning_sample": [],
+        "unannotated_driver_count": 6,
+        "partially_unannotated_driver_count": 0,
+        "floating_driver_count": 6,
+        "floating_driver_sample": [
+          "clkload0/Z",
+          "clkload1/ZN",
+          "clkload2/ZN",
+          "clkload3/Z",
+          "clkload4/ZN",
+          "clkload5/Z"
+        ],
+        "unannotated_driver_sample": [],
+        "unannotated_driver_detail": [],
+        "partially_unannotated_driver_sample": [],
+        "delay_changed": true,
+        "annotation_complete": true,
+        "annotation_warning": null
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "min_pulse_width": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "worst_slack_ns": null,
+          "worst_pin": null
+        },
+        "min_period": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "worst_slack_ns": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": {
+        "clock_sinks": 2,
+        "max_network_latency_ns": 1.313505,
+        "clock_sinks_sample": [
+          "select_path/_426_/CLK",
+          "select_path/_403_/CLK"
+        ]
+      },
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__ss_n40C_3v00",
+        "content_hash": "sha256:08847da4bb78d75ba004e79bb1540dd43fa8d4ed694b84ed5c182d0809520a93",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    },
+    {
+      "corner": "tt_025C_3v30",
+      "engine_log": {
+        "invocation_id": "bff0ac62b21e4491a9e8f37c3e368648",
+        "script_name": "sta_cryo_char_ctrl__tt_025C_3v30.tcl",
+        "script_path": {
+          "path": "flow/readout/.klt/sta/sta_cryo_char_ctrl__tt_025C_3v30.tcl",
+          "scope": "repo"
+        },
+        "script_sha256": "e709fd5d8703c4bec895d9ec2074824464928c2840c8b2d02130be39dc081415",
+        "metrics_path": {
+          "path": "flow/readout/.klt/sta/cryo_char_ctrl__tt_025C_3v30_metrics.json",
+          "scope": "repo"
+        },
+        "outcome": "exited",
+        "returncode": 0,
+        "directory": {
+          "path": "flow/readout/.klt/sta/openroad-logs/bff0ac62b21e4491a9e8f37c3e368648",
+          "scope": "repo"
+        },
+        "stdout_path": {
+          "path": "flow/readout/.klt/sta/openroad-logs/bff0ac62b21e4491a9e8f37c3e368648/stdout.log",
+          "scope": "repo"
+        },
+        "stderr_path": {
+          "path": "flow/readout/.klt/sta/openroad-logs/bff0ac62b21e4491a9e8f37c3e368648/stderr.log",
+          "scope": "repo"
+        },
+        "metadata_path": {
+          "path": "flow/readout/.klt/sta/openroad-logs/bff0ac62b21e4491a9e8f37c3e368648/invocation.json",
+          "scope": "repo"
+        },
+        "retention_errors": []
+      },
+      "worst_slack_ns": 4.51667,
+      "total_negative_slack_ns": 0,
+      "worst_hold_slack_ns": 0.84582,
+      "total_negative_hold_slack_ns": 0,
+      "fmax_mhz": 224.248,
+      "timing_status": "constrained",
+      "constraint_completeness": {
+        "status": "incomplete",
+        "unconstrained_endpoints": {
+          "status": "ok",
+          "count": 65,
+          "sample": [
+            "bank_enable[0]",
+            "bank_enable[15]",
+            "bank_enable[16]",
+            "bank_enable[17]",
+            "bank_enable[18]",
+            "bank_enable[19]",
+            "bank_enable[1]",
+            "bank_enable[20]",
+            "bank_enable[21]",
+            "bank_enable[22]",
+            "bank_enable[23]",
+            "bank_enable[24]",
+            "bank_enable[25]",
+            "bank_enable[26]",
+            "bank_enable[27]",
+            "bank_enable[28]",
+            "bank_enable[29]",
+            "bank_enable[2]",
+            "bank_enable[30]",
+            "bank_enable[31]"
+          ],
+          "truncated": true,
+          "reason": null
+        },
+        "unclocked_registers": {
+          "status": "ok",
+          "count": 0,
+          "sample": [],
+          "truncated": false,
+          "reason": null
+        },
+        "sample_limit": 20
+      },
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "worst_setup_path": {
+        "status": "ok",
+        "check_type": "setup",
+        "engine_check_role": "setup",
+        "startpoint": "_247_/Q",
+        "endpoint": "_256_/D",
+        "slack_ns": 4.51667,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_hold_path": {
+        "status": "ok",
+        "check_type": "hold",
+        "engine_check_role": "hold",
+        "startpoint": "_329_/Q",
+        "endpoint": "_330_/D",
+        "slack_ns": 0.84582,
+        "consistent_with_aggregate": true,
+        "reason": null
+      },
+      "worst_paths_by_group": {
+        "status": "ok",
+        "reason": null,
+        "setup": [
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_247_/Q",
+            "endpoint": "_256_/D",
+            "slack_ns": 4.51667
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_295_/Q",
+            "endpoint": "_303_/D",
+            "slack_ns": 4.54066
+          },
+          {
+            "check_type": "recovery",
+            "engine_check_role": "recovery",
+            "startpoint": "_258_/Q",
+            "endpoint": "_247_/RN",
+            "slack_ns": 6.15762
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_319_/Q",
+            "endpoint": "_327_/D",
+            "slack_ns": 7.45503
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_271_/Q",
+            "endpoint": "_279_/D",
+            "slack_ns": 7.48344
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_283_/Q",
+            "endpoint": "_291_/D",
+            "slack_ns": 7.49716
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_331_/Q",
+            "endpoint": "_338_/D",
+            "slack_ns": 7.51248
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_307_/Q",
+            "endpoint": "_315_/D",
+            "slack_ns": 7.51397
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "_259_/Q",
+            "endpoint": "_267_/D",
+            "slack_ns": 7.52077
+          },
+          {
+            "check_type": "setup",
+            "engine_check_role": "setup",
+            "startpoint": "select_path/_433_/Q",
+            "endpoint": "select_path/_386_/D",
+            "slack_ns": 88.71835
+          }
+        ],
+        "hold": [
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_329_/Q",
+            "endpoint": "_330_/D",
+            "slack_ns": 0.84582
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_293_/Q",
+            "endpoint": "_294_/D",
+            "slack_ns": 0.84586
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_281_/Q",
+            "endpoint": "_282_/D",
+            "slack_ns": 0.84767
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_341_/Q",
+            "endpoint": "_342_/D",
+            "slack_ns": 0.8489
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_305_/Q",
+            "endpoint": "_306_/D",
+            "slack_ns": 0.85374
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_317_/Q",
+            "endpoint": "_318_/D",
+            "slack_ns": 0.85398
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_257_/Q",
+            "endpoint": "_258_/D",
+            "slack_ns": 0.86772
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "_269_/Q",
+            "endpoint": "_270_/D",
+            "slack_ns": 0.87159
+          },
+          {
+            "check_type": "removal",
+            "engine_check_role": "removal",
+            "startpoint": "_306_/Q",
+            "endpoint": "_295_/RN",
+            "slack_ns": 1.79261
+          },
+          {
+            "check_type": "hold",
+            "engine_check_role": "hold",
+            "startpoint": "select_path/_432_/Q",
+            "endpoint": "select_path/_397_/D",
+            "slack_ns": 2.17194
+          }
+        ]
+      },
+      "clock_skew_ns": 0.02154,
+      "estimated_power_mw": 2.8807,
+      "power_basis": {
+        "activity_source": "engine_default",
+        "activity": null,
+        "duty": null,
+        "parasitics": "spef_annotated"
+      },
+      "spef_annotation": {
+        "nets_annotated": 596,
+        "nets_total": 596,
+        "design_nets_annotated": 596,
+        "design_nets_total": 596,
+        "design_nets_missing_sample": [],
+        "reader_warning_count": 0,
+        "reader_warning_sample": [],
+        "unannotated_driver_count": 6,
+        "partially_unannotated_driver_count": 0,
+        "floating_driver_count": 6,
+        "floating_driver_sample": [
+          "clkload0/Z",
+          "clkload1/ZN",
+          "clkload2/ZN",
+          "clkload3/Z",
+          "clkload4/ZN",
+          "clkload5/Z"
+        ],
+        "unannotated_driver_sample": [],
+        "unannotated_driver_detail": [],
+        "partially_unannotated_driver_sample": [],
+        "delay_changed": true,
+        "annotation_complete": true,
+        "annotation_warning": null
+      },
+      "electrical_checks": {
+        "parasitics_source": "spef",
+        "max_transition": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "max_capacitance": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "pF",
+          "violation_count": 0,
+          "net_count": 0,
+          "worst_excess": null,
+          "worst_pin": null
+        },
+        "min_pulse_width": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "worst_slack_ns": null,
+          "worst_pin": null
+        },
+        "min_period": {
+          "coverage": "checked",
+          "limit_source": "liberty",
+          "unit": "ns",
+          "violation_count": 0,
+          "worst_slack_ns": null,
+          "worst_pin": null
+        }
+      },
+      "clock_propagation": {
+        "clock_sinks": 2,
+        "max_network_latency_ns": 0.959512,
+        "clock_sinks_sample": [
+          "select_path/_426_/CLK",
+          "select_path/_403_/CLK"
+        ]
+      },
+      "sdf": null,
+      "deck": {
+        "name": "gf180mcu_fd_sc_mcu7t5v0__tt_025C_3v30",
+        "content_hash": "sha256:f9dee07cf158324934b0c59144d970a2e8313f43533ede6283ec3c136f82fe53",
+        "released": false,
+        "path": {
+          "path": null,
+          "scope": "external"
+        }
+      }
+    }
+  ],
+  "timing_input_sha256": {
+    "timing-stress.json": "29d0d13be90ed49d3b58e6ad735fc475930b74c7e26f33a62095b4fdd7f82b39",
+    "cryo_char_ctrl.def": "080c74c1daf3270d5df9ff46601c9d2669ba5ee7df89a66868a4d5dcb1afaf3d",
+    "cryo_char_ctrl.spef": "3ede30e0899174bbf176c37d406d19be42af79db6560aa7c359ae2cc5ae46323"
+  }
+}

@@ -14,6 +14,8 @@ sim/*/_build/
 sim/*/_selftest/
 # synthesis / P&R scratch
 flow/build/
+flow/readout/.klt/
+flow/out/
 # local klt install, created by the setup script
 .venv/
 # >>> loom-managed (do not edit) >>>
