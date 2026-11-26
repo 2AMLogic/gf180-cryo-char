@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "sha256": "6a97d4cbd25f4feccf44ed9ac0887d6254208b83050c3e8934672e35d3e8a8a8",
+      "size": 178401210,
+      "kind": "evidence",
+      "producer": {
+        "tool": "librelane",
+        "version": "0.9.3.dev5655+g31430c389781",
+        "loom.repo": "2AMLogic/gf180-cryo-char",
+        "commit": "cfa2b8d7f69460a979ee1d7dfcf2c066d933fdaa"
+      },
+      "uri": "artifact:evidence/2AMLogic__gf180-cryo-char/6a/6a97d4cbd25f4feccf44ed9ac0887d6254208b83050c3e8934672e35d3e8a8a8",
+      "name": "build/20261126-130323-f191663-template/chip_top.gds"
+    }
+  ]
+}

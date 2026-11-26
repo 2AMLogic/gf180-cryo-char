@@ -1,0 +1,15 @@
+{
+  "klayout": "KLayout 0.30.12",
+  "librelane": "3.1.0.dev3",
+  "magic": "8.3.677",
+  "nix": "nix (Nix) 2.28.4",
+  "openroad": "dcf36133a369abc8f3c5e5738cd4d82e4903c0e0",
+  "paths": {
+    "klayout": "/nix/store/3r0gkdjijcs04pg5rlz2wmfz0j3xpfp9-devshell-dir/bin/klayout",
+    "magic": "/nix/store/3r0gkdjijcs04pg5rlz2wmfz0j3xpfp9-devshell-dir/bin/magic",
+    "openroad": "/nix/store/3r0gkdjijcs04pg5rlz2wmfz0j3xpfp9-devshell-dir/bin/openroad",
+    "yosys": "/nix/store/3r0gkdjijcs04pg5rlz2wmfz0j3xpfp9-devshell-dir/bin/yosys"
+  },
+  "python": "Python 3.13.13",
+  "yosys": "Yosys 0.69 (git sha1 9f75ca1f9834a39a863915b5dae0c7b1e33533bc, Release, Clang /nix/store/874j5xydsj6nr6i1zdrjvhln5gmxvvrr-clang-wrapper-21.1.8/bin/clang++ 21.1.8)"
+}
