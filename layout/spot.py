@@ -242,9 +242,9 @@ def cmd_submit(stage: str, args: argparse.Namespace) -> int:
         "",
     )
     if stage == "build" and args.probe:
-        command += ["--shard", "--probe"]
+        command += ["--shard=--probe"]
     if job_args:
-        command += ["--shard", shlex.join(job_args)]
+        command += [f"--shard={shlex.join(job_args)}"]
     if args.timeout:
         command += ["--timeout", str(args.timeout)]
     command += ["--dry-run"] if args.dry_run else []
