@@ -97,7 +97,9 @@ result. Where the agents hit friction with the open-source tooling — most ofte
 filed as a public issue against the tool itself, so the fix benefits everyone
 using gf180mcu, not just this repo.
 
-## Target specification (DRAFT — engineering to ratify, see issue #1)
+## Target specification
+
+These targets take effect on merge of the independently reviewed, operator-approved decision 0001 for issue #1.
 
 | Parameter | Target | Stretch |
 |---|---|---|
