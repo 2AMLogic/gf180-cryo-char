@@ -8,7 +8,7 @@ import unittest
 
 import klayout.db as db
 
-from flow import reproduce, time_readout
+from flow import check_lvs, reproduce, time_readout
 
 MACRO = reproduce.MACRO
 
@@ -48,6 +48,14 @@ class RoutedReadout(unittest.TestCase):
                 self.assertEqual(report["status"], "violations")
                 self.assertEqual(report["rule_counts"], dict.fromkeys(density, 1))
                 self.assertEqual(report["violation_count"], len(density))
+
+    def test_routed_lvs(self):
+        report = read_json(MACRO / "lvs.report.json")
+        check_lvs.verify(report)
+        self.assertEqual(
+            report["provenance"]["input"]["content_hash"],
+            "sha256:" + reproduce.sha(MACRO / "cryo_char_ctrl.gds"),
+        )
 
     def test_grid_conversion_rejects_lost_metal(self):
         with tempfile.TemporaryDirectory() as tmp:

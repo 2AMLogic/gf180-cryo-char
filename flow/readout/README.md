@@ -2,7 +2,7 @@
 
 The integration input for the die floorplan is [cryo_char_ctrl.gds](cryo_char_ctrl.gds), with port names, coordinates and supply nets in the [routed DEF](cryo_char_ctrl.def). The controller occupies **244.42 × 244.42 µm** including its margin. The selector, eight divide-by-1,024 channels and their reset logic occupy a 49,172.5 µm² core. This build uses the default 1,024-bit `CUT_PATHS=0` mask in the mapped [controller](../../rtl/cryo_char_ctrl.gl.v). Changing a freeze mask requires a new synthesis and route.
 
-The [route record](route.json) binds the 576-cell source netlist, request, DEF and GDS by SHA-256. Detailed routing returned zero markers. The DEF contains 2,766 placed components, including 435 taps, with VDD and VSS special nets. Physical clock-tree synthesis reached 64 sinks on `clk`. The eight `ro_clk` inputs use ordinary signal routing. Full clock-tree coverage, signal and supply LVS, supply ERC and die-level density/precheck remain open. [Readout layout tracker](https://github.com/2AMLogic/gf180-cryo-char/issues/17) · [Multi-clock CTS](https://github.com/2AMLogic/klayout-tools/issues/7945) · [Die handoff](https://github.com/2AMLogic/gf180-cryo-char/issues/4)
+The [route record](route.json) binds the 576-cell source netlist, request, DEF and GDS by SHA-256. Detailed routing returned zero markers. The DEF contains 2,766 placed components, including 435 taps, with VDD and VSS special nets. Physical clock-tree synthesis reached 64 sinks on `clk`. The eight `ro_clk` inputs use ordinary signal routing. The gate-level signal and rail LVS results are recorded below. Full clock-tree coverage, body-tie ERC and die-level density/precheck remain open. [Readout layout tracker](https://github.com/2AMLogic/gf180-cryo-char/issues/17) · [Multi-clock CTS](https://github.com/2AMLogic/klayout-tools/issues/7945) · [Die handoff](https://github.com/2AMLogic/gf180-cryo-char/issues/4)
 
 ## Reproduce the layout
 
@@ -54,3 +54,15 @@ python flow/time_readout.py
 ```
 
 The replay records a SHA-256 of the exact request, DEF and SPEF in each timing report. KLT also records its own DEF provenance. The [measured-period report](timing.report.json) times the selector at an assumed 100 ns and the eight asynchronous ring inputs at the per-family periods above. Each of the five Liberty corners annotated all 596 design nets, with zero reader warnings and six floating drivers. Worst setup slack is **+0.31881 ns** (slow, 125 °C, 3.0 V). Worst hold is **+0.47046 ns** (fast, −40 °C, 3.6 V). The [stress report](timing-stress.report.json) tightens the 12-track period to 9 ns and holds both foundry families at 12 ns. It records four slow/hot setup violations, worst **−0.18119 ns** from `_247_/Q` to `_256_/D`. Both runs leave 65 endpoints unconstrained, including macro I/O that needs system timing budgets. The evidence supports the digital layout row. Timing closure, DRC signoff and full-die acceptance remain outstanding.
+
+## Gate-level connectivity
+
+The [LVS report](lvs.report.json) compares the physical GDS to the [as-built Verilog](cryo_char_ctrl.asbuilt.v) regenerated alongside the DEF. The comparison uses the foundry 7-track pin definitions, names extracted nets from the routed layout, and locates the 112 functional terminals using the DEF. The GDS, DEF, reference and [request](lvs.json) are all hash-bound in the report. The request selects GF180D 11K top metal.
+
+Both signal and supply verdicts are `match`. The signal compare has zero errors. Its five informational entries cover unused device classes in this standard-cell black-box comparison, pruning physical-only cells and anchoring public pins. All 2,766 placed instances participate in the VDD/VSS connectivity check, with zero findings. The library exposes these two rail names to the abstract compare. Separate VNW/VPW ties and internal transistor bodies require electrical-rule checking. KLT's reported body device count is zero for this comparison.
+
+Run the following with the PDK and tools from the layout replay. It first compares the published macro, then inserts a real Metal2 bridge between ro_clk[2] and ro_clk[6] in a temporary copy of the GDS. A second control feeds divider 7's bit-zero DFF from ro_clk[6] in a temporary reference. Both controls must produce signal mismatches while the rail verdict remains matched.
+
+```sh
+python flow/check_lvs.py --negative-controls
+```
