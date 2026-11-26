@@ -1,0 +1,139 @@
+2026-11-26 13:44:59 +0000: Memory Usage (414224K) : Starting running GF180MCU Klayout DRC runset on /var/tmp/eda-job-cryo4-die-cfa2b8d-s00/src/precheck/flow/runs/RUN_2026-11-26_13-44-39/04-klayout-generateid/chip_top.gds
+2026-11-26 13:44:59 +0000: Memory Usage (414224K) : Ruby Version for klayout: 3.4.9
+2026-11-26 13:44:59 +0000: Memory Usage (415632K) : Input file: /var/tmp/eda-job-cryo4-die-cfa2b8d-s00/src/precheck/flow/runs/RUN_2026-11-26_13-44-39/04-klayout-generateid/chip_top.gds
+2026-11-26 13:44:59 +0000: Memory Usage (415632K) : DRC Run Report: /var/tmp/eda-job-cryo4-die-cfa2b8d-s00/src/precheck/flow/runs/RUN_2026-11-26_13-44-39/06-klayout-density/reports/density.klayout.lyrdb
+2026-11-26 13:44:59 +0000: Memory Usage (415632K) : MIM Option selected: B
+2026-11-26 13:44:59 +0000: Memory Usage (415632K) : Verbose enabled: false
+2026-11-26 13:44:59 +0000: Memory Usage (415632K) : Number of parallel workers: 8
+2026-11-26 13:44:59 +0000: Memory Usage (415632K) : Number of threads for DRC functions: 16
+2026-11-26 13:44:59 +0000: Memory Usage (415632K) : Run mode: deep
+2026-11-26 13:44:59 +0000: Memory Usage (415632K) : metal_top selected: 11K
+2026-11-26 13:44:59 +0000: Memory Usage (415632K) : metal_level selected: 5LM
+2026-11-26 13:44:59 +0000: Memory Usage (415632K) : Selected decks: density
+2026-11-26 13:45:01 +0000: Memory Usage (634136K) : Total area of the design is 20139704.0 um^2.
+2026-11-26 13:45:01 +0000: Memory Usage (634136K) : Read in polygons from layers
+2026-11-26 13:45:01 +0000: Memory Usage (634392K) : comp has 3077781 polygons
+2026-11-26 13:45:01 +0000: Memory Usage (634392K) : dnwell has 0 polygons
+2026-11-26 13:45:01 +0000: Memory Usage (634392K) : nwell has 282838 polygons
+2026-11-26 13:45:01 +0000: Memory Usage (634392K) : lvpwell has 311316 polygons
+2026-11-26 13:45:01 +0000: Memory Usage (634392K) : dualgate has 316310 polygons
+2026-11-26 13:45:02 +0000: Memory Usage (634392K) : poly2_drawn has 2944318 polygons
+2026-11-26 13:45:02 +0000: Memory Usage (634392K) : nplus has 320668 polygons
+2026-11-26 13:45:02 +0000: Memory Usage (634392K) : pplus has 382904 polygons
+2026-11-26 13:45:02 +0000: Memory Usage (634392K) : sab has 2390 polygons
+2026-11-26 13:45:02 +0000: Memory Usage (634392K) : esd has 0 polygons
+2026-11-26 13:45:02 +0000: Memory Usage (634392K) : resistor has 0 polygons
+2026-11-26 13:45:02 +0000: Memory Usage (634392K) : fhres has 0 polygons
+2026-11-26 13:45:02 +0000: Memory Usage (634392K) : fusetop has 0 polygons
+2026-11-26 13:45:02 +0000: Memory Usage (634392K) : fusewindow_d has 0 polygons
+2026-11-26 13:45:02 +0000: Memory Usage (634392K) : polyfuse has 0 polygons
+2026-11-26 13:45:02 +0000: Memory Usage (634392K) : mvsd has 0 polygons
+2026-11-26 13:45:02 +0000: Memory Usage (634392K) : mvpsd has 0 polygons
+2026-11-26 13:45:02 +0000: Memory Usage (634392K) : nat has 0 polygons
+2026-11-26 13:45:02 +0000: Memory Usage (634392K) : comp_dummy has 27363 polygons
+2026-11-26 13:45:02 +0000: Memory Usage (634392K) : poly2_dummy has 0 polygons
+2026-11-26 13:45:02 +0000: Memory Usage (634392K) : schottky_diode has 0 polygons
+2026-11-26 13:45:02 +0000: Memory Usage (634520K) : zener has 0 polygons
+2026-11-26 13:45:03 +0000: Memory Usage (634520K) : res_mk has 1068 polygons
+2026-11-26 13:45:03 +0000: Memory Usage (634520K) : opc_drc has 0 polygons
+2026-11-26 13:45:03 +0000: Memory Usage (634520K) : v5_xtor has 266616 polygons
+2026-11-26 13:45:03 +0000: Memory Usage (634520K) : cap_mk has 0 polygons
+2026-11-26 13:45:03 +0000: Memory Usage (634520K) : mos_cap_mk has 35732 polygons
+2026-11-26 13:45:03 +0000: Memory Usage (634520K) : ind_mk has 0 polygons
+2026-11-26 13:45:03 +0000: Memory Usage (634520K) : diode_mk has 960 polygons
+2026-11-26 13:45:03 +0000: Memory Usage (634520K) : drc_bjt has 0 polygons
+2026-11-26 13:45:03 +0000: Memory Usage (634520K) : lvs_bjt has 0 polygons
+2026-11-26 13:45:03 +0000: Memory Usage (634520K) : mim_l_mk has 0 polygons
+2026-11-26 13:45:03 +0000: Memory Usage (634520K) : latchup_mk has 124 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : guard_ring_mk has 4 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : otp_mk has 0 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : mtpmark has 0 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : neo_ee_mk has 0 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : sramcore has 10420 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : lvs_rf has 0 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : lvs_drain has 0 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : hvpolyrs has 0 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : lvs_io has 108 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : probe_mk has 0 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : esd_mk has 108 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : lvs_source has 1080 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : well_diode_mk has 0 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : ldmos_xtor has 0 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : plfuse has 0 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : efuse_mk has 0 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : mcell_feol_mk has 0 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : ymtp_mk has 0 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : dev_wf_mk has 0 polygons
+2026-11-26 13:45:04 +0000: Memory Usage (634520K) : comp_label has 0 polygons
+2026-11-26 13:45:05 +0000: Memory Usage (634520K) : poly2_label has 0 polygons
+2026-11-26 13:45:05 +0000: Memory Usage (634520K) : mdiode has 0 polygons
+2026-11-26 13:45:05 +0000: Memory Usage (634520K) : ndmy has 2 polygons
+2026-11-26 13:45:05 +0000: Memory Usage (634520K) : pmndmy has 4 polygons
+2026-11-26 13:45:05 +0000: Memory Usage (634520K) : pad has 82 polygons
+2026-11-26 13:45:05 +0000: Memory Usage (634520K) : ubmpperi has 0 polygons
+2026-11-26 13:45:05 +0000: Memory Usage (634520K) : ubmparray has 0 polygons
+2026-11-26 13:45:05 +0000: Memory Usage (634520K) : ubmeplate has 0 polygons
+2026-11-26 13:45:05 +0000: Memory Usage (634520K) : pr_bndry has 274958 polygons
+2026-11-26 13:45:05 +0000: Memory Usage (634520K) : border has 0 polygons
+2026-11-26 13:45:05 +0000: Memory Usage (634520K) : contact has 19958096 polygons
+2026-11-26 13:45:06 +0000: Memory Usage (634520K) : metal1_drawn has 8042226 polygons
+2026-11-26 13:45:06 +0000: Memory Usage (634520K) : metal1_slot has 0 polygons
+2026-11-26 13:45:06 +0000: Memory Usage (634520K) : metal1_dummy has 0 polygons
+2026-11-26 13:45:06 +0000: Memory Usage (634520K) : metal1_label has 0 polygons
+2026-11-26 13:45:06 +0000: Memory Usage (634520K) : metal1_blk has 0 polygons
+2026-11-26 13:45:06 +0000: Memory Usage (634520K) : metal1_res has 0 polygons
+2026-11-26 13:45:06 +0000: Memory Usage (634520K) : via1 has 2030649 polygons
+2026-11-26 13:45:07 +0000: Memory Usage (648216K) : metal2_drawn has 1537539 polygons
+2026-11-26 13:45:07 +0000: Memory Usage (648216K) : metal2_slot has 0 polygons
+2026-11-26 13:45:07 +0000: Memory Usage (648216K) : metal2_dummy has 0 polygons
+2026-11-26 13:45:07 +0000: Memory Usage (648216K) : metal2_blk has 0 polygons
+2026-11-26 13:45:07 +0000: Memory Usage (648216K) : metal2_label has 0 polygons
+2026-11-26 13:45:07 +0000: Memory Usage (648216K) : metal2_res has 0 polygons
+2026-11-26 13:45:07 +0000: Memory Usage (654872K) : via2 has 2784586 polygons
+2026-11-26 13:45:07 +0000: Memory Usage (686616K) : metal3_drawn has 1292771 polygons
+2026-11-26 13:45:07 +0000: Memory Usage (686616K) : metal3_slot has 0 polygons
+2026-11-26 13:45:08 +0000: Memory Usage (686616K) : metal3_dummy has 0 polygons
+2026-11-26 13:45:08 +0000: Memory Usage (686616K) : metal3_blk has 0 polygons
+2026-11-26 13:45:08 +0000: Memory Usage (686616K) : metal3_label has 0 polygons
+2026-11-26 13:45:08 +0000: Memory Usage (686616K) : metal3_res has 0 polygons
+2026-11-26 13:45:08 +0000: Memory Usage (686616K) : via3 has 11147338 polygons
+2026-11-26 13:45:08 +0000: Memory Usage (720792K) : metal4_drawn has 1043401 polygons
+2026-11-26 13:45:08 +0000: Memory Usage (720792K) : metal4_slot has 0 polygons
+2026-11-26 13:45:08 +0000: Memory Usage (720792K) : metal4_dummy has 0 polygons
+2026-11-26 13:45:09 +0000: Memory Usage (720792K) : metal4_blk has 0 polygons
+2026-11-26 13:45:09 +0000: Memory Usage (720792K) : metal4_label has 0 polygons
+2026-11-26 13:45:09 +0000: Memory Usage (720792K) : metal4_res has 0 polygons
+2026-11-26 13:45:09 +0000: Memory Usage (720792K) : via4 has 9808394 polygons
+2026-11-26 13:45:09 +0000: Memory Usage (737944K) : metal5_drawn has 675420 polygons
+2026-11-26 13:45:09 +0000: Memory Usage (737944K) : metal5_slot has 0 polygons
+2026-11-26 13:45:09 +0000: Memory Usage (737944K) : metal5_dummy has 0 polygons
+2026-11-26 13:45:09 +0000: Memory Usage (737944K) : metal5_blk has 0 polygons
+2026-11-26 13:45:10 +0000: Memory Usage (737944K) : metal5_label has 74 polygons
+2026-11-26 13:45:10 +0000: Memory Usage (737944K) : metal5_res has 0 polygons
+2026-11-26 13:45:59 +0000: Memory Usage (1549976K) : No rules requiring connectivity, skipping connectivity generation.
+2026-11-26 13:45:59 +0000: Memory Usage (1549976K) : # Setup took 59.587133116 seconds
+2026-11-26 13:45:59 +0000: Memory Usage (1549976K) : Starting GF180MCU DRC rules.
+2026-11-26 13:45:59 +0000: Memory Usage (1549976K) : Starting DRC in isolated parallel mode: executing 1 deck(s).
+2026-11-26 13:45:59 +0000: Memory Usage (1361144K) : Executing deck : density
+2026-11-26 13:46:00 +0000: Memory Usage (1375100K) : Executing rule DCF.1a
+2026-11-26 13:47:57 +0000: Memory Usage (3171420K) : Executing rule DCF.1b
+2026-11-26 13:48:02 +0000: Memory Usage (3171564K) : COMP ratio: 46.392294311400995 %
+2026-11-26 13:48:02 +0000: Memory Usage (3171564K) : Executing rule DCF.1d
+2026-11-26 13:48:02 +0000: Memory Usage (3171564K) : Executing rule PL.8
+2026-11-26 13:48:05 +0000: Memory Usage (3171564K) : Poly2 ratio: 36.18148714201559 %
+2026-11-26 13:48:05 +0000: Memory Usage (3171564K) : Executing rule M1.4
+2026-11-26 13:48:44 +0000: Memory Usage (3240940K) : Metal1 ratio: 43.88004792428429 %
+2026-11-26 13:48:44 +0000: Memory Usage (3240940K) : Executing rule M2.4
+2026-11-26 13:51:49 +0000: Memory Usage (3275756K) : Metal2 ratio: 41.50139349770483 %
+2026-11-26 13:51:49 +0000: Memory Usage (3275756K) : Executing rule M3.4
+2026-11-26 13:53:07 +0000: Memory Usage (3275756K) : Metal3 ratio: 46.97741372797236 %
+2026-11-26 13:53:07 +0000: Memory Usage (3275756K) : Executing rule M4.4
+2026-11-26 13:53:17 +0000: Memory Usage (3275756K) : Metal4 ratio: 51.00584713493803 %
+2026-11-26 13:53:17 +0000: Memory Usage (3275756K) : Executing rule M5.4
+2026-11-26 13:53:27 +0000: Memory Usage (3275756K) : Metal5 ratio: 43.78825397170187 %
+2026-11-26 13:53:27 +0000: Memory Usage (3275756K) : Executing rule MT.3
+2026-11-26 13:53:27 +0000: Memory Usage (3275756K) : MetalTop ratio: 43.78825397170187 %
+2026-11-26 13:53:27 +0000: Memory Usage (3275884K) : Completed deck : density
+2026-11-26 13:53:28 +0000: Memory Usage (1550632K) : 
+2026-11-26 13:53:28 +0000: Memory Usage (1550632K) : DRC RESULT: SUCCESS (0 violations)
+2026-11-26 13:53:28 +0000: Memory Usage (1550632K) : # DRC Total Run time 508.55798826 seconds
