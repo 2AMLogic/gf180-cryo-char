@@ -1,0 +1,21 @@
+{
+  "simulator": "ngspice 46",
+  "pdk": "gf180mcuD",
+  "open_pdks": "f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7",
+  "wafer_space_pdk": "ac7d8696de96a4d708e768b607ae37f02207a354",
+  "source_repo": "2AMLogic/gf180-efuse-otp",
+  "source_commit": "5ff12fe481ca9c52c653896f298aea3241184c51",
+  "sha256": {
+    "sim/readout/routed_ring.py": "89b0734a8510474a3d127d0744ed2abbdb4cbdb6a756a8bd7de90b1c1b78878a",
+    "sim/readout/ring_clock.py": "a3b300ee7fc883267ff659d80feecbc4641c60e999133868e1b4f5531a300b96",
+    "sim/readout/ring_inputs.json": "d88f2a51fb97bd3f7ff68fecf20d8e6a8e90c0ddaa043e0b8a9c278a9b099dc6",
+    "flow/readout/cryo_char_ctrl.def": "06bf00d536604d33a068aedb250b7124fb112ae35dbda5cb3c81818adade105a",
+    "flow/readout/cryo_char_ctrl.spef": "58227c5fa6af4823f4f6d44ac9f28857da8b911774a29990c830ab51ea8b9ba1",
+    "flow/readout/routed-ring-capture.csv": "018eb696c03fb69e74c5ac55410115f28290a8ee12099023927b8b9aaffe1145",
+    "design/ro-crossing/efuse_ls.gds": "391a624740b1cfbd29f85b9ba835f2edb05d585e3347a8e2a93810d6013f1ae3",
+    "design/ro-crossing/efuse_ls.spice": "3f4faf27e28fbab794eae598b6565d97cdd723546c02263ed8db91baed9d76b7",
+    "design/ro-crossing/efuse_ls.pex.spice": "1c38888b2f0ba5479c0042ed244dc8f97886dc59c9b72d36713dd37f32a89230",
+    "design/ro-crossing/measurements.csv": "061de44424966382930bf09b1aa3fa48a181c2fab42d5a7585d8a5b7f0821d24",
+    "design/ro-crossing/unloaded.csv": "2d70154dd64717fc74452ad012afb4c2091b0d5e04eb6da2309d641f952f20f6"
+  }
+}

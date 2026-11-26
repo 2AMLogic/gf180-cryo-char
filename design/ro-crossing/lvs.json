@@ -1,0 +1,37 @@
+{
+  "layout": {
+    "file": "efuse_ls.gds",
+    "top": "efuse_ls",
+    "deck": "gf180mcu",
+    "deck_options": {
+      "metal_top": "11K"
+    },
+    "declared_pins": [
+      "in",
+      "out",
+      "vdd33",
+      "vprog",
+      "vss"
+    ]
+  },
+  "reference": {
+    "netlist": "efuse_ls.spice",
+    "form": "subckt-call",
+    "deck": "gf180mcu",
+    "top": "efuse_ls"
+  },
+  "options": {
+    "anchor_top_level_pins": true,
+    "compare_parameters": {
+      "nfet": [
+        "L",
+        "W"
+      ],
+      "pfet": [
+        "L",
+        "W"
+      ]
+    }
+  },
+  "portable_paths": true
+}

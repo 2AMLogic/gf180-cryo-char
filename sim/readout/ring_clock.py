@@ -29,7 +29,14 @@ def positive(value):
     return number
 
 
-def deck(args, pdk, receiver_lines=None):
+def load_capacitance(value):
+    number = float(value)
+    if not math.isfinite(number) or number < 0:
+        raise argparse.ArgumentTypeError("expected a finite nonnegative capacitance")
+    return number
+
+
+def deck(args, pdk, receiver_lines=None, crossing=None):
     lib, _ = FAMILIES[args.family]
     ctrl = FAMILIES["7t"][0]
     supply = "vv 0" if args.family == "12t" else "vv vv 0 0"
@@ -43,6 +50,13 @@ def deck(args, pdk, receiver_lines=None):
         f'.lib "{model}/sm141064.ngspice" {args.process}',
     ]
     lines.extend(f'.include "{pdk / cell_path(source)}"' for source in sources)
+    if crossing is not None:
+        lines += [
+            f'.include "{crossing}"',
+            "VSHIFTLO vv shift_lo 0",
+            "VSHIFTHI vc shift_hi 0",
+            "XSHIFT out translated shift_lo shift_hi 0 efuse_ls",
+        ]
     enable = 0 if args.disabled else args.voltage
     lines += [
         ".param sw_stat_global=0",
@@ -72,16 +86,21 @@ def deck(args, pdk, receiver_lines=None):
         else:
             lines.extend(receiver_lines)
     probe = "q" if args.logic_supply else "n142"
+    clock_input = "out" if crossing is None else "translated"
+    vectors = f"v(out) v({probe}) i(VRO)"
+    if crossing is not None:
+        vectors += " v(translated) i(VSHIFTLO) i(VSHIFTHI)"
+    lines.append(f"XB n142 out {supply} {lib}__buf_1")
+    if args.load_ff:
+        lines.append(f"CL {clock_input} 0 {args.load_ff}f")
     lines += [
-        f"XB n142 out {supply} {lib}__buf_1",
-        f"CL out 0 {args.load_ff}f",
         ".options num_threads=1",
         ".control",
         "set wr_singlescale",
         "set numdgt=10",
-        f"save v(out) v({probe}) i(VRO)",
+        f"save {vectors}",
         f"tran {args.step_ns}n {args.duration_ns}n",
-        f"wrdata wave.dat v(out) v({probe}) i(VRO)",
+        f"wrdata wave.dat {vectors}",
         "quit",
         ".endc",
         ".end",
@@ -101,8 +120,20 @@ def crossings(rows, column, threshold, rising_only):
     return edges
 
 
-def measure(rows, args):
-    if not rows or any(len(r) != 4 or not all(map(math.isfinite, r)) for r in rows):
+def mean_current_ua(rows, column, start, end):
+    charge = 0
+    for a, b in zip(rows, rows[1:]):
+        left, right = max(a[0], start), min(b[0], end)
+        if left < right:
+            middle = ((left + right) / 2 - a[0]) / (b[0] - a[0])
+            current = a[column] + (b[column] - a[column]) * middle
+            charge += current * (right - left)
+    return charge / (end - start) * 1e6
+
+
+def measure(rows, args, crossing=False):
+    width = 7 if crossing else 4
+    if not rows or any(len(r) != width or not all(map(math.isfinite, r)) for r in rows):
         raise ValueError("missing or non-finite transient samples")
     if rows[-1][0] < args.duration_ns * 1e-9 * 0.99999 or any(
         b[0] <= a[0] for a, b in zip(rows, rows[1:])
@@ -124,21 +155,22 @@ def measure(rows, args):
     # Drop the first start-up cycle. Integrate only complete subsequent cycles.
     start, end = edges[1], edges[-1]
     cycles = list(zip(edges[1:-1], edges[2:]))
-    charge = 0
-    for a, b in zip(rows, rows[1:]):
-        left, right = max(a[0], start), min(b[0], end)
-        if left < right:
-            current = a[3] + (b[3] - a[3]) * ((left + right) / 2 - a[0]) / (b[0] - a[0])
-            charge -= current * (right - left)
     window = [r for r in rows if start <= r[0] <= end]
     result.update(
         period_min_ns=min(b - a for a, b in cycles) * 1e9,
         period_max_ns=max(b - a for a, b in cycles) * 1e9,
         frequency_mhz=len(cycles) / (end - start) * 1e-6,
-        average_vro_current_ua=charge / (end - start) * 1e6,
+        average_vro_current_ua=-mean_current_ua(rows, 3, start, end),
         output_low_v=min(r[1] for r in window),
         output_high_v=max(r[1] for r in window),
     )
+    if crossing:
+        result.update(
+            translated_low_v=min(r[4] for r in window),
+            translated_high_v=max(r[4] for r in window),
+            shifter_ring_supply_ua=mean_current_ua(rows, 5, start, end),
+            shifter_controller_supply_ua=mean_current_ua(rows, 6, start, end),
+        )
     if args.logic_supply:
         transitions = crossings(rows, 2, args.logic_supply / 2, False)
         result["capture_windows"] = len(cycles)
@@ -148,7 +180,7 @@ def measure(rows, args):
     return result
 
 
-def simulate(args, pdk, receiver_lines=None):
+def simulate(args, pdk, receiver_lines=None, crossing=None):
     sim = os.environ.get("NGSPICE", "ngspice")
     pins = json.loads(PIN_FILE.read_text())[args.pdk_source]
     if cell_path(FAMILIES[args.family][0]).as_posix() not in pins:
@@ -158,7 +190,7 @@ def simulate(args, pdk, receiver_lines=None):
             raise ValueError(f"Unexpected GF180 source {name}")
     with tempfile.TemporaryDirectory() as tmp:
         path = Path(tmp)
-        (path / "ring.cir").write_text(deck(args, pdk, receiver_lines))
+        (path / "ring.cir").write_text(deck(args, pdk, receiver_lines, crossing))
         run = subprocess.run(
             [sim, "-b", "ring.cir"], cwd=path, capture_output=True, text=True
         )
@@ -169,7 +201,7 @@ def simulate(args, pdk, receiver_lines=None):
             tuple(map(float, line.split()))
             for line in waveform.read_text().splitlines()
         ]
-    return measure(data, args)
+    return measure(data, args, crossing is not None)
 
 
 def main():
@@ -198,7 +230,10 @@ def main():
         help="attach the twelve 7-track DFF clock inputs",
     )
     parser.add_argument(
-        "--load-ff", type=positive, default=72, help="lumped output capacitance in fF"
+        "--load-ff",
+        type=load_capacitance,
+        default=72,
+        help="lumped output capacitance in fF (zero for an unloaded output)",
     )
     parser.add_argument(
         "--wire-ff",

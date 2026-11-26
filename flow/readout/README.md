@@ -48,6 +48,8 @@ Each oscillator now drives one seven-track root buffer, two leaf buffers and twe
 
 At typical 25 °C with the ring at 1.4 V and the controller at 3.3 V, the 7- and 9-track specimens each captured 8/8 cycles and both 12-track specimens captured 17/17. At the fast −40 °C corner with the controller at 3.6 V, every ring still oscillated at 1.4 V, but none of the eight monitored DFFs followed the ring. This crossing needs a level translator or a measured, narrower operating range before the divider can serve as its readout.
 
+The [dual-rail receiver](../../design/ro-crossing/README.md) restores capture at that fast corner with the extracted six-transistor cell. Its two supply-current measurements show the burden on the ring rail for die integration.
+
 | Process and temperature | Ring / controller supply | Captured / complete cycles across eight ports |
 |---|---|---:|
 | Typical, 25 °C | 1.4 V / 3.3 V | 82/82 |
