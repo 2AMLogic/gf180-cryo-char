@@ -3,14 +3,14 @@
   "kind": "generic",
   "status": "pass",
   "t1_item": 10,
-  "summary": "T1 item 10 (Repo hygiene): 7/7 attestation checks passed (klt signoff --attest)",
+  "summary": "T1 item 10 (Repo hygiene): 11/11 attestation checks passed (klt signoff --attest)",
   "source": "signoff/attest/item10.json",
   "attestation": {
     "producer": "klt signoff --attest",
     "inventory_schema_version": 1,
     "hash_algorithm": "sha256-raw-bytes",
-    "check_count": 7,
-    "passed_count": 7,
+    "check_count": 11,
+    "passed_count": 11,
     "checks": [
       {
         "check": "present",
@@ -31,7 +31,7 @@
         "role": "hygiene",
         "path": "README.md",
         "passed": true,
-        "content_hash": "sha256:1772d11c80e33ba3f8a6fd798bc07ee22eb526efc703d41d60aed2eb9b9665d7"
+        "content_hash": "sha256:450df1bd1effa0b6bb19900cb109689a2972273d5432a31612f1cad296260007"
       },
       {
         "check": "present",
@@ -46,6 +46,34 @@
         "path": "signoff/klt-pin.txt",
         "passed": true,
         "content_hash": "sha256:8a7edeed028822126a351cd439ac65fe44a95adde7bdd5fff759425b262ace2e"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "spec/0001-characterization-targets.md",
+        "passed": true,
+        "content_hash": "sha256:d3fae7c666f8ce27e55b847744bed9c54658421038f3d1987de5f1ab0a917196"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "spec/die-plan.md",
+        "passed": true,
+        "content_hash": "sha256:e4ce8aaa4eb288e1c2680c77d17d7cac47d180f68e1711d09a3c02c7d9582956"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "spec/selection-readout.md",
+        "passed": true,
+        "content_hash": "sha256:6b52576b51c701919dd3e4fbf511b6c026113dd19d556a590b83aa8c2afefdca"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "spec/structure-map.md",
+        "passed": true,
+        "content_hash": "sha256:66ec8bcc423ecef4cc04b1c718618f525820c44111b99ae4f37644b3cc1cee0e"
       },
       {
         "check": "present",
@@ -84,7 +112,7 @@
         "path": "signoff/attest/item10.json",
         "scope": "repo"
       },
-      "content_hash": "sha256:bcf01d926989954a61fbebbc7973944d2b0de015e1692624962d9b6eede78f8b"
+      "content_hash": "sha256:0d9938d1a695723077fbb09a18f3d4b0d5a660db7c849e376367830549c9bac6"
     }
   }
 }

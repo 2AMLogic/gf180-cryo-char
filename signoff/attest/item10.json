@@ -2,8 +2,31 @@
   "schema_version": 1,
   "kind": "t1-attestation-inventory",
   "t1_item": 10,
-  "hygiene": ["README.md", "LICENSE", ".github/workflows/evidence.yml", "package.json", "verification/test_harness.py", "signoff/klt-pin.txt"],
+  "hygiene": [
+    "README.md",
+    "LICENSE",
+    ".github/workflows/evidence.yml",
+    "package.json",
+    "verification/test_harness.py",
+    "signoff/klt-pin.txt",
+    "spec/0001-characterization-targets.md",
+    "spec/structure-map.md",
+    "spec/selection-readout.md",
+    "spec/die-plan.md"
+  ],
   "checks": [
-    {"name": "harness-and-evidence", "argv": ["python3", "-m", "unittest", "discover", "-s", "verification", "-p", "test_*.py"]}
+    {
+      "name": "harness-and-evidence",
+      "argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "verification",
+        "-p",
+        "test_*.py"
+      ]
+    }
   ]
 }
