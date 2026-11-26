@@ -211,7 +211,7 @@ def cmd_submit(stage: str, args: argparse.Namespace) -> int:
     tarball = WORK_DIR / "tarballs" / f"{group}.tar.gz"
     staged["tarball_sha256"] = stage_tarball(commit, vendors, extra, tarball)
     staged["tarball_bytes"] = tarball.stat().st_size
-    staged["pins"] = pins
+    staged["pins"] = {k: v for k, v in pins.items() if not k.startswith("_")}
     RUNS_DIR.mkdir(parents=True, exist_ok=True)
     (RUNS_DIR / f"{group}.submit.json").write_text(
         json.dumps(staged, indent=2, sort_keys=True) + "\n"
@@ -283,7 +283,12 @@ def submitter_args(
 
 def cmd_collect(args: argparse.Namespace) -> int:
     command = submitter_command(
-        "--collect", args.group, "--out", str(RUNS_DIR / args.group), "--wait", str(args.wait)
+        "--collect",
+        args.group,
+        "--out",
+        str(RUNS_DIR / args.group),
+        "--wait",
+        str(args.wait),
     )
     return subprocess.run(command, cwd=REPO_ROOT).returncode
 
@@ -380,6 +385,10 @@ def artifact_put(gds: Path, name: str, tool: str) -> dict:
     return json.loads(result.stdout)["entries"][0]
 
 
+def pinned(staged: dict) -> dict:
+    return {k: v for k, v in staged["pins"].items() if not k.startswith("_")}
+
+
 def staged_group(group: str, stage: str):
     staged = load_json(RUNS_DIR / f"{group}.submit.json")
     if not staged or staged.get("group") != group or staged.get("stage") != stage:
@@ -418,7 +427,7 @@ def cmd_record_build(args: argparse.Namespace) -> int:
             "record_id": bundle.name,
             "created_utc": now().isoformat(),
             "repo_commit": staged["commit"],
-            "pins": staged["pins"],
+            "pins": pinned(staged),
             "source_tarball_sha256": staged["tarball_sha256"],
             "job": {"group": group, "shard": shard.name, **result},
             "make": job.get("make"),
@@ -508,7 +517,7 @@ def cmd_record_precheck(args: argparse.Namespace) -> int:
             "record_id": bundle.name,
             "created_utc": now().isoformat(),
             "repo_commit": staged["commit"],
-            "pins": staged["pins"],
+            "pins": pinned(staged),
             "source_tarball_sha256": staged["tarball_sha256"],
             "job": {"group": group, "shard": shard.name, **result},
         }

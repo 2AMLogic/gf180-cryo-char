@@ -105,12 +105,21 @@ def _render(value, depth: int) -> list[str]:
     return [f"{pad}- {json.dumps(value)}"]
 
 
+_TITLES = {
+    "created_utc": "Created (UTC)",
+    "repo_commit": "Repo commit",
+    "source_tarball_sha256": "Source tarball SHA-256",
+    "pdk_open_pdks_observed": "PDK revision observed",
+}
+
+
 def render_markdown(record: dict) -> str:
     lines = [f"# {record['record_id']}", "", f"**Status**: {record['status']}", ""]
     for key, value in record.items():
         if key in ("record_id", "status", "schema"):
             continue
-        lines.append(f"## {key.replace('_', ' ').capitalize()}")
+        title = _TITLES.get(key, key.replace("_", " ").capitalize())
+        lines.append(f"## {title}")
         lines.append("")
         lines += _render(value, 0)
         lines.append("")
