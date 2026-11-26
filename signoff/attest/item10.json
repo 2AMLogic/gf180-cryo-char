@@ -21,7 +21,16 @@
     "sim/pad-loading/measure.py",
     "sim/pad-loading/measurements.csv",
     "sim/pad-loading/README.md",
-    "verification/test_pad_loading.py"
+    "verification/test_pad_loading.py",
+    "spec/reference_floors.py",
+    "spec/reference-minima.txt",
+    "spec/source_catalog.py",
+    "spec/switch-reference.spice",
+    "sim/qualification_pdk.py",
+    "sim/README.md",
+    "sim/switch-loading/measure_ac.py",
+    "sim/switch-loading/ac-loading.csv",
+    ".github/workflows/spec-sources.yml"
   ],
   "checks": [
     {

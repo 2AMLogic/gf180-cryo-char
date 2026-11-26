@@ -3,22 +3,19 @@
 import argparse
 from concurrent.futures import ThreadPoolExecutor
 import csv
-import hashlib
 import itertools
 import math
 from pathlib import Path
 import re
 import subprocess
+import sys
 import tempfile
 
 HERE = Path(__file__).resolve().parent
 PAD = "gf180mcu_fd_io__asig_5p0"
-PINS = {
-    "libs.ref/gf180mcu_fd_io/spice/gf180mcu_fd_io.spice": "710732fd6a69e165caa2c29e4cdf81b11af41da32705fcd860b7ecfb09630dd1",
-    "libs.tech/ngspice/design.ngspice": "7e222f050318388f37543a64fbd0be55cc15e4b93f57501a09f7c159c4c9e561",
-    "libs.tech/ngspice/sm141064.ngspice": "f6f4a96e18fc5ad11270ad3451aaecc7ac37fc81eb61e15b0d7d94c7bc594a24",
-    "libs.tech/ngspice/sm141064.spice": "f6f4a96e18fc5ad11270ad3451aaecc7ac37fc81eb61e15b0d7d94c7bc594a24",
-}
+sys.path.insert(0, str(HERE.parent))
+from qualification_pdk import PAD_FILE, check_inputs
+
 
 
 def reading(output, name):
@@ -39,15 +36,9 @@ def main():
     if not re.search(
         r"ngspice-46\b", subprocess.check_output([args.ngspice, "--version"], text=True)
     ):
-        parser.error("Use ngspice 46")
-    if (
-        pdk / "SOURCES"
-    ).read_text().strip() != "open_pdks f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7":
-        parser.error("Use the pinned GF180D open_pdks install")
-    for file, digest in PINS.items():
-        if hashlib.sha256((pdk / file).read_bytes()).hexdigest() != digest:
-            raise ValueError(f"Unexpected PDK file {file}")
-    io = (pdk / next(iter(PINS))).read_text()
+        parser.error("Use ngspice 46 for the complete foundry pad subcircuit")
+    check_inputs(pdk, include_pad=True)
+    io = (pdk / PAD_FILE).read_text()
     cells = re.findall(rf"(?ms)^\.SUBCKT {PAD} [^\n]+\n.*?^\.ENDS[^\n]*\n", io)
     if len(cells) != 1:
         raise ValueError("Expected one exact foundry pad subcircuit")
@@ -97,10 +88,9 @@ quit
                 [args.ngspice, "-n", "-b", f],
                 text=True,
                 capture_output=True,
-                check=True,
             )
-        if re.search(r"(?im)^\s*(error|fatal)\b", run.stdout + run.stderr):
-            raise ValueError(f"ngspice failed at {case}")
+        if run.returncode or re.search(r"(?im)^\s*(error|fatal)\b", run.stdout + run.stderr):
+            raise ValueError(f"ngspice failed at {case}: {run.stderr[-800:]}")
         d2 = reading(run.stdout, "@d.xpad.d2[id]")
         d3 = reading(run.stdout, "@d.xpad.d3[id]")
         net = d2 - d3

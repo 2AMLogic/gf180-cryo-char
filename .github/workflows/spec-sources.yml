@@ -1,0 +1,39 @@
+name: Characterization source replay
+
+on:
+  pull_request:
+    paths:
+      - 'spec/**'
+      - 'verification/test_structure_geometry.py'
+      - '.github/workflows/spec-sources.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'spec/**'
+      - 'verification/test_structure_geometry.py'
+      - '.github/workflows/spec-sources.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  sources:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.11'
+      - run: python -m pip install openpyxl==3.1.5 ciel==2.6.1 uv==0.13.7
+      - name: Reconcile workbook rows and measured reference minima
+        run: |
+          archive="$RUNNER_TEMP/nist-mpw5.zip"
+          curl --fail --location --retry 3 'https://data.nist.gov/od/ds/mds2-2997/MPW-5%20Test%20Tile.zip' --output "$archive"
+          python spec/source_catalog.py "$archive" --check spec/structure-map.md
+          python spec/reference_floors.py "$archive" > "$RUNNER_TEMP/minima.txt"
+          diff -u spec/reference-minima.txt "$RUNNER_TEMP/minima.txt"
+      - name: Check the drawn GF180D body-tie geometry
+        run: |
+          pdk_root="$RUNNER_TEMP/cryo-pdk"
+          ciel enable --pdk-root "$pdk_root" --pdk-family gf180mcu -l gf180mcu_fd_io 792ef67037d74c8c51811eab3ce23cf793491296
+          uv run --script spec/check_isolated_bodies.py --pdk "$pdk_root/gf180mcuD"

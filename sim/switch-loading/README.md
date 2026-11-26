@@ -16,3 +16,9 @@ Run the producer from the repository root using ngspice 47 and the Ciel GF180MCU
 ```sh
 python3 sim/switch-loading/measure.py --pdk "$PDK_ROOT/gf180mcuD"
 ```
+
+## AC loading of inactive branches
+
+The [AC control](measure_ac.py) drives the measured terminal at 10 mV RMS and 10 kHz. The ideal far terminal is held at 0 or 3.3 V DC and is AC-grounded. Zero, one and four identical parallel open switches use the exact transistor cards from the DC control. The [90 results](ac-loading.csv) cover five MOS process sections and three temperatures. Both real and imaginary currents enter the reported magnitude. Equivalent capacitance uses the imaginary current alone. An empty branch network gives zero at all 30 conditions. Four branches give four times the single-branch current at every condition.
+
+At typical process, 25 °C and far terminal at 0 V, one branch draws 1.625 pA (2.586 fF), and four draw 6.500 pA (10.345 fF). The worst four-branch magnitude is 47.983 pA across this grid. These are raw added-current measurements on a deliberately unguarded control. The calibrated die and extracted production switch tree require their own tests. Both supported PDK revisions and the simulator commands are in the [simulation record](../README.md).

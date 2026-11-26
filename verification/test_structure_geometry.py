@@ -35,6 +35,8 @@ class DrawnGeometryTest(unittest.TestCase):
                 self.assertIsNotNone(dims, f"missing drawn W × L in {target}")
                 width, length = map(float, dims.groups())
                 min_width, min_length = MINIMUM_WL[device]
+                if cell.startswith("ISOFETs!") and device.startswith("nfet_"):
+                    min_width = max(min_width, 0.42)  # Bulk Tie with contact between fingers
                 self.assertGreaterEqual(width, min_width)
                 self.assertGreaterEqual(length, min_length)
                 devices.add(device)

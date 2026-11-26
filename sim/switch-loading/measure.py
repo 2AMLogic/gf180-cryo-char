@@ -2,21 +2,20 @@
 
 import argparse
 import csv
-import hashlib
 import io
 import itertools
 import math
 from pathlib import Path
 import re
 import subprocess
+import sys
 import tempfile
 
 HERE = Path(__file__).resolve().parent
 SOURCE = HERE.parents[1] / "spec/switch-reference.spice"
-MODELS = {
-    "design.ngspice": "7e222f050318388f37543a64fbd0be55cc15e4b93f57501a09f7c159c4c9e561",
-    "sm141064.ngspice": "f6f4a96e18fc5ad11270ad3451aaecc7ac37fc81eb61e15b0d7d94c7bc594a24",
-}
+sys.path.insert(0, str(HERE.parent))
+from qualification_pdk import check_inputs
+
 VECTORS = {
     "terminal_a": "i(vsense)",
     "pmos_igisl_a": "@m.xp.m0[igisl]",
@@ -32,16 +31,9 @@ BIASES = tuple(itertools.product((0, 3.3), (3.3, 2.75, 2.2, 1.65)))
 
 
 def measured_rows(pdk, simulator):
-    for name, digest in MODELS.items():
-        if (
-            hashlib.sha256((pdk / "libs.tech/ngspice" / name).read_bytes()).hexdigest()
-            != digest
-        ):
-            raise ValueError(f"Unexpected {name} model")
-    if "ngspice-47 " not in subprocess.check_output(
-        [simulator, "--version"], text=True
-    ):
-        raise ValueError("Requires ngspice 47")
+    version = subprocess.check_output([simulator, "--version"], text=True)
+    if not re.search(r"ngspice-(46|47)\b", version):
+        raise ValueError("Use ngspice 46 or 47")
     reference = SOURCE.read_text().split(".control")[0]
     # Keep the well on its original independent 3.3 V rail throughout.
     if reference.count("Xp far rail measured rail") != 1:
@@ -104,7 +96,9 @@ def main():
     parser.add_argument("--ngspice", default="ngspice")
     parser.add_argument("--output", type=Path, help="write a new measurement file")
     args = parser.parse_args()
-    rows = list(measured_rows(args.pdk.resolve(), args.ngspice))
+    pdk = args.pdk.resolve()
+    check_inputs(pdk, include_pad=False)
+    rows = list(measured_rows(pdk, args.ngspice))
     stream = io.StringIO()
     output = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator="\n")
     output.writeheader()
