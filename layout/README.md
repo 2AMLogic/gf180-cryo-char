@@ -95,8 +95,14 @@ LFS. The bytes go to the fleet artifact store and git keeps the name:
 
 ```
 klt artifact get layout/artifacts.json#<entry name> -o chip_top.gds
-klt artifact verify --local layout/artifacts.json
+klt artifact verify layout/artifacts.json
 ```
+
+`get` writes only bytes that re-hash to the entry's sha256, and does not
+create parent directories. `verify` asks the store for every entry's size and
+sha256. `--local` re-hashes files at their entry names under the repo root
+instead, so it needs them fetched there first: in a clean checkout no entry
+resolves to a file and it exits 1.
 
 `layout/die.json` names the die `main` currently holds, by sha256, with the
 build record that produced it and the precheck record that cleared it.
