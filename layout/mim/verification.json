@@ -1,0 +1,214 @@
+{
+  "452": {
+    "sha256": "ba3171a7eaef165fc2cf8d5a4a7fbf980409c20a59761be57f3c44cfce4293f1",
+    "width_um": 286.8,
+    "height_um": 130.0,
+    "unit_side_um": 40,
+    "units": 5,
+    "total_plate_area_um2": 8000,
+    "total_plate_perimeter_um": 800,
+    "lvs": {
+      "nets": {
+        "layout": 2,
+        "reference": 2,
+        "matched": 2
+      },
+      "devices": {
+        "layout": 5,
+        "reference": 5,
+        "matched": 5
+      },
+      "pins": {
+        "layout": 2,
+        "reference": 2,
+        "matched": 2
+      }
+    },
+    "compared": [
+      "A",
+      "P"
+    ],
+    "open_lvs": {
+      "nets": {
+        "layout": 3,
+        "reference": 2,
+        "matched": 1
+      },
+      "devices": {
+        "layout": 5,
+        "reference": 5,
+        "matched": 0
+      },
+      "pins": {
+        "layout": 2,
+        "reference": 2,
+        "matched": 2
+      }
+    },
+    "curated_categories": 25,
+    "curated_violations": 0,
+    "drc_categories": 763,
+    "drc_violations": 0,
+    "drc_deck": "sha256:e7c7d2597890cfcb4cf0e5312f5652051a119fb3e1cc1772a6e5c04594bc65d8",
+    "drc_deck_tree": "sha256:8af3b4875893f3ffbff639bd7e2966c5e3b9b27f70d03e86d6da46ca9510fbc4"
+  },
+  "453": {
+    "sha256": "1e433fd27553b5e8fb86dceb86ccc8494b8a047b475dc5ec43cffbf42cfc3ac2",
+    "width_um": 286.8,
+    "height_um": 130.0,
+    "unit_side_um": 40,
+    "units": 5,
+    "total_plate_area_um2": 8000,
+    "total_plate_perimeter_um": 800,
+    "lvs": {
+      "nets": {
+        "layout": 2,
+        "reference": 2,
+        "matched": 2
+      },
+      "devices": {
+        "layout": 5,
+        "reference": 5,
+        "matched": 5
+      },
+      "pins": {
+        "layout": 2,
+        "reference": 2,
+        "matched": 2
+      }
+    },
+    "compared": [
+      "A",
+      "P"
+    ],
+    "open_lvs": {
+      "nets": {
+        "layout": 3,
+        "reference": 2,
+        "matched": 1
+      },
+      "devices": {
+        "layout": 5,
+        "reference": 5,
+        "matched": 0
+      },
+      "pins": {
+        "layout": 2,
+        "reference": 2,
+        "matched": 2
+      }
+    },
+    "curated_categories": 25,
+    "curated_violations": 0,
+    "drc_categories": 763,
+    "drc_violations": 0,
+    "drc_deck": "sha256:e7c7d2597890cfcb4cf0e5312f5652051a119fb3e1cc1772a6e5c04594bc65d8",
+    "drc_deck_tree": "sha256:8af3b4875893f3ffbff639bd7e2966c5e3b9b27f70d03e86d6da46ca9510fbc4"
+  },
+  "454": {
+    "sha256": "7471af0139ad8011b35d831268dcac5f14fdc8c657505599250a5226b2539cf5",
+    "width_um": 1277.0,
+    "height_um": 1036.2,
+    "unit_side_um": 5,
+    "units": 3920,
+    "total_plate_area_um2": 98000,
+    "total_plate_perimeter_um": 78400,
+    "lvs": {
+      "nets": {
+        "layout": 2,
+        "reference": 2,
+        "matched": 2
+      },
+      "devices": {
+        "layout": 3920,
+        "reference": 3920,
+        "matched": 3920
+      },
+      "pins": {
+        "layout": 2,
+        "reference": 2,
+        "matched": 2
+      }
+    },
+    "compared": [
+      "A",
+      "P"
+    ],
+    "open_lvs": {
+      "nets": {
+        "layout": 3,
+        "reference": 2,
+        "matched": 0
+      },
+      "devices": {
+        "layout": 3920,
+        "reference": 3920,
+        "matched": 3850
+      },
+      "pins": {
+        "layout": 2,
+        "reference": 2,
+        "matched": 2
+      }
+    },
+    "curated_categories": 25,
+    "curated_violations": 0,
+    "drc_categories": 763,
+    "drc_violations": 0,
+    "drc_deck": "sha256:e7c7d2597890cfcb4cf0e5312f5652051a119fb3e1cc1772a6e5c04594bc65d8",
+    "drc_deck_tree": "sha256:8af3b4875893f3ffbff639bd7e2966c5e3b9b27f70d03e86d6da46ca9510fbc4"
+  },
+  "455": {
+    "sha256": "3abba5e9bb3cb0accc567f9c1d101e3268f8240c23a89fe9deb06bdf1048b3ac",
+    "width_um": 1280.8,
+    "height_um": 1040.0,
+    "unit_side_um": 10,
+    "units": 1620,
+    "total_plate_area_um2": 162000,
+    "total_plate_perimeter_um": 64800,
+    "lvs": {
+      "nets": {
+        "layout": 2,
+        "reference": 2,
+        "matched": 2
+      },
+      "devices": {
+        "layout": 1620,
+        "reference": 1620,
+        "matched": 1620
+      },
+      "pins": {
+        "layout": 2,
+        "reference": 2,
+        "matched": 2
+      }
+    },
+    "compared": [
+      "A",
+      "P"
+    ],
+    "open_lvs": {
+      "nets": {
+        "layout": 3,
+        "reference": 2,
+        "matched": 0
+      },
+      "devices": {
+        "layout": 1620,
+        "reference": 1620,
+        "matched": 1575
+      },
+      "pins": {
+        "layout": 2,
+        "reference": 2,
+        "matched": 2
+      }
+    },
+    "curated_categories": 25,
+    "curated_violations": 0,
+    "drc_categories": 763,
+    "drc_violations": 0,
+    "drc_deck": "sha256:e7c7d2597890cfcb4cf0e5312f5652051a119fb3e1cc1772a6e5c04594bc65d8",
+    "drc_deck_tree": "sha256:8af3b4875893f3ffbff639bd7e2966c5e3b9b27f70d03e86d6da46ca9510fbc4"
+  }
+}
