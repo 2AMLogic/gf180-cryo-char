@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "kind": "t1-attestation-inventory",
+  "t1_item": 9,
+  "description": "Typical 25 C control measurements on reference circuits with no selected DUT. The full mux remains unverified.",
+  "testbenches": [
+    "sim/readout/README.md",
+    "sim/readout/cold_start.py",
+    "sim/readout/guard.spice",
+    "sim/readout/pad.spice",
+    "spec/switch-reference.spice",
+    "verification/test_readout_inputs.py"
+  ],
+  "cold_start": {
+    "argv": [
+      "python3",
+      "sim/readout/cold_start.py"
+    ]
+  },
+  "pins": {
+    "pdk": {
+      "name": "wafer-space/gf180mcu gf180mcuD",
+      "revision": "ac7d8696de96a4d708e768b607ae37f02207a354"
+    },
+    "tools": {
+      "ngspice": "46 (reference run)",
+      "klayout-tools": "0.9.2"
+    }
+  }
+}

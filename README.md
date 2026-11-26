@@ -41,8 +41,10 @@ Design stage: spec
      — describing what this repo has produced and recorded evidence for, never
      what it is aiming at. One token; not a range, not a hedge, not prose. -->
 
-The [digital selector](rtl/README.md) has a bit-level testbench. Physical
-integration, tape-out and silicon measurements are pending.
+The [digital selector](rtl/README.md) has a bit-level testbench. The
+[analog benches](sim/readout/README.md) reproduce switch and pad measurements
+on the shuttle models. Physical integration, tape-out and silicon measurements
+are pending.
 
 The [T1 signoff report](signoff/block-manifest.signoff.json) grades the analog
 measurement circuits and digital selection logic separately. Run this check
@@ -65,11 +67,13 @@ python -m pip install -r signoff/klt-pin.txt -r verification/requirements.txt
 npm run check:ci
 ```
 
-Install Python 3.12, npm and Icarus Verilog (including vvp). The harness tests generate pass, fail, and incomplete
+Install Python 3.12, npm, Icarus Verilog (including vvp) and ngspice.
+The [analog cold-start instructions](sim/readout/README.md) give the supported
+ngspice version and the offline PDK option. The harness tests generate pass, fail, and incomplete
 records in a temporary directory, then load any committed testbench manifests.
 The selector tests exercise all addresses and asynchronous disconnect. The
-remaining checks reproduce the digital bench and repo-hygiene attestations
-and the signoff report. These checks run without a PDK install.
+remaining checks reproduce the analog bench, digital bench and repo-hygiene attestations
+and the signoff report. The analog bench fetches the checksum-pinned model files when an offline PDK path is absent.
 
 **Not being built:**
 - **Copied layout.** The upstream repo ships only finished GDS, with no

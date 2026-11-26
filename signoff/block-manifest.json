@@ -13,6 +13,10 @@
     "9.digital": {
       "file": "signoff/attest/item9-digital.envelope.json",
       "content_hash": "sha256:459e08f18889bdae13c1497b9fd74390bd86bd08abbd93c385eb59af31887245"
+    },
+    "9.analog": {
+      "file": "signoff/attest/item9-analog.envelope.json",
+      "content_hash": "sha256:b52a06bcc0b0683654532dce2a81f629630da70e2b551e069a4b28920abbc826"
     }
   }
 }
