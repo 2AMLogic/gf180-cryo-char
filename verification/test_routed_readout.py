@@ -80,7 +80,7 @@ class RoutedReadout(unittest.TestCase):
             minimum = {
                 r["family"]: float(r["min_period_ns"])
                 for r in csv.DictReader(f)
-                if float(r["step_ns"]) == 0.005
+                if float(r["step_ns"]) == 0.000625
             }
         for name in ("timing", "timing-stress"):
             request = read_json(MACRO / f"{name}.json")
@@ -104,7 +104,7 @@ class RoutedReadout(unittest.TestCase):
                 period = periods[f"ro_clk[{index}]"]
                 self.assertLessEqual(period, bound)
                 if name == "timing":
-                    self.assertLess(bound - period, 0.1)
+                    self.assertLessEqual(period, 0.98 * bound)
             corners = {c["corner"]: c for c in report["corners"]}
             self.assertEqual(set(corners), set(request["pdk"]["corners"]))
             self.assertEqual(len(corners), 5)

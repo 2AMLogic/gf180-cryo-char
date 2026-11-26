@@ -20,35 +20,35 @@
       },
       {
         "port": "ro_clk[0]",
-        "period_ns": 12.3
+        "period_ns": 12.0
       },
       {
         "port": "ro_clk[1]",
-        "period_ns": 12.4
+        "period_ns": 12.0
       },
       {
         "port": "ro_clk[2]",
-        "period_ns": 12.4
+        "period_ns": 12.0
       },
       {
         "port": "ro_clk[3]",
-        "period_ns": 9.9
+        "period_ns": 9.5
       },
       {
         "port": "ro_clk[4]",
-        "period_ns": 12.3
+        "period_ns": 12.0
       },
       {
         "port": "ro_clk[5]",
-        "period_ns": 12.4
+        "period_ns": 12.0
       },
       {
         "port": "ro_clk[6]",
-        "period_ns": 12.4
+        "period_ns": 12.0
       },
       {
         "port": "ro_clk[7]",
-        "period_ns": 9.9
+        "period_ns": 9.5
       }
     ],
     "clock_groups": [

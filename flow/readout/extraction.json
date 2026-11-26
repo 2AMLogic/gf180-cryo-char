@@ -11,6 +11,7 @@
       "source": "PDK_ROOT environment variable",
       "version": "open_pdks f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7",
       "ambiguous_sources": [
+        "search root: ~/.ciel",
         "search root: ~/.volare"
       ]
     },
@@ -19,16 +20,16 @@
       "content_hash": "sha256:778e9a4eba34b67a0427367917b4c9c2602d44ff085d663affd302a8d0f197cd",
       "released": false,
       "options": {
-        "metal_top": "9K",
+        "metal_top": "11K",
         "mim_cap": "cap_mim_2f0_m4m5_noshield",
         "poly_res": "1k"
       },
       "options_explicit": {
-        "metal_top": false,
+        "metal_top": true,
         "mim_cap": false,
         "poly_res": false
       },
-      "options_hash": "sha256:6a7dc7660a470994263c5ca8ace6d8ac8c605d77e6876a9c5490949de6e7cb05"
+      "options_hash": "sha256:89cb6001bb2512394da175a3e1f170dfa7b97d8a9470378e9fc2180f6358e7d2"
     },
     "input": {
       "content_hash": "sha256:3fe526f02dfb4558ce5041c412747d77ac55e303e229609f6d0de658c4ff9376",
