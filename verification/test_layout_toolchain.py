@@ -3,6 +3,7 @@
 import datetime as dt
 import io
 import json
+import shutil
 import tempfile
 import unittest
 from pathlib import Path
@@ -11,6 +12,9 @@ from layout import records, toolchain_pin
 
 REPO = Path(__file__).resolve().parents[1]
 LAYOUT = REPO / "layout"
+
+PRECHECK_COMMIT = ("wafer_space", "precheck", "commit")
+OPEN_PDKS_COMMIT = ("wafer_space", "pdk", "open_pdks_commit")
 
 KLT_HELP = """usage: klt [-h] [--version] <command> ...
 
@@ -156,6 +160,20 @@ class RecordTests(unittest.TestCase):
             self.assertTrue(records.check_intact(bundle))
 
 
+def _pin(pins: dict, path: tuple) -> object:
+    at = pins
+    for key in path:
+        at = at[key]
+    return at
+
+
+def _set_pin(pins: dict, path: tuple, value) -> None:
+    at = pins
+    for key in path[:-1]:
+        at = at[key]
+    at[path[-1]] = value
+
+
 class CommittedLayoutTests(unittest.TestCase):
     def test_every_committed_record_is_intact(self):
         found = 0
@@ -170,33 +188,183 @@ class CommittedLayoutTests(unittest.TestCase):
         self.assertGreater(found, 0, "no layout evidence records committed")
 
     def test_the_die_on_main_is_precheck_clean(self):
-        pointer = LAYOUT / "die.json"
+        self._assert_die_is_precheck_clean(LAYOUT)
+
+    def _assert_die_is_precheck_clean(self, layout: Path) -> None:
+        pointer = layout / "die.json"
         if not pointer.is_file():
             self.skipTest("no die recorded on this branch yet")
         die = json.loads(pointer.read_text())
         gds_sha = die["gds"]["sha256"]
         precheck = (
-            LAYOUT / "precheck" / "records" / die["precheck_record"] / "record.json"
+            layout / "precheck" / "records" / die["precheck_record"] / "record.json"
         )
         record = json.loads(precheck.read_text())
         self.assertEqual(record["status"], "pass")
         self.assertEqual(record["input"]["sha256"], gds_sha)
         build = json.loads(
             (
-                LAYOUT / "build" / "records" / die["build_record"] / "record.json"
+                layout / "build" / "records" / die["build_record"] / "record.json"
             ).read_text()
         )
         self.assertEqual(build["status"], "pass")
         self.assertEqual(build["gds"]["sha256"], gds_sha)
         stored = [
             e["sha256"]
-            for e in json.loads((LAYOUT / "artifacts.json").read_text())["entries"]
+            for e in json.loads((layout / "artifacts.json").read_text())["entries"]
         ]
         self.assertIn(
             gds_sha,
             stored,
             "the die's GDS is not retrievable from the artifact manifest",
         )
+        moved = toolchain_pin.moved_precheck_pins(
+            record.get("pins"), toolchain_pin.load(layout)
+        )
+        if moved:
+            self.fail(
+                f"layout/die.json names precheck record {die['precheck_record']}, "
+                f"which does not vouch for the die under the pins "
+                f"layout/toolchain.json holds now ({'; '.join(moved)}). Re-run the "
+                "precheck on the die's GDS and commit the new record together with "
+                "the pin bump, as layout/README.md (Keeping `main` precheck-clean) "
+                "prescribes"
+            )
+
+    def _standing_copy(self, tmp) -> Path:
+        """A temp copy of what the die gate reads, its record holding the pin
+        file's precheck pins, so that nothing but a test's own change fails.
+
+        A committed record is append-only, so the gate is proven on a copy.
+        """
+        copy = Path(tmp) / "layout"
+        inputs = [
+            LAYOUT / name for name in ("die.json", "toolchain.json", "artifacts.json")
+        ]
+        inputs += sorted(LAYOUT.glob("*/records/*/record.json"))
+        for path in inputs:
+            target = copy / path.relative_to(LAYOUT)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(path, target)
+        pins = toolchain_pin.load(copy)
+
+        def agree(record):
+            for path in toolchain_pin.PRECHECK_PINS:
+                _set_pin(record["pins"], path, _pin(pins, path))
+
+        self._rewrite(self._die_record(copy), agree)
+        return copy
+
+    @staticmethod
+    def _rewrite(path: Path, change) -> None:
+        data = json.loads(path.read_text())
+        change(data)
+        path.write_text(json.dumps(data, indent=2) + "\n")
+
+    @staticmethod
+    def _bumped(sha: str) -> str:
+        return sha[:-1] + ("0" if sha[-1] != "0" else "1")
+
+    def _die_record(self, layout: Path) -> Path:
+        die = json.loads((layout / "die.json").read_text())
+        return layout / "precheck" / "records" / die["precheck_record"] / "record.json"
+
+    def test_exactly_the_precheck_and_pdk_pins_are_compared(self):
+        self.assertEqual(
+            toolchain_pin.PRECHECK_PINS, (PRECHECK_COMMIT, OPEN_PDKS_COMMIT)
+        )
+
+    def test_the_gate_rejects_a_die_prechecked_under_a_moved_pin(self):
+        for path in (PRECHECK_COMMIT, OPEN_PDKS_COMMIT):
+            name = ".".join(path)
+            other = next(
+                ".".join(p) for p in (PRECHECK_COMMIT, OPEN_PDKS_COMMIT) if p != path
+            )
+            with self.subTest(pin=name), tempfile.TemporaryDirectory() as tmp:
+                layout = self._standing_copy(tmp)
+
+                def bump(pins):
+                    _set_pin(pins, path, self._bumped(_pin(pins, path)))
+
+                self._rewrite(layout / "toolchain.json", bump)
+                with self.assertRaises(AssertionError) as caught:
+                    self._assert_die_is_precheck_clean(layout)
+                message = str(caught.exception)
+                self.assertIn(f"{name} moved", message)
+                self.assertIn(_pin(toolchain_pin.load(layout), path), message)
+                self.assertNotIn(f"{other} moved", message)
+                self.assertIn("Re-run the precheck", message)
+                self.assertIn("commit the new record", message)
+                self.assertIn("layout/README.md", message)
+
+    def test_the_gate_rejects_a_record_that_does_not_name_its_pins(self):
+        cases = {
+            "no pins block": (
+                lambda record: record.pop("pins"),
+                (PRECHECK_COMMIT, OPEN_PDKS_COMMIT),
+            ),
+            "no pdk commit": (
+                lambda record: record["pins"]["wafer_space"]["pdk"].pop(
+                    "open_pdks_commit"
+                ),
+                (OPEN_PDKS_COMMIT,),
+            ),
+        }
+        for what, (remove, unnamed) in cases.items():
+            with self.subTest(missing=what), tempfile.TemporaryDirectory() as tmp:
+                layout = self._standing_copy(tmp)
+                self._rewrite(self._die_record(layout), remove)
+                with self.assertRaises(AssertionError) as caught:
+                    self._assert_die_is_precheck_clean(layout)
+                message = str(caught.exception)
+                self.assertIn("Re-run the precheck", message)
+                for path in (PRECHECK_COMMIT, OPEN_PDKS_COMMIT):
+                    self.assertEqual(
+                        f"{'.'.join(path)}: the record does not name it" in message,
+                        path in unnamed,
+                    )
+
+    def test_a_template_pin_bump_alone_does_not_fail_the_gate(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            layout = self._standing_copy(tmp)
+            path = ("wafer_space", "template", "commit")
+
+            def bump(pins):
+                _set_pin(pins, path, self._bumped(_pin(pins, path)))
+
+            self._rewrite(layout / "toolchain.json", bump)
+            self._assert_die_is_precheck_clean(layout)
+
+    def test_a_pin_bump_lands_with_a_record_prechecked_under_it(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            layout = self._standing_copy(tmp)
+            old = self._die_record(layout)
+            new = old.parent.with_name("99999999-999999-fffffff0-die") / old.name
+
+            def bump(pins):
+                _set_pin(
+                    pins, PRECHECK_COMMIT, self._bumped(_pin(pins, PRECHECK_COMMIT))
+                )
+
+            self._rewrite(layout / "toolchain.json", bump)
+            with self.assertRaises(AssertionError):
+                self._assert_die_is_precheck_clean(layout)
+
+            record = json.loads(old.read_text())
+            record["record_id"] = new.parent.name
+            _set_pin(
+                record["pins"],
+                PRECHECK_COMMIT,
+                _pin(toolchain_pin.load(layout), PRECHECK_COMMIT),
+            )
+            new.parent.mkdir()
+            new.write_text(json.dumps(record, indent=2) + "\n")
+
+            def repoint(die):
+                die["precheck_record"] = new.parent.name
+
+            self._rewrite(layout / "die.json", repoint)
+            self._assert_die_is_precheck_clean(layout)
 
 
 if __name__ == "__main__":

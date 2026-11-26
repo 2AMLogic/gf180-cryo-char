@@ -129,3 +129,12 @@ record, so between a build and its precheck `main` names a die that is not
 cleared. CI fails on exactly that: `npm test` requires the GDS in `die.json`
 to have a passing precheck record with the same sha256, and to be in
 `artifacts.json`. Do both in one PR.
+
+A pin bump needs a new precheck record in the same PR. `npm test` also
+requires the die's precheck record to name the `wafer_space.precheck.commit`
+and `wafer_space.pdk.open_pdks_commit` that `toolchain.json` pins: a verdict
+belongs to the precheck tree and the PDK it ran, and a moved pin leaves the
+GDS, so its sha256, unchanged. Commit the bump first (`submit` runs the
+committed tree), fetch the die's GDS, and run the precheck's `submit` and
+`record --is-die` on it. The template and `klt` pins are not held to this;
+neither can change a verdict already recorded.
