@@ -25,6 +25,29 @@ Use the generated `mim_<code>_kelvin.gds` top with this LEF. Its lower-left outl
 
 OpenROAD reads the checked-in LEF using the GF180D technology file. The probe connects four separate traces to the parsed pin rectangles. KLayout checks the opposite ends of those traces against both electrodes of every physical capacitor. Cutting each of the 16 spines individually isolates its external trace. A separate inserted via-stack bridge shorts the two plates in each specimen. [Physical probe results](kelvin-access.json)
 
+## Placement on the prechecked template
+
+The template’s 114 rectangular Metal5 conductors span the full width of the snapped core. The largest clear vertical interval, including the two core edges, is 64 µm. OpenROAD reads a Metal5 routing obstruction at every horizontal slice of all four proposed macros. The same holds after a quarter turn. A complete macro therefore conflicts with the existing grid everywhere inside the core. The counts below use the full-width Metal5 conductors alone. Metal4, local supply rails, vias, standard cells and pads would impose further constraints. [Template build record](https://github.com/2AMLogic/gf180-cryo-char/blob/aca3e92a65428a1fe2f7a3189ee50a0271a6b9bc/layout/build/records/20261126-130323-f191663-template/record.json) · [Exact intervals and lower bounds](template-grid.json)
+
+| Select code | Minimum Metal5 bands crossing the LEF obstruction | After a quarter turn |
+|---|---:|---:|
+| 452, 453 | 2 each | 6 each |
+| 454 | 26 | 34 |
+| 455 | 27 | 34 |
+
+For the December 9 freeze, place the macros before generating the power grid. Route the supply grid outside their obstructions, then check supply continuity and current capacity, four-wire signal routing, and the populated die’s full precheck. The existing template’s passing precheck covers its recorded GDS.
+
+Replay against the GDS and matching record from the [template checkout](https://github.com/2AMLogic/gf180-cryo-char/tree/aca3e92a65428a1fe2f7a3189ee50a0271a6b9bc). Set `template` to that checkout and use the same OpenROAD and PDK as the Kelvin check below.
+
+```sh
+record=20261126-130323-f191663-template
+klt artifact get "$template/layout/artifacts.json#build/$record/chip_top.gds" -o /tmp/cryo-template.gds
+uv run --script layout/mim/template_grid.py --die /tmp/cryo-template.gds \
+    --build-record "$template/layout/build/records/$record/record.json" \
+    --pdk "$PDK_ROOT/gf180mcuD" > /tmp/cryo-template-grid.json
+cmp layout/mim/template-grid.json /tmp/cryo-template-grid.json
+```
+
 ## Replay
 
 Install the GF180D open_pdks revision and put native KLayout 0.30.14, OpenROAD and ngspice 47 on PATH. The routing abstract was checked with OpenROAD 26Q3-1510-g6cb3f2b704. Set PDK_ROOT to the directory containing gf180mcuD. The scripts pin the Python KLayout package, KLT and gLayout versions. The density fill generator is pinned by both commit and SHA-256. An offline copy can be supplied with the --fill-script option.

@@ -2,6 +2,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import runpy
 import unittest
 
 MIM = Path(__file__).resolve().parents[1] / "layout/mim"
@@ -10,6 +11,36 @@ LAYERS = {"F1": "Metal5", "S1": "Metal5", "F2": "Metal3", "S2": "Metal3"}
 
 
 class KelvinEvidenceTest(unittest.TestCase):
+    def test_template_grid_minimum_includes_edge_touching_placements(self):
+        measure = runpy.run_path(str(MIM / "template_grid.py"))["minimum_crossings"]
+        # Independent integer-grid enumeration covers exact contact at either edge.
+        for bands in ([], [(2, 5)], [(0, 1), (3, 7), (10, 12)]):
+            for size in range(1, 13):
+                brute = min(
+                    sum(lo < start + size and hi > start for lo, hi in bands)
+                    for start in range(13 - size)
+                )
+                self.assertEqual(measure(bands, 0, 12, size), brute)
+
+    def test_template_grid_report_matches_lef_and_conductor_intervals(self):
+        data = json.loads((MIM / "template-grid.json").read_text())
+        self.assertEqual(data["lef_sha256"], hashlib.sha256((MIM / "mim_kelvin.lef").read_bytes()).hexdigest())
+        _, low, _, high = data["core_nm"]
+        bands = data["full_width_metal5_bands_nm"]
+        self.assertEqual(len(bands), 114)
+        self.assertTrue(all(low <= lo < hi <= high for lo, hi in bands))
+        self.assertTrue(all(pair[0][1] < pair[1][0] for pair in zip(bands, bands[1:])))
+        edges = [low, *(y for band in bands for y in band), high]
+        self.assertEqual(max(hi - lo for lo, hi in zip(edges[::2], edges[1::2])), 64000)
+        self.assertEqual(data["largest_gap_nm"], 64000)
+        sizes = json.loads((MIM / "verification.json").read_text())
+        self.assertEqual(set(data["macros"]), {f"mim_{code}_kelvin" for code in CODES})
+        for code in CODES:
+            macro = data["macros"][f"mim_{code}_kelvin"]
+            self.assertEqual(macro["size_nm"], [round(sizes[code][key] * 1000) for key in ("width_um", "height_um")])
+            self.assertGreater(macro["minimum_crossings_native_orientation"], 0)
+            self.assertGreater(macro["minimum_crossings_quarter_turn"], 0)
+
     def test_access_and_drc_share_the_verified_layout(self):
         def record(name):
             return json.loads((MIM / name).read_text())
