@@ -197,6 +197,7 @@ def cmd_submit(stage: str, args: argparse.Namespace) -> int:
         "group": group,
         "commit": commit,
         "submitted_utc": now().isoformat(),
+        "capacity": "on-demand" if args.on_demand else "spot",
     }
     if stage == "precheck":
         gds = Path(args.gds).resolve()
@@ -238,6 +239,7 @@ def cmd_submit(stage: str, args: argparse.Namespace) -> int:
             timeout=args.timeout,
             dry_run=args.dry_run,
             wait=args.wait,
+            on_demand=args.on_demand,
         )
     )
     return subprocess.run(command, cwd=REPO_ROOT).returncode
@@ -254,6 +256,7 @@ def submitter_args(
     timeout: int,
     dry_run: bool,
     wait: int,
+    on_demand: bool = False,
 ) -> list[str]:
     """The submitter's argv. A shard's argument list is one option value
     (``--shard=...``): a list that starts with ``--`` would otherwise be read
@@ -280,6 +283,8 @@ def submitter_args(
         "--requirements",
         "",
     ]
+    if on_demand:
+        argv += ["--capacity", "on-demand"]
     if job_args:
         argv.append(f"--shard={shlex.join(job_args)}")
     if timeout:
@@ -608,6 +613,12 @@ def build_parser() -> argparse.ArgumentParser:
             type=int,
             default=0,
             help="per-job cap in seconds (default: the image profile's)",
+        )
+        submit_p.add_argument(
+            "--on-demand",
+            action="store_true",
+            help="launch on on-demand capacity: for a job Spot reclaimed, or "
+            "one that cannot be sharded to fit between reclaims",
         )
         if stage == "build":
             submit_p.add_argument(

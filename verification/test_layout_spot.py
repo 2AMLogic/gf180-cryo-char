@@ -88,6 +88,7 @@ class SubmitterArgsTests(unittest.TestCase):
             "script": "layout/jobs/build.sh",
             "output": "build/out",
             "timeout": 0,
+            "job_args": [],
             "dry_run": True,
             "wait": 0,
         }
@@ -106,6 +107,11 @@ class SubmitterArgsTests(unittest.TestCase):
             job_args=["layout/precheck/in/die.gds", "--id", "DEADBEEF", "--cob"]
         )
         self.assertIn("--shard=layout/precheck/in/die.gds --id DEADBEEF --cob", argv)
+
+    def test_spot_is_the_default_capacity_and_on_demand_is_an_opt_in(self):
+        self.assertNotIn("--capacity", self.args())
+        argv = self.args(on_demand=True)
+        self.assertEqual(argv[argv.index("--capacity") + 1], "on-demand")
 
 
 class SubmitTests(unittest.TestCase):
@@ -185,10 +191,19 @@ class SubmitTests(unittest.TestCase):
         )
         self.assertEqual(argv[argv.index("--wait-for-capacity") + 1], "600")
         self.assertIn("--no-wait", argv)
+        self.assertNotIn("--capacity", argv)
+        self.assertEqual(staged["capacity"], "spot")
         self.assertEqual(staged["input"]["label"], "die")
         self.assertEqual(
             staged["input"]["sha256"], hashlib.sha256(b"stub gds bytes\n").hexdigest()
         )
+
+    def test_on_demand_is_passed_to_the_submitter_and_recorded(self):
+        """For a job Spot reclaimed, or one that cannot be sharded to fit
+        between reclaims: the fleet's own ruling for on-demand capacity."""
+        argv, staged, _ = self.submit("--on-demand")
+        self.assertEqual(argv[argv.index("--capacity") + 1], "on-demand")
+        self.assertEqual(staged["capacity"], "on-demand")
 
     def test_forwarded_options_reach_the_job_and_the_submitter(self):
         argv, _, _ = self.submit("--workers", "2", "--timeout", "1500", "--wait", "540")

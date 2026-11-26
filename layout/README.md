@@ -21,7 +21,7 @@ the Spot batch fleet and bring the evidence back.
 
 ```
 layout/build.sh check
-layout/build.sh submit [--group ID] [--probe] [--timeout SECONDS] [--dry-run]
+layout/build.sh submit [--group ID] [--probe] [--timeout SECONDS] [--on-demand] [--dry-run]
 layout/build.sh collect GROUP [--wait SECONDS]
 layout/build.sh record layout/_work/runs/GROUP/s00 --as-die
 ```
@@ -44,11 +44,17 @@ and `record ... --is-die`.
 `submit` always passes `--wait-for-capacity 600`, as the worker host rules
 require: a full Spot budget is waited out, not failed.
 
-A shard Spot reclaims is `interrupted`, and the fleet captain's reconcile
-pass relaunches it from scratch within two hours; `collect` keeps polling
-through that. To not wait, run the same `submit` again with the same
+A shard Spot reclaims is `interrupted`; the fleet captain's reconcile pass,
+which runs every two hours, relaunches it from scratch, and `collect` keeps
+polling through that. To not wait, run the same `submit` again with the same
 `--group`: the job id keeps its launch ledger, so the record's
-`retry_count` still counts the lost attempt.
+`retry_count` still counts the lost attempt. A job that was reclaimed on
+Spot, or that cannot be sharded to fit between reclaims, takes
+`submit --on-demand`: the fleet's ruling for on-demand capacity, same cap,
+billed at the on-demand rate. It needs a submit identity allowed to launch
+on-demand; the loom-worker role is refused by IAM (`UnauthorizedOperation`
+on `ec2:RunInstances`, 2026-11-26), so from a worker that submit stages the
+job and launches nothing.
 
 ## What the job does
 
