@@ -46,16 +46,19 @@ python sim/readout/ring_clock.py 7t typical 25 1.4 --pdk "$PDK_ROOT/gf180mcuD" -
 
 Each oscillator now drives one seven-track root buffer, two leaf buffers and twelve clocked registers. The [routed receiver bench](../../sim/readout/routed_ring.py) reads the actual cell names, loads and connections from the DEF and uses the lumped SPEF capacitance of each of the four nets. It instantiates the library transistors and clocks a toggle-connected DFF on one leaf. The remaining DFFs and inserted dummy clock loads contribute their actual pin loads. The ring, ring output buffer and its internal wires are still schematic models. Each row of the [capture data](routed-ring-capture.csv) records the monitored clock windows and successful toggles.
 
-All eight monitored DFFs toggled once per measured cycle at the following points. At the lowest typical supply, the 7- and 9-track specimens each captured 8/8 cycles and both 12-track specimens captured 17/17. These results apply to the listed conditions. The qualified operating range across a supply crossing remains open.
+At typical 25 °C with the ring at 1.4 V and the controller at 3.3 V, the 7- and 9-track specimens each captured 8/8 cycles and both 12-track specimens captured 17/17. At the fast −40 °C corner with the controller at 3.6 V, every ring still oscillated at 1.4 V, but none of the eight monitored DFFs followed the ring. This crossing needs a level translator or a measured, narrower operating range before the divider can serve as its readout.
 
 | Process and temperature | Ring / controller supply | Captured / complete cycles across eight ports |
 |---|---|---:|
 | Typical, 25 °C | 1.4 V / 3.3 V | 82/82 |
 | Typical, 25 °C | 1.65 V / 3.3 V | 134/134 |
 | Fast, −40 °C | 3.6 V / 3.6 V | 52/52 |
+| Fast, −40 °C | 1.4 V / 3.6 V | 0/158 |
+| Slow, 125 °C | 1.4 V / 3.0 V | 72/72 |
 
 ```sh
 python sim/readout/routed_ring.py 2 typical 25 1.4 --pdk "$PDK_ROOT/gf180mcuD" --logic-supply 3.3 --duration-ns 950 --step-ns 0.04
+python sim/readout/routed_ring.py 2 ff -40 1.4 --pdk "$PDK_ROOT/gf180mcuD" --logic-supply 3.6 --duration-ns 950 --step-ns 0.04
 ```
 
 ## Extract and time the routed macro
