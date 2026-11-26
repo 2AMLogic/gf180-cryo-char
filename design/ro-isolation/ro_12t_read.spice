@@ -1,0 +1,168 @@
+.subckt gf180mcu_osu_sc_gp12t3v3__nand2_1 A B Y VDD VSS
+X0 VSS B a_28_19# VSS nfet_03v3 ad=0.425p pd=2.7u as=0.105p ps=1.1u w=0.85u l=0.3u
+X1 VDD B Y VDD pfet_03v3 ad=0.85p pd=4.4u as=0.468p ps=2.25u w=1.7u l=0.3u
+X2 Y A VDD VDD pfet_03v3 ad=0.468p pd=2.25u as=0.85p ps=4.4u w=1.7u l=0.3u
+X3 a_28_19# A Y VSS nfet_03v3 ad=0.105p pd=1.1u as=0.425p ps=2.7u w=0.85u l=0.3u
+.ends
+.subckt gf180mcu_osu_sc_gp12t3v3__inv_1 A Y VDD VSS
+X0 Y A VSS VSS nfet_03v3 ad=0.425p pd=2.7u as=0.425p ps=2.7u w=0.85u l=0.3u
+X1 Y A VDD VDD pfet_03v3 ad=0.85p pd=4.4u as=0.85p ps=4.4u w=1.7u l=0.3u
+.ends
+.subckt gf180mcu_osu_sc_gp12t3v3__buf_1 A Y VDD VSS
+X0 VSS A a_9_19# VSS nfet_03v3 ad=0.233p pd=1.4u as=0.425p ps=2.7u w=0.85u l=0.3u
+X1 Y a_9_19# VDD VDD pfet_03v3 ad=0.85p pd=4.4u as=0.468p ps=2.25u w=1.7u l=0.3u
+X2 VDD A a_9_19# VDD pfet_03v3 ad=0.468p pd=2.25u as=0.85p ps=4.4u w=1.7u l=0.3u
+X3 Y a_9_19# VSS VSS nfet_03v3 ad=0.425p pd=2.7u as=0.233p ps=1.4u w=0.85u l=0.3u
+.ends
+.subckt ro_12t en out vro vss
+Xgate n142 en n0 vro vss gf180mcu_osu_sc_gp12t3v3__nand2_1
+Xi1 n0 n1 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi2 n1 n2 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi3 n2 n3 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi4 n3 n4 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi5 n4 n5 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi6 n5 n6 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi7 n6 n7 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi8 n7 n8 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi9 n8 n9 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi10 n9 n10 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi11 n10 n11 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi12 n11 n12 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi13 n12 n13 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi14 n13 n14 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi15 n14 n15 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi16 n15 n16 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi17 n16 n17 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi18 n17 n18 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi19 n18 n19 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi20 n19 n20 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi21 n20 n21 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi22 n21 n22 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi23 n22 n23 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi24 n23 n24 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi25 n24 n25 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi26 n25 n26 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi27 n26 n27 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi28 n27 n28 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi29 n28 n29 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi30 n29 n30 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi31 n30 n31 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi32 n31 n32 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi33 n32 n33 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi34 n33 n34 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi35 n34 n35 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi36 n35 n36 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi37 n36 n37 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi38 n37 n38 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi39 n38 n39 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi40 n39 n40 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi41 n40 n41 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi42 n41 n42 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi43 n42 n43 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi44 n43 n44 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi45 n44 n45 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi46 n45 n46 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi47 n46 n47 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi48 n47 n48 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi49 n48 n49 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi50 n49 n50 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi51 n50 n51 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi52 n51 n52 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi53 n52 n53 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi54 n53 n54 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi55 n54 n55 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi56 n55 n56 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi57 n56 n57 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi58 n57 n58 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi59 n58 n59 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi60 n59 n60 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi61 n60 n61 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi62 n61 n62 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi63 n62 n63 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi64 n63 n64 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi65 n64 n65 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi66 n65 n66 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi67 n66 n67 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi68 n67 n68 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi69 n68 n69 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi70 n69 n70 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi71 n70 n71 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi72 n71 n72 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi73 n72 n73 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi74 n73 n74 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi75 n74 n75 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi76 n75 n76 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi77 n76 n77 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi78 n77 n78 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi79 n78 n79 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi80 n79 n80 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi81 n80 n81 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi82 n81 n82 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi83 n82 n83 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi84 n83 n84 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi85 n84 n85 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi86 n85 n86 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi87 n86 n87 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi88 n87 n88 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi89 n88 n89 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi90 n89 n90 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi91 n90 n91 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi92 n91 n92 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi93 n92 n93 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi94 n93 n94 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi95 n94 n95 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi96 n95 n96 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi97 n96 n97 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi98 n97 n98 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi99 n98 n99 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi100 n99 n100 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi101 n100 n101 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi102 n101 n102 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi103 n102 n103 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi104 n103 n104 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi105 n104 n105 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi106 n105 n106 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi107 n106 n107 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi108 n107 n108 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi109 n108 n109 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi110 n109 n110 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi111 n110 n111 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi112 n111 n112 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi113 n112 n113 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi114 n113 n114 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi115 n114 n115 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi116 n115 n116 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi117 n116 n117 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi118 n117 n118 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi119 n118 n119 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi120 n119 n120 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi121 n120 n121 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi122 n121 n122 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi123 n122 n123 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi124 n123 n124 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi125 n124 n125 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi126 n125 n126 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi127 n126 n127 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi128 n127 n128 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi129 n128 n129 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi130 n129 n130 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi131 n130 n131 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi132 n131 n132 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi133 n132 n133 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi134 n133 n134 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi135 n134 n135 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi136 n135 n136 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi137 n136 n137 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi138 n137 n138 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi139 n138 n139 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi140 n139 n140 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi141 n140 n141 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xi142 n141 n142 vro vss gf180mcu_osu_sc_gp12t3v3__inv_1
+Xbuffer n142 out vro vss gf180mcu_osu_sc_gp12t3v3__buf_1
+.ends
+
+.subckt ro_12t_read en rx read read_b vro vss
+Xcore en rawout vro vss ro_12t
+Xpass rx read rawout vss nfet_03v3 L=0.28u W=0.42u
+Xbleed vss read_b rx vss nfet_03v3 L=0.28u W=0.42u
+.ends
