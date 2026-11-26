@@ -52,7 +52,7 @@
         "role": "hygiene",
         "path": "spec/0001-characterization-targets.md",
         "passed": true,
-        "content_hash": "sha256:98a7cf0f007ce6b812bb0fb273e2d2a1ba5655f8662a2e7101ebda55c672c88c"
+        "content_hash": "sha256:84cef98185c564320757e1191f6bedd06554700a6e06a3c06d3bac58a760bd72"
       },
       {
         "check": "present",
@@ -66,7 +66,7 @@
         "role": "hygiene",
         "path": "spec/selection-readout.md",
         "passed": true,
-        "content_hash": "sha256:e0633a2b81befc2c4803072ebd0ad3e9297e6250ca262805341aacb852b3f1d2"
+        "content_hash": "sha256:46a345174d6e0b0f49c820aa4f7346de4d8a8258aa1944a3c715072e544f7d05"
       },
       {
         "check": "present",
