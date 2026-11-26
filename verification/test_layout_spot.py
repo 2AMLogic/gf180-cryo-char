@@ -16,6 +16,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from layout import spot
+
 REPO = Path(__file__).resolve().parents[1]
 LAYOUT = REPO / "layout"
 PINS = json.loads((LAYOUT / "toolchain.json").read_text())
@@ -72,6 +74,35 @@ with open(os.path.join(final, "checker.log"), "w") as handle:
     handle.write("stub step log\\n")
 sys.exit(int(os.environ.get("STUB_PRECHECK_RC", "0")))
 """
+
+
+class SubmitterArgsTests(unittest.TestCase):
+    def args(self, **job_args):
+        options = {
+            "tarball": Path("source.tar.gz"),
+            "commit": "c" * 40,
+            "group": "g",
+            "script": "layout/jobs/build.sh",
+            "output": "build/out",
+            "timeout": 0,
+            "dry_run": True,
+            "wait": 0,
+        }
+        return spot.submitter_args(**{**options, **job_args})
+
+    def test_shard_arguments_travel_as_one_option_value(self):
+        argv = self.args(job_args=["--probe"], timeout=1500)
+        self.assertNotIn("--shard", argv)
+        self.assertIn("--shard=--probe", argv)
+        self.assertEqual(argv[argv.index("--timeout") + 1], "1500")
+        self.assertEqual(argv[argv.index("--wait-for-capacity") + 1], "600")
+        self.assertIn("--no-wait", argv)
+
+    def test_a_precheck_option_list_is_shell_split_by_the_submitter(self):
+        argv = self.args(
+            job_args=["layout/precheck/in/die.gds", "--id", "DEADBEEF", "--cob"]
+        )
+        self.assertIn("--shard=layout/precheck/in/die.gds --id DEADBEEF --cob", argv)
 
 
 class JobScriptTests(unittest.TestCase):

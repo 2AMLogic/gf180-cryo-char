@@ -220,6 +220,37 @@ def cmd_submit(stage: str, args: argparse.Namespace) -> int:
         f"staged {tarball} ({staged['tarball_bytes']} bytes, sha256 {staged['tarball_sha256'][:12]})"
     )
     command = submitter_command(
+        *submitter_args(
+            tarball=tarball,
+            commit=commit,
+            group=group,
+            script=spec["script"],
+            output=spec["output"],
+            job_args=["--probe"] if stage == "build" and args.probe else job_args,
+            timeout=args.timeout,
+            dry_run=args.dry_run,
+            wait=args.wait,
+        )
+    )
+    return subprocess.run(command, cwd=REPO_ROOT).returncode
+
+
+def submitter_args(
+    *,
+    tarball: Path,
+    commit: str,
+    group: str,
+    script: str,
+    output: str,
+    job_args: list[str],
+    timeout: int,
+    dry_run: bool,
+    wait: int,
+) -> list[str]:
+    """The submitter's argv. A shard's argument list is one option value
+    (``--shard=...``): a list that starts with ``--`` would otherwise be read
+    as the submitter's own flag."""
+    argv = [
         "--tarball",
         str(tarball),
         "--commit",
@@ -229,9 +260,9 @@ def cmd_submit(stage: str, args: argparse.Namespace) -> int:
         "--issue",
         ISSUE,
         "--script",
-        spec["script"],
+        script,
         "--output",
-        spec["output"],
+        output,
         "--wait-for-capacity",
         CAPACITY_WAIT,
         "--out",
@@ -240,16 +271,14 @@ def cmd_submit(stage: str, args: argparse.Namespace) -> int:
         group,
         "--requirements",
         "",
-    )
-    if stage == "build" and args.probe:
-        command += ["--shard=--probe"]
+    ]
     if job_args:
-        command += [f"--shard={shlex.join(job_args)}"]
-    if args.timeout:
-        command += ["--timeout", str(args.timeout)]
-    command += ["--dry-run"] if args.dry_run else []
-    command += ["--wait", str(args.wait)] if args.wait else ["--no-wait"]
-    return subprocess.run(command, cwd=REPO_ROOT).returncode
+        argv.append(f"--shard={shlex.join(job_args)}")
+    if timeout:
+        argv += ["--timeout", str(timeout)]
+    argv += ["--dry-run"] if dry_run else []
+    argv += ["--wait", str(wait)] if wait else ["--no-wait"]
+    return argv
 
 
 def cmd_collect(args: argparse.Namespace) -> int:
