@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "kind": "generic",
+  "status": "pass",
+  "t1_item": 10,
+  "summary": "T1 item 10 (Repo hygiene): 7/7 attestation checks passed (klt signoff --attest)",
+  "source": "signoff/attest/item10.json",
+  "attestation": {
+    "producer": "klt signoff --attest",
+    "inventory_schema_version": 1,
+    "hash_algorithm": "sha256-raw-bytes",
+    "check_count": 7,
+    "passed_count": 7,
+    "checks": [
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": ".github/workflows/evidence.yml",
+        "passed": true,
+        "content_hash": "sha256:80d756ff0adb838d66de9057316919a46bf37b5c189aad8d0665dec0872c1b59"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "LICENSE",
+        "passed": true,
+        "content_hash": "sha256:cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "README.md",
+        "passed": true,
+        "content_hash": "sha256:1772d11c80e33ba3f8a6fd798bc07ee22eb526efc703d41d60aed2eb9b9665d7"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "package.json",
+        "passed": true,
+        "content_hash": "sha256:c70fbdfc862edfdfb37c06d19f13eb057671866f550c630a73883152cab63d9f"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "signoff/klt-pin.txt",
+        "passed": true,
+        "content_hash": "sha256:8a7edeed028822126a351cd439ac65fe44a95adde7bdd5fff759425b262ace2e"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "verification/test_harness.py",
+        "passed": true,
+        "content_hash": "sha256:7562df3c2042efb88d306bca5c16509ae94594f18992bb01adc821f6b3782a18"
+      },
+      {
+        "check": "command",
+        "role": "audit",
+        "name": "harness-and-evidence",
+        "argv": [
+          "python3",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "verification",
+          "-p",
+          "test_*.py"
+        ],
+        "cwd": ".",
+        "exit_status": 0,
+        "passed": true
+      }
+    ]
+  },
+  "provenance": {
+    "klt_version": "0.9.2",
+    "klayout_version": null,
+    "pdk": null,
+    "deck": null,
+    "input": {
+      "path": {
+        "path": "signoff/attest/item10.json",
+        "scope": "repo"
+      },
+      "content_hash": "sha256:bcf01d926989954a61fbebbc7973944d2b0de015e1692624962d9b6eede78f8b"
+    }
+  }
+}

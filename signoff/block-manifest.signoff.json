@@ -9,7 +9,7 @@
   "tier": null,
   "t1_item_count": 22,
   "build_t1_item_count": 22,
-  "t1_met_count": 0,
+  "t1_met_count": 2,
   "source_doc": "docs/design-evidence-tiers.md",
   "source_doc_content_hash": "sha256:d9287ec9dc6107e560e00b1a8b7a670f757722713b5c651dee3d2cbde058490a",
   "build": {
@@ -278,10 +278,35 @@
       "partition_boundary": "Planned devices under test and analog measurement paths from the selected device to the force and sense pads. The selection switches receive control from the digital partition. Issue #1 defines the device map and pad connections.",
       "text": "a README stating what the block is, its spec table, and how to reproduce every result; a license; CI that at minimum keeps the harness and evidence formats valid.",
       "notes": [],
-      "status": "unmet",
-      "reason": "no_evidence",
+      "status": "met",
+      "reason": null,
       "graded_by_build": true,
-      "citation": null
+      "citation": {
+        "file": "signoff/attest/item10.envelope.json",
+        "command": null,
+        "kind": "generic",
+        "check_status": "pass",
+        "content_hash": "sha256:bcf01d926989954a61fbebbc7973944d2b0de015e1692624962d9b6eede78f8b",
+        "input_verified": true,
+        "exit_status": 0,
+        "artifact_binding": {
+          "t1_item": 10,
+          "path": {
+            "path": "signoff/attest/item10.json",
+            "scope": "repo"
+          },
+          "content_hash": "sha256:bcf01d926989954a61fbebbc7973944d2b0de015e1692624962d9b6eede78f8b",
+          "input_verified": true,
+          "summary": "T1 item 10 (Repo hygiene): 7/7 attestation checks passed (klt signoff --attest)",
+          "source": "signoff/attest/item10.json",
+          "attestation": {
+            "producer": "klt signoff --attest",
+            "inventory_schema_version": 1,
+            "check_count": 7,
+            "passed_count": 7
+          }
+        }
+      }
     },
     {
       "tier": "T1",
@@ -291,10 +316,35 @@
       "partition_boundary": "Planned control that selects which structure is connected to the measurement pads. The signals cross into the analog partition at the selection switches. The interface and pin assignments are pending the specification in issue #1.",
       "text": "a README stating what the block is, its spec table, and how to reproduce every result; a license; CI that at minimum keeps the harness and evidence formats valid.",
       "notes": [],
-      "status": "unmet",
-      "reason": "no_evidence",
+      "status": "met",
+      "reason": null,
       "graded_by_build": true,
-      "citation": null
+      "citation": {
+        "file": "signoff/attest/item10.envelope.json",
+        "command": null,
+        "kind": "generic",
+        "check_status": "pass",
+        "content_hash": "sha256:bcf01d926989954a61fbebbc7973944d2b0de015e1692624962d9b6eede78f8b",
+        "input_verified": true,
+        "exit_status": 0,
+        "artifact_binding": {
+          "t1_item": 10,
+          "path": {
+            "path": "signoff/attest/item10.json",
+            "scope": "repo"
+          },
+          "content_hash": "sha256:bcf01d926989954a61fbebbc7973944d2b0de015e1692624962d9b6eede78f8b",
+          "input_verified": true,
+          "summary": "T1 item 10 (Repo hygiene): 7/7 attestation checks passed (klt signoff --attest)",
+          "source": "signoff/attest/item10.json",
+          "attestation": {
+            "producer": "klt signoff --attest",
+            "inventory_schema_version": 1,
+            "check_count": 7,
+            "passed_count": 7
+          }
+        }
+      }
     },
     {
       "tier": "T1",
