@@ -12,6 +12,11 @@ Every layout/ runner imports this module instead of re-deriving the check:
 
 A missing command is an error (exit 1) that names the command and the
 install command that fixes it, never a silently-skipped check.
+
+The die gate in ``verification/test_layout_toolchain.py`` adds
+:func:`moved_precheck_pins`: a precheck record is only evidence for the
+precheck and PDK commits it names, so a pin that has moved since needs a
+new record.
 """
 
 from __future__ import annotations
@@ -68,6 +73,11 @@ _SCHEMA = {
     },
     "nix": {"version": _VERSION, "url": _STR, "sha256": _SHA256},
 }
+
+PRECHECK_PINS = (
+    ("wafer_space", "precheck", "commit"),
+    ("wafer_space", "pdk", "open_pdks_commit"),
+)
 
 
 class PinError(RuntimeError):
@@ -188,6 +198,45 @@ def missing_klt_commands(pins: dict, help_text: str) -> list[str]:
     """Every pinned ``klt`` command this install does not list, in pin order."""
     present = klt_subcommands(help_text)
     return [c for c in pins["klt_required_commands"] if c not in present]
+
+
+def _at(pins, path: tuple[str, ...]) -> object | None:
+    """What ``pins`` holds at ``path``; ``None`` when nothing is held there."""
+    for key in path:
+        if not isinstance(pins, dict) or key not in pins:
+            return None
+        pins = pins[key]
+    return pins
+
+
+def moved_precheck_pins(record_pins: dict | None, pins: dict) -> list[str]:
+    """Where the pins a precheck verdict depends on have moved since a record.
+
+    A precheck record's verdict belongs to the precheck tree and the PDK it
+    ran -- the DRC decks ship inside the PDK -- so once either has moved the
+    record no longer describes what ``pins`` would do, and the GDS has to be
+    prechecked again. That is :data:`PRECHECK_PINS` and nothing else: a moved
+    template or ``klt`` pin cannot change a verdict already recorded, and
+    demanding a new record for it would be a needless re-run.
+
+    ``record_pins`` is the record's ``pins`` block and ``pins`` the validated
+    pin file. Each entry names a pin by its dotted path under
+    ``layout/toolchain.json``; a record that does not name a pin is reported
+    rather than taken as matching.
+    """
+    moved = []
+    for path in PRECHECK_PINS:
+        name = ".".join(path)
+        recorded = _at(record_pins, path)
+        current = _at(pins, path)
+        if recorded is None:
+            moved.append(f"{name}: the record does not name it")
+        elif recorded != current:
+            moved.append(
+                f"{name} moved: the record holds {recorded}, "
+                f"the pin file holds {current}"
+            )
+    return moved
 
 
 def klt_help(klt: str = "klt", pins: dict | None = None) -> str:
