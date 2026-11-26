@@ -99,3 +99,10 @@ flow/build/
 /node_modules/
 /pnpm-lock.yaml
 # <<< loom-managed <<<
+
+# layout/: Spot-job scratch (staged tarballs, collected outputs, upstream
+# checkouts) never enters git; the GDS itself lives in the artifact store.
+layout/_work/
+# layout/: raw job logs beside a record are committed evidence (append-only),
+# so they escape the *.log rule the same way sim/ corners do.
+!layout/*/records/**/*.log
