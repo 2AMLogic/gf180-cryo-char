@@ -56,6 +56,20 @@ uvx --from "$(cat signoff/klt-pin.txt)" klt signoff \
 The check exits zero when the report matches. Its `tier`, `t1_met_count`
 and per-item verdicts show how much design evidence has passed.
 
+Run the same harness and evidence checks as CI from the repo root:
+
+```sh
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r signoff/klt-pin.txt
+npm run check:ci
+```
+
+Use Python 3.12 and npm. The harness tests generate pass, fail, and incomplete
+records in a temporary directory, then load any committed testbench manifests.
+The remaining checks reproduce the repo-hygiene attestation and the signoff
+report. These checks run without a PDK install.
+
 **Not being built:**
 - **Copied layout.** The upstream repo ships only finished GDS, with no
   generator scripts. Every structure here is regenerated from NIST's spec
