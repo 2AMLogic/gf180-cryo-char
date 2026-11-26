@@ -8,7 +8,7 @@ import unittest
 
 import klayout.db as db
 
-from flow import reproduce
+from flow import reproduce, time_readout
 
 MACRO = reproduce.MACRO
 
@@ -85,6 +85,10 @@ class RoutedReadout(unittest.TestCase):
         for name in ("timing", "timing-stress"):
             request = read_json(MACRO / f"{name}.json")
             report = read_json(MACRO / f"{name}.report.json")
+            self.assertEqual(
+                report["timing_input_sha256"],
+                time_readout.input_hashes(MACRO / f"{name}.json"),
+            )
             self.assertEqual(
                 report["provenance"]["input"]["content_hash"],
                 "sha256:" + reproduce.sha(MACRO / request["def"]),
