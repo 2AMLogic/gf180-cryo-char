@@ -1,0 +1,31 @@
+{
+  "layout": {
+    "file": "cryo_char_ctrl.gds",
+    "top": "cryo_char_ctrl",
+    "deck": "gf180mcu",
+    "abstract_cells": "gf180mcu_fd_sc_mcu7t5v0__*",
+    "def_net_names": true,
+    "def_pins": "cryo_char_ctrl.def",
+    "deck_options": {
+      "metal_top": "11K"
+    }
+  },
+  "reference": {
+    "netlist": "cryo_char_ctrl.asbuilt.v",
+    "form": "gate-level-verilog",
+    "library": "gf180mcu_fd_sc_mcu7t5v0",
+    "pdk": "gf180mcuD",
+    "top": "cryo_char_ctrl"
+  },
+  "options": {
+    "power_connectivity": {
+      "expected_nets": {
+        "VDD": "VDD",
+        "VNW": "VDD",
+        "VPW": "VSS",
+        "VSS": "VSS"
+      }
+    }
+  },
+  "portable_paths": true
+}

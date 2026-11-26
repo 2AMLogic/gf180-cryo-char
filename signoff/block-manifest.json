@@ -25,6 +25,10 @@
     "2.digital": {
       "file": "signoff/attest/item2-digital.envelope.json",
       "content_hash": "sha256:3fe526f02dfb4558ce5041c412747d77ac55e303e229609f6d0de658c4ff9376"
+    },
+    "4.digital": {
+      "file": "flow/readout/lvs.report.json",
+      "content_hash": "sha256:3fe526f02dfb4558ce5041c412747d77ac55e303e229609f6d0de658c4ff9376"
     }
   }
 }

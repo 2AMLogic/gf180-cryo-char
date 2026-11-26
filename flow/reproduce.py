@@ -19,7 +19,8 @@ MACRO = FLOW / "readout"
 TOP = "cryo_char_ctrl"
 REQUEST = FLOW / "request-par.json"
 NETLIST = ROOT / "rtl" / f"{TOP}.gl.v"
-FILES = [NETLIST, REQUEST, MACRO / f"{TOP}.def", MACRO / f"{TOP}.gds"]
+AS_BUILT = MACRO / f"{TOP}.asbuilt.v"
+FILES = [NETLIST, REQUEST, MACRO / f"{TOP}.def", MACRO / f"{TOP}.gds", AS_BUILT]
 
 
 def sha(path):
@@ -190,9 +191,13 @@ def route(destination, record):
         raise ValueError("P&R used a different netlist")
     shipped = destination / f"{TOP}.gds"
     shuttle_stream(Path(report["gds_path"]), shipped)
-    for path in (shipped, Path(report["def_path"])):
-        if sha(path) != sha(MACRO / path.name):
-            raise ValueError(f"Fresh {path.name} differs from the committed macro")
+    for actual, expected in (
+        (shipped, MACRO / f"{TOP}.gds"),
+        (Path(report["def_path"]), MACRO / f"{TOP}.def"),
+        (Path(report["verilog_path"]), AS_BUILT),
+    ):
+        if sha(actual) != sha(expected):
+            raise ValueError(f"Fresh {actual.name} differs from {expected.name}")
 
 
 def main():
