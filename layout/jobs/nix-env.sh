@@ -21,7 +21,10 @@
 set -euo pipefail
 
 LAYOUT_JOB_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-export NIX_CONFIG="experimental-features = nix-command flakes"
+# The job runs as root, and Nix as root insists on a build-users group unless
+# the setting is emptied: the same nix.conf the official nixos/nix image ships.
+export NIX_CONFIG="experimental-features = nix-command flakes
+build-users-group ="
 
 ws_pin() {
 	python3 - "$LAYOUT_JOB_DIR/toolchain.json" "$1" <<'PY'
