@@ -558,6 +558,16 @@ def build_parser() -> argparse.ArgumentParser:
             help="stage the tarball only: touch no AWS, launch nothing",
         )
         submit_p.add_argument(
+            "--timeout",
+            type=int,
+            default=0,
+            help="per-job cap in seconds (default: the image profile's)",
+        )
+        if stage == "build":
+            submit_p.add_argument(
+                "--probe", action="store_true", help="stop after the bootstrap"
+            )
+        submit_p.add_argument(
             "--wait",
             type=int,
             default=0,
