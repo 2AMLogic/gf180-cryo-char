@@ -139,6 +139,7 @@ class SubmitTests(unittest.TestCase):
                 "head_and_clean": lambda: "c" * 40,
                 "upstream": lambda key, pins: (work / "upstream", "d" * 40),
                 "stage_tarball": fake_tarball,
+                "say": lambda message: None,
             }
             with (
                 mock.patch.dict(os.environ, {"STUB_ARGV_OUT": str(argv_out)}),
