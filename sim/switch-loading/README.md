@@ -22,3 +22,21 @@ python3 sim/switch-loading/measure.py --pdk "$PDK_ROOT/gf180mcuD"
 The [AC control](measure_ac.py) drives the measured terminal at 10 mV RMS and 10 kHz. The ideal far terminal is held at 0 or 3.3 V DC and is AC-grounded. Zero, one and four identical parallel open switches use the exact transistor cards from the DC control. The [90 results](ac-loading.csv) cover five MOS process sections and three temperatures. Both real and imaginary currents enter the reported magnitude. Equivalent capacitance uses the imaginary current alone. An empty branch network gives zero at all 30 conditions. Four branches give four times the single-branch current at every condition.
 
 At typical process, 25 °C and far terminal at 0 V, one branch draws 1.625 pA (2.586 fF), and four draw 6.500 pA (10.345 fF). The worst four-branch magnitude is 47.983 pA across this grid. These are raw added-current measurements on a deliberately unguarded control. The calibrated die and extracted production switch tree require their own tests. Both supported PDK revisions and the simulator commands are in the [simulation record](../README.md).
+
+## Local mismatch of four open branches
+
+The [seeded test](measure_mismatch.py) reuses the reference NMOS and PMOS geometry in four parallel branches. The GF180D transistor subcircuits apply their own local threshold and mobility mismatch to each instance. The harness selects the process corner, sets `sw_stat_global=0` and `sw_stat_mismatch=1`, and seeds ngspice **before** sourcing the devices. Each case uses 128 independent seed settings (1001–1128). The cases reuse those settings for paired comparisons. Within each draw the DC and AC analyses use the same instantiated devices. The output retains signed DC and both AC components for every draw. [384 samples](mismatch.csv)
+
+| MOS corner / temperature | Instrument / far bias | Fixed signed DC | Upper bound on p95 absolute DC | Upper bound on p95 AC magnitude |
+|---|---|---:|---:|---:|
+| Typical, 25 °C | 0 / 0 V | +0.2541 pA | 0.2541 pA | 6.4999 pA |
+| FF, 125 °C | 0 / 3.3 V | +169.1153 pA | 191.8637 pA | 54.7632 pA |
+| FF, 125 °C | 3.3 / 0 V | −172.0483 pA | 195.2981 pA | 7.7554 pA |
+
+For each quantity and condition, the 126th smallest of 128 samples is a distribution-free one-sided upper confidence bound for its 95th percentile (binomial coverage 95.74% for independent draws). Coverage applies separately to each column and condition. The signed current reverses at the hot bias swap. Typical equal-terminal DC is constant to the stored digits across seeds while AC changes. The inactive reference branches exceed the 5 fA design target even at the typical equal-terminal bias. The hot positive and negative cases also exceed the 10 fA reference-scale loading requirement. The four bare branches serve as a control for the planned bank. Its extracted topology, spatially correlated systematic offsets, pad mismatch and physical floor still need independent evidence.
+
+Each case repeats its first seed exactly, toggles mismatch off at two seeds to recover one deterministic result, and disconnects all branches to check zero DC and AC. The ngspice 47 producer checks those controls before writing or comparing the CSV. Set `PDK` to a supported GF180D variant directory.
+
+```sh
+python3 sim/switch-loading/measure_mismatch.py --pdk "$PDK" --ngspice ngspice --jobs 4
+```

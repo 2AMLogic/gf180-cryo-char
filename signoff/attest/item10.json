@@ -30,7 +30,10 @@
     "sim/README.md",
     "sim/switch-loading/measure_ac.py",
     "sim/switch-loading/ac-loading.csv",
-    ".github/workflows/spec-sources.yml"
+    ".github/workflows/spec-sources.yml",
+    "sim/switch-loading/measure_mismatch.py",
+    "sim/switch-loading/mismatch.csv",
+    "verification/test_switch_mismatch.py"
   ],
   "checks": [
     {

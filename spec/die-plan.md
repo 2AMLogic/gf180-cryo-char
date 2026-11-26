@@ -10,7 +10,7 @@ The outline is **3,932 × 5,122 µm**, origin (0,0). The slot requests a core fr
 | North bidir[39], bidir[38] → analog[2:3] | F2, S2 | Force and Kelvin sense of terminal 2. |
 | North bidir[37], bidir[36] → analog[4:5] | F3, S3 | Force and Kelvin sense of terminal 3. |
 | North bidir[35], bidir[34] → analog[6:7] | F4, S4 | Force and Kelvin sense of terminal 4. |
-| North bidir[33] → analog[8] | GUARD | Externally driven guard/shield for the selected sensitive bus, current-limited and inside the rails. |
+| North bidir[33] → analog[8] | GUARD | One current-limited, in-rail external shield drive for the selected sensitive bus. Record the [guard configuration and cross-coupling](selection-readout.md#using-the-shared-guard) for other biased pairs. |
 | South clk_pad, rst_n_pad | CLK, RST_N | Selection clock and active-low reset. |
 | West inputs[0:9] | ADDR[0:9] | Binary selection and replica bit. |
 | West inputs[10], inputs[11] | MEAS_EN, RO_EN | Enable analog routing and oscillator drive, respectively. |
