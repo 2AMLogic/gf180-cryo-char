@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["klayout==0.30.14"]
+# dependencies = ["klayout==0.30.14", "klayout-tools==0.9.2"]
 # ///
 """Probe OpenROAD's four LEF accesses against the as-streamed GF180D electrodes."""
 
@@ -10,11 +10,15 @@ import hashlib
 import json
 from pathlib import Path
 import subprocess
+import sys
 import tempfile
 
 import klayout.db as db
 from build import CODES, HERE
 from kelvin import export_all
+
+sys.path.insert(0, str(HERE.parent))
+from toolchain_pin import check as check_toolchain
 
 TECH = "libs.ref/gf180mcu_fd_sc_mcu7t5v0/techlef/gf180mcu_fd_sc_mcu7t5v0__nom.tlef"
 METAL = {"Metal3": 42, "Metal5": 81}
@@ -180,13 +184,15 @@ def main():
     parser.add_argument("--pdk", type=Path, required=True)
     parser.add_argument("--record", action="store_true")
     args = parser.parse_args()
+    pdk = args.pdk.resolve()
+    check_toolchain(Path(sys.executable).with_name("klt"), pdk, require_openroad=True)
     source = json.loads((HERE / "verification.json").read_text())
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td).resolve()
         export_all(tmp)
         if (tmp / "mim_kelvin.lef").read_bytes() != (HERE / "mim_kelvin.lef").read_bytes():
             raise ValueError("Generated routing abstract differs from the checked-in LEF")
-        sizes, pins, obs = read_abstract(args.pdk.resolve(), tmp)
+        sizes, pins, obs = read_abstract(pdk, tmp)
         report = {str(c): verify(c, tmp, sizes, pins, obs, source[str(c)]) for c in CODES}
     target = HERE / "kelvin-access.json"
     if args.record:

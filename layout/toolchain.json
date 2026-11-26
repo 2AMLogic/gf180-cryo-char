@@ -51,7 +51,9 @@
     "                         in *this* repo's pin is visible next to",
     "                         klt's).",
     "",
-    "For characterization issue #2, the MIM specimens use the GF180 option-B generator at glayout_commit and KLT 0.9.2 (the existing klt_install commit). Native and curated DRC, extraction and dimensional LVS run against GF180D."
+    "For characterization issue #2, the MIM specimens use the GF180 option-B generator at glayout_commit and KLT 0.9.2 (the existing klt_install commit). Native and curated DRC, extraction and dimensional LVS run against GF180D.",
+    "",
+    "For issue #2, the four-pin MIM routing abstract uses the OpenROAD build below to read the GF180D technology LEF. The other layout runners retain their existing tool requirements."
   ],
   "klt_install": "git+https://github.com/2AMLogic/klayout-tools@046ba74652fc096bd97071fc3237f7159dd40183",
   "klt_required_commands": [
@@ -62,5 +64,7 @@
   "klt_last_verified_commit": "046ba74652fc096bd97071fc3237f7159dd40183",
   "klayout_package_min": "0.30",
   "glayout_commit": "97276267411c193037f9844716f376fcb126c3e6",
-  "glayout_source": "https://github.com/ReaLLMASIC/gLayout"
+  "glayout_source": "https://github.com/ReaLLMASIC/gLayout",
+  "openroad_version": "26Q3-1510-g6cb3f2b704",
+  "openroad_image": "openroad/orfs@sha256:bb7f31697fb8466ab61852fc796376cc16d9df38f762ccb733218b8a5e55824b"
 }

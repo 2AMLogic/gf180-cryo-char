@@ -17,6 +17,8 @@ The [108 AC results](measurements.csv) use a fresh GF180D device extraction for 
 
 ## Four-wire access
 
+For codes 452–455, the GF180 port assigns terminal 1 (`C1`, F1/S1) to the physical top plate and terminal 2 (`A1`, F2/S2) to the Metal4 bottom plate. The [source workbook mapping](../../spec/structure-map.md) and NIST module-description slides 15–18 identify C1/A1 but give no MIM plate cross-section tying those names to a metal level. This is the GF180 port's convention. The [AC bench](measure.py) applies its recorded bias as V(top) − V(bottom). The NIST MDM files name their swept voltage `vbc` across instrument terminals B and C. A signed cross-process C–V comparison requires a source-backed mapping of those terminals to physical electrodes.
+
 The routing abstract places F1 and S1 on the Metal5 top-plate spine at the east edge and F2 and S2 on the Metal3 bottom-plate spine at the west edge. Force approaches at the south end of each spine and sense at the north. Each horizontal approach has a 0.8 × 4 µm landing. Route four separate leads from the selection switches. Each force/sense pair joins at its plate inside the macro. Readout still needs die routing, extracted interconnect and pad/fixture calibration. [OpenROAD LEF](mim_kelvin.lef)
 
 Use the generated `mim_<code>_kelvin.gds` top with this LEF. Its lower-left outline is at (0, 0). A single translated instance preserves the source capacitor and fill geometry and the two original electrode labels. Metal1 through Metal5 and all intervening via layers are obstructed outside the specified metal access corridors. Each exported top passed the GF180D native and curated DRC runs (763 and 25 categories). [Wrapped-stream DRC](kelvin-drc.json)
