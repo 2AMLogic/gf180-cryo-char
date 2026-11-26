@@ -1,0 +1,7 @@
+{
+    "gds": "/var/tmp/eda-job-cryo4-die-cfa2b8d-s00/src/precheck/flow/runs/RUN_2026-11-26_13-44-39/04-klayout-generateid/chip_top.gds",
+    "render": "/var/tmp/eda-job-cryo4-die-cfa2b8d-s00/src/precheck/flow/runs/RUN_2026-11-26_13-44-39/05-klayout-render/chip_top.png",
+    "metrics": {
+        "klayout__density_error__count": 0
+    }
+}

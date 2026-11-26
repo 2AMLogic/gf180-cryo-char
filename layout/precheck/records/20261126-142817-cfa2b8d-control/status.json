@@ -1,0 +1,21 @@
+{
+  "job_id": "cryo4-control-cfa2b8d-s00",
+  "state": "done",
+  "detail": "",
+  "instance_id": "i-0e4196357251e3125",
+  "instance_type": "m7i.4xlarge",
+  "availability_zone": "us-east-1f",
+  "region": "us-east-1",
+  "ami_id": "ami-08688417b66e0c74d",
+  "lifecycle": "spot",
+  "spot": true,
+  "concurrency": "8",
+  "physical_cores": "8",
+  "vcpus": "16",
+  "tool": "repo-script",
+  "exit_code": "0",
+  "cpu_busy_fraction": "0.1798",
+  "started_at": "2026-11-26T13:02:21Z",
+  "updated_at": "2026-11-26T14:27:34Z",
+  "elapsed_seconds": 5113
+}

@@ -1,0 +1,37 @@
+[harness 2026-11-26T13:43:01Z] watchdog armed: unconditional poweroff in 90m
+[harness 2026-11-26T13:43:01Z] instance=i-01e54207641b5a522 type=m7i.4xlarge az=us-east-1f ami=ami-08688417b66e0c74d lifecycle=spot
+[harness 2026-11-26T13:43:01Z] job=cryo4-die-cfa2b8d-s00 bucket=2am-batch-jobs-221082181346 prefix=jobs
+[harness 2026-11-26T13:43:01Z] watchdog armed: unconditional poweroff in 126m
+[harness 2026-11-26T13:43:01Z] aws CLI already on the image
+[harness 2026-11-26T13:43:01Z] cpu: vcpus=16 physical_cores=8
+[harness 2026-11-26T13:43:10Z] concurrency: 8 (cores_per_job=1, physical_cores=8, vcpus=16)
+[harness 2026-11-26T13:43:11Z] status=running (fetching inputs)
+[harness 2026-11-26T13:43:12Z] WARNING: PDK_ROOT unresolved (see eda-runner-env.sh's four layers)
+[harness 2026-11-26T13:43:12Z] status=running (executing)
+[harness 2026-11-26T13:43:12Z] running (timeout 7200s): RS_SRC_SHA256=5459a68f2c0903cd0983643c889d5b6f72ea823651fce8c85e37fe981208ba1b bash "$EDA_INPUT_DIR/repo-script-run.sh"
+[repo-script-run 2026-11-26T13:43:16Z] running layout/jobs/precheck.sh (4 args)
+[layout-job 2026-11-26T13:43:16Z] install nix 2.28.4
+Note: a multi-user installation is possible. See https://nixos.org/manual/nix/stable/installation/installing-binary.html#multi-user-installation
+[1;31mwarning: installing Nix as root is not supported by this script![0m
+performing a single-user installation of Nix...
+directory /nix does not exist; creating it by running 'mkdir -m 0755 /nix && chown root /nix' using sudo
+copying Nix to /nix/store...
+
+installing 'nix-2.28.4'
+building '/nix/store/kan4b2s450daf0674v3f1gvskws44dky-user-environment.drv'...
+unpacking 1 channels...
+modifying /root/.profile...
+
+Installation finished!  To ensure that the necessary environment
+variables are set, either log in again, or type
+
+  . /root/.nix-profile/etc/profile.d/nix.sh
+
+in your shell.
+[layout-job 2026-11-26T13:43:28Z] fetch the PDK (open_pdks 792ef67037d74c8c51811eab3ce23cf793491296)
+[layout-job 2026-11-26T13:44:36Z] check the PDK revision
+[layout-job 2026-11-26T13:44:36Z] record the toolchain
+[layout-job 2026-11-26T13:44:38Z] precheck die.gds id=FFFFFFFF threads=2 workers=8 cob=0
+2026-11-26T15:09:55.436227+00:00 precheck exit 0
+[layout-job 2026-11-26T15:09:55Z] done: precheck exit 0
+[repo-script-run 2026-11-26T15:09:55Z] complete: all 1 declared output(s) present

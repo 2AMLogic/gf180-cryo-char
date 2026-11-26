@@ -1,0 +1,1216 @@
+2026-11-26 14:35:10 +0000: Memory Usage (414108K) : Starting running GF180MCU Klayout DRC runset on /var/tmp/eda-job-cryo4-die-cfa2b8d-s00/src/precheck/flow/runs/RUN_2026-11-26_13-44-39/04-klayout-generateid/chip_top.gds
+2026-11-26 14:35:10 +0000: Memory Usage (414108K) : Ruby Version for klayout: 3.4.9
+2026-11-26 14:35:10 +0000: Memory Usage (415644K) : Input file: /var/tmp/eda-job-cryo4-die-cfa2b8d-s00/src/precheck/flow/runs/RUN_2026-11-26_13-44-39/04-klayout-generateid/chip_top.gds
+2026-11-26 14:35:10 +0000: Memory Usage (415644K) : DRC Run Report: /var/tmp/eda-job-cryo4-die-cfa2b8d-s00/src/precheck/flow/runs/RUN_2026-11-26_13-44-39/14-klayout-drc/reports/drc.klayout.lyrdb
+2026-11-26 14:35:10 +0000: Memory Usage (415644K) : MIM Option selected: B
+2026-11-26 14:35:10 +0000: Memory Usage (415644K) : Verbose enabled: false
+2026-11-26 14:35:10 +0000: Memory Usage (415644K) : Number of parallel workers: 8
+2026-11-26 14:35:10 +0000: Memory Usage (415644K) : Number of threads for DRC functions: 2
+2026-11-26 14:35:10 +0000: Memory Usage (415644K) : Run mode: deep
+2026-11-26 14:35:10 +0000: Memory Usage (415644K) : metal_top selected: 11K
+2026-11-26 14:35:10 +0000: Memory Usage (415644K) : metal_level selected: 5LM
+2026-11-26 14:35:10 +0000: Memory Usage (415644K) : Selected decks: V1.1, V1.2a, V1.2b, V1.3a, V1.3c, V1.3d, V1.4a, V1.4b, V1.4c, V2.1, V2.2a, V2.2b, V2.3b, V2.3c, V2.3d, V2.4a, V2.4b, V2.4c, V3.1, V3.2a, V3.2b, V3.3b, V3.3c, V3.3d, V3.4a, V3.4b, V3.4c, V4.1, V4.2a, V4.2b, V4.3b, V4.3c, V4.3d, V4.4a, V4.4b, V4.4c, V5.1, V5.2a, V5.2b, V5.3b, V5.3c, V5.3d, V5.4a, V5.4b, V5.4c, geom_base_1, geom_base_2, geom_dbu, geom_m1m2, geom_m3, geom_m4, geom_m5, geom_metaltop, geom_topmarkers, CO.10_no_contact_on_poly_gate, CO.11_no_contact_on_field_oxide, CO.1_min_max_contact_size, CO.2a_min_contact_spacing, CO.2b_contact_array_spacing, CO.3_poly2_overlap, CO.4_comp_overlap, CO.5a_nplus_overlap_butted, CO.5b_pplus_overlap_butted, CO.6_metal1_overlap, CO.6a_metal1_eol_overlap, CO.6b_adjacent_edge_overlap, CO.7_comp_to_poly_spacing, CO.8_poly_to_comp_spacing, CO.9_no_contact_on_butting_edge, df_10, df_11, df_12, df_13_lv, df_13_mv, df_14_lv, df_14_mv, df_16_lv, df_16_mv, df_17_lv, df_17_mv, df_18, df_19_lv, df_19_mv, df_1a_lv, df_1a_mv, df_1c, df_2a_lv, df_2a_mv, df_2b, df_3a_lv, df_3a_mv, df_3b, df_3c_lv, df_3c_mv, df_4a_lv, df_4a_mv, df_4b_lv, df_4b_mv, df_4c_lv, df_4c_mv, df_4d_lv, df_4d_mv, df_4e_lv, df_4e_mv, df_5_lv, df_5_mv, df_6_lv, df_6_mv, df_7_lv, df_7_mv, df_8_lv, df_8_mv, df_9, dnwell, drc_bjt, dualgate, dummy_comp, dummy_exclude, dummy_metal1, dummy_metal2, dummy_metal3, dummy_metal4, dummy_metal5, dummy_metal6, dummy_poly2, efuse, esd, guard_ring, guard_ring_wedge, hres, ldnmos, ldpmos, lres, lvpwell, lvs_bjt, mcell, metal1, metal2, metal3, metal4, metal5, metaltop, metaltop_30k, mim_a, mim_b, mslot1, mslot2, mslot3, mslot4, mslot5, mslot6, nat, nplus, nwell, otp_mk, poly2, pplus, pres, sab, sram_3p3, sram_5p0, ymtp_mk
+2026-11-26 14:35:12 +0000: Memory Usage (634188K) : Total area of the design is 20139704.0 um^2.
+2026-11-26 14:35:12 +0000: Memory Usage (634188K) : Read in polygons from layers
+2026-11-26 14:35:12 +0000: Memory Usage (634572K) : comp has 3077781 polygons
+2026-11-26 14:35:12 +0000: Memory Usage (634572K) : dnwell has 0 polygons
+2026-11-26 14:35:12 +0000: Memory Usage (634572K) : nwell has 282838 polygons
+2026-11-26 14:35:12 +0000: Memory Usage (634572K) : lvpwell has 311316 polygons
+2026-11-26 14:35:12 +0000: Memory Usage (634572K) : dualgate has 316310 polygons
+2026-11-26 14:35:13 +0000: Memory Usage (634572K) : poly2_drawn has 2944318 polygons
+2026-11-26 14:35:13 +0000: Memory Usage (634572K) : nplus has 320668 polygons
+2026-11-26 14:35:13 +0000: Memory Usage (634572K) : pplus has 382904 polygons
+2026-11-26 14:35:13 +0000: Memory Usage (634572K) : sab has 2390 polygons
+2026-11-26 14:35:13 +0000: Memory Usage (634572K) : esd has 0 polygons
+2026-11-26 14:35:13 +0000: Memory Usage (634572K) : resistor has 0 polygons
+2026-11-26 14:35:13 +0000: Memory Usage (634572K) : fhres has 0 polygons
+2026-11-26 14:35:13 +0000: Memory Usage (634572K) : fusetop has 0 polygons
+2026-11-26 14:35:13 +0000: Memory Usage (634572K) : fusewindow_d has 0 polygons
+2026-11-26 14:35:13 +0000: Memory Usage (634572K) : polyfuse has 0 polygons
+2026-11-26 14:35:13 +0000: Memory Usage (634572K) : mvsd has 0 polygons
+2026-11-26 14:35:13 +0000: Memory Usage (634572K) : mvpsd has 0 polygons
+2026-11-26 14:35:13 +0000: Memory Usage (634572K) : nat has 0 polygons
+2026-11-26 14:35:13 +0000: Memory Usage (634572K) : comp_dummy has 27363 polygons
+2026-11-26 14:35:13 +0000: Memory Usage (634572K) : poly2_dummy has 0 polygons
+2026-11-26 14:35:13 +0000: Memory Usage (634572K) : schottky_diode has 0 polygons
+2026-11-26 14:35:13 +0000: Memory Usage (634572K) : zener has 0 polygons
+2026-11-26 14:35:14 +0000: Memory Usage (634572K) : res_mk has 1068 polygons
+2026-11-26 14:35:14 +0000: Memory Usage (634572K) : opc_drc has 0 polygons
+2026-11-26 14:35:14 +0000: Memory Usage (634572K) : v5_xtor has 266616 polygons
+2026-11-26 14:35:14 +0000: Memory Usage (634572K) : cap_mk has 0 polygons
+2026-11-26 14:35:14 +0000: Memory Usage (634572K) : mos_cap_mk has 35732 polygons
+2026-11-26 14:35:14 +0000: Memory Usage (634572K) : ind_mk has 0 polygons
+2026-11-26 14:35:14 +0000: Memory Usage (634572K) : diode_mk has 960 polygons
+2026-11-26 14:35:14 +0000: Memory Usage (634572K) : drc_bjt has 0 polygons
+2026-11-26 14:35:14 +0000: Memory Usage (634572K) : lvs_bjt has 0 polygons
+2026-11-26 14:35:14 +0000: Memory Usage (634572K) : mim_l_mk has 0 polygons
+2026-11-26 14:35:14 +0000: Memory Usage (634572K) : latchup_mk has 124 polygons
+2026-11-26 14:35:14 +0000: Memory Usage (634572K) : guard_ring_mk has 4 polygons
+2026-11-26 14:35:14 +0000: Memory Usage (634572K) : otp_mk has 0 polygons
+2026-11-26 14:35:14 +0000: Memory Usage (634572K) : mtpmark has 0 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : neo_ee_mk has 0 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : sramcore has 10420 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : lvs_rf has 0 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : lvs_drain has 0 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : hvpolyrs has 0 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : lvs_io has 108 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : probe_mk has 0 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : esd_mk has 108 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : lvs_source has 1080 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : well_diode_mk has 0 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : ldmos_xtor has 0 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : plfuse has 0 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : efuse_mk has 0 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : mcell_feol_mk has 0 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : ymtp_mk has 0 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : dev_wf_mk has 0 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : comp_label has 0 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : poly2_label has 0 polygons
+2026-11-26 14:35:15 +0000: Memory Usage (634572K) : mdiode has 0 polygons
+2026-11-26 14:35:16 +0000: Memory Usage (634572K) : ndmy has 2 polygons
+2026-11-26 14:35:16 +0000: Memory Usage (634572K) : pmndmy has 4 polygons
+2026-11-26 14:35:16 +0000: Memory Usage (634572K) : pad has 82 polygons
+2026-11-26 14:35:16 +0000: Memory Usage (634572K) : ubmpperi has 0 polygons
+2026-11-26 14:35:16 +0000: Memory Usage (634572K) : ubmparray has 0 polygons
+2026-11-26 14:35:16 +0000: Memory Usage (634572K) : ubmeplate has 0 polygons
+2026-11-26 14:35:16 +0000: Memory Usage (634572K) : pr_bndry has 274958 polygons
+2026-11-26 14:35:16 +0000: Memory Usage (634572K) : border has 0 polygons
+2026-11-26 14:35:16 +0000: Memory Usage (634572K) : contact has 19958096 polygons
+2026-11-26 14:35:17 +0000: Memory Usage (634572K) : metal1_drawn has 8042226 polygons
+2026-11-26 14:35:17 +0000: Memory Usage (634572K) : metal1_slot has 0 polygons
+2026-11-26 14:35:17 +0000: Memory Usage (634572K) : metal1_dummy has 0 polygons
+2026-11-26 14:35:17 +0000: Memory Usage (634572K) : metal1_label has 0 polygons
+2026-11-26 14:35:17 +0000: Memory Usage (634572K) : metal1_blk has 0 polygons
+2026-11-26 14:35:17 +0000: Memory Usage (634572K) : metal1_res has 0 polygons
+2026-11-26 14:35:17 +0000: Memory Usage (634572K) : via1 has 2030649 polygons
+2026-11-26 14:35:17 +0000: Memory Usage (648268K) : metal2_drawn has 1537539 polygons
+2026-11-26 14:35:17 +0000: Memory Usage (648268K) : metal2_slot has 0 polygons
+2026-11-26 14:35:17 +0000: Memory Usage (648268K) : metal2_dummy has 0 polygons
+2026-11-26 14:35:17 +0000: Memory Usage (648268K) : metal2_blk has 0 polygons
+2026-11-26 14:35:18 +0000: Memory Usage (648268K) : metal2_label has 0 polygons
+2026-11-26 14:35:18 +0000: Memory Usage (648268K) : metal2_res has 0 polygons
+2026-11-26 14:35:18 +0000: Memory Usage (654796K) : via2 has 2784586 polygons
+2026-11-26 14:35:18 +0000: Memory Usage (686668K) : metal3_drawn has 1292771 polygons
+2026-11-26 14:35:18 +0000: Memory Usage (686668K) : metal3_slot has 0 polygons
+2026-11-26 14:35:18 +0000: Memory Usage (686668K) : metal3_dummy has 0 polygons
+2026-11-26 14:35:18 +0000: Memory Usage (686668K) : metal3_blk has 0 polygons
+2026-11-26 14:35:19 +0000: Memory Usage (686668K) : metal3_label has 0 polygons
+2026-11-26 14:35:19 +0000: Memory Usage (686668K) : metal3_res has 0 polygons
+2026-11-26 14:35:19 +0000: Memory Usage (686668K) : via3 has 11147338 polygons
+2026-11-26 14:35:19 +0000: Memory Usage (720716K) : metal4_drawn has 1043401 polygons
+2026-11-26 14:35:19 +0000: Memory Usage (720716K) : metal4_slot has 0 polygons
+2026-11-26 14:35:19 +0000: Memory Usage (720716K) : metal4_dummy has 0 polygons
+2026-11-26 14:35:19 +0000: Memory Usage (720716K) : metal4_blk has 0 polygons
+2026-11-26 14:35:19 +0000: Memory Usage (720716K) : metal4_label has 0 polygons
+2026-11-26 14:35:20 +0000: Memory Usage (720716K) : metal4_res has 0 polygons
+2026-11-26 14:35:20 +0000: Memory Usage (720716K) : via4 has 9808394 polygons
+2026-11-26 14:35:20 +0000: Memory Usage (737868K) : metal5_drawn has 675420 polygons
+2026-11-26 14:35:20 +0000: Memory Usage (737868K) : metal5_slot has 0 polygons
+2026-11-26 14:35:20 +0000: Memory Usage (737868K) : metal5_dummy has 0 polygons
+2026-11-26 14:35:20 +0000: Memory Usage (737868K) : metal5_blk has 0 polygons
+2026-11-26 14:35:20 +0000: Memory Usage (737868K) : metal5_label has 74 polygons
+2026-11-26 14:35:20 +0000: Memory Usage (737868K) : metal5_res has 0 polygons
+2026-11-26 14:36:09 +0000: Memory Usage (938472K) : Rule requiring connectivity detected, constructing connectivity for the design.
+2026-11-26 14:36:09 +0000: Memory Usage (938600K) : Connectivity rules enabled, Netlist object will be generated.
+2026-11-26 14:42:13 +0000: Memory Usage (1496680K) : # Setup took 422.968576226 seconds
+2026-11-26 14:42:13 +0000: Memory Usage (1496680K) : Starting GF180MCU DRC rules.
+2026-11-26 14:42:13 +0000: Memory Usage (1496680K) : Starting DRC in isolated parallel mode: executing 162 deck(s).
+2026-11-26 14:42:13 +0000: Memory Usage (1306976K) : Executing deck : V1.1
+2026-11-26 14:42:13 +0000: Memory Usage (1309612K) : Executing rule V1.1
+2026-11-26 14:42:13 +0000: Memory Usage (1306976K) : Executing deck : V1.2a
+2026-11-26 14:42:13 +0000: Memory Usage (1309612K) : Executing rule V1.2a
+2026-11-26 14:42:13 +0000: Memory Usage (1306976K) : Executing deck : V1.2b
+2026-11-26 14:42:13 +0000: Memory Usage (1309676K) : Executing rule V1.2b
+2026-11-26 14:42:13 +0000: Memory Usage (1306976K) : Executing deck : V1.3a
+2026-11-26 14:42:13 +0000: Memory Usage (1309676K) : Executing rule V1.3a
+2026-11-26 14:42:13 +0000: Memory Usage (1306976K) : Executing deck : V1.3c
+2026-11-26 14:42:13 +0000: Memory Usage (1309676K) : Executing rule V1.3c
+2026-11-26 14:42:13 +0000: Memory Usage (1306968K) : Executing deck : V1.3d
+2026-11-26 14:42:13 +0000: Memory Usage (1309668K) : Executing rule V1.3d
+2026-11-26 14:42:13 +0000: Memory Usage (1306968K) : Executing deck : V1.4a
+2026-11-26 14:42:13 +0000: Memory Usage (1309668K) : Executing rule V1.4a
+2026-11-26 14:42:13 +0000: Memory Usage (1306968K) : Executing deck : V1.4b
+2026-11-26 14:42:13 +0000: Memory Usage (1309668K) : Executing rule V1.4b
+2026-11-26 14:42:14 +0000: Memory Usage (1340728K) : Completed deck : V1.2a
+2026-11-26 14:42:16 +0000: Memory Usage (1306968K) : Executing deck : V1.4c
+2026-11-26 14:42:16 +0000: Memory Usage (1309668K) : Executing rule V1.4c
+2026-11-26 14:42:18 +0000: Memory Usage (1364852K) : Completed deck : V1.3a
+2026-11-26 14:42:19 +0000: Memory Usage (1306968K) : Executing deck : V2.1
+2026-11-26 14:42:19 +0000: Memory Usage (1309668K) : Executing rule V2.1
+2026-11-26 14:42:21 +0000: Memory Usage (1368208K) : Completed deck : V1.2b
+2026-11-26 14:42:23 +0000: Memory Usage (1306968K) : Executing deck : V2.2a
+2026-11-26 14:42:23 +0000: Memory Usage (1309668K) : Executing rule V2.2a
+2026-11-26 14:42:23 +0000: Memory Usage (1444112K) : Completed deck : V1.1
+2026-11-26 14:42:24 +0000: Memory Usage (1344328K) : Completed deck : V2.2a
+2026-11-26 14:42:25 +0000: Memory Usage (1306968K) : Executing deck : V2.2b
+2026-11-26 14:42:25 +0000: Memory Usage (1309668K) : Executing rule V2.2b
+2026-11-26 14:42:25 +0000: Memory Usage (1306968K) : Executing deck : V2.3b
+2026-11-26 14:42:25 +0000: Memory Usage (1309668K) : Executing rule V2.3b
+2026-11-26 14:42:31 +0000: Memory Usage (1405960K) : Completed deck : V2.1
+2026-11-26 14:42:32 +0000: Memory Usage (1306968K) : Executing deck : V2.3c
+2026-11-26 14:42:32 +0000: Memory Usage (1309668K) : Executing rule V2.3c
+2026-11-26 14:42:34 +0000: Memory Usage (1375620K) : Completed deck : V2.2b
+2026-11-26 14:42:35 +0000: Memory Usage (1306968K) : Executing deck : V2.3d
+2026-11-26 14:42:35 +0000: Memory Usage (1309668K) : Executing rule V2.3d
+2026-11-26 14:43:16 +0000: Memory Usage (1390068K) : Completed deck : V1.4a
+2026-11-26 14:43:17 +0000: Memory Usage (1306968K) : Executing deck : V2.4a
+2026-11-26 14:43:17 +0000: Memory Usage (1309668K) : Executing rule V2.4a
+2026-11-26 14:43:33 +0000: Memory Usage (1398812K) : Completed deck : V2.3b
+2026-11-26 14:43:34 +0000: Memory Usage (1306968K) : Executing deck : V2.4b
+2026-11-26 14:43:34 +0000: Memory Usage (1309668K) : Executing rule V2.4b
+2026-11-26 14:43:50 +0000: Memory Usage (2320252K) : Completed deck : V1.3d
+2026-11-26 14:43:51 +0000: Memory Usage (1306968K) : Executing deck : V2.4c
+2026-11-26 14:43:51 +0000: Memory Usage (1309668K) : Executing rule V2.4c
+2026-11-26 14:43:55 +0000: Memory Usage (1372152K) : Completed deck : V2.4a
+2026-11-26 14:43:56 +0000: Memory Usage (1306968K) : Executing deck : V3.1
+2026-11-26 14:43:56 +0000: Memory Usage (1309668K) : Executing rule V3.1
+2026-11-26 14:44:26 +0000: Memory Usage (1506540K) : Completed deck : V3.1
+2026-11-26 14:44:27 +0000: Memory Usage (1306968K) : Executing deck : V3.2a
+2026-11-26 14:44:27 +0000: Memory Usage (1309668K) : Executing rule V3.2a
+2026-11-26 14:44:28 +0000: Memory Usage (1340916K) : Completed deck : V3.2a
+2026-11-26 14:44:29 +0000: Memory Usage (1306968K) : Executing deck : V3.2b
+2026-11-26 14:44:29 +0000: Memory Usage (1309668K) : Executing rule V3.2b
+2026-11-26 14:44:47 +0000: Memory Usage (1422172K) : Completed deck : V3.2b
+2026-11-26 14:44:49 +0000: Memory Usage (1306968K) : Executing deck : V3.3b
+2026-11-26 14:44:49 +0000: Memory Usage (1309668K) : Executing rule V3.3b
+2026-11-26 14:45:14 +0000: Memory Usage (1481964K) : Completed deck : V2.4b
+2026-11-26 14:45:15 +0000: Memory Usage (1306968K) : Executing deck : V3.3c
+2026-11-26 14:45:15 +0000: Memory Usage (1309668K) : Executing rule V3.3c
+2026-11-26 14:45:31 +0000: Memory Usage (1390268K) : Completed deck : V3.3b
+2026-11-26 14:45:33 +0000: Memory Usage (1306968K) : Executing deck : V3.3d
+2026-11-26 14:45:33 +0000: Memory Usage (1309668K) : Executing rule V3.3d
+2026-11-26 14:45:45 +0000: Memory Usage (1485996K) : Completed deck : V1.4b
+2026-11-26 14:45:46 +0000: Memory Usage (1306968K) : Executing deck : V3.4a
+2026-11-26 14:45:46 +0000: Memory Usage (1309668K) : Executing rule V3.4a
+2026-11-26 14:45:55 +0000: Memory Usage (1367752K) : Completed deck : V3.4a
+2026-11-26 14:45:56 +0000: Memory Usage (1306968K) : Executing deck : V3.4b
+2026-11-26 14:45:56 +0000: Memory Usage (1309668K) : Executing rule V3.4b
+2026-11-26 14:45:58 +0000: Memory Usage (2276528K) : Completed deck : V1.3c
+2026-11-26 14:46:00 +0000: Memory Usage (1306968K) : Executing deck : V3.4c
+2026-11-26 14:46:00 +0000: Memory Usage (1309668K) : Executing rule V3.4c
+2026-11-26 14:46:05 +0000: Memory Usage (1497992K) : Completed deck : V2.3c
+2026-11-26 14:46:06 +0000: Memory Usage (1306968K) : Executing deck : V4.1
+2026-11-26 14:46:06 +0000: Memory Usage (1309668K) : Executing rule V4.1
+2026-11-26 14:46:30 +0000: Memory Usage (1473868K) : Completed deck : V2.4c
+2026-11-26 14:46:31 +0000: Memory Usage (1306968K) : Executing deck : V4.2a
+2026-11-26 14:46:31 +0000: Memory Usage (1309668K) : Executing rule V4.2a
+2026-11-26 14:46:32 +0000: Memory Usage (1344308K) : Completed deck : V4.2a
+2026-11-26 14:46:33 +0000: Memory Usage (1306968K) : Executing deck : V4.2b
+2026-11-26 14:46:33 +0000: Memory Usage (1309668K) : Executing rule V4.2b
+2026-11-26 14:46:36 +0000: Memory Usage (1530680K) : Completed deck : V4.1
+2026-11-26 14:46:37 +0000: Memory Usage (1306968K) : Executing deck : V4.3b
+2026-11-26 14:46:37 +0000: Memory Usage (1309668K) : Executing rule V4.3b
+2026-11-26 14:46:38 +0000: Memory Usage (1509916K) : Completed deck : V3.4b
+2026-11-26 14:46:39 +0000: Memory Usage (1306968K) : Executing deck : V4.3c
+2026-11-26 14:46:39 +0000: Memory Usage (1309668K) : Executing rule V4.3c
+2026-11-26 14:46:47 +0000: Memory Usage (1371104K) : Completed deck : V4.3b
+2026-11-26 14:46:48 +0000: Memory Usage (1306968K) : Executing deck : V4.3d
+2026-11-26 14:46:48 +0000: Memory Usage (1309668K) : Executing rule V4.3d
+2026-11-26 14:46:51 +0000: Memory Usage (1405000K) : Completed deck : V4.2b
+2026-11-26 14:46:51 +0000: Memory Usage (1530164K) : Completed deck : V3.4c
+2026-11-26 14:46:52 +0000: Memory Usage (1306968K) : Executing deck : V4.4a
+2026-11-26 14:46:52 +0000: Memory Usage (1309668K) : Executing rule V4.4a
+2026-11-26 14:46:52 +0000: Memory Usage (1306968K) : Executing deck : V4.4b
+2026-11-26 14:46:52 +0000: Memory Usage (1309668K) : Executing rule V4.4b
+2026-11-26 14:46:57 +0000: Memory Usage (1398832K) : Completed deck : V4.4a
+2026-11-26 14:46:59 +0000: Memory Usage (1306968K) : Executing deck : V4.4c
+2026-11-26 14:46:59 +0000: Memory Usage (1309668K) : Executing rule V4.4c
+2026-11-26 14:47:07 +0000: Memory Usage (1449676K) : Completed deck : V1.4c
+2026-11-26 14:47:08 +0000: Memory Usage (1306968K) : Executing deck : V5.1
+2026-11-26 14:47:08 +0000: Memory Usage (1310596K) : Completed deck : V5.1
+2026-11-26 14:47:10 +0000: Memory Usage (1306968K) : Executing deck : V5.2a
+2026-11-26 14:47:10 +0000: Memory Usage (1310596K) : Completed deck : V5.2a
+2026-11-26 14:47:11 +0000: Memory Usage (1306968K) : Executing deck : V5.2b
+2026-11-26 14:47:11 +0000: Memory Usage (1310596K) : Completed deck : V5.2b
+2026-11-26 14:47:11 +0000: Memory Usage (1547424K) : Completed deck : V3.3c
+2026-11-26 14:47:13 +0000: Memory Usage (1306968K) : Executing deck : V5.3b
+2026-11-26 14:47:13 +0000: Memory Usage (1310596K) : Completed deck : V5.3b
+2026-11-26 14:47:13 +0000: Memory Usage (1306968K) : Executing deck : V5.3c
+2026-11-26 14:47:13 +0000: Memory Usage (1310596K) : Completed deck : V5.3c
+2026-11-26 14:47:14 +0000: Memory Usage (1306968K) : Executing deck : V5.3d
+2026-11-26 14:47:14 +0000: Memory Usage (1310596K) : Completed deck : V5.3d
+2026-11-26 14:47:14 +0000: Memory Usage (1306968K) : Executing deck : V5.4a
+2026-11-26 14:47:14 +0000: Memory Usage (1310596K) : Completed deck : V5.4a
+2026-11-26 14:47:16 +0000: Memory Usage (1306968K) : Executing deck : V5.4b
+2026-11-26 14:47:16 +0000: Memory Usage (1310596K) : Completed deck : V5.4b
+2026-11-26 14:47:16 +0000: Memory Usage (1306968K) : Executing deck : V5.4c
+2026-11-26 14:47:16 +0000: Memory Usage (1310596K) : Completed deck : V5.4c
+2026-11-26 14:47:17 +0000: Memory Usage (1306968K) : Executing deck : geom_base_1
+2026-11-26 14:47:17 +0000: Memory Usage (1309540K) : OFFGRID-ANGLES section (geom_base_1)
+2026-11-26 14:47:17 +0000: Memory Usage (1309540K) : Executing rule comp_OFFGRID
+2026-11-26 14:47:17 +0000: Memory Usage (1306968K) : Executing deck : geom_base_2
+2026-11-26 14:47:17 +0000: Memory Usage (1309604K) : OFFGRID-ANGLES section (geom_base_2)
+2026-11-26 14:47:17 +0000: Memory Usage (1309604K) : Executing rule mim_l_mk_OFFGRID
+2026-11-26 14:47:17 +0000: Memory Usage (1313620K) : Executing rule mim_l_mk_ACUTE
+2026-11-26 14:47:19 +0000: Memory Usage (1352548K) : Executing rule latchup_mk_OFFGRID
+2026-11-26 14:47:20 +0000: Memory Usage (1400164K) : Executing rule latchup_mk_ACUTE
+2026-11-26 14:47:20 +0000: Memory Usage (1337560K) : Executing rule comp_ACUTE
+2026-11-26 14:47:21 +0000: Memory Usage (1400548K) : Executing rule guard_ring_mk_OFFGRID
+2026-11-26 14:47:22 +0000: Memory Usage (1354388K) : Executing rule dnwell_OFFGRID
+2026-11-26 14:47:22 +0000: Memory Usage (1533520K) : Completed deck : V4.3c
+2026-11-26 14:47:22 +0000: Memory Usage (1354388K) : Executing rule dnwell_ACUTE
+2026-11-26 14:47:22 +0000: Memory Usage (1400676K) : Executing rule guard_ring_mk_ACUTE
+2026-11-26 14:47:23 +0000: Memory Usage (1306968K) : Executing deck : geom_dbu
+2026-11-26 14:47:23 +0000: Memory Usage (1309604K) : Executing rule DBU
+2026-11-26 14:47:24 +0000: Memory Usage (1310532K) : Completed deck : geom_dbu
+2026-11-26 14:47:24 +0000: Memory Usage (1400852K) : Executing rule nwell_OFFGRID
+2026-11-26 14:47:24 +0000: Memory Usage (1400676K) : Executing rule otp_mk_OFFGRID
+2026-11-26 14:47:24 +0000: Memory Usage (1400676K) : Executing rule otp_mk_ACUTE
+2026-11-26 14:47:25 +0000: Memory Usage (1306968K) : Executing deck : geom_m1m2
+2026-11-26 14:47:25 +0000: Memory Usage (1309604K) : OFFGRID-ANGLES section (geom_m1m2)
+2026-11-26 14:47:25 +0000: Memory Usage (1309604K) : Executing rule contact_OFFGRID
+2026-11-26 14:47:25 +0000: Memory Usage (1400676K) : Executing rule mtpmark_OFFGRID
+2026-11-26 14:47:25 +0000: Memory Usage (1400676K) : Executing rule mtpmark_ACUTE
+2026-11-26 14:47:26 +0000: Memory Usage (1400676K) : Executing rule neo_ee_mk_OFFGRID
+2026-11-26 14:47:26 +0000: Memory Usage (1400676K) : Executing rule neo_ee_mk_ACUTE
+2026-11-26 14:47:27 +0000: Memory Usage (1432468K) : Executing rule nwell_ACUTE
+2026-11-26 14:47:27 +0000: Memory Usage (1400676K) : Executing rule sramcore_OFFGRID
+2026-11-26 14:47:28 +0000: Memory Usage (1401060K) : Executing rule sramcore_ACUTE
+2026-11-26 14:47:29 +0000: Memory Usage (1432468K) : Executing rule lvpwell_OFFGRID
+2026-11-26 14:47:30 +0000: Memory Usage (1401060K) : Executing rule lvs_rf_OFFGRID
+2026-11-26 14:47:30 +0000: Memory Usage (1401060K) : Executing rule lvs_rf_ACUTE
+2026-11-26 14:47:31 +0000: Memory Usage (1401060K) : Executing rule lvs_drain_OFFGRID
+2026-11-26 14:47:31 +0000: Memory Usage (1401060K) : Executing rule lvs_drain_ACUTE
+2026-11-26 14:47:32 +0000: Memory Usage (1467156K) : Executing rule lvpwell_ACUTE
+2026-11-26 14:47:32 +0000: Memory Usage (1401060K) : Executing rule hvpolyrs_OFFGRID
+2026-11-26 14:47:32 +0000: Memory Usage (1401060K) : Executing rule hvpolyrs_ACUTE
+2026-11-26 14:47:34 +0000: Memory Usage (1401060K) : Executing rule lvs_io_OFFGRID
+2026-11-26 14:47:34 +0000: Memory Usage (1467156K) : Executing rule dualgate_OFFGRID
+2026-11-26 14:47:34 +0000: Memory Usage (1856856K) : Completed deck : V2.3d
+2026-11-26 14:47:34 +0000: Memory Usage (1401060K) : Executing rule lvs_io_ACUTE
+2026-11-26 14:47:36 +0000: Memory Usage (1306968K) : Executing deck : geom_m3
+2026-11-26 14:47:36 +0000: Memory Usage (1309604K) : OFFGRID-ANGLES section (geom_m3)
+2026-11-26 14:47:36 +0000: Memory Usage (1309604K) : Executing rule via2_OFFGRID
+2026-11-26 14:47:36 +0000: Memory Usage (1337252K) : Executing rule contact_ACUTE
+2026-11-26 14:47:36 +0000: Memory Usage (1533136K) : Completed deck : V4.4b
+2026-11-26 14:47:36 +0000: Memory Usage (1401060K) : Executing rule probe_mk_OFFGRID
+2026-11-26 14:47:36 +0000: Memory Usage (1401060K) : Executing rule probe_mk_ACUTE
+2026-11-26 14:47:37 +0000: Memory Usage (1306968K) : Executing deck : geom_m4
+2026-11-26 14:47:37 +0000: Memory Usage (1309668K) : OFFGRID-ANGLES section (geom_m4)
+2026-11-26 14:47:37 +0000: Memory Usage (1309668K) : Executing rule via3_OFFGRID
+2026-11-26 14:47:37 +0000: Memory Usage (1401060K) : Executing rule esd_mk_OFFGRID
+2026-11-26 14:47:38 +0000: Memory Usage (1467276K) : Executing rule dualgate_ACUTE
+2026-11-26 14:47:38 +0000: Memory Usage (1401060K) : Executing rule esd_mk_ACUTE
+2026-11-26 14:47:38 +0000: Memory Usage (1432800K) : Executing rule metal1_OFFGRID
+2026-11-26 14:47:39 +0000: Memory Usage (1337240K) : Executing rule via2_ACUTE
+2026-11-26 14:47:40 +0000: Memory Usage (1467276K) : Executing rule poly2_OFFGRID
+2026-11-26 14:47:40 +0000: Memory Usage (1401060K) : Executing rule lvs_source_OFFGRID
+2026-11-26 14:47:40 +0000: Memory Usage (1401060K) : Executing rule lvs_source_ACUTE
+2026-11-26 14:47:41 +0000: Memory Usage (1370068K) : Executing rule metal3_OFFGRID
+2026-11-26 14:47:42 +0000: Memory Usage (1545396K) : Completed deck : V4.3d
+2026-11-26 14:47:42 +0000: Memory Usage (1401060K) : Executing rule well_diode_mk_OFFGRID
+2026-11-26 14:47:42 +0000: Memory Usage (1401060K) : Executing rule well_diode_mk_ACUTE
+2026-11-26 14:47:43 +0000: Memory Usage (1467276K) : Executing rule poly2_ACUTE
+2026-11-26 14:47:43 +0000: Memory Usage (1306968K) : Executing deck : geom_m5
+2026-11-26 14:47:43 +0000: Memory Usage (1309668K) : OFFGRID-ANGLES section (geom_m5)
+2026-11-26 14:47:43 +0000: Memory Usage (1309668K) : Executing rule via4_OFFGRID
+2026-11-26 14:47:43 +0000: Memory Usage (1401188K) : Executing rule ldmos_xtor_OFFGRID
+2026-11-26 14:47:43 +0000: Memory Usage (1401188K) : Executing rule ldmos_xtor_ACUTE
+2026-11-26 14:47:44 +0000: Memory Usage (1362608K) : Executing rule via3_ACUTE
+2026-11-26 14:47:44 +0000: Memory Usage (1467276K) : Executing rule nplus_OFFGRID
+2026-11-26 14:47:44 +0000: Memory Usage (1401188K) : Executing rule plfuse_OFFGRID
+2026-11-26 14:47:44 +0000: Memory Usage (1401188K) : Executing rule plfuse_ACUTE
+2026-11-26 14:47:45 +0000: Memory Usage (1401188K) : Executing rule efuse_mk_OFFGRID
+2026-11-26 14:47:46 +0000: Memory Usage (1401188K) : Executing rule efuse_mk_ACUTE
+2026-11-26 14:47:46 +0000: Memory Usage (1416428K) : Executing rule metal4_OFFGRID
+2026-11-26 14:47:47 +0000: Memory Usage (1401188K) : Executing rule mcell_feol_mk_OFFGRID
+2026-11-26 14:47:47 +0000: Memory Usage (1401188K) : Executing rule mcell_feol_mk_ACUTE
+2026-11-26 14:47:48 +0000: Memory Usage (1401188K) : Executing rule ymtp_mk_OFFGRID
+2026-11-26 14:47:48 +0000: Memory Usage (1401188K) : Executing rule ymtp_mk_ACUTE
+2026-11-26 14:47:48 +0000: Memory Usage (1467276K) : Executing rule nplus_ACUTE
+2026-11-26 14:47:49 +0000: Memory Usage (1401188K) : Executing rule dev_wf_mk_OFFGRID
+2026-11-26 14:47:49 +0000: Memory Usage (1401188K) : Executing rule dev_wf_mk_ACUTE
+2026-11-26 14:47:50 +0000: Memory Usage (1401188K) : Executing rule comp_label_OFFGRID
+2026-11-26 14:47:50 +0000: Memory Usage (1467276K) : Executing rule pplus_OFFGRID
+2026-11-26 14:47:50 +0000: Memory Usage (1401188K) : Executing rule comp_label_ACUTE
+2026-11-26 14:47:50 +0000: Memory Usage (1343564K) : Executing rule via4_ACUTE
+2026-11-26 14:47:51 +0000: Memory Usage (1401188K) : Executing rule poly2_label_OFFGRID
+2026-11-26 14:47:51 +0000: Memory Usage (1401188K) : Executing rule poly2_label_ACUTE
+2026-11-26 14:47:52 +0000: Memory Usage (1401188K) : Executing rule mdiode_OFFGRID
+2026-11-26 14:47:52 +0000: Memory Usage (1401188K) : Executing rule mdiode_ACUTE
+2026-11-26 14:47:52 +0000: Memory Usage (1424520K) : Executing rule metal5_OFFGRID
+2026-11-26 14:47:53 +0000: Memory Usage (1401444K) : Completed deck : geom_base_2
+2026-11-26 14:47:54 +0000: Memory Usage (1533060K) : Completed deck : V4.4c
+2026-11-26 14:47:55 +0000: Memory Usage (1467276K) : Executing rule pplus_ACUTE
+2026-11-26 14:47:55 +0000: Memory Usage (1306968K) : Executing deck : geom_metaltop
+2026-11-26 14:47:55 +0000: Memory Usage (1310468K) : Completed deck : geom_metaltop
+2026-11-26 14:47:56 +0000: Memory Usage (1306968K) : Executing deck : geom_topmarkers
+2026-11-26 14:47:56 +0000: Memory Usage (1309540K) : OFFGRID-ANGLES section (geom_topmarkers)
+2026-11-26 14:47:56 +0000: Memory Usage (1309540K) : Executing rule pad_OFFGRID
+2026-11-26 14:47:56 +0000: Memory Usage (1306968K) : Executing deck : CO.10_no_contact_on_poly_gate
+2026-11-26 14:47:56 +0000: Memory Usage (1309540K) : Executing rule CO.10
+2026-11-26 14:47:56 +0000: Memory Usage (1336716K) : Executing rule pad_ACUTE
+2026-11-26 14:47:57 +0000: Memory Usage (1467276K) : Executing rule sab_OFFGRID
+2026-11-26 14:47:57 +0000: Memory Usage (1439760K) : Executing rule metal4_ACUTE
+2026-11-26 14:47:58 +0000: Memory Usage (1438568K) : Executing rule sab_ACUTE
+2026-11-26 14:47:58 +0000: Memory Usage (1319212K) : Completed deck : CO.10_no_contact_on_poly_gate
+2026-11-26 14:47:59 +0000: Memory Usage (1353892K) : Executing rule ubmpperi_OFFGRID
+2026-11-26 14:47:59 +0000: Memory Usage (1353892K) : Executing rule ubmpperi_ACUTE
+2026-11-26 14:47:59 +0000: Memory Usage (1439760K) : Executing rule metal4_dummy_OFFGRID
+2026-11-26 14:47:59 +0000: Memory Usage (1439760K) : Executing rule metal4_dummy_ACUTE
+2026-11-26 14:47:59 +0000: Memory Usage (1438568K) : Executing rule esd_OFFGRID
+2026-11-26 14:47:59 +0000: Memory Usage (1438568K) : Executing rule esd_ACUTE
+2026-11-26 14:47:59 +0000: Memory Usage (1306968K) : Executing deck : CO.11_no_contact_on_field_oxide
+2026-11-26 14:47:59 +0000: Memory Usage (1309540K) : Executing rule CO.11
+2026-11-26 14:48:00 +0000: Memory Usage (1400868K) : Executing rule ubmparray_OFFGRID
+2026-11-26 14:48:00 +0000: Memory Usage (1400868K) : Executing rule ubmparray_ACUTE
+2026-11-26 14:48:00 +0000: Memory Usage (1439764K) : Executing rule metal4_label_OFFGRID
+2026-11-26 14:48:00 +0000: Memory Usage (1439764K) : Executing rule metal4_label_ACUTE
+2026-11-26 14:48:00 +0000: Memory Usage (1438568K) : Executing rule resistor_OFFGRID
+2026-11-26 14:48:00 +0000: Memory Usage (1438568K) : Executing rule resistor_ACUTE
+2026-11-26 14:48:01 +0000: Memory Usage (1400868K) : Executing rule ubmeplate_OFFGRID
+2026-11-26 14:48:01 +0000: Memory Usage (1400868K) : Executing rule ubmeplate_ACUTE
+2026-11-26 14:48:01 +0000: Memory Usage (1439764K) : Executing rule metal4_blk_OFFGRID
+2026-11-26 14:48:01 +0000: Memory Usage (1439764K) : Executing rule metal4_blk_ACUTE
+2026-11-26 14:48:02 +0000: Memory Usage (1438568K) : Executing rule fhres_OFFGRID
+2026-11-26 14:48:02 +0000: Memory Usage (1438568K) : Executing rule fhres_ACUTE
+2026-11-26 14:48:02 +0000: Memory Usage (1400868K) : Executing rule pr_bndry_OFFGRID
+2026-11-26 14:48:03 +0000: Memory Usage (1439764K) : Executing rule metal4_res_OFFGRID
+2026-11-26 14:48:03 +0000: Memory Usage (1439764K) : Executing rule metal4_res_ACUTE
+2026-11-26 14:48:03 +0000: Memory Usage (1438568K) : Executing rule fusetop_OFFGRID
+2026-11-26 14:48:03 +0000: Memory Usage (1438568K) : Executing rule fusetop_ACUTE
+2026-11-26 14:48:04 +0000: Memory Usage (1440020K) : Completed deck : geom_m4
+2026-11-26 14:48:04 +0000: Memory Usage (1438568K) : Executing rule fusewindow_d_OFFGRID
+2026-11-26 14:48:04 +0000: Memory Usage (1438568K) : Executing rule fusewindow_d_ACUTE
+2026-11-26 14:48:04 +0000: Memory Usage (1469576K) : Executing rule metal5_ACUTE
+2026-11-26 14:48:05 +0000: Memory Usage (1306968K) : Executing deck : CO.1_min_max_contact_size
+2026-11-26 14:48:05 +0000: Memory Usage (1309540K) : Executing rule CO.1
+2026-11-26 14:48:05 +0000: Memory Usage (1438568K) : Executing rule polyfuse_OFFGRID
+2026-11-26 14:48:05 +0000: Memory Usage (1438568K) : Executing rule polyfuse_ACUTE
+2026-11-26 14:48:06 +0000: Memory Usage (1469576K) : Executing rule metal5_dummy_OFFGRID
+2026-11-26 14:48:06 +0000: Memory Usage (1469576K) : Executing rule metal5_dummy_ACUTE
+2026-11-26 14:48:06 +0000: Memory Usage (1408564K) : Completed deck : CO.11_no_contact_on_field_oxide
+2026-11-26 14:48:06 +0000: Memory Usage (1438568K) : Executing rule mvsd_OFFGRID
+2026-11-26 14:48:06 +0000: Memory Usage (1438568K) : Executing rule mvsd_ACUTE
+2026-11-26 14:48:07 +0000: Memory Usage (1474256K) : Executing rule pr_bndry_ACUTE
+2026-11-26 14:48:07 +0000: Memory Usage (1469576K) : Executing rule metal5_label_OFFGRID
+2026-11-26 14:48:08 +0000: Memory Usage (1438448K) : Executing rule mvpsd_OFFGRID
+2026-11-26 14:48:08 +0000: Memory Usage (1438448K) : Executing rule mvpsd_ACUTE
+2026-11-26 14:48:08 +0000: Memory Usage (1306968K) : Executing deck : CO.2a_min_contact_spacing
+2026-11-26 14:48:08 +0000: Memory Usage (1309604K) : Executing rule CO.2a
+2026-11-26 14:48:08 +0000: Memory Usage (1474256K) : Executing rule border_OFFGRID
+2026-11-26 14:48:08 +0000: Memory Usage (1474256K) : Executing rule border_ACUTE
+2026-11-26 14:48:08 +0000: Memory Usage (1469576K) : Executing rule metal5_label_ACUTE
+2026-11-26 14:48:09 +0000: Memory Usage (1438448K) : Executing rule nat_OFFGRID
+2026-11-26 14:48:09 +0000: Memory Usage (1438448K) : Executing rule nat_ACUTE
+2026-11-26 14:48:09 +0000: Memory Usage (1477328K) : Completed deck : geom_topmarkers
+2026-11-26 14:48:09 +0000: Memory Usage (1469576K) : Executing rule metal5_blk_OFFGRID
+2026-11-26 14:48:09 +0000: Memory Usage (1469576K) : Executing rule metal5_blk_ACUTE
+2026-11-26 14:48:10 +0000: Memory Usage (1438448K) : Executing rule comp_dummy_OFFGRID
+2026-11-26 14:48:11 +0000: Memory Usage (1306968K) : Executing deck : CO.2b_contact_array_spacing
+2026-11-26 14:48:11 +0000: Memory Usage (1309540K) : Executing rule CO.2b
+2026-11-26 14:48:11 +0000: Memory Usage (1347424K) : Completed deck : CO.2a_min_contact_spacing
+2026-11-26 14:48:11 +0000: Memory Usage (1469576K) : Executing rule metal5_res_OFFGRID
+2026-11-26 14:48:11 +0000: Memory Usage (1469576K) : Executing rule metal5_res_ACUTE
+2026-11-26 14:48:11 +0000: Memory Usage (1438448K) : Executing rule comp_dummy_ACUTE
+2026-11-26 14:48:12 +0000: Memory Usage (1469832K) : Completed deck : geom_m5
+2026-11-26 14:48:12 +0000: Memory Usage (1306968K) : Executing deck : CO.3_poly2_overlap
+2026-11-26 14:48:12 +0000: Memory Usage (1309540K) : Executing rule CO.3
+2026-11-26 14:48:13 +0000: Memory Usage (1438448K) : Executing rule poly2_dummy_OFFGRID
+2026-11-26 14:48:13 +0000: Memory Usage (1438448K) : Executing rule poly2_dummy_ACUTE
+2026-11-26 14:48:13 +0000: Memory Usage (1306968K) : Executing deck : CO.4_comp_overlap
+2026-11-26 14:48:13 +0000: Memory Usage (1309540K) : Executing rule CO.4
+2026-11-26 14:48:14 +0000: Memory Usage (1438448K) : Executing rule schottky_diode_OFFGRID
+2026-11-26 14:48:14 +0000: Memory Usage (1438448K) : Executing rule schottky_diode_ACUTE
+2026-11-26 14:48:15 +0000: Memory Usage (1438448K) : Executing rule zener_OFFGRID
+2026-11-26 14:48:15 +0000: Memory Usage (1438448K) : Executing rule zener_ACUTE
+2026-11-26 14:48:16 +0000: Memory Usage (1438448K) : Executing rule res_mk_OFFGRID
+2026-11-26 14:48:17 +0000: Memory Usage (1438448K) : Executing rule res_mk_ACUTE
+2026-11-26 14:48:19 +0000: Memory Usage (1438448K) : Executing rule opc_drc_OFFGRID
+2026-11-26 14:48:19 +0000: Memory Usage (1438448K) : Executing rule opc_drc_ACUTE
+2026-11-26 14:48:20 +0000: Memory Usage (1438448K) : Executing rule ndmy_OFFGRID
+2026-11-26 14:48:21 +0000: Memory Usage (1438448K) : Executing rule ndmy_ACUTE
+2026-11-26 14:48:22 +0000: Memory Usage (1438448K) : Executing rule pmndmy_OFFGRID
+2026-11-26 14:48:23 +0000: Memory Usage (1438448K) : Executing rule pmndmy_ACUTE
+2026-11-26 14:48:25 +0000: Memory Usage (1438448K) : Executing rule v5_xtor_OFFGRID
+2026-11-26 14:48:26 +0000: Memory Usage (1659488K) : Executing rule metal1_ACUTE
+2026-11-26 14:48:27 +0000: Memory Usage (1556472K) : Completed deck : V3.3d
+2026-11-26 14:48:28 +0000: Memory Usage (1306968K) : Executing deck : CO.5a_nplus_overlap_butted
+2026-11-26 14:48:28 +0000: Memory Usage (1309540K) : Executing rule CO.5a
+2026-11-26 14:48:29 +0000: Memory Usage (1447648K) : Executing rule v5_xtor_ACUTE
+2026-11-26 14:48:31 +0000: Memory Usage (1447648K) : Executing rule cap_mk_OFFGRID
+2026-11-26 14:48:31 +0000: Memory Usage (1447648K) : Executing rule cap_mk_ACUTE
+2026-11-26 14:48:31 +0000: Memory Usage (1340564K) : Completed deck : CO.5a_nplus_overlap_butted
+2026-11-26 14:48:31 +0000: Memory Usage (1661940K) : Executing rule metal1_slot_OFFGRID
+2026-11-26 14:48:31 +0000: Memory Usage (1661940K) : Executing rule metal1_slot_ACUTE
+2026-11-26 14:48:32 +0000: Memory Usage (1439632K) : Executing rule mos_cap_mk_OFFGRID
+2026-11-26 14:48:32 +0000: Memory Usage (1306976K) : Executing deck : CO.5b_pplus_overlap_butted
+2026-11-26 14:48:32 +0000: Memory Usage (1309612K) : Executing rule CO.5b
+2026-11-26 14:48:32 +0000: Memory Usage (1394212K) : Completed deck : CO.2b_contact_array_spacing
+2026-11-26 14:48:32 +0000: Memory Usage (1661940K) : Executing rule metal1_blk_OFFGRID
+2026-11-26 14:48:32 +0000: Memory Usage (1661940K) : Executing rule metal1_blk_ACUTE
+2026-11-26 14:48:33 +0000: Memory Usage (1439632K) : Executing rule mos_cap_mk_ACUTE
+2026-11-26 14:48:34 +0000: Memory Usage (1661940K) : Executing rule metal1_label_OFFGRID
+2026-11-26 14:48:34 +0000: Memory Usage (1661940K) : Executing rule metal1_label_ACUTE
+2026-11-26 14:48:34 +0000: Memory Usage (1306968K) : Executing deck : CO.6_metal1_overlap
+2026-11-26 14:48:34 +0000: Memory Usage (1309540K) : Executing rule CO.6
+2026-11-26 14:48:34 +0000: Memory Usage (1439632K) : Executing rule ind_mk_OFFGRID
+2026-11-26 14:48:34 +0000: Memory Usage (1439632K) : Executing rule ind_mk_ACUTE
+2026-11-26 14:48:35 +0000: Memory Usage (1661940K) : Executing rule metal1_res_OFFGRID
+2026-11-26 14:48:35 +0000: Memory Usage (1661940K) : Executing rule metal1_res_ACUTE
+2026-11-26 14:48:35 +0000: Memory Usage (1367104K) : Completed deck : CO.3_poly2_overlap
+2026-11-26 14:48:36 +0000: Memory Usage (1439632K) : Executing rule diode_mk_OFFGRID
+2026-11-26 14:48:36 +0000: Memory Usage (1661940K) : Executing rule via1_OFFGRID
+2026-11-26 14:48:36 +0000: Memory Usage (1306976K) : Executing deck : CO.6a_metal1_eol_overlap
+2026-11-26 14:48:36 +0000: Memory Usage (1309548K) : Executing rule CO.6a
+2026-11-26 14:48:37 +0000: Memory Usage (1439632K) : Executing rule diode_mk_ACUTE
+2026-11-26 14:48:37 +0000: Memory Usage (1464600K) : Completed deck : CO.4_comp_overlap
+2026-11-26 14:48:38 +0000: Memory Usage (1306968K) : Executing deck : CO.6b_adjacent_edge_overlap
+2026-11-26 14:48:38 +0000: Memory Usage (1309604K) : Executing rule CO.6b
+2026-11-26 14:48:38 +0000: Memory Usage (1439632K) : Executing rule drc_bjt_OFFGRID
+2026-11-26 14:48:38 +0000: Memory Usage (1439632K) : Executing rule drc_bjt_ACUTE
+2026-11-26 14:48:39 +0000: Memory Usage (1439512K) : Executing rule lvs_bjt_OFFGRID
+2026-11-26 14:48:39 +0000: Memory Usage (1439512K) : Executing rule lvs_bjt_ACUTE
+2026-11-26 14:48:40 +0000: Memory Usage (1680116K) : Executing rule via1_ACUTE
+2026-11-26 14:48:41 +0000: Memory Usage (1439768K) : Completed deck : geom_base_1
+2026-11-26 14:48:42 +0000: Memory Usage (1306968K) : Executing deck : CO.7_comp_to_poly_spacing
+2026-11-26 14:48:42 +0000: Memory Usage (1309604K) : Executing rule CO.7
+2026-11-26 14:48:42 +0000: Memory Usage (1680116K) : Executing rule metal2_OFFGRID
+2026-11-26 14:48:48 +0000: Memory Usage (1542276K) : Completed deck : CO.5b_pplus_overlap_butted
+2026-11-26 14:48:50 +0000: Memory Usage (1306848K) : Executing deck : CO.8_poly_to_comp_spacing
+2026-11-26 14:48:50 +0000: Memory Usage (1309548K) : Executing rule CO.8
+2026-11-26 14:48:50 +0000: Memory Usage (1386196K) : Completed deck : CO.7_comp_to_poly_spacing
+2026-11-26 14:48:50 +0000: Memory Usage (1597296K) : Completed deck : CO.1_min_max_contact_size
+2026-11-26 14:48:51 +0000: Memory Usage (1306968K) : Executing deck : CO.9_no_contact_on_butting_edge
+2026-11-26 14:48:51 +0000: Memory Usage (1309604K) : Executing rule CO.9
+2026-11-26 14:48:52 +0000: Memory Usage (1306968K) : Executing deck : df_10
+2026-11-26 14:48:52 +0000: Memory Usage (1309668K) : Executing rule DF.10
+2026-11-26 14:48:55 +0000: Memory Usage (1321140K) : Completed deck : CO.8_poly_to_comp_spacing
+2026-11-26 14:48:57 +0000: Memory Usage (1306968K) : Executing deck : df_11
+2026-11-26 14:48:57 +0000: Memory Usage (1309668K) : Executing rule DF.11
+2026-11-26 14:48:57 +0000: Memory Usage (1353288K) : Completed deck : CO.9_no_contact_on_butting_edge
+2026-11-26 14:48:59 +0000: Memory Usage (1306968K) : Executing deck : df_12
+2026-11-26 14:48:59 +0000: Memory Usage (1309668K) : Executing rule DF.12
+2026-11-26 14:49:03 +0000: Memory Usage (1359860K) : Completed deck : df_11
+2026-11-26 14:49:04 +0000: Memory Usage (1456580K) : Completed deck : CO.6_metal1_overlap
+2026-11-26 14:49:04 +0000: Memory Usage (1441776K) : Executing rule metal3_ACUTE
+2026-11-26 14:49:04 +0000: Memory Usage (1306968K) : Executing deck : df_13_lv
+2026-11-26 14:49:04 +0000: Memory Usage (1309668K) : Preparations for rule DF.13_LV
+2026-11-26 14:49:05 +0000: Memory Usage (1375988K) : Completed deck : df_12
+2026-11-26 14:49:05 +0000: Memory Usage (1306968K) : Executing deck : df_13_mv
+2026-11-26 14:49:05 +0000: Memory Usage (1309668K) : Preparations for rule DF.13_MV
+2026-11-26 14:49:06 +0000: Memory Usage (1441776K) : Executing rule metal3_dummy_OFFGRID
+2026-11-26 14:49:06 +0000: Memory Usage (1441776K) : Executing rule metal3_dummy_ACUTE
+2026-11-26 14:49:06 +0000: Memory Usage (1306968K) : Executing deck : df_14_lv
+2026-11-26 14:49:06 +0000: Memory Usage (1309668K) : Executing rule DF.14_LV
+2026-11-26 14:49:07 +0000: Memory Usage (1435552K) : Executing rule metal3_label_OFFGRID
+2026-11-26 14:49:07 +0000: Memory Usage (1435552K) : Executing rule metal3_label_ACUTE
+2026-11-26 14:49:09 +0000: Memory Usage (1435552K) : Executing rule metal3_blk_OFFGRID
+2026-11-26 14:49:09 +0000: Memory Usage (1435552K) : Executing rule metal3_blk_ACUTE
+2026-11-26 14:49:10 +0000: Memory Usage (1341228K) : Completed deck : df_14_lv
+2026-11-26 14:49:10 +0000: Memory Usage (1435552K) : Executing rule metal3_res_OFFGRID
+2026-11-26 14:49:10 +0000: Memory Usage (1435552K) : Executing rule metal3_res_ACUTE
+2026-11-26 14:49:11 +0000: Memory Usage (1435808K) : Completed deck : geom_m3
+2026-11-26 14:49:11 +0000: Memory Usage (1306968K) : Executing deck : df_14_mv
+2026-11-26 14:49:11 +0000: Memory Usage (1309668K) : Executing rule DF.14_MV
+2026-11-26 14:49:12 +0000: Memory Usage (1306968K) : Executing deck : df_16_lv
+2026-11-26 14:49:20 +0000: Memory Usage (1434272K) : Completed deck : df_14_mv
+2026-11-26 14:49:21 +0000: Memory Usage (1306968K) : Executing deck : df_16_mv
+2026-11-26 14:49:36 +0000: Memory Usage (1508672K) : Executing rule DF.16_LV
+2026-11-26 14:49:38 +0000: Memory Usage (1512704K) : Completed deck : df_16_lv
+2026-11-26 14:49:39 +0000: Memory Usage (1306968K) : Executing deck : df_17_lv
+2026-11-26 14:49:42 +0000: Memory Usage (1514768K) : Executing rule DF.16_MV
+2026-11-26 14:49:48 +0000: Memory Usage (1536464K) : Completed deck : df_16_mv
+2026-11-26 14:49:49 +0000: Memory Usage (1306968K) : Executing deck : df_17_mv
+2026-11-26 14:50:04 +0000: Memory Usage (1532056K) : Executing rule DF.17_LV
+2026-11-26 14:50:05 +0000: Memory Usage (1533784K) : Completed deck : df_17_lv
+2026-11-26 14:50:06 +0000: Memory Usage (1306968K) : Executing deck : df_18
+2026-11-26 14:50:10 +0000: Memory Usage (1360552K) : Executing rule DF.18
+2026-11-26 14:50:10 +0000: Memory Usage (1361640K) : Completed deck : df_18
+2026-11-26 14:50:11 +0000: Memory Usage (1306968K) : Executing deck : df_19_lv
+2026-11-26 14:50:12 +0000: Memory Usage (1528992K) : Executing rule DF.17_MV
+2026-11-26 14:50:15 +0000: Memory Usage (1551072K) : Completed deck : df_17_mv
+2026-11-26 14:50:16 +0000: Memory Usage (1306968K) : Executing deck : df_19_mv
+2026-11-26 14:50:28 +0000: Memory Usage (1507208K) : Executing rule DF.19_LV
+2026-11-26 14:50:30 +0000: Memory Usage (1508296K) : Completed deck : df_19_lv
+2026-11-26 14:50:31 +0000: Memory Usage (1306968K) : Executing deck : df_1a_lv
+2026-11-26 14:50:31 +0000: Memory Usage (1472224K) : Executing rule DF.19_MV
+2026-11-26 14:50:34 +0000: Memory Usage (1473312K) : Completed deck : df_19_mv
+2026-11-26 14:50:36 +0000: Memory Usage (1306968K) : Executing deck : df_1a_mv
+2026-11-26 14:50:44 +0000: Memory Usage (1537348K) : Executing rule DF.1a_LV
+2026-11-26 14:50:44 +0000: Memory Usage (1538692K) : Completed deck : df_1a_lv
+2026-11-26 14:50:45 +0000: Memory Usage (1489472K) : Executing rule DF.1a_MV
+2026-11-26 14:50:45 +0000: Memory Usage (1306968K) : Executing deck : df_1c
+2026-11-26 14:50:45 +0000: Memory Usage (1309668K) : Executing rule DF.1c
+2026-11-26 14:50:45 +0000: Memory Usage (1490816K) : Completed deck : df_1a_mv
+2026-11-26 14:50:47 +0000: Memory Usage (1306968K) : Executing deck : df_2a_lv
+2026-11-26 14:50:47 +0000: Memory Usage (1340512K) : Completed deck : df_1c
+2026-11-26 14:50:48 +0000: Memory Usage (1306968K) : Executing deck : df_2a_mv
+2026-11-26 14:50:58 +0000: Memory Usage (1447824K) : Executing rule DF.2a_MV
+2026-11-26 14:50:59 +0000: Memory Usage (1537272K) : Executing rule DF.2a_LV
+2026-11-26 14:51:04 +0000: Memory Usage (1486600K) : Completed deck : df_2a_lv
+2026-11-26 14:51:05 +0000: Memory Usage (1306968K) : Executing deck : df_2b
+2026-11-26 14:51:05 +0000: Memory Usage (1309668K) : Executing rule DF.2b
+2026-11-26 14:51:07 +0000: Memory Usage (1455664K) : Completed deck : df_2a_mv
+2026-11-26 14:51:09 +0000: Memory Usage (1306968K) : Executing deck : df_3a_lv
+2026-11-26 14:51:09 +0000: Memory Usage (1340540K) : Completed deck : df_2b
+2026-11-26 14:51:10 +0000: Memory Usage (1306968K) : Executing deck : df_3a_mv
+2026-11-26 14:51:16 +0000: Memory Usage (4181740K) : Completed deck : df_10
+2026-11-26 14:51:17 +0000: Memory Usage (2332304K) : Completed deck : CO.6b_adjacent_edge_overlap
+2026-11-26 14:51:18 +0000: Memory Usage (1306968K) : Executing deck : df_3b
+2026-11-26 14:51:19 +0000: Memory Usage (1306968K) : Executing deck : df_3c_lv
+2026-11-26 14:51:20 +0000: Memory Usage (1447400K) : Executing rule DF.3a_MV
+2026-11-26 14:51:20 +0000: Memory Usage (1339360K) : Executing rule DF.3b
+2026-11-26 14:51:21 +0000: Memory Usage (1491936K) : Executing rule DF.3a_LV
+2026-11-26 14:51:22 +0000: Memory Usage (1449384K) : Completed deck : df_3a_mv
+2026-11-26 14:51:22 +0000: Memory Usage (1491972K) : Completed deck : df_3a_lv
+2026-11-26 14:51:24 +0000: Memory Usage (1306968K) : Executing deck : df_3c_mv
+2026-11-26 14:51:24 +0000: Memory Usage (1306968K) : Executing deck : df_4a_lv
+2026-11-26 14:51:24 +0000: Memory Usage (1313068K) : Executing rule DF.4a_LV
+2026-11-26 14:51:24 +0000: Memory Usage (1315092K) : Completed deck : df_4a_lv
+2026-11-26 14:51:25 +0000: Memory Usage (1306968K) : Executing deck : df_4a_mv
+2026-11-26 14:51:25 +0000: Memory Usage (1313068K) : Executing rule DF.4a_MV
+2026-11-26 14:51:25 +0000: Memory Usage (1315092K) : Completed deck : df_4a_mv
+2026-11-26 14:51:26 +0000: Memory Usage (1611552K) : Executing rule DF.13_MV
+2026-11-26 14:51:27 +0000: Memory Usage (1306968K) : Executing deck : df_4b_lv
+2026-11-26 14:51:27 +0000: Memory Usage (1313068K) : Executing rule DF.4b_LV
+2026-11-26 14:51:27 +0000: Memory Usage (1315092K) : Completed deck : df_4b_lv
+2026-11-26 14:51:28 +0000: Memory Usage (1306968K) : Executing deck : df_4b_mv
+2026-11-26 14:51:28 +0000: Memory Usage (1313068K) : Executing rule DF.4b_MV
+2026-11-26 14:51:29 +0000: Memory Usage (1315092K) : Completed deck : df_4b_mv
+2026-11-26 14:51:30 +0000: Memory Usage (1612256K) : Completed deck : df_13_mv
+2026-11-26 14:51:30 +0000: Memory Usage (1306968K) : Executing deck : df_4c_lv
+2026-11-26 14:51:30 +0000: Memory Usage (1309668K) : Executing rule DF.4c_LV
+2026-11-26 14:51:31 +0000: Memory Usage (1306968K) : Executing deck : df_4c_mv
+2026-11-26 14:51:31 +0000: Memory Usage (1309668K) : Executing rule DF.4c_MV
+2026-11-26 14:51:32 +0000: Memory Usage (1491824K) : Executing rule DF.3c_LV
+2026-11-26 14:51:32 +0000: Memory Usage (1492932K) : Completed deck : df_3c_lv
+2026-11-26 14:51:33 +0000: Memory Usage (1489132K) : Executing rule DF.3c_MV
+2026-11-26 14:51:33 +0000: Memory Usage (1489836K) : Completed deck : df_3c_mv
+2026-11-26 14:51:33 +0000: Memory Usage (1306968K) : Executing deck : df_4d_lv
+2026-11-26 14:51:34 +0000: Memory Usage (1528576K) : Completed deck : df_3b
+2026-11-26 14:51:34 +0000: Memory Usage (1306968K) : Executing deck : df_4d_mv
+2026-11-26 14:51:35 +0000: Memory Usage (1306968K) : Executing deck : df_4e_lv
+2026-11-26 14:51:36 +0000: Memory Usage (1313324K) : Executing rule DF.4e_LV
+2026-11-26 14:51:36 +0000: Memory Usage (1315348K) : Completed deck : df_4e_lv
+2026-11-26 14:51:37 +0000: Memory Usage (1306968K) : Executing deck : df_4e_mv
+2026-11-26 14:51:37 +0000: Memory Usage (1313324K) : Executing rule DF.4e_MV
+2026-11-26 14:51:37 +0000: Memory Usage (1315348K) : Completed deck : df_4e_mv
+2026-11-26 14:51:38 +0000: Memory Usage (1398628K) : Completed deck : df_4c_lv
+2026-11-26 14:51:39 +0000: Memory Usage (1306968K) : Executing deck : df_5_lv
+2026-11-26 14:51:39 +0000: Memory Usage (1309668K) : Executing rule DF.5_LV
+2026-11-26 14:51:39 +0000: Memory Usage (1315348K) : Completed deck : df_5_lv
+2026-11-26 14:51:39 +0000: Memory Usage (1306968K) : Executing deck : df_5_mv
+2026-11-26 14:51:39 +0000: Memory Usage (1309668K) : Executing rule DF.5_MV
+2026-11-26 14:51:39 +0000: Memory Usage (1315348K) : Completed deck : df_5_mv
+2026-11-26 14:51:40 +0000: Memory Usage (1306968K) : Executing deck : df_6_lv
+2026-11-26 14:51:41 +0000: Memory Usage (1306968K) : Executing deck : df_6_mv
+2026-11-26 14:51:43 +0000: Memory Usage (1430236K) : Completed deck : df_4c_mv
+2026-11-26 14:51:44 +0000: Memory Usage (1306968K) : Executing deck : df_7_lv
+2026-11-26 14:51:45 +0000: Memory Usage (1313324K) : Executing rule DF.7_LV
+2026-11-26 14:51:45 +0000: Memory Usage (1315348K) : Completed deck : df_7_lv
+2026-11-26 14:51:46 +0000: Memory Usage (1306968K) : Executing deck : df_7_mv
+2026-11-26 14:51:46 +0000: Memory Usage (1313324K) : Executing rule DF.7_MV
+2026-11-26 14:51:46 +0000: Memory Usage (1315284K) : Completed deck : df_7_mv
+2026-11-26 14:51:47 +0000: Memory Usage (1457832K) : Executing rule DF.4d_MV
+2026-11-26 14:51:48 +0000: Memory Usage (1306968K) : Executing deck : df_8_lv
+2026-11-26 14:51:48 +0000: Memory Usage (1309668K) : Executing rule DF.8_LV
+2026-11-26 14:51:48 +0000: Memory Usage (1315284K) : Completed deck : df_8_lv
+2026-11-26 14:51:48 +0000: Memory Usage (1539100K) : Executing rule DF.4d_LV
+2026-11-26 14:51:49 +0000: Memory Usage (1306968K) : Executing deck : df_8_mv
+2026-11-26 14:51:49 +0000: Memory Usage (1309668K) : Executing rule DF.8_MV
+2026-11-26 14:51:50 +0000: Memory Usage (1315284K) : Completed deck : df_8_mv
+2026-11-26 14:51:50 +0000: Memory Usage (1540828K) : Completed deck : df_4d_lv
+2026-11-26 14:51:50 +0000: Memory Usage (1491124K) : Executing rule DF.6_MV
+2026-11-26 14:51:51 +0000: Memory Usage (1306968K) : Executing deck : df_9
+2026-11-26 14:51:51 +0000: Memory Usage (1309668K) : Executing rule DF.9
+2026-11-26 14:51:51 +0000: Memory Usage (1306968K) : Executing deck : dnwell
+2026-11-26 14:51:51 +0000: Memory Usage (1309604K) : Executing rule DN.1
+2026-11-26 14:51:52 +0000: Memory Usage (1475304K) : Completed deck : df_4d_mv
+2026-11-26 14:51:53 +0000: Memory Usage (1490968K) : Executing rule DF.6_LV
+2026-11-26 14:51:53 +0000: Memory Usage (1306968K) : Executing deck : drc_bjt
+2026-11-26 14:51:53 +0000: Memory Usage (1309668K) : Executing rule BJT.1
+2026-11-26 14:51:54 +0000: Memory Usage (1337952K) : Completed deck : df_9
+2026-11-26 14:51:55 +0000: Memory Usage (1306968K) : Executing deck : dualgate
+2026-11-26 14:51:55 +0000: Memory Usage (1309668K) : Executing rule DV.1
+2026-11-26 14:51:56 +0000: Memory Usage (1315028K) : Executing rule DV.2
+2026-11-26 14:51:56 +0000: Memory Usage (1334136K) : Executing rule BJT.2
+2026-11-26 14:51:58 +0000: Memory Usage (1681012K) : Executing rule metal2_ACUTE
+2026-11-26 14:51:58 +0000: Memory Usage (1368540K) : Executing rule DN.2a
+2026-11-26 14:51:58 +0000: Memory Usage (1368540K) : Executing rule DN.2b
+2026-11-26 14:51:58 +0000: Memory Usage (1368540K) : Executing rule DN.3
+2026-11-26 14:51:58 +0000: Memory Usage (1612172K) : Executing rule DF.13_LV
+2026-11-26 14:52:00 +0000: Memory Usage (1681012K) : Executing rule metal2_label_OFFGRID
+2026-11-26 14:52:00 +0000: Memory Usage (1681012K) : Executing rule metal2_label_ACUTE
+2026-11-26 14:52:00 +0000: Memory Usage (1403592K) : Executing rule DV.3
+2026-11-26 14:52:00 +0000: Memory Usage (1612876K) : Completed deck : df_13_lv
+2026-11-26 14:52:01 +0000: Memory Usage (1681012K) : Executing rule metal2_slot_OFFGRID
+2026-11-26 14:52:01 +0000: Memory Usage (1681012K) : Executing rule metal2_slot_ACUTE
+2026-11-26 14:52:02 +0000: Memory Usage (1306968K) : Executing deck : dummy_comp
+2026-11-26 14:52:02 +0000: Memory Usage (1309540K) : Executing rule DCF.2b
+2026-11-26 14:52:02 +0000: Memory Usage (1320256K) : Executing rule DCF.4
+2026-11-26 14:52:02 +0000: Memory Usage (1681012K) : Executing rule metal2_blk_OFFGRID
+2026-11-26 14:52:02 +0000: Memory Usage (1681012K) : Executing rule metal2_blk_ACUTE
+2026-11-26 14:52:04 +0000: Memory Usage (1681012K) : Executing rule metal2_res_OFFGRID
+2026-11-26 14:52:04 +0000: Memory Usage (1681012K) : Executing rule metal2_res_ACUTE
+2026-11-26 14:52:04 +0000: Memory Usage (1320256K) : Executing rule DCF.5
+2026-11-26 14:52:05 +0000: Memory Usage (1681444K) : Completed deck : geom_m1m2
+2026-11-26 14:52:05 +0000: Memory Usage (1320256K) : Executing rule DCF.6a
+2026-11-26 14:52:05 +0000: Memory Usage (1428932K) : Executing rule BJT.3
+2026-11-26 14:52:06 +0000: Memory Usage (1429572K) : Completed deck : drc_bjt
+2026-11-26 14:52:06 +0000: Memory Usage (1306968K) : Executing deck : dummy_exclude
+2026-11-26 14:52:06 +0000: Memory Usage (1309604K) : Executing rule DE.2
+2026-11-26 14:52:07 +0000: Memory Usage (1320256K) : Executing rule DCF.6b
+2026-11-26 14:52:07 +0000: Memory Usage (1320256K) : Executing rule DCF.6c
+2026-11-26 14:52:07 +0000: Memory Usage (1306968K) : Executing deck : dummy_metal1
+2026-11-26 14:52:07 +0000: Memory Usage (1309668K) : Executing rule DM1.2b
+2026-11-26 14:52:07 +0000: Memory Usage (1314132K) : Executing rule DM1.3
+2026-11-26 14:52:07 +0000: Memory Usage (1314132K) : Executing rule DM1.8
+2026-11-26 14:52:07 +0000: Memory Usage (1336844K) : Executing rule DE.3
+2026-11-26 14:52:08 +0000: Memory Usage (1315028K) : Completed deck : dummy_metal1
+2026-11-26 14:52:09 +0000: Memory Usage (1320256K) : Executing rule DCF.6d
+2026-11-26 14:52:09 +0000: Memory Usage (1337612K) : Executing rule DE.4
+2026-11-26 14:52:09 +0000: Memory Usage (1341344K) : Completed deck : dummy_exclude
+2026-11-26 14:52:09 +0000: Memory Usage (1306968K) : Executing deck : dummy_metal2
+2026-11-26 14:52:09 +0000: Memory Usage (1309604K) : Executing rule DM2.2b
+2026-11-26 14:52:09 +0000: Memory Usage (1314132K) : Executing rule DM2.3
+2026-11-26 14:52:09 +0000: Memory Usage (1314132K) : Executing rule DM2.8
+2026-11-26 14:52:10 +0000: Memory Usage (1315028K) : Completed deck : dummy_metal2
+2026-11-26 14:52:10 +0000: Memory Usage (1320256K) : Executing rule DCF.8a
+2026-11-26 14:52:10 +0000: Memory Usage (1306968K) : Executing deck : dummy_metal3
+2026-11-26 14:52:10 +0000: Memory Usage (1309604K) : Executing rule DM3.2b
+2026-11-26 14:52:10 +0000: Memory Usage (1314132K) : Executing rule DM3.3
+2026-11-26 14:52:10 +0000: Memory Usage (1314132K) : Executing rule DM3.8
+2026-11-26 14:52:10 +0000: Memory Usage (1320256K) : Executing rule DCF.11a
+2026-11-26 14:52:11 +0000: Memory Usage (1320256K) : Executing rule DCF.12
+2026-11-26 14:52:11 +0000: Memory Usage (1320392K) : Completed deck : dummy_comp
+2026-11-26 14:52:11 +0000: Memory Usage (1315028K) : Completed deck : dummy_metal3
+2026-11-26 14:52:11 +0000: Memory Usage (1306968K) : Executing deck : dummy_metal4
+2026-11-26 14:52:11 +0000: Memory Usage (1309604K) : Executing rule DM4.2b
+2026-11-26 14:52:11 +0000: Memory Usage (1314132K) : Executing rule DM4.3
+2026-11-26 14:52:11 +0000: Memory Usage (1314132K) : Executing rule DM4.8
+2026-11-26 14:52:12 +0000: Memory Usage (1315028K) : Completed deck : dummy_metal4
+2026-11-26 14:52:12 +0000: Memory Usage (1306968K) : Executing deck : dummy_metal5
+2026-11-26 14:52:12 +0000: Memory Usage (1309604K) : Executing rule DM5.2b
+2026-11-26 14:52:12 +0000: Memory Usage (1306968K) : Executing deck : dummy_metal6
+2026-11-26 14:52:12 +0000: Memory Usage (1310532K) : Completed deck : dummy_metal6
+2026-11-26 14:52:12 +0000: Memory Usage (1314132K) : Executing rule DM5.3
+2026-11-26 14:52:12 +0000: Memory Usage (1314132K) : Executing rule DM5.8
+2026-11-26 14:52:13 +0000: Memory Usage (1315028K) : Completed deck : dummy_metal5
+2026-11-26 14:52:13 +0000: Memory Usage (1306968K) : Executing deck : dummy_poly2
+2026-11-26 14:52:13 +0000: Memory Usage (1309604K) : Starting Dummy Poly2 derivations
+2026-11-26 14:52:13 +0000: Memory Usage (1309604K) : Executing rule DPF.1
+2026-11-26 14:52:13 +0000: Memory Usage (1313836K) : Executing rule DPF.2b
+2026-11-26 14:52:13 +0000: Memory Usage (1314476K) : Executing rule DPF.4
+2026-11-26 14:52:13 +0000: Memory Usage (1314476K) : Executing rule DPF.5
+2026-11-26 14:52:13 +0000: Memory Usage (1314476K) : Executing rule DPF.6a
+2026-11-26 14:52:14 +0000: Memory Usage (1314476K) : Executing rule DPF.6b
+2026-11-26 14:52:14 +0000: Memory Usage (1314476K) : Executing rule DPF.6c
+2026-11-26 14:52:14 +0000: Memory Usage (1314476K) : Executing rule DPF.6d
+2026-11-26 14:52:14 +0000: Memory Usage (1314476K) : Executing rule DPF.8
+2026-11-26 14:52:14 +0000: Memory Usage (1307032K) : Executing deck : efuse
+2026-11-26 14:52:14 +0000: Memory Usage (1309668K) : Starting EFUSE derivations
+2026-11-26 14:52:14 +0000: Memory Usage (1314476K) : Executing rule DPF.9
+2026-11-26 14:52:14 +0000: Memory Usage (1314476K) : Executing rule DPF.11
+2026-11-26 14:52:14 +0000: Memory Usage (1314476K) : Executing rule DPF.14
+2026-11-26 14:52:14 +0000: Memory Usage (1314476K) : Executing rule DPF.16
+2026-11-26 14:52:14 +0000: Memory Usage (1314476K) : Executing rule DPF.19
+2026-11-26 14:52:14 +0000: Memory Usage (1315116K) : Completed deck : dummy_poly2
+2026-11-26 14:52:14 +0000: Memory Usage (1314800K) : Executing rule EF.01
+2026-11-26 14:52:14 +0000: Memory Usage (1306968K) : Executing deck : esd
+2026-11-26 14:52:14 +0000: Memory Usage (1309604K) : Starting ESD derivations
+2026-11-26 14:52:15 +0000: Memory Usage (1315768K) : Executing rule EF.02
+2026-11-26 14:52:15 +0000: Memory Usage (1339848K) : Executing rule EF.03
+2026-11-26 14:52:15 +0000: Memory Usage (1319624K) : Executing rule ESD.1
+2026-11-26 14:52:16 +0000: Memory Usage (1306968K) : Executing deck : guard_ring
+2026-11-26 14:52:16 +0000: Memory Usage (1320584K) : Executing rule ESD.2
+2026-11-26 14:52:16 +0000: Memory Usage (1320584K) : Executing rule ESD.3a
+2026-11-26 14:52:16 +0000: Memory Usage (1320584K) : Executing rule ESD.3b
+2026-11-26 14:52:16 +0000: Memory Usage (1320840K) : Executing rule ESD.4a
+2026-11-26 14:52:19 +0000: Memory Usage (1339708K) : Executing rule GR.1
+2026-11-26 14:52:19 +0000: Memory Usage (1342132K) : Executing rule ESD.4b
+2026-11-26 14:52:19 +0000: Memory Usage (1342132K) : Executing rule ESD.5a
+2026-11-26 14:52:19 +0000: Memory Usage (1342132K) : Executing rule ESD.5b
+2026-11-26 14:52:19 +0000: Memory Usage (1342260K) : Executing rule ESD.6
+2026-11-26 14:52:19 +0000: Memory Usage (1340156K) : Executing rule GR.2
+2026-11-26 14:52:20 +0000: Memory Usage (1341964K) : Executing rule EF.04a
+2026-11-26 14:52:20 +0000: Memory Usage (1944920K) : Completed deck : df_6_mv
+2026-11-26 14:52:20 +0000: Memory Usage (1341964K) : Executing rule EF.04b
+2026-11-26 14:52:20 +0000: Memory Usage (1341964K) : Executing rule EF.04c
+2026-11-26 14:52:21 +0000: Memory Usage (1341964K) : Executing rule EF.04d
+2026-11-26 14:52:21 +0000: Memory Usage (1341964K) : Executing rule EF.05
+2026-11-26 14:52:21 +0000: Memory Usage (1945440K) : Completed deck : df_6_lv
+2026-11-26 14:52:22 +0000: Memory Usage (1342604K) : Executing rule EF.06
+2026-11-26 14:52:22 +0000: Memory Usage (1306968K) : Executing deck : guard_ring_wedge
+2026-11-26 14:52:22 +0000: Memory Usage (1309540K) : Executing rule GR.11
+2026-11-26 14:52:23 +0000: Memory Usage (1339856K) : Completed deck : guard_ring_wedge
+2026-11-26 14:52:23 +0000: Memory Usage (1306968K) : Executing deck : hres
+2026-11-26 14:52:23 +0000: Memory Usage (1309668K) : Starting HRES derivations
+2026-11-26 14:52:23 +0000: Memory Usage (1342604K) : Executing rule EF.07
+2026-11-26 14:52:23 +0000: Memory Usage (1342604K) : Executing rule EF.08
+2026-11-26 14:52:24 +0000: Memory Usage (1342604K) : Executing rule EF.09
+2026-11-26 14:52:24 +0000: Memory Usage (1342604K) : Executing rule EF.10
+2026-11-26 14:52:24 +0000: Memory Usage (1342860K) : Executing rule EF.11
+2026-11-26 14:52:24 +0000: Memory Usage (1342860K) : Executing rule EF.12
+2026-11-26 14:52:24 +0000: Memory Usage (1306968K) : Executing deck : ldnmos
+2026-11-26 14:52:24 +0000: Memory Usage (1309668K) : Starting 10V LDNMOS derivations
+2026-11-26 14:52:24 +0000: Memory Usage (1343116K) : Executing rule EF.13
+2026-11-26 14:52:25 +0000: Memory Usage (1343116K) : Executing rule EF.14
+2026-11-26 14:52:25 +0000: Memory Usage (1343116K) : Executing rule EF.15
+2026-11-26 14:52:25 +0000: Memory Usage (1343116K) : Executing rule EF.16a
+2026-11-26 14:52:25 +0000: Memory Usage (1343116K) : Executing rule EF.16b
+2026-11-26 14:52:25 +0000: Memory Usage (1343116K) : Executing rule EF.17
+2026-11-26 14:52:25 +0000: Memory Usage (1343116K) : Executing rule EF.18
+2026-11-26 14:52:27 +0000: Memory Usage (1343116K) : Executing rule EF.19
+2026-11-26 14:52:27 +0000: Memory Usage (1343116K) : Executing rule EF.20
+2026-11-26 14:52:28 +0000: Memory Usage (1343116K) : Executing rule EF.21
+2026-11-26 14:52:29 +0000: Memory Usage (1344080K) : Executing rule ESD.7
+2026-11-26 14:52:29 +0000: Memory Usage (1344080K) : Executing rule ESD.8
+2026-11-26 14:52:30 +0000: Memory Usage (1343116K) : Executing rule EF.22a
+2026-11-26 14:52:30 +0000: Memory Usage (1354812K) : Executing rule HRES.1
+2026-11-26 14:52:30 +0000: Memory Usage (1355772K) : Executing rule HRES.2
+2026-11-26 14:52:31 +0000: Memory Usage (1355900K) : Executing rule HRES.3
+2026-11-26 14:52:31 +0000: Memory Usage (1343116K) : Executing rule EF.22b
+2026-11-26 14:52:31 +0000: Memory Usage (1355900K) : Executing rule HRES.4
+2026-11-26 14:52:31 +0000: Memory Usage (1356156K) : Executing rule HRES.5
+2026-11-26 14:52:31 +0000: Memory Usage (1343244K) : Completed deck : efuse
+2026-11-26 14:52:31 +0000: Memory Usage (1356156K) : Executing rule HRES.6
+2026-11-26 14:52:32 +0000: Memory Usage (1356156K) : Executing rule HRES.7
+2026-11-26 14:52:32 +0000: Memory Usage (1356156K) : Executing rule HRES.8
+2026-11-26 14:52:32 +0000: Memory Usage (1356156K) : Executing rule HRES.9
+2026-11-26 14:52:33 +0000: Memory Usage (1306968K) : Executing deck : ldpmos
+2026-11-26 14:52:33 +0000: Memory Usage (1374588K) : Executing rule MDN.1
+2026-11-26 14:52:35 +0000: Memory Usage (1356796K) : Executing rule HRES.10
+2026-11-26 14:52:36 +0000: Memory Usage (1320128K) : Executing rule MDP.1
+2026-11-26 14:52:36 +0000: Memory Usage (1320960K) : Executing rule MDP.1a
+2026-11-26 14:52:36 +0000: Memory Usage (1321344K) : Executing rule MDP.2
+2026-11-26 14:52:36 +0000: Memory Usage (1344904K) : Executing rule ESD.pl
+2026-11-26 14:52:36 +0000: Memory Usage (1321344K) : Executing rule MDP.3
+2026-11-26 14:52:38 +0000: Memory Usage (1529616K) : Executing rule DV.5
+2026-11-26 14:52:40 +0000: Memory Usage (1410620K) : Executing rule MDN.2a
+2026-11-26 14:52:40 +0000: Memory Usage (1410620K) : Executing rule MDN.2b
+2026-11-26 14:52:40 +0000: Memory Usage (1410620K) : Executing rule MDN.3a
+2026-11-26 14:52:40 +0000: Memory Usage (1410620K) : Executing rule MDN.3b
+2026-11-26 14:52:41 +0000: Memory Usage (1410620K) : Executing rule MDN.4a
+2026-11-26 14:52:41 +0000: Memory Usage (1410620K) : Executing rule MDN.4b
+2026-11-26 14:52:41 +0000: Memory Usage (1410620K) : Executing rule MDN.5ai
+2026-11-26 14:52:41 +0000: Memory Usage (1410620K) : Executing rule MDN.5aii
+2026-11-26 14:52:41 +0000: Memory Usage (1410620K) : Executing rule MDN.5b
+2026-11-26 14:52:41 +0000: Memory Usage (1410620K) : Executing rule MDN.5c
+2026-11-26 14:52:43 +0000: Memory Usage (1411900K) : Executing rule MDN.6
+2026-11-26 14:52:43 +0000: Memory Usage (1411900K) : Executing rule MDN.6a
+2026-11-26 14:52:43 +0000: Memory Usage (1411900K) : Executing rule MDN.7
+2026-11-26 14:52:44 +0000: Memory Usage (1411900K) : Executing rule MDN.7a
+2026-11-26 14:52:44 +0000: Memory Usage (1424776K) : Executing rule ESD.9
+2026-11-26 14:52:44 +0000: Memory Usage (1341412K) : Executing rule MDP.3ai
+2026-11-26 14:52:44 +0000: Memory Usage (1424776K) : Executing rule ESD.10
+2026-11-26 14:52:45 +0000: Memory Usage (1425032K) : Completed deck : esd
+2026-11-26 14:52:45 +0000: Memory Usage (1421836K) : Executing rule HRES.12a
+2026-11-26 14:52:45 +0000: Memory Usage (1411900K) : Executing rule MDN.8a
+2026-11-26 14:52:45 +0000: Memory Usage (1411900K) : Executing rule MDN.8b
+2026-11-26 14:52:46 +0000: Memory Usage (1411900K) : Executing rule MDN.9
+2026-11-26 14:52:46 +0000: Memory Usage (1411900K) : Executing rule MDN.10a
+2026-11-26 14:52:46 +0000: Memory Usage (1306968K) : Executing deck : lres
+2026-11-26 14:52:46 +0000: Memory Usage (1309668K) : Starting LRES derivations
+2026-11-26 14:52:47 +0000: Memory Usage (1371108K) : Executing rule MDP.3aii
+2026-11-26 14:52:49 +0000: Memory Usage (1371108K) : Executing rule MDP.3b
+2026-11-26 14:52:49 +0000: Memory Usage (1371108K) : Executing rule MDP.3c
+2026-11-26 14:52:50 +0000: Memory Usage (1371748K) : Executing rule MDP.3d
+2026-11-26 14:52:51 +0000: Memory Usage (1372004K) : Executing rule MDP.4
+2026-11-26 14:52:51 +0000: Memory Usage (1348128K) : Executing rule LRES.1
+2026-11-26 14:52:51 +0000: Memory Usage (1349072K) : Executing rule LRES.2
+2026-11-26 14:52:51 +0000: Memory Usage (1463356K) : Executing rule MDN.10b
+2026-11-26 14:52:51 +0000: Memory Usage (1349072K) : Executing rule LRES.3
+2026-11-26 14:52:51 +0000: Memory Usage (1349472K) : Executing rule LRES.4
+2026-11-26 14:52:51 +0000: Memory Usage (1450636K) : Executing rule HRES.12b
+2026-11-26 14:52:53 +0000: Memory Usage (1460108K) : Completed deck : hres
+2026-11-26 14:52:54 +0000: Memory Usage (1608608K) : Executing rule DV.6
+2026-11-26 14:52:54 +0000: Memory Usage (1349600K) : Executing rule LRES.5
+2026-11-26 14:52:54 +0000: Memory Usage (1306968K) : Executing deck : lvpwell
+2026-11-26 14:52:54 +0000: Memory Usage (1309668K) : Starting LVPWELL derivations
+2026-11-26 14:52:54 +0000: Memory Usage (1313068K) : Executing rule LPW.1_LV
+2026-11-26 14:52:54 +0000: Memory Usage (1314580K) : Executing rule LPW.1_MV
+2026-11-26 14:52:54 +0000: Memory Usage (1349600K) : Executing rule LRES.6
+2026-11-26 14:52:55 +0000: Memory Usage (1349600K) : Executing rule LRES.7
+2026-11-26 14:52:55 +0000: Memory Usage (1349600K) : Executing rule LRES.9a
+2026-11-26 14:52:57 +0000: Memory Usage (1351548K) : Executing rule LRES.9b
+2026-11-26 14:52:57 +0000: Memory Usage (1464380K) : Executing rule MDN.10c
+2026-11-26 14:52:58 +0000: Memory Usage (1464380K) : Executing rule MDN.10d
+2026-11-26 14:52:58 +0000: Memory Usage (1352060K) : Completed deck : lres
+2026-11-26 14:53:00 +0000: Memory Usage (1306968K) : Executing deck : lvs_bjt
+2026-11-26 14:53:00 +0000: Memory Usage (1309668K) : Executing rule LVS_BJT.1
+2026-11-26 14:53:00 +0000: Memory Usage (1314860K) : Completed deck : lvs_bjt
+2026-11-26 14:53:01 +0000: Memory Usage (2311924K) : Completed deck : CO.6a_metal1_eol_overlap
+2026-11-26 14:53:02 +0000: Memory Usage (1306968K) : Executing deck : mcell
+2026-11-26 14:53:02 +0000: Memory Usage (1309668K) : Executing rule MC.1
+2026-11-26 14:53:02 +0000: Memory Usage (1314260K) : Executing rule MC.2
+2026-11-26 14:53:02 +0000: Memory Usage (1314260K) : Executing rule MC.3
+2026-11-26 14:53:02 +0000: Memory Usage (1314516K) : Executing rule MC.4
+2026-11-26 14:53:02 +0000: Memory Usage (1315284K) : Completed deck : mcell
+2026-11-26 14:53:02 +0000: Memory Usage (1368860K) : Executing rule LPW.2a_LV
+2026-11-26 14:53:02 +0000: Memory Usage (1368860K) : Executing rule LPW.2a_MV
+2026-11-26 14:53:02 +0000: Memory Usage (1368860K) : Executing rule LPW.2b_LV
+2026-11-26 14:53:02 +0000: Memory Usage (1306968K) : Executing deck : metal1
+2026-11-26 14:53:02 +0000: Memory Usage (1309668K) : Executing rule M1.1
+2026-11-26 14:53:02 +0000: Memory Usage (1368860K) : Executing rule LPW.2b_MV
+2026-11-26 14:53:02 +0000: Memory Usage (1368860K) : Executing rule LPW.3_LV
+2026-11-26 14:53:03 +0000: Memory Usage (1368860K) : Executing rule LPW.5
+2026-11-26 14:53:03 +0000: Memory Usage (1306968K) : Executing deck : metal2
+2026-11-26 14:53:03 +0000: Memory Usage (1309668K) : Executing rule M2.1
+2026-11-26 14:53:08 +0000: Memory Usage (1414864K) : Executing rule LPW.11
+2026-11-26 14:53:09 +0000: Memory Usage (1414864K) : Executing rule LPW.12
+2026-11-26 14:53:09 +0000: Memory Usage (1622048K) : Executing rule DV.7
+2026-11-26 14:53:10 +0000: Memory Usage (1419216K) : Completed deck : lvpwell
+2026-11-26 14:53:12 +0000: Memory Usage (1306968K) : Executing deck : metal3
+2026-11-26 14:53:12 +0000: Memory Usage (1309668K) : Executing rule M3.1
+2026-11-26 14:53:33 +0000: Memory Usage (1750228K) : Executing rule DV.8
+2026-11-26 14:53:54 +0000: Memory Usage (2419964K) : Executing rule MDN.10ei
+2026-11-26 14:53:54 +0000: Memory Usage (1827412K) : Executing rule DV.9
+2026-11-26 14:53:56 +0000: Memory Usage (2446976K) : Completed deck : dnwell
+2026-11-26 14:53:58 +0000: Memory Usage (1306968K) : Executing deck : metal4
+2026-11-26 14:53:58 +0000: Memory Usage (1309668K) : Executing rule M4.1
+2026-11-26 14:54:02 +0000: Memory Usage (1494300K) : Executing rule M1.2a
+2026-11-26 14:54:08 +0000: Memory Usage (1828832K) : Completed deck : dualgate
+2026-11-26 14:54:09 +0000: Memory Usage (1340456K) : Executing rule M4.2a
+2026-11-26 14:54:09 +0000: Memory Usage (1306968K) : Executing deck : metal5
+2026-11-26 14:54:09 +0000: Memory Usage (1310596K) : Completed deck : metal5
+2026-11-26 14:54:11 +0000: Memory Usage (1306968K) : Executing deck : metaltop
+2026-11-26 14:54:11 +0000: Memory Usage (1309668K) : MetalTop thickness 9k/11k section
+2026-11-26 14:54:11 +0000: Memory Usage (1309668K) : Executing rule MT.1
+2026-11-26 14:54:21 +0000: Memory Usage (2314600K) : Executing rule MDN.10eii
+2026-11-26 14:54:22 +0000: Memory Usage (1337768K) : Executing rule MT.2a
+2026-11-26 14:54:25 +0000: Memory Usage (1359712K) : Executing rule M4.2b
+2026-11-26 14:54:33 +0000: Memory Usage (1349068K) : Executing rule M3.2a
+2026-11-26 14:54:35 +0000: Memory Usage (2314604K) : Executing rule MDN.10f
+2026-11-26 14:54:35 +0000: Memory Usage (2314604K) : Executing rule MDN.11
+2026-11-26 14:54:40 +0000: Memory Usage (2359148K) : Executing rule MDN.12
+2026-11-26 14:54:43 +0000: Memory Usage (2359148K) : Executing rule MDN.13a
+2026-11-26 14:54:44 +0000: Memory Usage (2359148K) : Executing rule MDN.13b
+2026-11-26 14:54:44 +0000: Memory Usage (1387208K) : Executing rule MT.2b
+2026-11-26 14:54:49 +0000: Memory Usage (1404792K) : Executing rule M4.3
+2026-11-26 14:54:50 +0000: Memory Usage (1405048K) : Completed deck : metal4
+2026-11-26 14:54:50 +0000: Memory Usage (2359148K) : Executing rule MDN.13c
+2026-11-26 14:54:51 +0000: Memory Usage (1306968K) : Executing deck : metaltop_30k
+2026-11-26 14:54:51 +0000: Memory Usage (1310532K) : Completed deck : metaltop_30k
+2026-11-26 14:54:53 +0000: Memory Usage (1306968K) : Executing deck : mim_a
+2026-11-26 14:54:53 +0000: Memory Usage (1310596K) : Completed deck : mim_a
+2026-11-26 14:54:54 +0000: Memory Usage (2359148K) : Executing rule MDN.13d
+2026-11-26 14:54:54 +0000: Memory Usage (1306968K) : Executing deck : mim_b
+2026-11-26 14:54:54 +0000: Memory Usage (1309668K) : MIM Capacitor Option B section
+2026-11-26 14:54:54 +0000: Memory Usage (1313516K) : Executing rule MIMTM.1
+2026-11-26 14:54:54 +0000: Memory Usage (1314772K) : Executing rule MIMTM.2
+2026-11-26 14:54:55 +0000: Memory Usage (1315028K) : Executing rule MIMTM.3
+2026-11-26 14:54:55 +0000: Memory Usage (1315028K) : Executing rule MIMTM.4
+2026-11-26 14:54:55 +0000: Memory Usage (1315028K) : Executing rule MIMTM.5
+2026-11-26 14:54:57 +0000: Memory Usage (2256620K) : Executing rule MDP.4a
+2026-11-26 14:54:57 +0000: Memory Usage (2256620K) : Executing rule MDP.4b
+2026-11-26 14:54:59 +0000: Memory Usage (2257004K) : Executing rule MDP.5
+2026-11-26 14:55:00 +0000: Memory Usage (2359148K) : Executing rule MDN.14
+2026-11-26 14:55:01 +0000: Memory Usage (2359148K) : Executing rule MDN.15a
+2026-11-26 14:55:01 +0000: Memory Usage (2359148K) : Executing rule MDN.15b
+2026-11-26 14:55:01 +0000: Memory Usage (2359148K) : Executing rule MDN.17
+2026-11-26 14:55:01 +0000: Memory Usage (2359276K) : Completed deck : ldnmos
+2026-11-26 14:55:03 +0000: Memory Usage (1306968K) : Executing deck : mslot1
+2026-11-26 14:55:03 +0000: Memory Usage (1309668K) : Starting Metal Slotting rules derivations
+2026-11-26 14:55:03 +0000: Memory Usage (2257132K) : Executing rule MDP.5a
+2026-11-26 14:55:03 +0000: Memory Usage (2257132K) : Executing rule MDP.6
+2026-11-26 14:55:03 +0000: Memory Usage (2257132K) : Executing rule MDP.6a
+2026-11-26 14:55:04 +0000: Memory Usage (2257132K) : Executing rule MDP.7
+2026-11-26 14:55:04 +0000: Memory Usage (2257132K) : Executing rule MDP.8
+2026-11-26 14:55:04 +0000: Memory Usage (2257132K) : Executing rule MDP.9a
+2026-11-26 14:55:04 +0000: Memory Usage (2257132K) : Executing rule MDP.9b
+2026-11-26 14:55:06 +0000: Memory Usage (1339892K) : Checking slots for Metal1
+2026-11-26 14:55:06 +0000: Memory Usage (1341396K) : Executing rule MIMTM.6
+2026-11-26 14:55:06 +0000: Memory Usage (1341396K) : Executing rule MIMTM.7
+2026-11-26 14:55:06 +0000: Memory Usage (1341396K) : Executing rule MIMTM.8a
+2026-11-26 14:55:06 +0000: Memory Usage (1341396K) : Executing rule MIMTM.8b
+2026-11-26 14:55:06 +0000: Memory Usage (1341396K) : Executing rule MIMTM.9
+2026-11-26 14:55:07 +0000: Memory Usage (1341396K) : Executing rule MIMTM.10
+2026-11-26 14:55:07 +0000: Memory Usage (1341396K) : Executing rule MIMTM.11
+2026-11-26 14:55:07 +0000: Memory Usage (1341652K) : Completed deck : mim_b
+2026-11-26 14:55:08 +0000: Memory Usage (1306968K) : Executing deck : mslot2
+2026-11-26 14:55:08 +0000: Memory Usage (1309668K) : Starting Metal Slotting rules derivations
+2026-11-26 14:55:09 +0000: Memory Usage (2257772K) : Executing rule MDP.9c
+2026-11-26 14:55:12 +0000: Memory Usage (1339964K) : Checking slots for Metal2
+2026-11-26 14:55:16 +0000: Memory Usage (2258028K) : Executing rule MDP.9d
+2026-11-26 14:55:43 +0000: Memory Usage (2258156K) : Executing rule MDP.9ei
+2026-11-26 14:55:43 +0000: Memory Usage (2258156K) : Executing rule MDP.9eii
+2026-11-26 14:55:48 +0000: Memory Usage (2258156K) : Executing rule MDP.9f
+2026-11-26 14:55:53 +0000: Memory Usage (2258156K) : Executing rule MDP.10
+2026-11-26 14:56:00 +0000: Memory Usage (2269164K) : Executing rule MDP.10a
+2026-11-26 14:56:00 +0000: Memory Usage (2269164K) : Executing rule MDP.10b
+2026-11-26 14:56:00 +0000: Memory Usage (2269164K) : Executing rule MDP.11
+2026-11-26 14:56:02 +0000: Memory Usage (2288236K) : Executing rule MDP.12
+2026-11-26 14:56:07 +0000: Memory Usage (2288236K) : Executing rule MDP.13a
+2026-11-26 14:56:13 +0000: Memory Usage (2288236K) : Executing rule MDP.13b
+2026-11-26 14:56:13 +0000: Memory Usage (2288236K) : Executing rule MDP.13c
+2026-11-26 14:56:18 +0000: Memory Usage (1399144K) : Executing rule M3.2b
+2026-11-26 14:56:19 +0000: Memory Usage (1392128K) : Executing rule M2.2a
+2026-11-26 14:56:22 +0000: Memory Usage (1545428K) : Executing rule MSLOT1.1
+2026-11-26 14:56:22 +0000: Memory Usage (1545428K) : Executing rule MSLOT1.2
+2026-11-26 14:56:23 +0000: Memory Usage (1546068K) : Executing rule MSLOT1.3
+2026-11-26 14:56:23 +0000: Memory Usage (1546068K) : Executing rule MSLOT1.4
+2026-11-26 14:56:24 +0000: Memory Usage (1546580K) : Executing rule MSLOT1.5
+2026-11-26 14:56:24 +0000: Memory Usage (1546580K) : Executing rule MSLOT1.7
+2026-11-26 14:56:24 +0000: Memory Usage (1546580K) : Executing rule MSLOT1.8
+2026-11-26 14:56:24 +0000: Memory Usage (1546580K) : Executing rule MSLOT1.9
+2026-11-26 14:56:25 +0000: Memory Usage (1546708K) : Completed deck : mslot1
+2026-11-26 14:56:26 +0000: Memory Usage (1306968K) : Executing deck : mslot3
+2026-11-26 14:56:26 +0000: Memory Usage (1309668K) : Starting Metal Slotting rules derivations
+2026-11-26 14:56:29 +0000: Memory Usage (1339736K) : Checking slots for Metal3
+2026-11-26 14:56:32 +0000: Memory Usage (2141776K) : Executing rule M1.2b
+2026-11-26 14:56:40 +0000: Memory Usage (2791784K) : Executing rule MDP.15
+2026-11-26 14:56:40 +0000: Memory Usage (2791784K) : Executing rule MDP.16a
+2026-11-26 14:56:40 +0000: Memory Usage (2791784K) : Executing rule MDP.16b
+2026-11-26 14:56:40 +0000: Memory Usage (2791784K) : Executing rule MDP.17a
+2026-11-26 14:56:43 +0000: Memory Usage (2791784K) : Executing rule MDP.17c
+2026-11-26 14:56:43 +0000: Memory Usage (2791912K) : Completed deck : ldpmos
+2026-11-26 14:56:44 +0000: Memory Usage (1306968K) : Executing deck : mslot4
+2026-11-26 14:56:44 +0000: Memory Usage (1309668K) : Starting Metal Slotting rules derivations
+2026-11-26 14:56:48 +0000: Memory Usage (1339900K) : Checking slots for Metal4
+2026-11-26 14:57:14 +0000: Memory Usage (1369228K) : Executing rule MSLOT4.1
+2026-11-26 14:57:14 +0000: Memory Usage (1369228K) : Executing rule MSLOT4.2
+2026-11-26 14:57:15 +0000: Memory Usage (1370140K) : Executing rule MSLOT4.3
+2026-11-26 14:57:15 +0000: Memory Usage (1370140K) : Executing rule MSLOT4.4
+2026-11-26 14:57:15 +0000: Memory Usage (1370524K) : Executing rule MSLOT4.5
+2026-11-26 14:57:16 +0000: Memory Usage (1370524K) : Executing rule MSLOT4.7
+2026-11-26 14:57:16 +0000: Memory Usage (1370524K) : Executing rule MSLOT4.8
+2026-11-26 14:57:16 +0000: Memory Usage (1370524K) : Executing rule MSLOT4.9
+2026-11-26 14:57:16 +0000: Memory Usage (1370780K) : Completed deck : mslot4
+2026-11-26 14:57:16 +0000: Memory Usage (2102632K) : Executing rule MT.4
+2026-11-26 14:57:17 +0000: Memory Usage (2103060K) : Completed deck : metaltop
+2026-11-26 14:57:18 +0000: Memory Usage (1306968K) : Executing deck : mslot5
+2026-11-26 14:57:18 +0000: Memory Usage (1309668K) : Starting Metal Slotting rules derivations
+2026-11-26 14:57:18 +0000: Memory Usage (1306968K) : Executing deck : mslot6
+2026-11-26 14:57:18 +0000: Memory Usage (1310596K) : Completed deck : mslot6
+2026-11-26 14:57:20 +0000: Memory Usage (1306968K) : Executing deck : nat
+2026-11-26 14:57:20 +0000: Memory Usage (1309668K) : Starting NAT derivations
+2026-11-26 14:57:20 +0000: Memory Usage (1313324K) : Executing rule NAT.1
+2026-11-26 14:57:21 +0000: Memory Usage (1339960K) : Checking slots for Metal5
+2026-11-26 14:57:22 +0000: Memory Usage (1340404K) : Executing rule NAT.2
+2026-11-26 14:57:23 +0000: Memory Usage (1340404K) : Executing rule NAT.3
+2026-11-26 14:57:23 +0000: Memory Usage (1340404K) : Executing rule NAT.4
+2026-11-26 14:57:25 +0000: Memory Usage (1342324K) : Executing rule NAT.5
+2026-11-26 14:57:33 +0000: Memory Usage (1376372K) : Executing rule NAT.6
+2026-11-26 14:57:34 +0000: Memory Usage (1376372K) : Executing rule NAT.7
+2026-11-26 14:57:34 +0000: Memory Usage (1376372K) : Executing rule NAT.8
+2026-11-26 14:57:34 +0000: Memory Usage (1376372K) : Executing rule NAT.9
+2026-11-26 14:57:34 +0000: Memory Usage (1376500K) : Executing rule NAT.10
+2026-11-26 14:57:34 +0000: Memory Usage (1376500K) : Executing rule NAT.11
+2026-11-26 14:57:34 +0000: Memory Usage (1376500K) : Executing rule NAT.12
+2026-11-26 14:57:35 +0000: Memory Usage (1376628K) : Completed deck : nat
+2026-11-26 14:57:36 +0000: Memory Usage (1306968K) : Executing deck : nplus
+2026-11-26 14:57:36 +0000: Memory Usage (1309668K) : Starting NPLUS derivations
+2026-11-26 14:57:43 +0000: Memory Usage (1369284K) : Executing rule MSLOT5.1
+2026-11-26 14:57:43 +0000: Memory Usage (1369284K) : Executing rule MSLOT5.2
+2026-11-26 14:57:44 +0000: Memory Usage (1370068K) : Executing rule MSLOT5.3
+2026-11-26 14:57:44 +0000: Memory Usage (1370068K) : Executing rule MSLOT5.4
+2026-11-26 14:57:44 +0000: Memory Usage (1370452K) : Executing rule MSLOT5.5
+2026-11-26 14:57:45 +0000: Memory Usage (1370452K) : Executing rule MSLOT5.7
+2026-11-26 14:57:45 +0000: Memory Usage (1370708K) : Executing rule MSLOT5.8
+2026-11-26 14:57:45 +0000: Memory Usage (1370708K) : Executing rule MSLOT5.9
+2026-11-26 14:57:45 +0000: Memory Usage (1370836K) : Completed deck : mslot5
+2026-11-26 14:57:46 +0000: Memory Usage (1306968K) : Executing deck : nwell
+2026-11-26 14:57:46 +0000: Memory Usage (1309668K) : Starting NWELL derivations
+2026-11-26 14:57:55 +0000: Memory Usage (1416012K) : Executing rule NW.1a_LV
+2026-11-26 14:57:56 +0000: Memory Usage (1417084K) : Executing rule NW.1a_MV
+2026-11-26 14:57:56 +0000: Memory Usage (1417228K) : Executing rule NW.1b_LV
+2026-11-26 14:57:57 +0000: Memory Usage (1441900K) : Executing rule NP.1
+2026-11-26 14:57:57 +0000: Memory Usage (1420044K) : Executing rule NW.1b_MV
+2026-11-26 14:58:01 +0000: Memory Usage (1468316K) : Executing rule NP.2
+2026-11-26 14:58:03 +0000: Memory Usage (1363648K) : Executing rule MSLOT3.1
+2026-11-26 14:58:03 +0000: Memory Usage (1363648K) : Executing rule MSLOT3.2
+2026-11-26 14:58:03 +0000: Memory Usage (1364416K) : Executing rule MSLOT3.3
+2026-11-26 14:58:04 +0000: Memory Usage (1364416K) : Executing rule MSLOT3.4
+2026-11-26 14:58:04 +0000: Memory Usage (1364928K) : Executing rule MSLOT3.5
+2026-11-26 14:58:04 +0000: Memory Usage (1364928K) : Executing rule MSLOT3.7
+2026-11-26 14:58:04 +0000: Memory Usage (1364928K) : Executing rule MSLOT3.8
+2026-11-26 14:58:05 +0000: Memory Usage (1364928K) : Executing rule MSLOT3.9
+2026-11-26 14:58:05 +0000: Memory Usage (1365056K) : Completed deck : mslot3
+2026-11-26 14:58:05 +0000: Memory Usage (1469056K) : Executing rule NP.3a
+2026-11-26 14:58:06 +0000: Memory Usage (1306968K) : Executing deck : otp_mk
+2026-11-26 14:58:06 +0000: Memory Usage (1309668K) : Starting OTP_MK derivations
+2026-11-26 14:58:07 +0000: Memory Usage (1320008K) : Executing rule O.DF.3a
+2026-11-26 14:58:08 +0000: Memory Usage (1320840K) : Executing rule O.DF.6
+2026-11-26 14:58:08 +0000: Memory Usage (1320840K) : Executing rule O.DF.9
+2026-11-26 14:58:08 +0000: Memory Usage (1320968K) : Executing rule O.PL.2
+2026-11-26 14:58:08 +0000: Memory Usage (1341620K) : Executing rule O.PL.3a
+2026-11-26 14:58:09 +0000: Memory Usage (1451468K) : Executing rule M3.3
+2026-11-26 14:58:09 +0000: Memory Usage (1451724K) : Completed deck : metal3
+2026-11-26 14:58:11 +0000: Memory Usage (1306968K) : Executing deck : poly2
+2026-11-26 14:58:11 +0000: Memory Usage (1309668K) : Starting POLY2 derivations
+2026-11-26 14:58:12 +0000: Memory Usage (1342516K) : Executing rule O.PL.4
+2026-11-26 14:58:12 +0000: Memory Usage (1342516K) : Executing rule O.SB.2
+2026-11-26 14:58:12 +0000: Memory Usage (1342516K) : Executing rule O.SB.3
+2026-11-26 14:58:14 +0000: Memory Usage (2164632K) : Executing rule M1.3
+2026-11-26 14:58:15 +0000: Memory Usage (2164888K) : Completed deck : metal1
+2026-11-26 14:58:16 +0000: Memory Usage (1495756K) : Executing rule NP.3bi
+2026-11-26 14:58:17 +0000: Memory Usage (1306968K) : Executing deck : pplus
+2026-11-26 14:58:17 +0000: Memory Usage (1309668K) : Starting PPLUS derivations
+2026-11-26 14:58:17 +0000: Memory Usage (1495756K) : Executing rule NP.3bii
+2026-11-26 14:58:17 +0000: Memory Usage (1495756K) : Executing rule NP.3ci
+2026-11-26 14:58:17 +0000: Memory Usage (1347252K) : Executing rule O.SB.4
+2026-11-26 14:58:17 +0000: Memory Usage (1347536K) : Executing rule O.SB.5b_LV
+2026-11-26 14:58:18 +0000: Memory Usage (1347536K) : Executing rule O.SB.9
+2026-11-26 14:58:19 +0000: Memory Usage (1347536K) : Executing rule O.SB.11
+2026-11-26 14:58:19 +0000: Memory Usage (1347536K) : Executing rule O.SB.13_LV
+2026-11-26 14:58:19 +0000: Memory Usage (1347536K) : Executing rule O.SB.13_MV
+2026-11-26 14:58:19 +0000: Memory Usage (1347536K) : Executing rule O.CO.7
+2026-11-26 14:58:19 +0000: Memory Usage (1347536K) : Executing rule O.PL.ORT
+2026-11-26 14:58:20 +0000: Memory Usage (1365840K) : Completed deck : otp_mk
+2026-11-26 14:58:22 +0000: Memory Usage (1306968K) : Executing deck : pres
+2026-11-26 14:58:22 +0000: Memory Usage (1309668K) : Starting PRES derivations
+2026-11-26 14:58:24 +0000: Memory Usage (1374736K) : Executing rule PL.1_LV
+2026-11-26 14:58:25 +0000: Memory Usage (1495756K) : Executing rule NP.3cii
+2026-11-26 14:58:25 +0000: Memory Usage (1375824K) : Executing rule PL.1_MV
+2026-11-26 14:58:25 +0000: Memory Usage (1375824K) : Executing rule PL.1a_LV
+2026-11-26 14:58:25 +0000: Memory Usage (1375952K) : Executing rule PL.1a_MV
+2026-11-26 14:58:25 +0000: Memory Usage (1375952K) : Executing rule PL.2_LV
+2026-11-26 14:58:28 +0000: Memory Usage (1354628K) : Executing rule PRES.1
+2026-11-26 14:58:28 +0000: Memory Usage (1355700K) : Executing rule PRES.2
+2026-11-26 14:58:28 +0000: Memory Usage (1376848K) : Executing rule PL.2_MV
+2026-11-26 14:58:28 +0000: Memory Usage (1356100K) : Executing rule PRES.3
+2026-11-26 14:58:29 +0000: Memory Usage (1393660K) : Executing rule NW.2a_LV
+2026-11-26 14:58:29 +0000: Memory Usage (1393660K) : Executing rule NW.2a_MV
+2026-11-26 14:58:29 +0000: Memory Usage (1393660K) : Executing rule NW.2b_LV
+2026-11-26 14:58:29 +0000: Memory Usage (1393660K) : Executing rule NW.2b_MV
+2026-11-26 14:58:30 +0000: Memory Usage (1393660K) : Executing rule NW.3
+2026-11-26 14:58:30 +0000: Memory Usage (1393660K) : Executing rule NW.4
+2026-11-26 14:58:31 +0000: Memory Usage (1393660K) : Executing rule NW.5_LV
+2026-11-26 14:58:31 +0000: Memory Usage (1393660K) : Executing rule NW.5_MV
+2026-11-26 14:58:31 +0000: Memory Usage (1393660K) : Executing rule NW.6
+2026-11-26 14:58:32 +0000: Memory Usage (1393916K) : Completed deck : nwell
+2026-11-26 14:58:32 +0000: Memory Usage (1360992K) : Executing rule PRES.4
+2026-11-26 14:58:33 +0000: Memory Usage (1518960K) : Executing rule NP.3d
+2026-11-26 14:58:33 +0000: Memory Usage (1306968K) : Executing deck : sab
+2026-11-26 14:58:33 +0000: Memory Usage (1309668K) : Starting sab derivations
+2026-11-26 14:58:34 +0000: Memory Usage (1518960K) : Executing rule NP.3e
+2026-11-26 14:58:35 +0000: Memory Usage (1360992K) : Executing rule PRES.5
+2026-11-26 14:58:36 +0000: Memory Usage (1518960K) : Executing rule NP.4a
+2026-11-26 14:58:36 +0000: Memory Usage (1406812K) : Executing rule MSLOT2.1
+2026-11-26 14:58:37 +0000: Memory Usage (1406812K) : Executing rule MSLOT2.2
+2026-11-26 14:58:37 +0000: Memory Usage (1426668K) : Executing rule MSLOT2.3
+2026-11-26 14:58:37 +0000: Memory Usage (1361248K) : Executing rule PRES.6
+2026-11-26 14:58:38 +0000: Memory Usage (1426668K) : Executing rule MSLOT2.4
+2026-11-26 14:58:38 +0000: Memory Usage (1361248K) : Executing rule PRES.7
+2026-11-26 14:58:38 +0000: Memory Usage (1427052K) : Executing rule MSLOT2.5
+2026-11-26 14:58:38 +0000: Memory Usage (1427052K) : Executing rule MSLOT2.7
+2026-11-26 14:58:38 +0000: Memory Usage (1427052K) : Executing rule MSLOT2.8
+2026-11-26 14:58:39 +0000: Memory Usage (1427052K) : Executing rule MSLOT2.9
+2026-11-26 14:58:39 +0000: Memory Usage (1427308K) : Completed deck : mslot2
+2026-11-26 14:58:40 +0000: Memory Usage (1344144K) : Executing rule SB.1
+2026-11-26 14:58:40 +0000: Memory Usage (1361248K) : Executing rule PRES.9a
+2026-11-26 14:58:40 +0000: Memory Usage (1306968K) : Executing deck : sram_3p3
+2026-11-26 14:58:40 +0000: Memory Usage (1309668K) : Starting 3.3V SRAM derivations
+2026-11-26 14:58:40 +0000: Memory Usage (1345216K) : Executing rule SB.2
+2026-11-26 14:58:40 +0000: Memory Usage (1378384K) : Executing rule PL.3a
+2026-11-26 14:58:41 +0000: Memory Usage (1345744K) : Executing rule SB.3
+2026-11-26 14:58:41 +0000: Memory Usage (1339372K) : Executing rule S.DF.4c_LV
+2026-11-26 14:58:41 +0000: Memory Usage (1340580K) : Executing rule S.DF.16_LV
+2026-11-26 14:58:42 +0000: Memory Usage (1346000K) : Executing rule SB.4
+2026-11-26 14:58:43 +0000: Memory Usage (1346256K) : Executing rule SB.5a
+2026-11-26 14:58:44 +0000: Memory Usage (1356596K) : Executing rule S.CO.3_LV
+2026-11-26 14:58:44 +0000: Memory Usage (1356596K) : Executing rule S.CO.4_LV
+2026-11-26 14:58:45 +0000: Memory Usage (1356596K) : Executing rule S.CO.6_ii_LV
+2026-11-26 14:58:46 +0000: Memory Usage (1390944K) : Executing rule PRES.9b
+2026-11-26 14:58:47 +0000: Memory Usage (1391584K) : Completed deck : pres
+2026-11-26 14:58:47 +0000: Memory Usage (1358196K) : Executing rule S.M1.1_LV
+2026-11-26 14:58:47 +0000: Memory Usage (1358452K) : Completed deck : sram_3p3
+2026-11-26 14:58:48 +0000: Memory Usage (1306968K) : Executing deck : sram_5p0
+2026-11-26 14:58:48 +0000: Memory Usage (1309668K) : Starting 5V SRAM derivations
+2026-11-26 14:58:48 +0000: Memory Usage (1306968K) : Executing deck : ymtp_mk
+2026-11-26 14:58:48 +0000: Memory Usage (1309668K) : Starting YMTP_MK derivations
+2026-11-26 14:58:49 +0000: Memory Usage (1313324K) : Executing rule Y.NW.2b_LV
+2026-11-26 14:58:49 +0000: Memory Usage (1314644K) : Executing rule Y.NW.2b_MV
+2026-11-26 14:58:49 +0000: Memory Usage (1314644K) : Executing rule Y.DF.6_MV
+2026-11-26 14:58:49 +0000: Memory Usage (1315928K) : Executing rule Y.DF.16_LV
+2026-11-26 14:58:49 +0000: Memory Usage (1315928K) : Executing rule Y.DF.16_MV
+2026-11-26 14:58:49 +0000: Memory Usage (1315928K) : Executing rule Y.PL.1_LV
+2026-11-26 14:58:49 +0000: Memory Usage (1316064K) : Executing rule Y.PL.1_MV
+2026-11-26 14:58:50 +0000: Memory Usage (1316064K) : Executing rule Y.PL.2_LV
+2026-11-26 14:58:50 +0000: Memory Usage (1378896K) : Executing rule PL.4_LV
+2026-11-26 14:58:50 +0000: Memory Usage (1346384K) : Executing rule SB.5b
+2026-11-26 14:58:51 +0000: Memory Usage (1343796K) : Executing rule S.DF.4c_MV
+2026-11-26 14:58:51 +0000: Memory Usage (1341620K) : Executing rule Y.PL.2_MV
+2026-11-26 14:58:53 +0000: Memory Usage (2008200K) : Executing rule PP.1
+2026-11-26 14:58:53 +0000: Memory Usage (1341620K) : Executing rule Y.PL.4_MV
+2026-11-26 14:58:53 +0000: Memory Usage (1347444K) : Executing rule S.DF.6_MV
+2026-11-26 14:58:53 +0000: Memory Usage (1341620K) : Executing rule Y.PL.5a_LV
+2026-11-26 14:58:53 +0000: Memory Usage (1341620K) : Executing rule Y.PL.5a_MV
+2026-11-26 14:58:53 +0000: Memory Usage (1341620K) : Executing rule Y.PL.5b_LV
+2026-11-26 14:58:53 +0000: Memory Usage (1341620K) : Executing rule Y.PL.5b_MV
+2026-11-26 14:58:53 +0000: Memory Usage (1341748K) : Completed deck : ymtp_mk
+2026-11-26 14:58:53 +0000: Memory Usage (1346384K) : Executing rule SB.6
+2026-11-26 14:58:54 +0000: Memory Usage (1347444K) : Executing rule S.DF.7_MV
+2026-11-26 14:58:54 +0000: Memory Usage (1347444K) : Executing rule S.DF.8_MV
+2026-11-26 14:58:54 +0000: Memory Usage (1347444K) : Executing rule S.DF.16_MV
+2026-11-26 14:58:54 +0000: Memory Usage (1346384K) : Executing rule SB.7
+2026-11-26 14:58:54 +0000: Memory Usage (1533040K) : Executing rule NP.4b
+2026-11-26 14:58:54 +0000: Memory Usage (1346384K) : Executing rule SB.8
+2026-11-26 14:58:55 +0000: Memory Usage (1378896K) : Executing rule PL.4_MV
+2026-11-26 14:58:55 +0000: Memory Usage (1346384K) : Executing rule SB.9
+2026-11-26 14:58:55 +0000: Memory Usage (1346384K) : Executing rule SB.10
+2026-11-26 14:58:55 +0000: Memory Usage (1346384K) : Executing rule SB.11
+2026-11-26 14:58:55 +0000: Memory Usage (1346384K) : Executing rule SB.12
+2026-11-26 14:58:56 +0000: Memory Usage (1346384K) : Executing rule SB.13
+2026-11-26 14:58:57 +0000: Memory Usage (1346384K) : Executing rule SB.14a
+2026-11-26 14:58:57 +0000: Memory Usage (1359092K) : Executing rule S.PL.5a_MV
+2026-11-26 14:58:58 +0000: Memory Usage (2034632K) : Executing rule PP.2
+2026-11-26 14:58:58 +0000: Memory Usage (1359348K) : Executing rule S.PL.5b_MV
+2026-11-26 14:58:58 +0000: Memory Usage (1410640K) : Executing rule PL.5a_LV
+2026-11-26 14:58:59 +0000: Memory Usage (1361140K) : Executing rule S.CO.4_MV
+2026-11-26 14:59:01 +0000: Memory Usage (1410640K) : Executing rule PL.5a_MV
+2026-11-26 14:59:01 +0000: Memory Usage (1361396K) : Completed deck : sram_5p0
+2026-11-26 14:59:01 +0000: Memory Usage (1647024K) : Executing rule NP.5a
+2026-11-26 14:59:01 +0000: Memory Usage (1347792K) : Executing rule SB.14b
+2026-11-26 14:59:02 +0000: Memory Usage (2036424K) : Executing rule PP.3a
+2026-11-26 14:59:02 +0000: Memory Usage (1347792K) : Executing rule SB.15a
+2026-11-26 14:59:04 +0000: Memory Usage (1410640K) : Executing rule PL.5b_LV
+2026-11-26 14:59:06 +0000: Memory Usage (1410640K) : Executing rule PL.5b_MV
+2026-11-26 14:59:07 +0000: Memory Usage (1647152K) : Executing rule PP.5b
+2026-11-26 14:59:08 +0000: Memory Usage (1348040K) : Executing rule SB.15b
+2026-11-26 14:59:09 +0000: Memory Usage (1410640K) : Executing rule PL.6
+2026-11-26 14:59:12 +0000: Memory Usage (1744096K) : Executing rule PP.3bi
+2026-11-26 14:59:12 +0000: Memory Usage (1744096K) : Executing rule PP.3bii
+2026-11-26 14:59:12 +0000: Memory Usage (1744096K) : Executing rule PP.3ci
+2026-11-26 14:59:15 +0000: Memory Usage (1376500K) : Executing rule SB.16
+2026-11-26 14:59:16 +0000: Memory Usage (1379572K) : Completed deck : sab
+2026-11-26 14:59:20 +0000: Memory Usage (1410896K) : Executing rule PL.7_LV
+2026-11-26 14:59:22 +0000: Memory Usage (1744096K) : Executing rule PP.3cii
+2026-11-26 14:59:22 +0000: Memory Usage (1473168K) : Executing rule PL.7_MV
+2026-11-26 14:59:25 +0000: Memory Usage (1720328K) : Executing rule NP.5ci
+2026-11-26 14:59:31 +0000: Memory Usage (1444488K) : Executing rule PL.9
+2026-11-26 14:59:34 +0000: Memory Usage (1744096K) : Executing rule PP.3d
+2026-11-26 14:59:35 +0000: Memory Usage (1744096K) : Executing rule PP.3e
+2026-11-26 14:59:36 +0000: Memory Usage (1726600K) : Executing rule NP.5cii
+2026-11-26 14:59:37 +0000: Memory Usage (1744096K) : Executing rule PP.4a
+2026-11-26 14:59:41 +0000: Memory Usage (1759712K) : Executing rule PP.4b
+2026-11-26 14:59:43 +0000: Memory Usage (1397528K) : Executing rule M2.2b
+2026-11-26 14:59:45 +0000: Memory Usage (1445896K) : Executing rule PL.11
+2026-11-26 14:59:46 +0000: Memory Usage (1733164K) : Executing rule NP.5di
+2026-11-26 14:59:53 +0000: Memory Usage (1551244K) : Executing rule PL.12
+2026-11-26 15:00:02 +0000: Memory Usage (1929144K) : Executing rule PP.5a
+2026-11-26 15:00:04 +0000: Memory Usage (1733348K) : Executing rule NP.5dii
+2026-11-26 15:00:11 +0000: Memory Usage (1929528K) : Executing rule PP.5b
+2026-11-26 15:00:23 +0000: Memory Usage (1746772K) : Completed deck : poly2
+2026-11-26 15:00:28 +0000: Memory Usage (1950732K) : Executing rule PP.5ci
+2026-11-26 15:00:31 +0000: Memory Usage (1733296K) : Executing rule NP.6
+2026-11-26 15:00:39 +0000: Memory Usage (1979048K) : Executing rule PP.5cii
+2026-11-26 15:00:47 +0000: Memory Usage (1733400K) : Executing rule NP.7
+2026-11-26 15:00:50 +0000: Memory Usage (1979164K) : Executing rule PP.5di
+2026-11-26 15:00:51 +0000: Memory Usage (1733400K) : Executing rule NP.8a
+2026-11-26 15:00:52 +0000: Memory Usage (1733400K) : Executing rule NP.8b
+2026-11-26 15:00:52 +0000: Memory Usage (1733400K) : Executing rule NP.9
+2026-11-26 15:00:58 +0000: Memory Usage (1979164K) : Executing rule PP.5dii
+2026-11-26 15:00:58 +0000: Memory Usage (1733400K) : Executing rule NP.10
+2026-11-26 15:01:03 +0000: Memory Usage (1733400K) : Executing rule NP.11
+2026-11-26 15:01:04 +0000: Memory Usage (1979164K) : Executing rule PP.6
+2026-11-26 15:01:05 +0000: Memory Usage (1733400K) : Executing rule NP.12
+2026-11-26 15:01:14 +0000: Memory Usage (1864184K) : Completed deck : nplus
+2026-11-26 15:01:16 +0000: Memory Usage (1995564K) : Executing rule PP.7
+2026-11-26 15:01:20 +0000: Memory Usage (1995564K) : Executing rule PP.8a
+2026-11-26 15:01:21 +0000: Memory Usage (1995564K) : Executing rule PP.8b
+2026-11-26 15:01:21 +0000: Memory Usage (1995564K) : Executing rule PP.9
+2026-11-26 15:01:28 +0000: Memory Usage (1995564K) : Executing rule PP.10
+2026-11-26 15:01:33 +0000: Memory Usage (1995564K) : Executing rule PP.11
+2026-11-26 15:01:35 +0000: Memory Usage (1923104K) : Executing rule PP.12
+2026-11-26 15:01:49 +0000: Memory Usage (2110040K) : Completed deck : pplus
+2026-11-26 15:03:03 +0000: Memory Usage (1447540K) : Executing rule M2.3
+2026-11-26 15:03:03 +0000: Memory Usage (1447924K) : Completed deck : metal2
+2026-11-26 15:04:26 +0000: Memory Usage (1668260K) : Executing rule GR.3
+2026-11-26 15:04:30 +0000: Memory Usage (1678756K) : Executing rule GR.4
+2026-11-26 15:09:51 +0000: Memory Usage (1876408K) : Executing rule GR.6
+2026-11-26 15:09:52 +0000: Memory Usage (1876536K) : Completed deck : guard_ring
+2026-11-26 15:09:53 +0000: Memory Usage (1497336K) : 
+2026-11-26 15:09:53 +0000: Memory Usage (1497336K) : DRC RESULT: SUCCESS (0 violations)
+2026-11-26 15:09:53 +0000: Memory Usage (1497336K) : # DRC Total Run time 2082.9471605 seconds

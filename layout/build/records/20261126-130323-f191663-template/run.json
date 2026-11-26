@@ -1,0 +1,24 @@
+{
+ "kind": "repo-script",
+ "repo": "2AMLogic/gf180-cryo-char",
+ "commit": "f19166337bce0f541a6f8c58eb923444d6c4cb65",
+ "script": "layout/jobs/build.sh",
+ "shard": "s00",
+ "exit_code": 0,
+ "requirements_exit_code": 0,
+ "started_at": "2026-11-26T09:20:01Z",
+ "wall_seconds": 6533,
+ "instance_type": "m6i.4xlarge",
+ "image_id": "ami-08688417b66e0c74d",
+ "retry_count": 0,
+ "input_sha256": {
+  "source_tarball": "1ccae4bf521301f9d0fb05d7ac641a47ec511d75e31e3db5a1bf43e21fbc70cd",
+  "runner": "6649ba4d3bec681d36e9a98304171ef99f1f097772dbac54bb91949b50ca5565"
+ },
+ "outputs": {
+  "found": [
+   "build/out"
+  ],
+  "missing": []
+ }
+}

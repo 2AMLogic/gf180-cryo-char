@@ -1,0 +1,24 @@
+{
+ "kind": "repo-script",
+ "repo": "2AMLogic/gf180-cryo-char",
+ "commit": "cfa2b8d7f69460a979ee1d7dfcf2c066d933fdaa",
+ "script": "layout/jobs/precheck.sh",
+ "shard": "s00",
+ "exit_code": 0,
+ "requirements_exit_code": 0,
+ "started_at": "2026-11-26T13:02:37Z",
+ "wall_seconds": 5096,
+ "instance_type": "m7i.4xlarge",
+ "image_id": "ami-08688417b66e0c74d",
+ "retry_count": 0,
+ "input_sha256": {
+  "source_tarball": "58a6dc519f956840cfcb2e8bdb045bdee1c3d576535c4e2bb3c76508e7f6e100",
+  "runner": "6649ba4d3bec681d36e9a98304171ef99f1f097772dbac54bb91949b50ca5565"
+ },
+ "outputs": {
+  "found": [
+   "precheck/out"
+  ],
+  "missing": []
+ }
+}
