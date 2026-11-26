@@ -88,7 +88,8 @@
       "well_layer": "21/0",
       "tap_layer": "22/0",
       "tap_requires": [
-        "32/0"
+        "32/0",
+        "33/0"
       ],
       "connect_to": "Metal1",
       "net": "VDD"
@@ -101,7 +102,8 @@
       ],
       "tap_layer": "22/0",
       "tap_requires": [
-        "31/0"
+        "31/0",
+        "33/0"
       ],
       "connect_to": "Metal1",
       "net": "VSS"

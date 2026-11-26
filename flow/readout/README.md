@@ -85,10 +85,10 @@ python flow/check_lvs.py --negative-controls
 
 ## Structural supply check
 
-The [ERC report](erc.report.json) uses the [metal and via stack and tap definitions](erc.json) to check VDD and VSS. Each rail has one connected island. Drawn n-wells are checked for n-type taps connected to VDD. The substrate region is defined as the complement of n-well within the macro boundary and checked for p-type taps connected to VSS. KLT reports the latter as a well assertion. This check covers the digital macro. The findings-only run excludes antenna ratios.
+The [ERC report](erc.report.json) uses the [metal and via stack and tap definitions](erc.json) to check VDD and VSS. Each rail has one connected island. A tap requires a drawn Contact cut (33/0) on diffusion with the appropriate implant. Drawn n-wells are checked for n-type taps connected to VDD. The substrate region is defined as the complement of n-well within the macro boundary and checked for p-type taps connected to VSS. KLT reports the latter as a well assertion. This check covers the digital macro. The findings-only run excludes antenna ratios.
 
 ```sh
 python flow/check_supply.py --negative-control
 ```
 
-The control first flattens the stream and verifies that it still passes. It then removes the p-type implant overlapping active outside n-well. Both supply islands survive, and ERC reports the missing VSS substrate tie.
+The control first flattens the stream and verifies that it passes. It then tests two independent opens. Removing 1,094 substrate contact cuts produces one missing VSS tie. Removing 1,641 n-well contact cuts produces 28 missing VDD ties. Both rail islands remain connected in each control.

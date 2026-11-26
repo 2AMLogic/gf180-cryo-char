@@ -93,6 +93,14 @@ class RoutedReadout(unittest.TestCase):
             ['erc.missing_tie:["psub_vss"]'],
         )
         spec = read_json(MACRO / "erc.json")
+        self.assertEqual(
+            erc["provenance"]["spec"]["content_hash"],
+            "sha256:" + reproduce.sha(MACRO / "erc.json"),
+        )
+        self.assertEqual(
+            {tie["name"]: set(tie["tap_requires"]) for tie in spec["ties"]},
+            {"nwell_vdd": {"32/0", "33/0"}, "psub_vss": {"31/0", "33/0"}},
+        )
         self.assertLessEqual(
             {strap["layer"] for strap in pnr["power"]["straps"]},
             {layer["name"] for layer in spec["stackup"]},
