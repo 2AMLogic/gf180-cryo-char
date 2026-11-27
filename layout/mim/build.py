@@ -56,6 +56,19 @@ def assemble(code, units, output):
         db.DBox(tap_x - 0.13, -0.13, tap_x + 0.13, 0.13)
     )
     top = layout.create_cell(f"mim_{code}")
+    # Standalone cell DRC enforces global density over the macro extent (DCF.1b
+    # >= 25% COMP, PL.8 >= 14% Poly2, M1.4-M5.4 / MT.3 > 30% metal), while DM.8
+    # requires 6 um from dummy metal to FuseTop (75/0, the option-B top plate)
+    # and fill_partitions.py applies the same 6 um FuseTop halo to FEOL fill.
+    # Inside each 14x14 (166.2 um) or 9x9 (170.0 um) window, adjacent FuseTop
+    # plates sit 7.4 um or 10.0 um apart (< 12 um), excluding all fill inside
+    # the windows. A bare 175 um window pitch leaves 8.8 um / 5.0 um between
+    # windows (< 12 um) and fails standalone density (M3.4 15.13% / 13.64%).
+    # With the 0.8 um Metal3 row buses (DM.3 2 um halo), code 455 first clears
+    # M3.4 > 30% at 249 um pitch (30.02%); 260 um gives ~2% M3.4 margin (32.24%
+    # on 454, 32.33% on 455). Anchoring each grid at (260*ix, 260*iy) omits the
+    # unmarked 175 um frame (a uniform 4.4 / 2.5 um translation absorbed by the
+    # outer bus margins with identical inter-plate and inter-window spacing).
     xs = [260 * window + pitch * i for window in range(across) for i in range(columns)]
     ys = [260 * window + pitch * i for window in range(down) for i in range(rows)]
     for iy in range(down):

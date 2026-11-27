@@ -1,0 +1,721 @@
+{
+  "schema_version": 1,
+  "record_id": "20261127-043435-f6bf3eb-ac",
+  "stimulus": {
+    "frequency_hz": 10000,
+    "ac_amplitude_v": 0.01
+  },
+  "pdk_revision": "open_pdks f6eeac7dad085ffcc829ccfd721f7b4ce39edcf7",
+  "models_sha256": {
+    "design.ngspice": "7e222f050318388f37543a64fbd0be55cc15e4b93f57501a09f7c159c4c9e561",
+    "sm141064.ngspice": "f6f4a96e18fc5ad11270ad3451aaecc7ac37fc81eb61e15b0d7d94c7bc594a24",
+    "sm141064_mim.ngspice": "9b85cd009968d9aeb6b61046b24a63f39d6a463c4e4aee3949c8fd183c06666f"
+  },
+  "netlist_identity": "sha256:47abb6d97dddc65c6ff248c7a94c62ea2c0e9faac9a7ca6b2a0757fe8764bf0d",
+  "envelope_file": "sim.envelope.json",
+  "envelope_sha256": "20bef756f95633e65e9b1d0797c6e16aa61a9f1f773b457d3afb16486621b7c7",
+  "backend": {
+    "resolved": "batch",
+    "source": "flag",
+    "requested": "batch"
+  },
+  "remote_job_id": "klt-sim-657b0ce72c6f",
+  "structures": {
+    "AreaMIMC1": {
+      "select_code": 452,
+      "cell": "mim_452",
+      "gds_sha256": "ba3171a7eaef165fc2cf8d5a4a7fbf980409c20a59761be57f3c44cfce4293f1",
+      "extracted_spice_sha256": "59ccedc059e61618e67a7c85c2cd71eb3cd7791db8c43fa7de3090f18b27c501",
+      "units": 5,
+      "unit_side_um": 40,
+      "total_plate_area_um2": 8000,
+      "total_plate_perimeter_um": 800,
+      "points": [
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": -40,
+          "bias_v": 0,
+          "capacitance_pf": 14.48241593305
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": -40,
+          "bias_v": 1.65,
+          "capacitance_pf": 14.48241593305
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": -40,
+          "bias_v": 3.3,
+          "capacitance_pf": 14.48241593305
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 25,
+          "bias_v": 0,
+          "capacitance_pf": 14.499576
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 25,
+          "bias_v": 1.65,
+          "capacitance_pf": 14.499576
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 25,
+          "bias_v": 3.3,
+          "capacitance_pf": 14.499576
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 125,
+          "bias_v": 0,
+          "capacitance_pf": 14.51269811628
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 125,
+          "bias_v": 1.65,
+          "capacitance_pf": 14.51269811628
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 125,
+          "bias_v": 3.3,
+          "capacitance_pf": 14.51269811628
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": -40,
+          "bias_v": 0,
+          "capacitance_pf": 16.09157325894
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": -40,
+          "bias_v": 1.65,
+          "capacitance_pf": 16.09157325894
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": -40,
+          "bias_v": 3.3,
+          "capacitance_pf": 16.09157325894
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 25,
+          "bias_v": 0,
+          "capacitance_pf": 16.11064
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 25,
+          "bias_v": 1.65,
+          "capacitance_pf": 16.11064
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 25,
+          "bias_v": 3.3,
+          "capacitance_pf": 16.11064
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 125,
+          "bias_v": 0,
+          "capacitance_pf": 16.1252201292
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 125,
+          "bias_v": 1.65,
+          "capacitance_pf": 16.1252201292
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 125,
+          "bias_v": 3.3,
+          "capacitance_pf": 16.1252201292
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": -40,
+          "bias_v": 0,
+          "capacitance_pf": 17.70073058484
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": -40,
+          "bias_v": 1.65,
+          "capacitance_pf": 17.70073058484
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": -40,
+          "bias_v": 3.3,
+          "capacitance_pf": 17.70073058484
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 25,
+          "bias_v": 0,
+          "capacitance_pf": 17.721704
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 25,
+          "bias_v": 1.65,
+          "capacitance_pf": 17.721704
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 25,
+          "bias_v": 3.3,
+          "capacitance_pf": 17.721704
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 125,
+          "bias_v": 0,
+          "capacitance_pf": 17.73774214212
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 125,
+          "bias_v": 1.65,
+          "capacitance_pf": 17.73774214212
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 125,
+          "bias_v": 3.3,
+          "capacitance_pf": 17.73774214212
+        }
+      ]
+    },
+    "AreaMIMC2": {
+      "select_code": 453,
+      "cell": "mim_453",
+      "gds_sha256": "1e433fd27553b5e8fb86dceb86ccc8494b8a047b475dc5ec43cffbf42cfc3ac2",
+      "extracted_spice_sha256": "3ff68841bb48be976156509d0bd9aa7e142de7b7f1b407326770934c121af6ad",
+      "units": 5,
+      "unit_side_um": 40,
+      "total_plate_area_um2": 8000,
+      "total_plate_perimeter_um": 800,
+      "points": [
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": -40,
+          "bias_v": 0,
+          "capacitance_pf": 14.48241593305
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": -40,
+          "bias_v": 1.65,
+          "capacitance_pf": 14.48241593305
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": -40,
+          "bias_v": 3.3,
+          "capacitance_pf": 14.48241593305
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 25,
+          "bias_v": 0,
+          "capacitance_pf": 14.499576
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 25,
+          "bias_v": 1.65,
+          "capacitance_pf": 14.499576
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 25,
+          "bias_v": 3.3,
+          "capacitance_pf": 14.499576
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 125,
+          "bias_v": 0,
+          "capacitance_pf": 14.51269811628
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 125,
+          "bias_v": 1.65,
+          "capacitance_pf": 14.51269811628
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 125,
+          "bias_v": 3.3,
+          "capacitance_pf": 14.51269811628
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": -40,
+          "bias_v": 0,
+          "capacitance_pf": 16.09157325894
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": -40,
+          "bias_v": 1.65,
+          "capacitance_pf": 16.09157325894
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": -40,
+          "bias_v": 3.3,
+          "capacitance_pf": 16.09157325894
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 25,
+          "bias_v": 0,
+          "capacitance_pf": 16.11064
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 25,
+          "bias_v": 1.65,
+          "capacitance_pf": 16.11064
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 25,
+          "bias_v": 3.3,
+          "capacitance_pf": 16.11064
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 125,
+          "bias_v": 0,
+          "capacitance_pf": 16.1252201292
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 125,
+          "bias_v": 1.65,
+          "capacitance_pf": 16.1252201292
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 125,
+          "bias_v": 3.3,
+          "capacitance_pf": 16.1252201292
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": -40,
+          "bias_v": 0,
+          "capacitance_pf": 17.70073058484
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": -40,
+          "bias_v": 1.65,
+          "capacitance_pf": 17.70073058484
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": -40,
+          "bias_v": 3.3,
+          "capacitance_pf": 17.70073058484
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 25,
+          "bias_v": 0,
+          "capacitance_pf": 17.721704
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 25,
+          "bias_v": 1.65,
+          "capacitance_pf": 17.721704
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 25,
+          "bias_v": 3.3,
+          "capacitance_pf": 17.721704
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 125,
+          "bias_v": 0,
+          "capacitance_pf": 17.73774214212
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 125,
+          "bias_v": 1.65,
+          "capacitance_pf": 17.73774214212
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 125,
+          "bias_v": 3.3,
+          "capacitance_pf": 17.73774214212
+        }
+      ]
+    },
+    "PeriMIMC1": {
+      "select_code": 454,
+      "cell": "mim_454",
+      "gds_sha256": "7471af0139ad8011b35d831268dcac5f14fdc8c657505599250a5226b2539cf5",
+      "extracted_spice_sha256": "737b273225f16a1156daad26d708221fdc0f12a3e1107ec63e5aa8e85c967b2e",
+      "units": 3920,
+      "unit_side_um": 5,
+      "total_plate_area_um2": 98000,
+      "total_plate_perimeter_um": 78400,
+      "points": [
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": -40,
+          "bias_v": 0,
+          "capacitance_pf": 192.104824952
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": -40,
+          "bias_v": 1.65,
+          "capacitance_pf": 192.104824952
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": -40,
+          "bias_v": 3.3,
+          "capacitance_pf": 192.104824952
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 25,
+          "bias_v": 0,
+          "capacitance_pf": 192.332448
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 25,
+          "bias_v": 1.65,
+          "capacitance_pf": 192.332448
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 25,
+          "bias_v": 3.3,
+          "capacitance_pf": 192.332448
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 125,
+          "bias_v": 0,
+          "capacitance_pf": 192.5065088654
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 125,
+          "bias_v": 1.65,
+          "capacitance_pf": 192.5065088654
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 125,
+          "bias_v": 3.3,
+          "capacitance_pf": 192.5065088654
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": -40,
+          "bias_v": 0,
+          "capacitance_pf": 213.4498055022
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": -40,
+          "bias_v": 1.65,
+          "capacitance_pf": 213.4498055022
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": -40,
+          "bias_v": 3.3,
+          "capacitance_pf": 213.4498055022
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 25,
+          "bias_v": 0,
+          "capacitance_pf": 213.70272
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 25,
+          "bias_v": 1.65,
+          "capacitance_pf": 213.70272
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 25,
+          "bias_v": 3.3,
+          "capacitance_pf": 213.70272
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 125,
+          "bias_v": 0,
+          "capacitance_pf": 213.8961209616
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 125,
+          "bias_v": 1.65,
+          "capacitance_pf": 213.8961209616
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 125,
+          "bias_v": 3.3,
+          "capacitance_pf": 213.8961209616
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": -40,
+          "bias_v": 0,
+          "capacitance_pf": 234.7947860524
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": -40,
+          "bias_v": 1.65,
+          "capacitance_pf": 234.7947860524
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": -40,
+          "bias_v": 3.3,
+          "capacitance_pf": 234.7947860524
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 25,
+          "bias_v": 0,
+          "capacitance_pf": 235.072992
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 25,
+          "bias_v": 1.65,
+          "capacitance_pf": 235.072992
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 25,
+          "bias_v": 3.3,
+          "capacitance_pf": 235.072992
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 125,
+          "bias_v": 0,
+          "capacitance_pf": 235.2857330577
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 125,
+          "bias_v": 1.65,
+          "capacitance_pf": 235.2857330577
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 125,
+          "bias_v": 3.3,
+          "capacitance_pf": 235.2857330577
+        }
+      ]
+    },
+    "PeriMIMC2": {
+      "select_code": 455,
+      "cell": "mim_455",
+      "gds_sha256": "3abba5e9bb3cb0accc567f9c1d101e3268f8240c23a89fe9deb06bdf1048b3ac",
+      "extracted_spice_sha256": "50adeadd4c76e9058fd7cc7273acbad3c98405ff3f743f2cd4771f9b4cd3a5ef",
+      "units": 1620,
+      "unit_side_um": 10,
+      "total_plate_area_um2": 162000,
+      "total_plate_perimeter_um": 64800,
+      "points": [
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": -40,
+          "bias_v": 0,
+          "capacitance_pf": 303.6798288676
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": -40,
+          "bias_v": 1.65,
+          "capacitance_pf": 303.6798288676
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": -40,
+          "bias_v": 3.3,
+          "capacitance_pf": 303.6798288676
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 25,
+          "bias_v": 0,
+          "capacitance_pf": 304.039656
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 25,
+          "bias_v": 1.65,
+          "capacitance_pf": 304.039656
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 25,
+          "bias_v": 3.3,
+          "capacitance_pf": 304.039656
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 125,
+          "bias_v": 0,
+          "capacitance_pf": 304.3148118887
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 125,
+          "bias_v": 1.65,
+          "capacitance_pf": 304.3148118887
+        },
+        {
+          "mim_corner": "mimcap_ff",
+          "temp_c": 125,
+          "bias_v": 3.3,
+          "capacitance_pf": 304.3148118887
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": -40,
+          "bias_v": 0,
+          "capacitance_pf": 337.4220320751
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": -40,
+          "bias_v": 1.65,
+          "capacitance_pf": 337.4220320751
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": -40,
+          "bias_v": 3.3,
+          "capacitance_pf": 337.4220320751
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 25,
+          "bias_v": 0,
+          "capacitance_pf": 337.82184
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 25,
+          "bias_v": 1.65,
+          "capacitance_pf": 337.82184
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 25,
+          "bias_v": 3.3,
+          "capacitance_pf": 337.82184
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 125,
+          "bias_v": 0,
+          "capacitance_pf": 338.1275687652
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 125,
+          "bias_v": 1.65,
+          "capacitance_pf": 338.1275687652
+        },
+        {
+          "mim_corner": "mimcap_typical",
+          "temp_c": 125,
+          "bias_v": 3.3,
+          "capacitance_pf": 338.1275687652
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": -40,
+          "bias_v": 0,
+          "capacitance_pf": 371.1642352826
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": -40,
+          "bias_v": 1.65,
+          "capacitance_pf": 371.1642352826
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": -40,
+          "bias_v": 3.3,
+          "capacitance_pf": 371.1642352826
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 25,
+          "bias_v": 0,
+          "capacitance_pf": 371.604024
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 25,
+          "bias_v": 1.65,
+          "capacitance_pf": 371.604024
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 25,
+          "bias_v": 3.3,
+          "capacitance_pf": 371.604024
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 125,
+          "bias_v": 0,
+          "capacitance_pf": 371.9403256417
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 125,
+          "bias_v": 1.65,
+          "capacitance_pf": 371.9403256417
+        },
+        {
+          "mim_corner": "mimcap_ss",
+          "temp_c": 125,
+          "bias_v": 3.3,
+          "capacitance_pf": 371.9403256417
+        }
+      ]
+    }
+  }
+}

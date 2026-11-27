@@ -53,13 +53,16 @@
     "",
     "For characterization issue #2, the MIM specimens use the GF180 option-B generator at glayout_commit and KLT 0.9.2 (the existing klt_install commit). Native and curated DRC, extraction and dimensional LVS run against GF180D.",
     "",
-    "For issue #2, the four-pin MIM routing abstract uses the OpenROAD build below to read the GF180D technology LEF. The other layout runners retain their existing tool requirements."
+    "For issue #2, the four-pin MIM routing abstract uses the OpenROAD build below to read the GF180D technology LEF. The other layout runners retain their existing tool requirements.",
+    "",
+    "For issue #2, the extracted MIM AC corner matrix runs through klt sim on the batch fleet (--wait-for-capacity 600) at the existing klt_install commit; sim is added to klt_required_commands."
   ],
   "klt_install": "git+https://github.com/2AMLogic/klayout-tools@046ba74652fc096bd97071fc3237f7159dd40183",
   "klt_required_commands": [
     "drc",
     "extract",
-    "lvs"
+    "lvs",
+    "sim"
   ],
   "klt_last_verified_commit": "046ba74652fc096bd97071fc3237f7159dd40183",
   "klayout_package_min": "0.30",

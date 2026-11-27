@@ -6,8 +6,15 @@ from pathlib import Path
 import unittest
 
 
-MIM = Path(__file__).resolve().parents[1] / "layout/mim"
+ROOT = Path(__file__).resolve().parents[1]
+MIM = ROOT / "layout/mim"
 SPECIMENS = {"452": (5, 40), "453": (5, 40), "454": (3920, 5), "455": (1620, 10)}
+NIST_BY_CODE = {
+    "452": "AreaMIMC1",
+    "453": "AreaMIMC2",
+    "454": "PeriMIMC1",
+    "455": "PeriMIMC2",
+}
 
 
 class MimSpecimensTest(unittest.TestCase):
@@ -49,3 +56,60 @@ class MimSpecimensTest(unittest.TestCase):
                 self.assertTrue(0.85 * area_pf < value < 1.25 * area_pf)
                 if code == "452":
                     self.assertAlmostEqual(value, capacitance["453", corner, temp, bias])
+
+    def test_klt_sim_batch_record_and_toolchain(self):
+        toolchain = json.loads((ROOT / "layout/toolchain.json").read_text())
+        self.assertIn("sim", toolchain["klt_required_commands"])
+
+        records = sorted((MIM / "records").glob("*/manifest.json"))
+        self.assertGreaterEqual(len(records), 1)
+        rec_dir = records[-1].parent
+        manifest = json.loads((rec_dir / "manifest.json").read_text())
+        envelope_bytes = (rec_dir / manifest["envelope_file"]).read_bytes()
+        self.assertEqual(hashlib.sha256(envelope_bytes).hexdigest(), manifest["envelope_sha256"])
+        envelope = json.loads(envelope_bytes)
+
+        self.assertEqual(envelope["status"], "pass")
+        self.assertEqual((envelope["corner_count"], envelope["passed"]), (27, 27))
+        self.assertEqual((envelope["failed"], envelope["errored"], envelope["inconclusive"]), (0, 0, 0))
+        self.assertEqual(envelope["diagnostic_counts"]["corners_with_diagnostics"], 0)
+        self.assertEqual(envelope["environment"]["netlist_identity"], manifest["netlist_identity"])
+        self.assertEqual(envelope["environment"]["backend"]["resolved"], "batch")
+        remote = envelope["environment"]["remote"]
+        self.assertEqual(remote["state"], "done")
+        self.assertTrue(remote["job_id"])
+        self.assertEqual(remote["job_id"], manifest["remote_job_id"])
+
+        verified = json.loads((MIM / "verification.json").read_text())
+        closure_shas = {entry["sha256"] for entry in envelope["environment"]["netlist_closure"]}
+        self.assertEqual(set(manifest["structures"]), set(NIST_BY_CODE.values()))
+        rollup_by_name = {m["name"]: m for m in envelope["measurements"]}
+        self.assertEqual(set(rollup_by_name), set(NIST_BY_CODE.values()))
+
+        with (MIM / "measurements.csv").open() as stream:
+            csv_caps = {
+                (r["code"], r["mim_corner"], r["temp_c"], r["bias_v"]): float(r["capacitance_pf"])
+                for r in csv.DictReader(stream)
+            }
+
+        for code, nist_id in NIST_BY_CODE.items():
+            with self.subTest(nist_id=nist_id):
+                entry = manifest["structures"][nist_id]
+                self.assertEqual(entry["select_code"], int(code))
+                self.assertEqual(entry["gds_sha256"], verified[code]["sha256"])
+                self.assertIn(entry["extracted_spice_sha256"], closure_shas)
+                self.assertEqual(rollup_by_name[nist_id]["spec_row"], code)
+                self.assertEqual(rollup_by_name[nist_id]["status"], "pass")
+                self.assertEqual(len(entry["points"]), 27)
+                for pt in entry["points"]:
+                    key = (code, pt["mim_corner"], str(pt["temp_c"]), str(pt["bias_v"]))
+                    self.assertAlmostEqual(pt["capacitance_pf"], csv_caps[key], places=6)
+
+        for corner in envelope["corners"]:
+            proc = corner["process"]
+            temp = str(int(corner["temperature_c"]) if float(corner["temperature_c"]).is_integer() else corner["temperature_c"])
+            bias = corner["supply_v"]["vbias"]
+            bias_s = str(int(bias) if float(bias).is_integer() else bias)
+            by_name = {m["name"]: m["value"] for m in corner["measurements"]}
+            for code, nist_id in NIST_BY_CODE.items():
+                self.assertAlmostEqual(by_name[nist_id], csv_caps[code, proc, temp, bias_s], places=6)
