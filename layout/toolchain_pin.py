@@ -293,6 +293,42 @@ def summary(pins: dict) -> str:
     )
 
 
+def report(
+    help_text: str | None = None,
+    klt: str = "klt",
+    stdout=None,
+    stderr=None,
+) -> tuple[int, dict | None]:
+    """Run the check, print its report or errors, and return ``(rc, pins)``.
+
+    ``rc`` is what :func:`main` exits with. ``pins`` is the validated pin
+    file whenever the check got that far -- a missing ``klt`` command still
+    leaves it, for the install hint -- and ``None`` when the pin file would
+    not load or ``klt --help`` would not run. A caller that needs the pins
+    takes them from this one read instead of reading the file again.
+    """
+    stdout = stdout or sys.stdout
+    stderr = stderr or sys.stderr
+    try:
+        result = check(help_text=help_text, klt=klt)
+    except PinError as exc:
+        print(f"error: {exc}", file=stderr)
+        return 1, None
+    pins = result["pins"]
+    if result["missing"]:
+        for command in result["missing"]:
+            print(
+                f"error: klt '{command}' is required by {LAYOUT_DIR / PINS_FILENAME} "
+                f"(klt_required_commands) but is not a subcommand of the installed klt. "
+                f"{_install_hint(pins)}",
+                file=stderr,
+            )
+        return 1, pins
+    print(f"{PINS_FILENAME}: OK", file=stdout)
+    print(summary(pins), file=stdout)
+    return 0, pins
+
+
 def main(
     argv: list[str] | None = None,
     help_text: str | None = None,
@@ -307,24 +343,7 @@ def main(
     if argv not in ([], ["--check"]):
         print(f"usage: {Path(sys.argv[0]).name} [--check]", file=stderr)
         return 2
-    try:
-        result = check(help_text=help_text, klt=klt)
-    except PinError as exc:
-        print(f"error: {exc}", file=stderr)
-        return 1
-    pins = result["pins"]
-    if result["missing"]:
-        for command in result["missing"]:
-            print(
-                f"error: klt '{command}' is required by {LAYOUT_DIR / PINS_FILENAME} "
-                f"(klt_required_commands) but is not a subcommand of the installed klt. "
-                f"{_install_hint(pins)}",
-                file=stderr,
-            )
-        return 1
-    print(f"{PINS_FILENAME}: OK", file=stdout)
-    print(summary(pins), file=stdout)
-    return 0
+    return report(help_text=help_text, klt=klt, stdout=stdout, stderr=stderr)[0]
 
 
 if __name__ == "__main__":
