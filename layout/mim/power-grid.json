@@ -1,0 +1,57 @@
+{
+  "dbu_per_um": 2000,
+  "macro_bboxes_dbu": {
+    "mim_452_kelvin": [
+      1720000,
+      8620000,
+      2293600,
+      8880000
+    ],
+    "mim_453_kelvin": [
+      4950000,
+      8600000,
+      5523600,
+      8860000
+    ],
+    "mim_454_kelvin": [
+      1250000,
+      6200000,
+      3804000,
+      8272400
+    ],
+    "mim_455_kelvin": [
+      4180000,
+      6200000,
+      6741600,
+      8280000
+    ]
+  },
+  "upper_supply_shapes": {
+    "VDD": {
+      "Metal4": 11785,
+      "Via4": 187200,
+      "Metal5": 11791
+    },
+    "VSS": {
+      "Metal4": 11801,
+      "Via4": 187456,
+      "Metal5": 11806
+    }
+  },
+  "core_dbu": [
+    884800,
+    885920,
+    6979840,
+    9353120
+  ],
+  "macro_outline_contacts": 0,
+  "extracted_supply_nets": 2,
+  "inserted_cross_rail_via_nets": 1,
+  "removed_vss_vias_nets": 176,
+  "inputs_sha256": {
+    "tech_lef": "842b186318d53844561af4ec530b4e30d8ba519bcc58d512a363ef255acc7abd",
+    "macro_lef": "885586bdedc93ed69ae53b7a75a382317edf2ce7d913fc5492858c5f505466a0",
+    "verilog": "7011c69e1b4211c5cd95300243b1ba60f10aea5eacfd79b35df78f5e73740673",
+    "grid_tcl": "0ba4cd6e02200a4accbe4f4e922f2b715ceac36d7c6537c58dcf7dda926a9f6f"
+  }
+}
