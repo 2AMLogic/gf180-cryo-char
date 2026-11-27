@@ -59,10 +59,6 @@ def reserve(records_dir: Path, rid: str) -> Path:
     return bundle
 
 
-def mark_incomplete(bundle: Path, reason: str) -> None:
-    (bundle / INCOMPLETE_MARKER).write_text(f"{reason}\n")
-
-
 def evidence(bundle: Path) -> list[dict]:
     """Every evidence file in ``bundle`` as ``{path, sha256, bytes}``."""
     out = []
@@ -180,6 +176,6 @@ def check_intact(bundle: Path) -> list[str]:
             )
     for path in sorted(p for p in bundle.rglob("*") if p.is_file()):
         name = path.relative_to(bundle).as_posix()
-        if name not in listed and name not in _RESERVED and name != RECORD_MD:
+        if name not in listed and name not in _RESERVED:
             problems.append(f"evidence file not named by the record: {name}")
     return problems
