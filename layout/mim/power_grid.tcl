@@ -2,7 +2,7 @@ read_lef $tech_lef
 read_lef $macro_lef
 read_verilog $verilog
 link_design cryo_grid_trial
-initialize_floorplan -site GF018hv5v_mcu_sc7 -die_area {0 0 3932 5122} -core_area {442.4 442.96 3489.92 4676.56}
+initialize_floorplan -site GF018hv5v_mcu_sc7 -die_area {0 0 3932 5122} -core_area $core_area
 make_tracks
 foreach {code x y} {452 860 4310 453 2475 4300 454 625 3100 455 2090 3100} {
     place_macro -macro_name spec_$code -location [list $x $y] -orientation R0 -exact

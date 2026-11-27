@@ -31,6 +31,11 @@ def components(regions, units):
     return sum(1 for _ in graph.netlist().top_circuit().each_net())
 
 
+def template_core_nm():
+    """The template's snapped core box, the one authoritative record in-repo."""
+    return json.loads((HERE / "template-grid.json").read_text())["core_nm"]
+
+
 def analyze(geometry):
     meshes = {rail: {layer: db.Region() for layer in LAYERS} for rail in RAILS}
     macros = {}
@@ -50,7 +55,8 @@ def analyze(geometry):
                 meshes[owner][name].insert(box)
     if set(macros) != {f"mim_{code}_kelvin" for code in CODES}:
         raise ValueError("Missing Kelvin specimen")
-    core = db.DBox(442.4, 442.96, 3489.92, 4676.56).to_itype(1 / units)
+    core_nm = template_core_nm()
+    core = db.Box(*(round(v * units / 1000) for v in core_nm))
     if any((core & b) != b for b in macros.values()) or any(
         a.overlaps(b) for a, b in itertools.combinations(macros.values(), 2)
     ):
@@ -59,9 +65,11 @@ def analyze(geometry):
     outline = db.Region()
     for box in macros.values():
         outline.insert(box)
+    contacts = 0
     for rail, regions in meshes.items():
         counts[rail] = {name: region.count() for name, region in regions.items()}
-        if any(r.is_empty() or not r.interacting(outline).is_empty() for r in regions.values()):
+        contacts += sum(r.interacting(outline).count() for r in regions.values())
+        if any(r.is_empty() for r in regions.values()) or contacts:
             raise ValueError(f"{rail} geometry is absent or touches a specimen outline")
         if components(list(regions.values()), units) != 1:
             raise ValueError(f"Disconnected {rail} mesh")
@@ -85,7 +93,8 @@ def analyze(geometry):
         "dbu_per_um": units,
         "macro_bboxes_dbu": {key: [b.left, b.bottom, b.right, b.top] for key, b in sorted(macros.items())},
         "upper_supply_shapes": counts,
-        "macro_outline_contacts": 0,
+        "core_dbu": [core.left, core.bottom, core.right, core.top],
+        "macro_outline_contacts": contacts,
         "extracted_supply_nets": net_count,
         "inserted_cross_rail_via_nets": short,
         "removed_vss_vias_nets": opened,
@@ -105,7 +114,9 @@ def main():
         geometry = work / "geometry.txt"
         command = work / "generate.tcl"
         paths = {**input_files, "geometry": geometry}
+        core_um = " ".join(f"{v / 1000:g}" for v in template_core_nm())
         command.write_text("".join(f"set {key} {{{path}}}\n" for key, path in paths.items())
+                           + f"set core_area {{{core_um}}}\n"
                            + (HERE / "power_grid.tcl").read_text())
         log = subprocess.check_output(["openroad", "-no_init", "-exit", command], text=True)
         if "[WARNING PDN-" in log or not all(f"All shapes on net {r} are connected." in log for r in RAILS):

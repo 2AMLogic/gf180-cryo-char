@@ -26,6 +26,8 @@ class KelvinEvidenceTest(unittest.TestCase):
         for counts in report["upper_supply_shapes"].values():
             self.assertEqual(set(counts), {"Metal4", "Via4", "Metal5"})
             self.assertTrue(all(value > 0 for value in counts.values()))
+        core_nm = json.loads((MIM / "template-grid.json").read_text())["core_nm"]
+        self.assertEqual(report["core_dbu"], [round(v * units / 1000) for v in core_nm])
         self.assertEqual(report["macro_outline_contacts"], 0)
         self.assertEqual(report["extracted_supply_nets"], 2)
         self.assertEqual(report["inserted_cross_rail_via_nets"], 1)
