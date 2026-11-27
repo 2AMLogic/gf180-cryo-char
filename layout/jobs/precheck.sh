@@ -54,35 +54,10 @@ done
 precheck=layout/vendor/precheck
 pdk_root="$PWD/$precheck/gf180mcu"
 flow="$PWD/precheck/flow"
-harvest="$PWD/$out/flow"
-mkdir -p "$out" "$flow"
-WS_PHASES="$PWD/$out/phases.txt"
-export WS_PHASES
-
-# shellcheck disable=SC2317
-finish() {
-	local status=$?
-	if [ "$status" -ne 0 ]; then
-		ws_log "FAILED (exit $status); last 40 lines of the console log:"
-		tail -n 40 "$out/console.log" >&2 2>/dev/null || true
-	fi
-}
-trap finish EXIT
-
-: >"$out/console.log"
-
-ws_phase "install nix $(ws_pin nix.version)"
-ws_nix_install
-
-ws_phase "fetch the PDK (open_pdks $(ws_pin wafer_space.pdk.open_pdks_commit))"
-(cd "$precheck" && ws_nix_develop . make clone-pdk) >>"$out/console.log" 2>&1
-
-ws_phase "check the PDK revision"
-ws_pdk_check "$pdk_root" "$(ws_pin wafer_space.pdk.name)" \
-	"$(ws_pin wafer_space.pdk.open_pdks_commit)" >>"$out/console.log" 2>&1
-
-ws_phase "record the toolchain"
-ws_nix_develop "$PWD/$precheck" bash "$here/nix-env.sh" tools >"$out/tools.json"
+mkdir -p "$flow"
+ws_job_init "$out"
+harvest="$WS_OUT/flow"
+ws_bootstrap "$precheck"
 
 if [ -z "$workers" ]; then
 	cores="$(nproc)"
@@ -100,7 +75,7 @@ set +e
 	cd "$precheck" && ws_nix_develop . env "PDK_ROOT=$pdk_root" PDK=gf180mcuD \
 		python3 precheck.py --input "$gds" --top "$(ws_pin die.top)" --dir "$flow" \
 		--slot "$(ws_pin die.slot)" --id "$id" --threads "$threads" --workers "$workers" "${cob[@]}"
-) >>"$out/console.log" 2>&1
+) >>"$WS_OUT/console.log" 2>&1
 rc=$?
 set -e
 
@@ -109,72 +84,9 @@ if [ -n "$run_dir" ]; then
 	mkdir -p "$harvest"
 	(cd "$run_dir" && find . -type f \( -name '*.json' -o -name '*.rpt' -o -name '*.log' -o -name '*.txt' \) \
 		-size -8M -print0 | sort -z | xargs -0 -r cp --parents -t "$harvest/")
-	(cd "$run_dir" && find . -type f -printf '%s\t%p\n' | sort -k2) >"$out/flow-files.txt"
+	(cd "$run_dir" && find . -type f -printf '%s\t%p\n' | sort -k2) >"$WS_OUT/flow-files.txt"
 fi
 
-python3 - "$out" "$gds" "$rc" "$id" "$threads" "$workers" "${#cob[@]}" "$run_dir" <<'PY'
-import datetime
-import hashlib
-import json
-import os
-import socket
-import sys
-import time
-
-out, gds, rc, die_id, threads, workers, cob, run_dir = sys.argv[1:]
-rc = int(rc)
-pinned = json.load(open(os.path.join("layout", "toolchain.json")))
-
-
-def digest(path):
-    sha = hashlib.sha256()
-    with open(path, "rb") as handle:
-        for chunk in iter(lambda: handle.read(1 << 20), b""):
-            sha.update(chunk)
-    return sha.hexdigest()
-
-
-phases = {}
-for line in open(os.path.join(out, "phases.txt")):
-    _, stamp, name = line.split(" ", 2)
-    phases[name.strip()] = int(stamp)
-ordered = sorted(phases.items(), key=lambda item: item[1])
-wall = {ordered[i][0]: ordered[i + 1][1] - ordered[i][1] for i in range(len(ordered) - 1)}
-if ordered:
-    wall[ordered[-1][0]] = int(time.time()) - ordered[-1][1]
-
-metrics_path = ""
-if run_dir:
-    for candidate in ("final/metrics.json", "metrics.json"):
-        if os.path.isfile(os.path.join(run_dir, candidate)):
-            metrics_path = os.path.join(run_dir, candidate)
-            break
-metrics = json.load(open(metrics_path)) if metrics_path else None
-
-try:
-    image = json.load(open("/etc/eda-batch-image.json"))
-except (OSError, ValueError):
-    image = None
-
-sources = open(os.path.join("layout", "vendor", "precheck", "gf180mcu", "gf180mcuD", "SOURCES")).read().splitlines()
-record = {
-    "pass": rc == 0,
-    "exit_code": rc,
-    "input": {"name": os.path.basename(gds), "sha256": digest(gds), "bytes": os.path.getsize(gds)},
-    "options": {"top": pinned["die"]["top"], "slot": pinned["die"]["slot"], "id": die_id,
-                "cob": cob == "1", "threads": int(threads), "workers": workers},
-    "pins": {"precheck_commit": pinned["wafer_space"]["precheck"]["commit"],
-             "pdk": pinned["wafer_space"]["pdk"]},
-    "run_tag": os.path.basename(run_dir.rstrip("/")) if run_dir else None,
-    "metrics": metrics,
-    "tools": json.load(open(os.path.join(out, "tools.json"))),
-    "pdk_open_pdks_observed": [line for line in sources if line.startswith("open_pdks")],
-    "wall_seconds": wall,
-    "host": socket.gethostname(),
-    "image": image,
-}
-json.dump(record, open(os.path.join(out, "precheck.json"), "w"), indent=2, sort_keys=True)
-print(datetime.datetime.now(datetime.timezone.utc).isoformat(), f"precheck exit {rc}")
-PY
+python3 "$LAYOUT_JOBS_HELPER" precheck "$out" "$gds" "$rc" "$id" "$threads" "$workers" "${#cob[@]}" "$run_dir"
 ws_phase "done: precheck exit $rc"
 exit "$rc"
