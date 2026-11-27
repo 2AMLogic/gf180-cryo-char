@@ -1,0 +1,20 @@
+Single open CMOS transmission gate, GF180MCU-D typical, 25 C
+.include pdk/libs.tech/ngspice/design.ngspice
+.lib pdk/libs.tech/ngspice/sm141064.ngspice typical
+.param sw_stat_global=0
+Vrail rail 0 3.3
+Vfar far 0 3.3
+Vsense measured 0 0
+Xn far 0 measured 0 nfet_03v3 w=1u l=1u nf=1 ad=0.5p as=0.5p pd=3u ps=3u
+Xp far rail measured rail pfet_03v3 w=1u l=1u nf=1 ad=0.5p as=0.5p pd=3u ps=3u
+.temp 25
+.options abstol=1e-17 gmin=1e-18 reltol=1e-6
+.control
+op
+print i(vsense)
+alter Vfar = 0
+op
+print i(vsense)
+quit
+.endc
+.end

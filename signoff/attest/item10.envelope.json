@@ -3,14 +3,14 @@
   "kind": "generic",
   "status": "pass",
   "t1_item": 10,
-  "summary": "T1 item 10 (Repo hygiene): 7/7 attestation checks passed (klt signoff --attest)",
+  "summary": "T1 item 10 (Repo hygiene): 32/32 attestation checks passed (klt signoff --attest)",
   "source": "signoff/attest/item10.json",
   "attestation": {
     "producer": "klt signoff --attest",
     "inventory_schema_version": 1,
     "hash_algorithm": "sha256-raw-bytes",
-    "check_count": 7,
-    "passed_count": 7,
+    "check_count": 32,
+    "passed_count": 32,
     "checks": [
       {
         "check": "present",
@@ -18,6 +18,13 @@
         "path": ".github/workflows/evidence.yml",
         "passed": true,
         "content_hash": "sha256:80d756ff0adb838d66de9057316919a46bf37b5c189aad8d0665dec0872c1b59"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": ".github/workflows/spec-sources.yml",
+        "passed": true,
+        "content_hash": "sha256:9d8ce8756072d6813f5ee7343a968e3d393e953187d79ccdb5516d0c786fe0b7"
       },
       {
         "check": "present",
@@ -31,7 +38,7 @@
         "role": "hygiene",
         "path": "README.md",
         "passed": true,
-        "content_hash": "sha256:1772d11c80e33ba3f8a6fd798bc07ee22eb526efc703d41d60aed2eb9b9665d7"
+        "content_hash": "sha256:87c919fb969288640092011d9b8a71cd482d903f6a1dd134802c3019870ee03b"
       },
       {
         "check": "present",
@@ -50,9 +57,177 @@
       {
         "check": "present",
         "role": "hygiene",
+        "path": "sim/README.md",
+        "passed": true,
+        "content_hash": "sha256:f95af565d10ec1387cc2f90f4e4a6f37d8777e5c7a62f8488f454c991ca3ec60"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "sim/pad-loading/README.md",
+        "passed": true,
+        "content_hash": "sha256:f5af851e28d00f788db2b1fc28d5ffe9bf43c41039e080b3d7c05f450bcf7026"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "sim/pad-loading/measure.py",
+        "passed": true,
+        "content_hash": "sha256:9dca9dfb2b2b2099392f256ee6836c9c7670e4068847c39196b0e31149340c77"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "sim/pad-loading/measurements.csv",
+        "passed": true,
+        "content_hash": "sha256:9315d946666063a505e356eba5e69184fea9ec7caa0f2635be1c256fdb50e162"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "sim/qualification_pdk.py",
+        "passed": true,
+        "content_hash": "sha256:a3392fec4322fc9ef95110981828947a116a0480bb6873d436c3fa697d98a0fc"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "sim/switch-loading/README.md",
+        "passed": true,
+        "content_hash": "sha256:72d942fbbc122443fef2fddbe34093e9dc244b638df13b30c05976ab03d10a5f"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "sim/switch-loading/ac-loading.csv",
+        "passed": true,
+        "content_hash": "sha256:12a2865c7a9d516a472aec62fa2c06e845098fa4b2636b9452c39f14f9554510"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "sim/switch-loading/measure.py",
+        "passed": true,
+        "content_hash": "sha256:41e35a6a99103d4923f2f04205992a45cc864da24ca5a300fc39da51c62b801a"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "sim/switch-loading/measure_ac.py",
+        "passed": true,
+        "content_hash": "sha256:78eac73db2cdaf2d08917eed7072458fae23007d8516888f1445cfd31472f273"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "sim/switch-loading/measure_mismatch.py",
+        "passed": true,
+        "content_hash": "sha256:b08cf352e70e3175a6faf00c41a5e7671526140d75227b41586bdb2f163a509e"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "sim/switch-loading/measurements.csv",
+        "passed": true,
+        "content_hash": "sha256:9440385278781217729914ab35cd7ef6a68a659fba66ae8bea3f8695ec7c8848"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "sim/switch-loading/mismatch.csv",
+        "passed": true,
+        "content_hash": "sha256:f6be509bb3d15494d80f62e1bd34006e2711c386c722ee43c0170f634304bfe6"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "spec/0001-characterization-targets.md",
+        "passed": true,
+        "content_hash": "sha256:8153a10d1eff01ea58f4d7e5c7f6c41a064989aa8ad9a42e616271525322efd5"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "spec/check_isolated_bodies.py",
+        "passed": true,
+        "content_hash": "sha256:21dfd144a346ae5e05c2057e058ac49455a930370ba99a8c5c9703c50947196b"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "spec/die-plan.md",
+        "passed": true,
+        "content_hash": "sha256:d225f3919b23af7662cb15781afae7b375c03b45903efb38a83662bcedbbb6bd"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "spec/reference-minima.txt",
+        "passed": true,
+        "content_hash": "sha256:a55439d6a3c23cff852aecb4ef194036cfe22581dcfccc47b991209de5ef7904"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "spec/reference_floors.py",
+        "passed": true,
+        "content_hash": "sha256:7505288e72fd495e903ea22702ff43ce4a85026e67c2cb120b8021fc17050c6a"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "spec/selection-readout.md",
+        "passed": true,
+        "content_hash": "sha256:185e51d439db4253ea34644cb128274c6a44666be0253b671380834dae9777bb"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "spec/source_catalog.py",
+        "passed": true,
+        "content_hash": "sha256:e1bb402a3e6cfa463e391908e063f753f01392c268041882ba66a86d26161c65"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "spec/structure-map.md",
+        "passed": true,
+        "content_hash": "sha256:97976a8a8edfe6d3f1a6be82582a5daae066827025c3364e7f87fcedf9069fd4"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "spec/switch-reference.spice",
+        "passed": true,
+        "content_hash": "sha256:0e079aeec90ea03dc1fcd356c0b1da42a1fa74b1f5c24ed94cce2f1f34713b9f"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
         "path": "verification/test_harness.py",
         "passed": true,
         "content_hash": "sha256:7562df3c2042efb88d306bca5c16509ae94594f18992bb01adc821f6b3782a18"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "verification/test_pad_loading.py",
+        "passed": true,
+        "content_hash": "sha256:78bf75230922fcaf23a30b9efabdb1977156ae22d162844b5e18fd2a1706b6c8"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "verification/test_structure_geometry.py",
+        "passed": true,
+        "content_hash": "sha256:2504c369c4add4bb993ca28398520b1b14cbc5442b0db39958ef19981c6fa480"
+      },
+      {
+        "check": "present",
+        "role": "hygiene",
+        "path": "verification/test_switch_mismatch.py",
+        "passed": true,
+        "content_hash": "sha256:f31818933bc6eb48dcc053db70d73d306151f5aa9867adc752e3be8eb19fbed3"
       },
       {
         "check": "command",
@@ -84,7 +259,7 @@
         "path": "signoff/attest/item10.json",
         "scope": "repo"
       },
-      "content_hash": "sha256:bcf01d926989954a61fbebbc7973944d2b0de015e1692624962d9b6eede78f8b"
+      "content_hash": "sha256:45e5ed5b111ba1ca0678bd7e65c2f2e0e841902eabe33a889deda200c130c704"
     }
   }
 }

@@ -1,0 +1,9 @@
+MIM          6.65705e-14  MPW-5 Test Tile/cap/areamimc2.mdm
+area MOS     5.64188e-14  MPW-5 Test Tile/cap/moscap5.mdm
+array FET    1e-14  MPW-5 Test Tile/transistormodule/nnative/46_1_IDVD.mdm
+diode C–V    3.64592e-14  MPW-5 Test Tile/diode/cv/areadiode5.mdm
+diode I–V    1e-14  MPW-5 Test Tile/diode/iv/areadiode1.mdm
+overlap MOS  2.90096e-13  MPW-5 Test Tile/cap/moscapovl6_Row3_GDS.mdm
+pres         4.933e-11  MPW-5 Test Tile/pres/pres2/1_4.mdm
+resmet       1.3815e-10  MPW-5 Test Tile/resmet/resmet1.mdm
+viadaisy     7.4707e-10  MPW-5 Test Tile/viadaisy/viadaisy1.mdm

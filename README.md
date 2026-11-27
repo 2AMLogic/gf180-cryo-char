@@ -97,7 +97,9 @@ result. Where the agents hit friction with the open-source tooling — most ofte
 filed as a public issue against the tool itself, so the fix benefits everyone
 using gf180mcu, not just this repo.
 
-## Target specification (DRAFT — engineering to ratify, see issue #1)
+## Target specification
+
+These targets take effect on merge of the independently reviewed, operator-approved decision 0001 for issue #1.
 
 | Parameter | Target | Stretch |
 |---|---|---|
@@ -107,7 +109,7 @@ using gf180mcu, not just this repo.
 | Selection | every structure reachable from the pads through on-chip multiplexing; mux leakage below the smallest current measured on that structure | — |
 | GDS delivery | on or before 2026-12-16 | 2026-12-09 |
 
-Issue #1 takes this target spec through review. A separate EE reviewer and a
+Issue #1 takes [decision 0001](spec/0001-characterization-targets.md), its [structure map](spec/structure-map.md), [readout budgets](spec/selection-readout.md) and [pad assignments](spec/die-plan.md) through review. A separate EE reviewer and a
 separate market reviewer, neither the author of the PR or of the design, read centrally pinned
 instructions and record their reviews against the PR's current head; the
 operator then ratifies, and the `2am/ratification` status turns green. The
