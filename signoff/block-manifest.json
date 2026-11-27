@@ -2,13 +2,13 @@
   "block": "gf180-cryo-char",
   "kind": "mixed-signal",
   "partition_boundary": {
-    "analog": "Planned devices under test and analog measurement paths from the selected device to the force and sense pads. The selection switches receive control from the digital partition. Issue #1 defines the device map and pad connections.",
-    "digital": "Planned control that selects which structure is connected to the measurement pads. The signals cross into the analog partition at the selection switches. The interface and pin assignments are pending the specification in issue #1."
+    "analog": "Planned devices under test and analog measurement paths from the selected device to the force and sense pads. The selection switches receive control from the digital partition. Decision 0001 and spec/structure-map.md define the device map and pad connections.",
+    "digital": "Planned control that selects which structure is connected to the measurement pads. The signals cross into the analog partition at the selection switches. Decision 0001 and spec/die-plan.md define the selection interface and physical pin assignments."
   },
   "evidence": {
     "10": {
       "file": "signoff/attest/item10.envelope.json",
-      "content_hash": "sha256:7c0f1088e4a0a3594237ca81609d63e175b87481e1504bdeef6a87b1d9e9539e"
+      "content_hash": "sha256:45e5ed5b111ba1ca0678bd7e65c2f2e0e841902eabe33a889deda200c130c704"
     }
   }
 }

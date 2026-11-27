@@ -17,7 +17,23 @@
     "spec/check_isolated_bodies.py",
     "sim/switch-loading/measure.py",
     "sim/switch-loading/measurements.csv",
-    "sim/switch-loading/README.md"
+    "sim/switch-loading/README.md",
+    "sim/pad-loading/measure.py",
+    "sim/pad-loading/measurements.csv",
+    "sim/pad-loading/README.md",
+    "verification/test_pad_loading.py",
+    "spec/reference_floors.py",
+    "spec/reference-minima.txt",
+    "spec/source_catalog.py",
+    "spec/switch-reference.spice",
+    "sim/qualification_pdk.py",
+    "sim/README.md",
+    "sim/switch-loading/measure_ac.py",
+    "sim/switch-loading/ac-loading.csv",
+    ".github/workflows/spec-sources.yml",
+    "sim/switch-loading/measure_mismatch.py",
+    "sim/switch-loading/mismatch.csv",
+    "verification/test_switch_mismatch.py"
   ],
   "checks": [
     {
