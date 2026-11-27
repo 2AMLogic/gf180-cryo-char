@@ -1,0 +1,14 @@
+{
+  "schema": "gf180-cryo-char.layout.die/1",
+  "gds": {
+    "name": "chip_top.gds",
+    "sha256": "6a97d4cbd25f4feccf44ed9ac0887d6254208b83050c3e8934672e35d3e8a8a8",
+    "bytes": 178401210
+  },
+  "artifact": {
+    "manifest": "layout/artifacts.json",
+    "name": "build/20261126-130323-f191663-template/chip_top.gds"
+  },
+  "build_record": "20261126-130323-f191663-template",
+  "precheck_record": "20261126-151012-c937349-die"
+}

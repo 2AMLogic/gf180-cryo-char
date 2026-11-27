@@ -1,0 +1,6 @@
+2026-11-26T13:43:16Z 1795700596 install nix 2.28.4
+2026-11-26T13:43:28Z 1795700608 fetch the PDK (open_pdks 792ef67037d74c8c51811eab3ce23cf793491296)
+2026-11-26T13:44:36Z 1795700676 check the PDK revision
+2026-11-26T13:44:36Z 1795700676 record the toolchain
+2026-11-26T13:44:38Z 1795700678 precheck die.gds id=FFFFFFFF threads=2 workers=8 cob=0
+2026-11-26T15:09:55Z 1795705795 done: precheck exit 0

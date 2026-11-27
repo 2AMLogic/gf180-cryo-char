@@ -1,0 +1,109 @@
+{
+  "exit_code": 0,
+  "host": "ip-172-31-72-120",
+  "image": {
+    "base_ami": "ami-08b275ac6cc5dbefb",
+    "built_at": "2026-11-11T19:14:18Z",
+    "issue": "2am-3632",
+    "pin_digest": "82dfbbbf638f934eb74099e1faff5eeca4de66352daf4cf2f89229e9f18d829f",
+    "profile": "heavy",
+    "schema": "eda-batch-image/1",
+    "security": {
+      "awscli_botocore": "1.43.62 /opt/aws-cli/lib/python3.12/site-packages/awscli/botocore/__init__.py",
+      "awscli_certifi": "2026.10.19",
+      "awscli_pyvenv_cfg": "include-system-site-packages=false",
+      "bundles": {
+        "awscli_botocore": {
+          "certs": 120,
+          "path": "/opt/aws-cli/lib/python3.12/site-packages/certifi/cacert.pem",
+          "sha256": "50f79f98dac192b20dbf73f35c56f0b0c557ab267ff5199d1117cc1180b70785"
+        },
+        "eda_venv": {
+          "certs": 120,
+          "path": "/opt/eda/venv/lib/python3.12/site-packages/certifi/cacert.pem",
+          "sha256": "50f79f98dac192b20dbf73f35c56f0b0c557ab267ff5199d1117cc1180b70785"
+        },
+        "system": {
+          "certs": 120,
+          "path": "/etc/ssl/certs/ca-certificates.crt",
+          "sha256": "e05a523d99de77c6b1f2c7b7c3af502c8378f29e6e8484358ec55f96b0972ad6"
+        },
+        "system_python": {
+          "certs": 120,
+          "path": "/etc/ssl/certs/ca-certificates.crt",
+          "sha256": "e05a523d99de77c6b1f2c7b7c3af502c8378f29e6e8484358ec55f96b0972ad6"
+        }
+      },
+      "ca_certificates": "20260816ubuntu0.24.04.2",
+      "distrusted_root": "emSign ECC Root CA - G3|AAA Certificate Services",
+      "eda_certifi": "2026.10.19",
+      "libnss3": "2:3.98-1ubuntu0.3"
+    },
+    "source_commit": "1329fd0b9",
+    "tools": {
+      "awscli": "1.46.3",
+      "klt": "0.9.0",
+      "klt_build": "0.9.0",
+      "openroad": "26Q4-1310-g98c6045c72",
+      "orfs_commit": "7bf5a814e47c54ec6c64692b464d398184d99891",
+      "sby": "v0.70",
+      "tool_bytes": "4209819730",
+      "yosys": "0.68",
+      "z3": "4.8.12-3.1build1"
+    }
+  },
+  "input": {
+    "bytes": 178401210,
+    "name": "control.gds",
+    "sha256": "906cd4f750db96019727643e2e12f847499fa5cca988db2c00da523489f3fcdb"
+  },
+  "metrics": {
+    "klayout__antenna_error__count": 0,
+    "klayout__density_error__count": 0,
+    "klayout__drc_error__count": 0,
+    "klayout__zero_area_polygons__count": 0,
+    "magic__drc_error__count": 0
+  },
+  "options": {
+    "cob": false,
+    "id": "FFFFFFFF",
+    "slot": "1x1",
+    "threads": 2,
+    "top": "chip_top",
+    "workers": "8"
+  },
+  "pass": true,
+  "pdk_open_pdks_observed": [
+    "open_pdks 792ef67037d74c8c51811eab3ce23cf793491296"
+  ],
+  "pins": {
+    "pdk": {
+      "delivered_by": "ciel",
+      "name": "gf180mcuD",
+      "open_pdks_commit": "792ef67037d74c8c51811eab3ce23cf793491296"
+    },
+    "precheck_commit": "9b4e7dab6af073d02b81ecc368069540d2f67db9"
+  },
+  "run_tag": "RUN_2026-11-26_13-03-59",
+  "tools": {
+    "klayout": "KLayout 0.30.12",
+    "librelane": "3.1.0.dev3",
+    "magic": "8.3.677",
+    "nix": "nix (Nix) 2.28.4",
+    "openroad": "dcf36133a369abc8f3c5e5738cd4d82e4903c0e0",
+    "paths": {
+      "klayout": "/nix/store/pbq1kkpw4pyzsm582vz7jk2ayypzd2c0-devshell-dir/bin/klayout",
+      "magic": "/nix/store/pbq1kkpw4pyzsm582vz7jk2ayypzd2c0-devshell-dir/bin/magic",
+      "openroad": "/nix/store/pbq1kkpw4pyzsm582vz7jk2ayypzd2c0-devshell-dir/bin/openroad",
+      "yosys": "/nix/store/pbq1kkpw4pyzsm582vz7jk2ayypzd2c0-devshell-dir/bin/yosys"
+    },
+    "python": "Python 3.13.13",
+    "yosys": "Yosys 0.69 (git sha1 9f75ca1f9834a39a863915b5dae0c7b1e33533bc, Release, Clang /nix/store/874j5xydsj6nr6i1zdrjvhln5gmxvvrr-clang-wrapper-21.1.8/bin/clang++ 21.1.8)"
+  },
+  "wall_seconds": {
+    "check the PDK revision": 0,
+    "fetch the PDK (open_pdks 792ef67037d74c8c51811eab3ce23cf793491296)": 67,
+    "install nix 2.28.4": 12,
+    "record the toolchain": 2
+  }
+}

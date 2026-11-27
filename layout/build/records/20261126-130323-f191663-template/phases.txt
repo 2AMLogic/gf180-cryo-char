@@ -1,0 +1,6 @@
+2026-11-26T09:20:01Z 1795684801 install nix 2.28.4
+2026-11-26T09:20:14Z 1795684814 fetch the PDK (open_pdks 792ef67037d74c8c51811eab3ce23cf793491296)
+2026-11-26T09:21:30Z 1795684890 check the PDK revision
+2026-11-26T09:21:30Z 1795684890 record the toolchain
+2026-11-26T09:21:33Z 1795684893 make librelane-condensed SLOT=1x1 SCL=gf180mcu_fd_sc_mcu7t5v0 PAD=gf180mcu_fd_io SRAM=gf180mcu_fd_ip_sram
+2026-11-26T11:08:54Z 1795691334 done: chip_top.gds 6a97d4cbd25f4feccf44ed9ac0887d6254208b83050c3e8934672e35d3e8a8a8
