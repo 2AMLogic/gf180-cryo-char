@@ -51,6 +51,7 @@ SUBMITTER = Path(
 VENDOR = "layout/vendor"
 ARTIFACTS = LAYOUT_DIR / "artifacts.json"
 DIE = LAYOUT_DIR / "die.json"
+SHARD_EVIDENCE = ("run.json", "status.json", "harness.log")
 STAGES = {
     "build": {
         "script": "layout/jobs/build.sh",
@@ -58,6 +59,14 @@ STAGES = {
         "records": LAYOUT_DIR / "build" / "records",
         "schema": records.SCHEMA_BUILD,
         "upstream": "template",
+        "evidence": (
+            "console.log",
+            "build.json",
+            "tools.json",
+            "phases.txt",
+            "metrics.json",
+        ),
+        "die": "as_die",
     },
     "precheck": {
         "script": "layout/jobs/precheck.sh",
@@ -65,6 +74,15 @@ STAGES = {
         "records": LAYOUT_DIR / "precheck" / "records",
         "schema": records.SCHEMA_PRECHECK,
         "upstream": "precheck",
+        "evidence": (
+            "console.log",
+            "precheck.json",
+            "tools.json",
+            "phases.txt",
+            "flow",
+            "flow-files.txt",
+        ),
+        "die": "is_die",
     },
 }
 
@@ -220,7 +238,7 @@ def cmd_submit(stage: str, args: argparse.Namespace) -> int:
     tarball = WORK_DIR / "tarballs" / f"{group}.tar.gz"
     staged["tarball_sha256"] = stage_tarball(commit, vendors, extra, tarball)
     staged["tarball_bytes"] = tarball.stat().st_size
-    staged["pins"] = {k: v for k, v in pins.items() if not k.startswith("_")}
+    staged["pins"] = pins
     RUNS_DIR.mkdir(parents=True, exist_ok=True)
     (RUNS_DIR / f"{group}.submit.json").write_text(
         json.dumps(staged, indent=2, sort_keys=True) + "\n"
@@ -376,8 +394,8 @@ def die_check(gds: Path, pins: dict) -> dict:
 
 
 def artifact_put(gds: Path, name: str, tool: str) -> dict:
-    command = [
-        "klt",
+    """Store ``gds`` in the artifact manifest under ``name``; its entry."""
+    return klt(
         "artifact",
         "put",
         "--format",
@@ -389,17 +407,106 @@ def artifact_put(gds: Path, name: str, tool: str) -> dict:
         "--producer-tool",
         tool,
         str(gds),
-    ]
-    result = subprocess.run(command, capture_output=True, text=True)
-    if result.returncode != 0:
-        raise DriverError(
-            f"klt artifact put exited {result.returncode}: {result.stderr.strip()}"
+    )["entries"][0]
+
+
+def _build_fields(out: Path, staged: dict, result: dict, bundle: Path, args) -> dict:
+    """The build record beyond the shared header, ``status`` included."""
+    job = load_json(out / "build.json", {}) or {}
+    gds = out / "chip_top.gds"
+    fields = {key: job.get(key) for key in ("make", "target", "tools", "metrics")}
+    if not (result["ok"] and gds.is_file()):
+        fields["status"] = "fail" if result["state"] == "done" else "error"
+        return fields
+    fields["gds"] = {
+        "name": "chip_top.gds",
+        "sha256": records.sha256_file(gds),
+        "bytes": gds.stat().st_size,
+    }
+    fields["checks"] = die_check(gds, staged["pins"])
+    passed = fields["checks"]["die_matches_pin"] and job.get("pass") is True
+    fields["status"] = "pass" if passed else "fail"
+    if passed and not args.no_artifact:
+        fields["artifact"] = artifact_put(
+            gds, f"build/{bundle.name}/chip_top.gds", "librelane"
         )
-    return json.loads(result.stdout)["entries"][0]
+    return fields
 
 
-def pinned(staged: dict) -> dict:
-    return {k: v for k, v in staged["pins"].items() if not k.startswith("_")}
+def _precheck_fields(out: Path, staged: dict, result: dict, bundle: Path, args) -> dict:
+    """The precheck record beyond the shared header, ``status`` included."""
+    job = load_json(out / "precheck.json")
+    if job is None:
+        return {"status": "error"}
+    if job["input"]["sha256"] != staged["input"]["sha256"]:
+        raise DriverError("the job prechecked a different GDS than the one staged")
+    fields = {"status": "pass" if result["ok"] and job.get("pass") is True else "fail"}
+    for key in (
+        "input",
+        "options",
+        "tools",
+        "pdk_open_pdks_observed",
+        "metrics",
+        "wall_seconds",
+        "image",
+        "run_tag",
+    ):
+        fields[key] = job.get(key)
+    return fields
+
+
+_FIELDS = {"build": _build_fields, "precheck": _precheck_fields}
+
+
+def _die_from_build(record: dict) -> None:
+    """``--as-die``: ``die.json`` names the GDS this record built."""
+    if "artifact" not in record:
+        raise DriverError(
+            "--as-die needs the GDS in the artifact store: drop --no-artifact"
+        )
+    previous = load_json(DIE, {}) or {}
+    same = previous.get("gds", {}).get("sha256") == record["gds"]["sha256"]
+    DIE.write_text(
+        json.dumps(
+            {
+                "schema": "gf180-cryo-char.layout.die/1",
+                "gds": record["gds"],
+                "artifact": {
+                    "manifest": "layout/artifacts.json",
+                    "name": record["artifact"]["name"],
+                },
+                "build_record": record["record_id"],
+                "precheck_record": previous.get("precheck_record") if same else None,
+            },
+            indent=2,
+        )
+        + "\n"
+    )
+    say(
+        f"layout/die.json names build {record['record_id']}"
+        + (
+            " and its precheck record"
+            if same and previous.get("precheck_record")
+            else "; it has no precheck record yet"
+        )
+    )
+
+
+def _die_prechecked_by(record: dict) -> None:
+    """``--is-die``: ``die.json`` names this record as the die's precheck."""
+    die = load_json(DIE)
+    if not die:
+        raise DriverError("there is no layout/die.json to point at this record")
+    if die["gds"]["sha256"] != record["input"]["sha256"]:
+        raise DriverError(
+            "the die in layout/die.json is not the GDS this record prechecked"
+        )
+    die["precheck_record"] = record["record_id"]
+    DIE.write_text(json.dumps(die, indent=2) + "\n")
+    say(f"layout/die.json names precheck {record['record_id']}")
+
+
+_POINT_DIE = {"build": _die_from_build, "precheck": _die_prechecked_by}
 
 
 def staged_group(group: str, stage: str):
@@ -411,180 +518,52 @@ def staged_group(group: str, stage: str):
     return staged
 
 
-def write_or_discard(stage: str, label: str, staged: dict, fill) -> tuple[Path, dict]:
-    """Reserve a bundle, let ``fill(bundle) -> record`` build the record,
-    write it once. A failed fill leaves no half-record behind."""
+def cmd_record(args: argparse.Namespace) -> int:
+    """Verify one collected shard and write its record once, driven by
+    ``STAGES[stage]``. A fill that fails leaves no half-record behind."""
+    stage = args.stage
+    spec = STAGES[stage]
+    shard = Path(args.shard).resolve()
+    group = args.group or shard.parent.name
+    staged = staged_group(group, stage)
+    result = shard_result(shard)
+    out = shard / "files" / spec["output"]
+
+    def fill(bundle: Path) -> dict:
+        record = {
+            "schema": spec["schema"],
+            "record_id": bundle.name,
+            "created_utc": now().isoformat(),
+            "repo_commit": staged["commit"],
+            "pins": staged["pins"],
+            "source_tarball_sha256": staged["tarball_sha256"],
+            "job": {"group": group, "shard": shard.name, **result},
+            **_FIELDS[stage](out, staged, result, bundle, args),
+        }
+        copy_evidence(
+            bundle,
+            {name: out / name for name in spec["evidence"]}
+            | {name: shard / name for name in SHARD_EVIDENCE},
+        )
+        return record
+
+    label = (
+        args.label
+        if stage == "build"
+        else staged.get("input", {}).get("label", "precheck")
+    )
     rid = records.record_id(now(), staged["commit"][:7], label)
-    bundle = records.reserve(STAGES[stage]["records"], rid)
+    bundle = records.reserve(spec["records"], rid)
     try:
         record = fill(bundle)
         record["evidence"] = records.evidence(bundle)
-        return records.write_record(bundle, record), record
+        path = records.write_record(bundle, record)
     except BaseException:
         shutil.rmtree(bundle)
         raise
-
-
-def cmd_record_build(args: argparse.Namespace) -> int:
-    shard = Path(args.shard).resolve()
-    group = args.group or shard.parent.name
-    staged = staged_group(group, "build")
-    result = shard_result(shard)
-    out = shard / "files" / "build" / "out"
-    job = load_json(out / "build.json", {}) or {}
-    gds = out / "chip_top.gds"
-
-    def fill(bundle: Path) -> dict:
-        record = {
-            "schema": records.SCHEMA_BUILD,
-            "record_id": bundle.name,
-            "created_utc": now().isoformat(),
-            "repo_commit": staged["commit"],
-            "pins": pinned(staged),
-            "source_tarball_sha256": staged["tarball_sha256"],
-            "job": {"group": group, "shard": shard.name, **result},
-            "make": job.get("make"),
-            "target": job.get("target"),
-            "tools": job.get("tools"),
-            "metrics": job.get("metrics"),
-        }
-        if result["ok"] and gds.is_file():
-            record["gds"] = {
-                "name": "chip_top.gds",
-                "sha256": records.sha256_file(gds),
-                "bytes": gds.stat().st_size,
-            }
-            record["checks"] = die_check(gds, staged["pins"])
-            passed = record["checks"]["die_matches_pin"] and job.get("pass") is True
-            record["status"] = "pass" if passed else "fail"
-            if passed and not args.no_artifact:
-                record["artifact"] = artifact_put(
-                    gds, f"build/{bundle.name}/chip_top.gds", "librelane"
-                )
-        else:
-            record["status"] = "fail" if result["state"] == "done" else "error"
-        copy_evidence(
-            bundle,
-            {
-                "console.log": out / "console.log",
-                "build.json": out / "build.json",
-                "tools.json": out / "tools.json",
-                "phases.txt": out / "phases.txt",
-                "metrics.json": out / "metrics.json",
-                "run.json": shard / "run.json",
-                "status.json": shard / "status.json",
-                "harness.log": shard / "harness.log",
-            },
-        )
-        return record
-
-    path, record = write_or_discard("build", args.label, staged, fill)
     say(f"wrote {path}: status {record['status']}")
-    if record["status"] == "pass" and args.as_die:
-        if "artifact" not in record:
-            raise DriverError(
-                "--as-die needs the GDS in the artifact store: drop --no-artifact"
-            )
-        previous = load_json(DIE, {}) or {}
-        same = previous.get("gds", {}).get("sha256") == record["gds"]["sha256"]
-        DIE.write_text(
-            json.dumps(
-                {
-                    "schema": "gf180-cryo-char.layout.die/1",
-                    "gds": record["gds"],
-                    "artifact": {
-                        "manifest": "layout/artifacts.json",
-                        "name": record["artifact"]["name"],
-                    },
-                    "build_record": record["record_id"],
-                    "precheck_record": previous.get("precheck_record")
-                    if same
-                    else None,
-                },
-                indent=2,
-            )
-            + "\n"
-        )
-        say(
-            f"layout/die.json names build {record['record_id']}"
-            + (
-                " and its precheck record"
-                if same and previous.get("precheck_record")
-                else "; it has no precheck record yet"
-            )
-        )
-    return 0 if record["status"] == "pass" else 1
-
-
-def cmd_record_precheck(args: argparse.Namespace) -> int:
-    shard = Path(args.shard).resolve()
-    group = args.group or shard.parent.name
-    staged = staged_group(group, "precheck")
-    result = shard_result(shard)
-    out = shard / "files" / "precheck" / "out"
-
-    def fill(bundle: Path) -> dict:
-        job = load_json(out / "precheck.json")
-        record = {
-            "schema": records.SCHEMA_PRECHECK,
-            "record_id": bundle.name,
-            "created_utc": now().isoformat(),
-            "repo_commit": staged["commit"],
-            "pins": pinned(staged),
-            "source_tarball_sha256": staged["tarball_sha256"],
-            "job": {"group": group, "shard": shard.name, **result},
-        }
-        if job is None:
-            record["status"] = "error"
-        else:
-            if job["input"]["sha256"] != staged["input"]["sha256"]:
-                raise DriverError(
-                    "the job prechecked a different GDS than the one staged"
-                )
-            record["status"] = (
-                "pass" if result["ok"] and job.get("pass") is True else "fail"
-            )
-            for key in (
-                "input",
-                "options",
-                "tools",
-                "pdk_open_pdks_observed",
-                "metrics",
-                "wall_seconds",
-                "image",
-                "run_tag",
-            ):
-                record[key] = job.get(key)
-        copy_evidence(
-            bundle,
-            {
-                "console.log": out / "console.log",
-                "precheck.json": out / "precheck.json",
-                "tools.json": out / "tools.json",
-                "phases.txt": out / "phases.txt",
-                "flow": out / "flow",
-                "flow-files.txt": out / "flow-files.txt",
-                "run.json": shard / "run.json",
-                "status.json": shard / "status.json",
-                "harness.log": shard / "harness.log",
-            },
-        )
-        return record
-
-    label = staged.get("input", {}).get("label", "precheck")
-    path, record = write_or_discard("precheck", label, staged, fill)
-    say(f"wrote {path}: status {record['status']}")
-    if record["status"] == "pass" and args.is_die:
-        die = load_json(DIE)
-        if not die:
-            raise DriverError("there is no layout/die.json to point at this record")
-        if die["gds"]["sha256"] != record["input"]["sha256"]:
-            raise DriverError(
-                "the die in layout/die.json is not the GDS this record prechecked"
-            )
-        die["precheck_record"] = record["record_id"]
-        DIE.write_text(json.dumps(die, indent=2) + "\n")
-        say(f"layout/die.json names precheck {record['record_id']}")
+    if record["status"] == "pass" and getattr(args, spec["die"]):
+        _POINT_DIE[stage](record)
     return 0 if record["status"] == "pass" else 1
 
 
@@ -666,11 +645,7 @@ def main(argv: list[str] | None = None) -> int:
         if args.action == "collect":
             return cmd_collect(args)
         if args.action == "record":
-            return (
-                cmd_record_build(args)
-                if args.stage == "build"
-                else cmd_record_precheck(args)
-            )
+            return cmd_record(args)
     except (
         DriverError,
         records.RecordExists,
