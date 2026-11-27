@@ -4,14 +4,15 @@
 # and precheck.sh inside a repo-script job on the heavy image; never run,
 # except as `nix-env.sh tools` inside a dev shell, to print its tool record.
 #
-#   ws_pin KEY[.KEY...]         one value from layout/toolchain.json
-#   ws_log MSG                  a timestamped progress line
-#   ws_nix_install              install the sha256-pinned Nix, single-user
-#   ws_nix_develop DIR CMD...   run CMD in the pinned flake's dev shell
-#   ws_pdk_check ROOT VARIANT   fail unless ROOT/VARIANT/SOURCES names the
-#                               pinned open_pdks commit
-#   ws_phase MSG                append MSG to $WS_PHASES with its timestamp
-#   ws_tools                    the dev shell's tool versions, as JSON
+#   ws_pin KEY[.KEY...]             one value from layout/toolchain.json
+#   ws_log MSG                      a timestamped progress line
+#   ws_phase MSG                    append MSG to $WS_PHASES with its timestamp
+#   ws_job_init OUTDIR              create OUTDIR, arm the failure trap, reset console.log
+#   ws_nix_install                  install the sha256-pinned Nix, single-user
+#   ws_nix_develop DIR CMD...       run CMD in the pinned flake's dev shell
+#   ws_pdk_check ROOT VARIANT SHA   fail unless ROOT/VARIANT/SOURCES names SHA
+#   ws_tools                        the dev shell's tool versions, as JSON
+#   ws_bootstrap UPSTREAM [MAKE...] install Nix, fetch/check PDK, write tools.json
 #
 # The job instance has egress and no credential. It fetches exactly three
 # things: the Nix tarball (hash-checked here), the flake closure from its
@@ -21,20 +22,14 @@
 set -euo pipefail
 
 LAYOUT_JOB_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+LAYOUT_JOBS_HELPER="$LAYOUT_JOB_DIR/jobs/summary.py"
 # The job runs as root, and Nix as root insists on a build-users group unless
 # the setting is emptied: the same nix.conf the official nixos/nix image ships.
 export NIX_CONFIG="experimental-features = nix-command flakes
 build-users-group ="
 
 ws_pin() {
-	python3 - "$LAYOUT_JOB_DIR/toolchain.json" "$1" <<'PY'
-import json, sys
-
-node = json.load(open(sys.argv[1]))
-for key in sys.argv[2].split("."):
-	node = node[key]
-print(node)
-PY
+	python3 "$LAYOUT_JOBS_HELPER" pin "$1"
 }
 
 ws_log() { echo "[layout-job $(date -u +%Y-%m-%dT%H:%M:%SZ)] $*" >&2; }
@@ -42,6 +37,24 @@ ws_log() { echo "[layout-job $(date -u +%Y-%m-%dT%H:%M:%SZ)] $*" >&2; }
 ws_phase() {
 	echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) $(date +%s) $*" >> "${WS_PHASES:-/dev/null}"
 	ws_log "$*"
+}
+
+# shellcheck disable=SC2317
+_ws_finish() {
+	local status=$?
+	if [ "$status" -ne 0 ]; then
+		ws_log "FAILED (exit $status); last 40 lines of the console log:"
+		tail -n 40 "$WS_OUT/console.log" >&2 2>/dev/null || true
+	fi
+}
+
+ws_job_init() {
+	mkdir -p "$1"
+	WS_OUT="$(cd "$1" && pwd)"
+	WS_PHASES="$WS_OUT/phases.txt"
+	export WS_OUT WS_PHASES
+	: >"$WS_OUT/console.log"
+	trap _ws_finish EXIT
 }
 
 ws_nix_install() {
@@ -95,37 +108,27 @@ ws_pdk_check() {
 }
 
 ws_tools() {
-	python3 - <<'PY'
-import importlib.metadata
-import json
-import shutil
-import subprocess
-
-
-def first(command):
-    try:
-        out = subprocess.run(command, capture_output=True, text=True, timeout=300)
-    except (OSError, subprocess.SubprocessError) as exc:
-        return f"unavailable: {exc}"
-    line = (out.stdout or out.stderr).strip().splitlines()
-    return line[0] if line else f"no output (exit {out.returncode})"
-
-
-tools = {
-    "nix": first(["nix", "--version"]),
-    "python": first(["python3", "--version"]),
-    "klayout": first(["klayout", "-v"]),
-    "magic": first(["magic", "--version"]),
-    "yosys": first(["yosys", "-V"]),
-    "openroad": first(["openroad", "-version"]),
+	python3 "$LAYOUT_JOBS_HELPER" tools
 }
-try:
-    tools["librelane"] = importlib.metadata.version("librelane")
-except importlib.metadata.PackageNotFoundError:
-    tools["librelane"] = "unavailable: no librelane distribution in this python"
-tools["paths"] = {name: shutil.which(name) for name in ("klayout", "magic", "yosys", "openroad")}
-print(json.dumps(tools, indent=2, sort_keys=True))
-PY
+
+ws_bootstrap() {
+	local upstream pdk_name pdk_commit
+	upstream="$(cd "$1" && pwd)"
+	shift
+	pdk_name="$(ws_pin wafer_space.pdk.name)"
+	pdk_commit="$(ws_pin wafer_space.pdk.open_pdks_commit)"
+
+	ws_phase "install nix $(ws_pin nix.version)"
+	ws_nix_install
+
+	ws_phase "fetch the PDK (open_pdks $pdk_commit)"
+	(cd "$upstream" && ws_nix_develop . make clone-pdk "$@") >>"$WS_OUT/console.log" 2>&1
+
+	ws_phase "check the PDK revision"
+	ws_pdk_check "$upstream/gf180mcu" "$pdk_name" "$pdk_commit" >>"$WS_OUT/console.log" 2>&1
+
+	ws_phase "record the toolchain"
+	ws_nix_develop "$upstream" bash "$LAYOUT_JOB_DIR/jobs/nix-env.sh" tools >"$WS_OUT/tools.json"
 }
 
 if [ "${BASH_SOURCE[0]}" = "$0" ] && [ "${1:-}" = tools ]; then

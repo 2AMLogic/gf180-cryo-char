@@ -235,7 +235,8 @@ class JobScriptTests(unittest.TestCase):
         jobs = self.root / "layout" / "jobs"
         jobs.mkdir(parents=True)
         for script in (LAYOUT / "jobs").iterdir():
-            (jobs / script.name).write_bytes(script.read_bytes())
+            if script.is_file():
+                (jobs / script.name).write_bytes(script.read_bytes())
         (self.root / "layout" / "toolchain.json").write_bytes(
             (LAYOUT / "toolchain.json").read_bytes()
         )
@@ -420,6 +421,49 @@ class JobScriptTests(unittest.TestCase):
                 self.root / "precheck" / "out" / "flow" / "final" / "metrics.json"
             ).is_file()
         )
+
+    def test_nix_env_tools_records_stub_toolchain(self):
+        result = self.run_job("nix-env.sh", "tools")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        tools = json.loads(result.stdout)
+        self.assertEqual(tools["nix"], "nix (Nix) " + PINS["nix"]["version"])
+        self.assertEqual(tools["klayout"], "klayout stub 1.0")
+        self.assertTrue(tools["paths"]["klayout"].endswith("/stub-bin/klayout"))
+
+    def test_setup_ignores_subdirectories_under_layout_jobs(self):
+        layout_copy = self.root / "layout-with-cache"
+        (layout_copy / "jobs" / "__pycache__").mkdir(parents=True)
+        for script in (LAYOUT / "jobs").iterdir():
+            if script.is_file():
+                (layout_copy / "jobs" / script.name).write_bytes(script.read_bytes())
+        (layout_copy / "toolchain.json").write_bytes(
+            (LAYOUT / "toolchain.json").read_bytes()
+        )
+        probe = JobScriptTests("test_nix_env_tools_records_stub_toolchain")
+        with mock.patch(f"{__name__}.LAYOUT", layout_copy):
+            try:
+                probe.setUp()
+            finally:
+                probe.doCleanups()
+
+    def test_jobs_delegate_to_shared_helper_without_inline_python_heredocs(self):
+        for name in ("nix-env.sh", "build.sh", "precheck.sh"):
+            text = (LAYOUT / "jobs" / name).read_text()
+            self.assertNotIn("<<'PY'", text, name)
+            self.assertNotIn("<<PY", text, name)
+        helper = self.root / "layout" / "jobs" / "summary.py"
+        self.assertTrue(helper.is_file())
+        result = subprocess.run(
+            ["python3", str(helper), "pin", "wafer_space.template.target"],
+            cwd=self.root,
+            env=self.env,
+            capture_output=True,
+            text=True,
+            timeout=30,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.strip(), "librelane-condensed")
 
 
 if __name__ == "__main__":
