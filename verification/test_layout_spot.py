@@ -9,12 +9,13 @@ verdict follow the tool's exit code.
 """
 
 import hashlib
+import io
 import json
 import os
 import subprocess
 import tempfile
 import unittest
-from contextlib import ExitStack
+from contextlib import ExitStack, redirect_stderr, redirect_stdout
 from pathlib import Path
 from unittest import mock
 
@@ -217,6 +218,51 @@ class SubmitTests(unittest.TestCase):
         self.assertEqual(argv[argv.index("--timeout") + 1], "1500")
         self.assertEqual(argv[argv.index("--wait") + 1], "540")
         self.assertNotIn("--no-wait", argv)
+
+
+def klt_help_listing(*present: str) -> str:
+    """``klt --help``'s subcommand block, listing only ``present``."""
+    return "positional arguments:\n" + "".join(
+        f"    {command}\n" for command in present
+    )
+
+
+class CheckPinsTests(unittest.TestCase):
+    """``submit``'s pin check: one read of ``toolchain.json``, and a missing
+    ``klt`` command stops the submit before anything is staged."""
+
+    def test_check_pins_reads_the_pin_file_once(self):
+        pins = toolchain_pin.load()
+        help_text = klt_help_listing(*pins["klt_required_commands"])
+        with (
+            mock.patch.object(toolchain_pin, "load", wraps=toolchain_pin.load) as load,
+            mock.patch.object(toolchain_pin, "klt_help", return_value=help_text),
+            redirect_stdout(io.StringIO()),
+        ):
+            self.assertEqual(spot.check_pins(), pins)
+        self.assertEqual(load.call_count, 1)
+
+    def test_submit_stops_with_exit_1_when_a_pinned_command_is_missing(self):
+        missing, *rest = PINS["klt_required_commands"]
+        err = io.StringIO()
+        with (
+            mock.patch.object(
+                toolchain_pin, "klt_help", return_value=klt_help_listing(*rest)
+            ),
+            mock.patch.object(
+                spot, "head_and_clean", side_effect=AssertionError("past the pins")
+            ) as next_step,
+            redirect_stderr(err),
+        ):
+            rc = spot.main(["build", "submit", "--dry-run"])
+        self.assertEqual(rc, 1)
+        next_step.assert_not_called()
+        self.assertIn(f"error: klt '{missing}' is required by", err.getvalue())
+        self.assertIn("uv tool install " + PINS["klt_install"], err.getvalue())
+        self.assertIn(
+            "error: toolchain check failed (see the errors above); nothing was submitted",
+            err.getvalue(),
+        )
 
 
 class JobScriptTests(unittest.TestCase):

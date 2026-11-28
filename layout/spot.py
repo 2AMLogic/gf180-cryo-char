@@ -100,11 +100,12 @@ def load_json(path: Path, default=None):
 
 
 def check_pins() -> dict:
-    if toolchain_pin.main(["--check"]) != 0:
+    rc, pins = toolchain_pin.report()
+    if rc != 0:
         raise DriverError(
             "toolchain check failed (see the errors above); nothing was submitted"
         )
-    return toolchain_pin.load()
+    return pins
 
 
 def head_and_clean() -> str:

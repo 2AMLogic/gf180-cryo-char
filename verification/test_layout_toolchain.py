@@ -121,6 +121,41 @@ class PinFileTests(unittest.TestCase):
         )
         self.assertIn("toolchain.json: OK", out.getvalue())
 
+    def test_report_returns_the_pins_it_checked(self):
+        out = io.StringIO()
+        rc, pins = toolchain_pin.report(help_text=KLT_HELP, stdout=out)
+        self.assertEqual(rc, 0)
+        self.assertEqual(pins, toolchain_pin.load(LAYOUT))
+        self.assertIn("toolchain.json: OK", out.getvalue())
+        precheck = pins["wafer_space"]["precheck"]["commit"][:7]
+        self.assertIn(f"  precheck {precheck}", out.getvalue())
+
+    def test_report_keeps_the_pins_when_a_pinned_command_is_missing(self):
+        trimmed = KLT_HELP.replace(
+            "    artifact            ", "    zrtifact            "
+        )
+        err = io.StringIO()
+        rc, pins = toolchain_pin.report(help_text=trimmed, stderr=err)
+        self.assertEqual(rc, 1)
+        self.assertEqual(pins, toolchain_pin.load(LAYOUT))
+        self.assertIn("'artifact'", err.getvalue())
+        self.assertIn("uv tool install " + pins["klt_install"], err.getvalue())
+
+    def test_report_returns_no_pins_when_the_check_fails(self):
+        err = io.StringIO()
+        rc, pins = toolchain_pin.report(klt="/nonexistent/klt", stderr=err)
+        self.assertEqual(rc, 1)
+        self.assertIsNone(pins)
+        self.assertIn("error: cannot run `/nonexistent/klt --help`", err.getvalue())
+
+    def test_main_rejects_any_argv_but_check(self):
+        out, err = io.StringIO(), io.StringIO()
+        rc = toolchain_pin.main(["--check", "extra"], stdout=out, stderr=err)
+        self.assertEqual(rc, 2)
+        self.assertEqual(out.getvalue(), "")
+        self.assertIn("usage: ", err.getvalue())
+        self.assertIn("[--check]", err.getvalue())
+
 
 class RecordTests(unittest.TestCase):
     def test_record_id_rejects_an_unsafe_label(self):
